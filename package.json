@@ -3,6 +3,20 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "description": "E-commerce plant sales app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D4n1el13and37/e-commerce-app.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "api",
+    "plant"
+  ],
+  "bugs": {
+    "url": "https://github.com/D4n1el13and37/e-commerce-app/issues"
+  },
+  "homepage": "https://github.com/D4n1el13and37/e-commerce-app",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

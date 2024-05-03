@@ -7,8 +7,6 @@ const authMiddlewareOptions: AuthMiddlewareOptions = {
   host: 'https://auth.europe-west1.gcp.commercetools.com',
   projectKey,
   credentials: {
-    // clientId: process.env.CTP_CLIENT_ID || '',
-    // clientSecret: process.env.CTP_CLIENT_SECRET || '',
     clientId: import.meta.env.VITE_CLIENT_ID || '',
     clientSecret: import.meta.env.VITE_CLIENT_SECRET || '',
   },

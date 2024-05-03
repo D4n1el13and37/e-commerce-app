@@ -7,19 +7,15 @@ function App() {
 
   const getProject = async () => {
     try {
-      const project = await getApiRoot()
-        .withProjectKey({ projectKey })
-        // .products()
-        // .get()
-        // .execute();
-
-        .products()
-        .get()
-        .execute();
+      const project = await getApiRoot().withProjectKey({ projectKey }).products().get().execute();
 
       setProjectDetails(project.body);
     } catch (e) {
-      // console.log(e);
+      if (e instanceof Error) {
+        throw new Error(e.message);
+      } else {
+        throw new Error('An unknown error occurred');
+      }
     }
   };
 

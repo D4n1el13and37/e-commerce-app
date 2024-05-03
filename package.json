@@ -28,7 +28,10 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@commercetools/platform-sdk": "^4.2.0",
+    "@commercetools/sdk-client-v2": "^2.1.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.2",

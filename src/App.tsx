@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { projectKey, getApiRoot } from './api/BuildClient.ts';
+import { projectKey, getApiRoot } from './api/BuildClient';
 import './App.css';
 
 function App() {
   const [projectDetails, setProjectDetails] = useState({});
 
-  const getProject = async () => {
+  const getProducts = async () => {
     try {
       const project = await getApiRoot().withProjectKey({ projectKey }).products().get().execute();
 
@@ -20,7 +20,7 @@ function App() {
   };
 
   useEffect(() => {
-    getProject();
+    getProducts();
   }, []);
 
   return (

@@ -1,4 +1,3 @@
-// import fetch from 'node-fetch'
 import { ClientBuilder, Client, AuthMiddlewareOptions, HttpMiddlewareOptions } from '@commercetools/sdk-client-v2';
 import { createApiBuilderFromCtpClient, ApiRoot } from '@commercetools/platform-sdk';
 

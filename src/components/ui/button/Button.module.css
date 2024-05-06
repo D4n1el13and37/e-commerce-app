@@ -1,9 +1,6 @@
 .button {
-  /* border: none; */
-  /* outline: none; */
   padding: 15px;
   border-radius: 12px;
-  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
 
 .button:hover:not(:disabled) {
@@ -12,20 +9,17 @@
 
 .main {
   padding: 12.5px 30px;
-  /* font-family: 'sans-serif'; */
-  /* color: var(--Main-White, #fff); */
   color: var(--Schemes-Primary, #758963);
   background-color: transparent;
   border: 1px solid var(--Primary-2, #758963);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; /* 142.857% */
+  line-height: 20px;
   letter-spacing: 0.25px;
 }
 
 .main:hover:not(:disabled) {
-  /* border-radius: 12px; */
   color: var(--Schemes-Surface-Tint, #3f5028);
   border: 1px solid var(--Schemes-Surface-Tint, #3f5028);
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
@@ -38,7 +32,6 @@
 }
 
 .filled {
-  /* border-radius: 12px; */
   color: var(--Main-White, #fff);
   background: var(--Schemes-Primary, #758963);
   border: none;
@@ -55,7 +48,6 @@
 .filled:disabled {
   box-shadow: none;
   background: var(--Schemes-Surface-Container-Highest, #dee4de);
-  /* cursor: auto; */
 }
 
 /* Не уверен что нужно отключить, посмотреть как сделать при фокусе */

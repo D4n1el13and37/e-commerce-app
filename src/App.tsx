@@ -32,18 +32,23 @@ function App() {
   // }
 
   return (
-    <>
-      <Button
-        // onClick={handler}
-        type="submit"
-        isMain={true}
-        isDisabled={true}
-        isFilled={true}
-        // title="VISTOR"
-      >
-        Victor
+    <div style={{ display: 'flex', gap: '10px' }}>
+      <Button type="submit" isMain={true} isFilled={true}>
+        Filled
       </Button>
-    </>
+      <Button type="submit" isMain={true} isDisabled={true} isFilled={true}>
+        Filled Disabled
+      </Button>
+      <Button isMain={true} type="submit">
+        Main
+      </Button>
+      <Button isMain={true} isDisabled={true} type="submit">
+        Main Disabled
+      </Button>
+      <Button>+</Button>
+      <Button isFilled={true}>+</Button>
+      <Button isDisabled={true}>-</Button>
+    </div>
   );
 }
 

@@ -1,27 +1,41 @@
 .button {
   padding: 15px;
+
+  width: 45px;
+  height: 45px;
+
+  color: var(--Schemes-Primary, #758963);
+  background-color: transparent;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
   border-radius: 12px;
+  border: 1px solid var(--Schemes-Primary, #758963);
 }
 
 .button:hover:not(:disabled) {
+  color: var(--Schemes-Primary, #3f5028);
+  border: 1px solid var(--Primary-2, #3f5028);
   cursor: pointer;
 }
 
 .main {
+  width: auto;
+  height: auto;
   padding: 12.5px 30px;
-  color: var(--Schemes-Primary, #758963);
-  background-color: transparent;
-  border: 1px solid var(--Primary-2, #758963);
+
+  box-shadow: none;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.25px;
+
+  color: var(--Schemes-Primary, #758963);
+  border: 1px solid var(--Primary-2, #758963);
 }
 
 .main:hover:not(:disabled) {
-  color: var(--Schemes-Surface-Tint, #3f5028);
-  border: 1px solid var(--Schemes-Surface-Tint, #3f5028);
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
@@ -34,6 +48,7 @@
 .filled {
   color: var(--Main-White, #fff);
   background: var(--Schemes-Primary, #758963);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
 

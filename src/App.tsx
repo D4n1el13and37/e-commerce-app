@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { projectKey, getApiRoot } from './api/BuildClient';
 import './App.css';
+import Register from './pages/Register/Register';
 
 function App() {
   const [projectDetails, setProjectDetails] = useState({});
@@ -25,8 +26,9 @@ function App() {
 
   return (
     <>
-      <div>Project Details</div>
-      {JSON.stringify(projectDetails, undefined, 2)}
+      <Register></Register>
+      {/* <div>Project Details</div>
+      {JSON.stringify(projectDetails, undefined, 2)} */}
     </>
   );
 }

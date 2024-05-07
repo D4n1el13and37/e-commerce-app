@@ -1,5 +1,13 @@
-import { ClientBuilder, Client, AuthMiddlewareOptions, HttpMiddlewareOptions } from '@commercetools/sdk-client-v2';
-import { createApiBuilderFromCtpClient, ApiRoot } from '@commercetools/platform-sdk';
+import {
+  ClientBuilder,
+  Client,
+  AuthMiddlewareOptions,
+  HttpMiddlewareOptions,
+} from '@commercetools/sdk-client-v2';
+import {
+  createApiBuilderFromCtpClient,
+  ApiRoot,
+} from '@commercetools/platform-sdk';
 
 export const projectKey = import.meta.env.VITE_PROJECT_KEY || '';
 const authMiddlewareOptions: AuthMiddlewareOptions = {
@@ -25,4 +33,5 @@ const client: Client = new ClientBuilder()
   .withLoggerMiddleware()
   .build();
 
-export const getApiRoot: () => ApiRoot = () => createApiBuilderFromCtpClient(client);
+export const getApiRoot: () => ApiRoot = () =>
+  createApiBuilderFromCtpClient(client);

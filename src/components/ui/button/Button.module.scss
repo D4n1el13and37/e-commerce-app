@@ -1,0 +1,99 @@
+.button {
+  padding: 15px;
+  width: 45px;
+  height: 45px;
+  color: var(--primary-color, #758963);
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid var(--primary-color, #758963);
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--accent-color, #3f5028);
+      border: 1px solid var(--accent-color, #3f5028);
+      cursor: pointer;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      color var(--duration, 0.3s) ease-in-out,
+      border var(--duration, 0.3s) ease-in-out;
+  }
+
+  &:disabled {
+    cursor: default;
+    box-shadow: none;
+    border: 1px solid var(--grey-color, #989998);
+  }
+}
+
+.main {
+  width: auto;
+  height: auto;
+  padding: 12px 32px;
+  box-shadow: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--primary-color, #758963);
+  border: 1px solid var(--primary-color, #758963);
+
+  @media (any-hover: hover) {
+    &:hover {
+      border: 1px solid var(--accent-color, #3f5028);
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      box-shadow var(--duration, 0.3s) ease-in-out,
+      border var(--duration, 0.3s) ease-in-out;
+  }
+
+  &:disabled {
+    cursor: default;
+    color: var(--grey-color, #989998);
+    border: 1px solid var(--grey-color, #989998);
+    box-shadow: none;
+  }
+}
+
+.filled {
+  color: var(--light-color, #f9f9f9);
+  background: var(--primary-color, #758963);
+  border: none;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--Main-White, #fff);
+      border: none;
+      background: var(--Schemes-Surface-Tint, #3f5028);
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      box-shadow var(--duration, 0.3s) ease-in-out,
+      background-color var(--duration, 0.3s) ease-in-out;
+  }
+
+  &:disabled {
+    border: none;
+    cursor: default;
+    box-shadow: none;
+    color: var(--light-color, #f9f9f9);
+    background: var(--grey-color, #989998);
+  }
+}
+
+/* Не уверен что нужно отключить, посмотреть как сделать при фокусе */
+/* .button:focus {
+  outline: none;
+} */

@@ -1,10 +1,10 @@
 name: Main action
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, release_sprint-2/login-registration-main]
 
   pull_request:
-    branches: [main, develop]
+    branches: [main, develop, release_sprint-2/login-registration-main]
 
 jobs:
   init:

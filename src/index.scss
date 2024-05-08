@@ -44,7 +44,7 @@ body {
   min-width: 360px;
   min-height: 100%;
   font-family: var(--font-family), sans-serif;
-  font-size: 16px;
+  font-size: var(--main-font-size, 16px);
 }
 
 img {

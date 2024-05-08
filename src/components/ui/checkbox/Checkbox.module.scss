@@ -1,9 +1,14 @@
-.checkbox_wrapper {
-  input[type='checkbox'] {
+.checkbox_wrappper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .input {
+    margin: 0;
     -webkit-appearance: none;
     appearance: none;
 
-    width: 22px;
+    min-width: 22px;
     height: 22px;
 
     border-radius: 5px;
@@ -20,16 +25,5 @@
     &:hover {
       border: 2px solid var(--accent-color, #3f5028);
     }
-  }
-}
-
-.checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  input[type='checkbox'] {
-    margin: 0;
   }
 }

@@ -15,9 +15,13 @@ function Checkbox({ ...props }: CheckboxInterface) {
   }
 
   return (
-    <div className={`${classes.checkbox_wrapper}`}>
-      <label data-testid="checkbox-label" className={`${classes.checkbox}`}>
+    <>
+      <label
+        data-testid="checkbox-label"
+        className={`${classes.checkbox_wrappper}`}
+      >
         <input
+          className={`${classes.input}`}
           type="checkbox"
           data-testid="checkbox"
           checked={isChecked}
@@ -27,7 +31,7 @@ function Checkbox({ ...props }: CheckboxInterface) {
         ></input>
         {props.label && <span>{props.label}</span>}
       </label>
-    </div>
+    </>
   );
 }
 

@@ -2,6 +2,7 @@
 // import { projectKey, getApiRoot } from './api/BuildClient';
 import './App.css';
 import Button from './components/ui/button/Button';
+import Checkbox from './components/ui/checkbox/Checkbox';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -32,22 +33,20 @@ function App() {
   // }
 
   return (
-    <div style={{ display: 'flex', gap: '10px' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+      <Checkbox label="Are you sure?" isChecked={true} />
+      <Checkbox isRequred={true} />
+      <Checkbox isDisabled={true} />
       <Button type="submit" isMain={true} isFilled={true}>
         Filled
-      </Button>
-      <Button type="submit" isMain={true} isDisabled={true} isFilled={true}>
-        Filled Disabled
       </Button>
       <Button isMain={true} type="submit">
         Main
       </Button>
-      <Button isMain={true} isDisabled={true} type="submit">
-        Main Disabled
-      </Button>
       <Button>+</Button>
-      <Button isFilled={true}>+</Button>
-      <Button isDisabled={true}>-</Button>
+      <Button isFilled={true} isDisabled={true}>
+        -
+      </Button>
     </div>
   );
 }

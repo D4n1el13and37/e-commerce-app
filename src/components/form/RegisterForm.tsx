@@ -21,10 +21,8 @@ export default function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormFields>();
-  const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {
-    console.log(data); // Accessing the personalInfo field
-  };
+  } = useForm<RegisterFormFields>({ mode: 'onBlur' });
+  const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

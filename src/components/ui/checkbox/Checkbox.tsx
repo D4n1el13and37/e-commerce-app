@@ -3,6 +3,7 @@ import classes from './Checkbox.module.scss';
 
 interface CheckboxInterface {
   label?: string;
+  isDisabled?: boolean;
   isChecked?: boolean;
   isRequred?: boolean;
 }
@@ -15,13 +16,14 @@ function Checkbox({ ...props }: CheckboxInterface) {
 
   return (
     <div className={`${classes.checkbox_wrapper}`}>
-      <label className={`${classes.checkbox}`}>
+      <label data-testid="checkbox-label" className={`${classes.checkbox}`}>
         <input
           type="checkbox"
           data-testid="checkbox"
           checked={isChecked}
           onChange={handleChange}
-          required={props.isRequred}
+          required={!!props.isRequred}
+          disabled={!!props.isDisabled}
         ></input>
         {props.label && <span>{props.label}</span>}
       </label>

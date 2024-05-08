@@ -14,11 +14,10 @@ interface ButtonInterface {
 function Button({ ...props }: ButtonInterface) {
   return (
     <button
-      data-testid="button"
       disabled={props.isDisabled}
       onClick={props.onClick}
       title={props.title}
-      className={`${props.isMain ? `${classes.main} ` : ''}${props.isFilled ? `${classes.filled} ` : ''}${classes.button}`}
+      className={`${props.isMain ? classes.main : ''} ${props.isFilled ? classes.filled : ''} ${classes.button}`}
       type={props.type || 'button'}
     >
       {props.children}

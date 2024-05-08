@@ -25,5 +25,10 @@
     &:hover {
       border: 2px solid var(--accent-color, #3f5028);
     }
+
+    &:disabled {
+      cursor: default;
+      border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+    }
   }
 }

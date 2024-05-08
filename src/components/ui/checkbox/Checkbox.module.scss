@@ -1,0 +1,35 @@
+.checkbox_wrapper {
+  input[type='checkbox'] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 5px;
+    border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+
+    outline: none;
+    cursor: pointer;
+
+    &:checked {
+      border: 2px solid var(--primary-color, #758963);
+      background: var(--primary-color, #758963);
+    }
+
+    &:hover {
+      border: 2px solid var(--accent-color, #3f5028);
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  input[type='checkbox'] {
+    margin: 0;
+  }
+}

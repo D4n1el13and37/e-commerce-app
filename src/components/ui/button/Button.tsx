@@ -14,6 +14,7 @@ interface ButtonInterface {
 function Button({ ...props }: ButtonInterface) {
   return (
     <button
+      data-testid="button"
       disabled={props.isDisabled}
       onClick={props.onClick}
       title={props.title}

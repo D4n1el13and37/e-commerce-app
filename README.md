@@ -79,6 +79,10 @@ To work with the application, you should follow the steps below:
 
 Below are the scripts available for running and managing project. Each script is designed to streamline specific tasks, from development and building to linting and testing.
 
+- `npm run stylelint` — runs Stylelint on all styles files
+
+- `npm run style-fix` — automatically fixes many common style issues detected by Stylelint
+
 - `npm run dev` — starts the development server using `Vite`
 
 - `npm run build` — compiles the `TypeScript` code and builds the project using `Vite`, preparing it for production deployment.

@@ -26,7 +26,8 @@ export default function PersonalInfo({ register, errors }) {
             message: 'Password must have at least 8 characters',
           },
           validate: (value: string) => {
-            const regexPasssword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]+$/;
+            const regexPasssword =
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]+$/;
             if (!regexPasssword.test(value)) {
               return 'Password must include at least one uppercase letter, one lowercase letter, and one number';
             }
@@ -50,6 +51,7 @@ export default function PersonalInfo({ register, errors }) {
             if (!regexFirstName.test(value)) {
               return 'First name must have just letters';
             }
+            return true;
           },
         })}
         type="text"
@@ -88,9 +90,8 @@ export default function PersonalInfo({ register, errors }) {
             const userAge = dateToday.getFullYear() - dateBirth.getFullYear();
             const isBirthdayPassed =
               dateToday.getMonth() > dateBirth.getMonth() ||
-              (dateToday.getMonth() === dateBirth.getMonth() && dateToday.getDate() >= dateBirth.getDate());
-            console.log(userAge);
-            console.log(isBirthdayPassed);
+              (dateToday.getMonth() === dateBirth.getMonth() &&
+                dateToday.getDate() >= dateBirth.getDate());
 
             if (userAge < minimumAge || (userAge === 13 && !isBirthdayPassed)) {
               return 'You must be at least 13 years old';

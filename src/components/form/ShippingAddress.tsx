@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Address from './Address';
 
 export default function ShippingAddress({ register, errors }) {

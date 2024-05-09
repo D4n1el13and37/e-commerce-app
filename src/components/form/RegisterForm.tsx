@@ -1,7 +1,10 @@
+import React from 'react';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
 import BillingAddress from './BillingAddress';
+import Button from '../ui/button/Button';
 
 type RegisterFormFields = {
   email: string;
@@ -22,7 +25,7 @@ export default function RegisterForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormFields>({ mode: 'onBlur' });
-  const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {};
+  const onSubmit: SubmitHandler<RegisterFormFields> = (/* data */) => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -35,7 +38,9 @@ export default function RegisterForm() {
         <BillingAddress register={register} errors={errors} />
       </div>
 
-      <button type="submit">Submit</button>
+      <Button type="submit" isMain={true} isFilled={true}>
+        Submit
+      </Button>
     </form>
   );
 }

@@ -1,5 +1,7 @@
 // import { useState, useEffect } from 'react';
 // import { projectKey, getApiRoot } from './api/BuildClient';
+import React from 'react';
+
 import './App.css';
 import Register from './pages/Register/Register';
 import Button from './components/ui/button/Button';
@@ -35,7 +37,7 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-      <Checkbox label="Are you sure?" isChecked={true} />
+      {/* <Checkbox label="Are you sure?" isChecked={true} />
       <Checkbox isRequred={true} />
       <Checkbox isDisabled={true} />
       <Button type="submit" isMain={true} isFilled={true}>
@@ -47,7 +49,7 @@ function App() {
       <Button>+</Button>
       <Button isFilled={true} isDisabled={true}>
         -
-      </Button>
+      </Button> */}
       <Register></Register>
     </div>
   );

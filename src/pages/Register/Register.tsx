@@ -1,8 +1,7 @@
+import React from 'react';
 import RegisterForm from '../../components/form/RegisterForm';
 
-type FormFields = {};
-
-export default function Register(second) {
+export default function Register() {
   return (
     <div>
       <button>Return</button>

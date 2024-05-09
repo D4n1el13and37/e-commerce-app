@@ -4,17 +4,15 @@
   gap: 8px;
 
   .input {
-    margin: 0;
     -webkit-appearance: none;
     appearance: none;
-
-    min-width: 22px;
-    height: 22px;
-
-    border-radius: 5px;
-    border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
-
+    margin: 0;
     outline: none;
+    border: 2px solid rgba(152, 153, 152, 0.5);
+    border-radius: 5px;
+    height: 22px;
+    min-width: 22px;
+    transition: var(--duration) border ease-in-out;
     cursor: pointer;
 
     &:checked {
@@ -22,13 +20,15 @@
       background: var(--primary-color, #758963);
     }
 
-    &:hover {
-      border: 2px solid var(--accent-color, #3f5028);
+    @media (any-hover: hover) {
+      &:hover {
+        border: 2px solid var(--accent-color, #3f5028);
+      }
     }
 
     &:disabled {
-      cursor: default;
       border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+      cursor: default;
     }
   }
 }

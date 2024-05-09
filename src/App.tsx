@@ -3,6 +3,7 @@
 import './App.css';
 import Button from './components/ui/button/Button';
 import Checkbox from './components/ui/checkbox/Checkbox';
+// import Input from './components/ui/input/Input';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -47,6 +48,18 @@ function App() {
       <Button isFilled={true} isDisabled={true}>
         -
       </Button>
+      {/* <Input
+        width="350px"
+        type="password"
+        fieldName="Password"
+        onChange={(value) => console.log(value)}
+      />
+      <Input
+        fieldName="First Name"
+        type="text"
+        placehodler="Enter your name"
+        onChange={(value) => console.log(value)}
+      /> */}
     </div>
   );
 }

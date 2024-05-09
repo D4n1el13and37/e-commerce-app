@@ -1,12 +1,11 @@
 import React from 'react';
-
-import Address from './Address';
+import AddressForm from './AddressForm';
 
 export default function ShippingAddress({ register, errors }) {
   return (
     <div>
       <h3>Shipping Address</h3>
-      <Address register={register} errors={errors} />
+      <AddressForm register={register} errors={errors} />
     </div>
   );
 }

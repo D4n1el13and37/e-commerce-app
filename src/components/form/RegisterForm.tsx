@@ -14,7 +14,7 @@ type RegisterFormFields = {
   dateBirth: string;
 
   street: string;
-  town: string;
+  city: string;
   postcode: number;
   country: string;
 };

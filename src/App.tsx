@@ -2,7 +2,7 @@
 // import { projectKey, getApiRoot } from './api/BuildClient';
 import React from 'react';
 
-import './App.css';
+// import './App.css';
 import Register from './pages/Register/Register';
 import Button from './components/ui/button/Button';
 import Checkbox from './components/ui/checkbox/Checkbox';

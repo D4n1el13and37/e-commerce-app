@@ -1,6 +1,5 @@
 // import { useState, useEffect } from 'react';
 // import { projectKey, getApiRoot } from './api/BuildClient';
-import './App.css';
 import Button from './components/ui/button/Button';
 import Checkbox from './components/ui/checkbox/Checkbox';
 

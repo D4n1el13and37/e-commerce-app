@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.13.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v4
       - name: Starting Node.js ${{ matrix.node-version}}
@@ -26,5 +26,5 @@ jobs:
         run: npm run build
       - name: lint code
         run: npm run lint
-      # - name: test code
-      # run: npm run test
+      - name: test code
+        run: npm run test

@@ -21,13 +21,57 @@
   }
 
   &__subtitle {
+    margin-bottom: 24px;
     font-weight: 600;
     font-size: var(--third-font-size);
     color: var(--accent-color, #3f5028);
   }
 
   &__addresses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px;
+  }
+
+  &__personalData {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px;
+  }
+
+  .profile {
+    display: grid;
+    gap: 12px;
+
+    &__person {
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  .credentials {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--error-color, #ff5449);
+}
+
+.address {
+  &__information {
+    display: grid;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  &__code {
     display: flex;
-    gap: 84px;
+    gap: 24px;
   }
 }

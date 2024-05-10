@@ -1,12 +1,6 @@
 // import { useState, useEffect } from 'react';
 // import { projectKey, getApiRoot } from './api/BuildClient';
-import React from 'react';
-
-// import './App.css';
 import Register from './pages/Register/Register';
-import Button from './components/ui/button/Button';
-import Checkbox from './components/ui/checkbox/Checkbox';
-import Input from './components/ui/input/Input';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -36,27 +30,7 @@ function App() {
   //   console.log('click');
   // }
 
-  return (
-    <div>
-      <Register></Register>
-      <Input
-        id="password"
-        width="350px"
-        type="password"
-        fieldName="Password"
-        error="truw"
-        onChange={(value) => value}
-      />
-      <Input
-        id="name"
-        fieldName="First Name"
-        type="text"
-        error=""
-        placeholder="Enter your name"
-        onChange={(value) => value}
-      />
-    </div>
-  );
+  return <Register />;
 }
 
 export default App;

@@ -12,7 +12,9 @@
     border-radius: 5px;
     height: 22px;
     min-width: 22px;
-    transition: var(--duration) border ease-in-out;
+    transition:
+      var(--duration) border ease-in-out,
+      var(--duration) background-color ease-in-out;
     cursor: pointer;
 
     &:checked {

@@ -36,7 +36,7 @@ function App() {
   // }
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+    <div>
       {/* <Checkbox label="Are you sure?" isChecked={true} />
       <Checkbox isRequred={true} />
       <Checkbox isDisabled={true} />

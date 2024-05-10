@@ -1,0 +1,33 @@
+.register {
+  height: 100vh;
+  place-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+
+  border-radius: 12px;
+  padding: 60px;
+  background-color: #fff;
+  gap: 48px;
+
+  &__title {
+    font-weight: 400;
+    font-size: var(--page-title-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: var(--third-font-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__addresses {
+    display: flex;
+    gap: 84px;
+  }
+}

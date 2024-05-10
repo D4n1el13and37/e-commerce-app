@@ -1,45 +1,64 @@
 .container {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
 }
 
 .label {
-  color: var(--text-color, #242424);
-  font-family: 'Montserrat';
-  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: 500;
   font-style: normal;
-  font-weight: 400;
+  font-size: 14px;
   line-height: normal;
+  color: var(--text-color, #242424);
 }
 
 .input {
-  margin: 0;
   -webkit-appearance: none;
   appearance: none;
-
-  min-width: 22px;
-  width: 100%;
-  height: 24px;
-
-  border-radius: 5px;
-  border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
-
+  margin: 0;
   outline: none;
+  border: 1px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+  border-radius: 5px;
+  padding: 8px 12px;
+  width: 100%;
+  height: 40px;
+  min-width: 22px;
+  color: var(--text-color, #242424);
+  background-color: var(--light-color);
   cursor: pointer;
 
-  &:checked {
-    border: 2px solid var(--primary-color, #758963);
-    background: var(--primary-color, #758963);
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) border ease-in-out;
   }
 
-  &:hover {
-    border: 2px solid var(--accent-color, #3f5028);
+  &:user-valid {
+    border: 1px solid var(--primary-color, #758963);
+  }
+
+  &::placeholder {
+    color: var(--grey-color, #989998);
+  }
+
+  &:focus-visible {
+    border: 1px solid var(--accent-color);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border: 1px solid var(--accent-color, #3f5028);
+    }
   }
 
   &:disabled {
-    cursor: default;
     border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+    cursor: default;
+  }
+
+  &:invalid {
+    border-color: var(--error-color, #ff5449);
+    color: var(--error-color, #ff5449);
+    opacity: 1;
   }
 }

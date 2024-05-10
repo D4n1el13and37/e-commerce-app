@@ -1,38 +1,37 @@
-import React, { ChangeEvent } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import classes from './Input.module.scss';
 
-interface InputInterface {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'password' | 'email' | 'date' | 'number' | 'search' | 'tel';
   fieldName: string;
-  onChange: (value: string) => void;
-  value?: string;
-  placehodler?: string;
-  isRequired?: boolean;
+  id: string;
   width?: string;
   error?: string;
 }
 
-const Input: React.FC<InputInterface> = ({ ...props }) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    props.onChange(event.target.value);
-  };
-
-  return (
-    <div className={classes.container} style={{ width: props.width }}>
-      <label className={classes.label}>
-        {props.fieldName && <span>{props.fieldName}</span>}
-      </label>
-      <input
-        className={classes.input}
-        onChange={handleChange}
-        placeholder={props.placehodler}
-        type={props.type}
-        value={props.value}
-        required={props.isRequired}
-      />
-      {props.error && <p className={classes.error}>{props.error}</p>}
-    </div>
-  );
-};
+const Input: React.FC<InputProps> = ({
+  type,
+  id,
+  fieldName,
+  width,
+  ...props
+}) => (
+  <div
+    className={classes.container}
+    style={{ width }}
+    data-testid="input-container"
+  >
+    <label htmlFor={id} className={classes.label}>
+      {fieldName && <span>{fieldName}</span>}
+    </label>
+    <input
+      data-testid="input"
+      id={id}
+      type={type}
+      className={classes.input}
+      {...props}
+    />
+  </div>
+);
 
 export default Input;

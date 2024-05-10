@@ -8,23 +8,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
 }
 
-function Button({
+const Button: React.FC<ButtonProps> = ({
   isMain,
   isDisabled,
   isFilled,
   children,
   ...props
-}: ButtonProps) {
-  return (
-    <button
-      data-testid="button"
-      disabled={isDisabled}
-      className={`${isMain ? `${classes.main} ` : ''}${isFilled ? `${classes.filled} ` : ''}${classes.button}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-}
+}) => (
+  <button
+    data-testid="button"
+    disabled={isDisabled}
+    className={`${isMain ? `${classes.main} ` : ''}${isFilled ? `${classes.filled} ` : ''}${classes.button}`}
+    {...props}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

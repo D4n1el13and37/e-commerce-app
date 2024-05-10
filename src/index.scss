@@ -36,8 +36,22 @@
   padding: 0;
 }
 
+:focus-visible {
+  outline: 2px dotted var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 ::selection {
   background-color: var(--primary-color);
+}
+
+html {
+  height: 100%;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -45,6 +59,7 @@ body {
   min-height: 100%;
   font-family: var(--font-family), sans-serif;
   font-size: var(--main-font-size, 16px);
+  background-color: var(--light-color, #f9f9f9);
 }
 
 img {

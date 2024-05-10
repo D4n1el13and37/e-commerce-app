@@ -32,7 +32,6 @@ describe('Input tests', () => {
     const text = '1234567890';
     fireEvent.change(input, { target: { value: text } });
     fireEvent.keyDown(input, { key: '1' });
-    screen.debug();
     expect(input).toHaveValue(text);
   });
 

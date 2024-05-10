@@ -6,6 +6,7 @@ import React from 'react';
 import Register from './pages/Register/Register';
 import Button from './components/ui/button/Button';
 import Checkbox from './components/ui/checkbox/Checkbox';
+import Input from './components/ui/input/Input';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -37,20 +38,23 @@ function App() {
 
   return (
     <div>
-      {/* <Checkbox label="Are you sure?" isChecked={true} />
-      <Checkbox isRequred={true} />
-      <Checkbox isDisabled={true} />
-      <Button type="submit" isMain={true} isFilled={true}>
-        Filled
-      </Button>
-      <Button isMain={true} type="submit">
-        Main
-      </Button>
-      <Button>+</Button>
-      <Button isFilled={true} isDisabled={true}>
-        -
-      </Button> */}
       <Register></Register>
+      <Input
+        id="password"
+        width="350px"
+        type="password"
+        fieldName="Password"
+        error="truw"
+        onChange={(value) => value}
+      />
+      <Input
+        id="name"
+        fieldName="First Name"
+        type="text"
+        error=""
+        placeholder="Enter your name"
+        onChange={(value) => value}
+      />
     </div>
   );
 }

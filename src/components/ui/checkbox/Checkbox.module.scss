@@ -12,7 +12,6 @@
     border-radius: 5px;
     height: 22px;
     min-width: 22px;
-    transition: var(--duration) border ease-in-out;
     cursor: pointer;
 
     &:checked {
@@ -26,8 +25,12 @@
       }
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+      transition: border var(--duration, 0.3s) ease-in-out;
+    }
+
     &:disabled {
-      border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+      border: 2px solid rgba(152, 153, 152, 0.5);
       cursor: default;
     }
   }

@@ -36,8 +36,22 @@
   padding: 0;
 }
 
+:focus-visible {
+  outline: 2px dotted var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 ::selection {
   background-color: var(--primary-color);
+}
+
+html {
+  height: 100%;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 }
 
 body {

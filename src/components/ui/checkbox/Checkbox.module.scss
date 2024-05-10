@@ -12,14 +12,17 @@
     border-radius: 5px;
     height: 22px;
     min-width: 22px;
-    transition:
-      var(--duration) border ease-in-out,
-      var(--duration) background-color ease-in-out;
     cursor: pointer;
 
     &:checked {
       border: 2px solid var(--primary-color, #758963);
       background: var(--primary-color, #758963);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        var(--duration) border ease-in-out,
+        var(--duration) background-color ease-in-out;
     }
 
     @media (any-hover: hover) {

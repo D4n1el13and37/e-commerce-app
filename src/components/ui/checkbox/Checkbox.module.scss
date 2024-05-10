@@ -32,7 +32,7 @@
     }
 
     &:disabled {
-      border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+      border: 2px solid var(--grey-color, #989998);
       cursor: default;
     }
   }

@@ -2,7 +2,7 @@
 // import { projectKey, getApiRoot } from './api/BuildClient';
 import Button from './components/ui/button/Button';
 import Checkbox from './components/ui/checkbox/Checkbox';
-// import Input from './components/ui/input/Input';
+import Input from './components/ui/input/Input';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -34,9 +34,16 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-      <Checkbox label="Are you sure?" isChecked={true} />
-      <Checkbox isRequred={true} />
-      <Checkbox isDisabled={true} />
+      <Checkbox
+        label="Are you sure?"
+        isChecked={true}
+        // onChange={(e) => {
+        //   console.log(e.target.checked)
+        //   // checked=false
+        // }}
+      />
+      <Checkbox required={true} />
+      <Checkbox disabled={true} />
       <Button type="submit" isMain={true} isFilled={true}>
         Filled
       </Button>
@@ -47,18 +54,22 @@ function App() {
       <Button isFilled={true} isDisabled={true}>
         -
       </Button>
-      {/* <Input
+      <Input
+        id="password"
         width="350px"
         type="password"
         fieldName="Password"
-        onChange={(value) => console.log(value)}
+        error="truw"
+        onChange={(value) => value}
       />
       <Input
+        id="name"
         fieldName="First Name"
         type="text"
-        placehodler="Enter your name"
-        onChange={(value) => console.log(value)}
-      /> */}
+        error=""
+        placeholder="Enter your name"
+        onChange={(value) => value}
+      />
     </div>
   );
 }

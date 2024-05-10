@@ -3,12 +3,13 @@ import classes from './Checkbox.module.scss';
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  isChecked?: boolean;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => {
-  const [isChecked, setIsChecked] = useState(!!props.checked);
+const Checkbox: React.FC<CheckboxProps> = ({ label, isChecked, ...props }) => {
+  const [checkboxState, setCheckboxState] = useState(!!isChecked);
   function handleChange() {
-    setIsChecked(!isChecked);
+    setCheckboxState(!checkboxState);
   }
 
   return (
@@ -22,6 +23,8 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => {
           type="checkbox"
           data-testid="checkbox"
           onChange={handleChange}
+          checked={checkboxState}
+          {...props}
         ></input>
         {label && <span>{label}</span>}
       </label>

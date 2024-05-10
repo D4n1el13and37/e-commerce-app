@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import classes from './Checkbox.module.scss';
 
-interface CheckboxInterface {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   isDisabled?: boolean;
   isChecked?: boolean;
   isRequred?: boolean;
 }
 
-function Checkbox({ ...props }: CheckboxInterface) {
+const Checkbox: React.FC<CheckboxProps> = ({ ...props }) => {
   const [isChecked, setIsChecked] = useState(!!props.isChecked);
   function handleChange() {
     setIsChecked(!isChecked);
@@ -33,6 +33,6 @@ function Checkbox({ ...props }: CheckboxInterface) {
       </label>
     </>
   );
-}
+};
 
 export default Checkbox;

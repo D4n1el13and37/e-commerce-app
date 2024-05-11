@@ -1,7 +1,7 @@
 import React from 'react';
-import RegisterForm from '../../components/form/Register/RegisterForm';
+import RegisterForm from './Component/RegisterForm';
 import Button from '../../components/ui/button/Button';
-import classes from '../../components/form/Register/Rigister.module.scss';
+import classes from './Component/Rigister.module.scss';
 
 export default function Register() {
   return (

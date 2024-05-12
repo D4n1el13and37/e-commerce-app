@@ -14,6 +14,7 @@
   --error-color: #ff5449;
   --light-color: #f9f9f9;
   --grey-color: #989998;
+  --text-color: #242424;
 
   // sizes
   --main-font-size: 16px;
@@ -70,6 +71,11 @@ img {
 
 a {
   text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 .container {

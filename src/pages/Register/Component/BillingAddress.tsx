@@ -20,10 +20,10 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
       <div className={`${classes.address}`}>
         <div className={`${classes.address__information}`}>
           <div>
-            <CountrySelect
+            {/* <CountrySelect
               onCountryChange={handleCountryChange}
               {...register('countryBilling', {})}
-            />
+            /> */}
             {errors.countryBilling && (
               <div className={`${classes.error}`}>
                 {errors.countryBilling.message}
@@ -75,7 +75,7 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
             <div>
               <Input
                 {...register('postcodeBilling', {
-                  required: 'Postcode is required',
+                  // required: 'Postcode is required',
                   // validate: (value) => {
                   //   if (
                   //     selectedCountry &&

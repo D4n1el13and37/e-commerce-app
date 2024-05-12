@@ -1,24 +1,20 @@
 import { useState } from 'react';
-import { Controller } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
+
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
-import { CountryOption, CountrySelect } from './AddressForm/CountrySelect';
-import { FormInfoProps } from './interfaceRegister';
-import classes from './Rigister.module.scss';
 import Input from '../../../components/ui/input/Input';
 
-export default function ShippingAddress({
-  register,
-  errors,
-  control,
-}: FormInfoProps) {
-  const [selectedCountry, setSelectedCountry] = useState<CountryOption | null>(
-    null
-  );
+import CountrySelect from './AddressForm/CountrySelect';
 
-  const handleCountryChange = (selectedOption: CountryOption) => {
-    setSelectedCountry(selectedOption);
-    console.log('selectedOption', selectedOption);
-  };
+import { FormInfoProps } from './interfaceRegister';
+import classes from './Rigister.module.scss';
+
+export default function ShippingAddress() {
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <div>
@@ -26,10 +22,7 @@ export default function ShippingAddress({
       <div className={`${classes.address}`}>
         <div className={`${classes.address__information}`}>
           <div>
-            <CountrySelect
-              onCountryChange={handleCountryChange}
-              {...register('countryShipping', {})}
-            />
+            <CountrySelect control={control} name="countryShipping" />
             {errors.countryShipping && (
               <div className={`${classes.error}`}>
                 {errors.countryShipping.message}
@@ -81,23 +74,23 @@ export default function ShippingAddress({
             <div>
               <Input
                 {...register('postcodeShipping', {
-                  required: 'Postcode is required',
-                  validate: (value) => {
-                    if (
-                      selectedCountry &&
-                      !selectedCountry.regex.test(value) &&
-                      value.length !== selectedCountry.lengthPostalcode
-                    ) {
-                      return 'Invalid postcode for this country';
-                    }
-                    return true;
-                  },
+                  // required: 'Postcode is required',
+                  // validate: (value) => {
+                  //   if (
+                  //     selectedCountry &&
+                  //     !selectedCountry.regex.test(value) &&
+                  //     value.length !== selectedCountry.lengthPostalcode
+                  //   ) {
+                  //     return 'Invalid postcode for this country';
+                  //   }
+                  //   return true;
+                  // },
                 })}
                 id="postcodeShipping"
                 fieldName="Postcode"
                 type="text"
                 placeholder="Postcode"
-                disabled={!selectedCountry}
+                // disabled={!selectedCountry}
                 onChange={(value) => value}
               />
               {errors.postcodeShipping && (

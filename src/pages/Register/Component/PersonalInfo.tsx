@@ -1,8 +1,13 @@
+import { useFormContext } from 'react-hook-form';
 import Input from '../../../components/ui/input/Input';
 import classes from './Rigister.module.scss';
-import { FormInfoProps } from './interfaceRegister';
 
-export default function PersonalInfo({ register, errors }: FormInfoProps) {
+export default function PersonalInfo() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <div>
       <h3 className={`${classes.form__subtitle}`}>Personal information</h3>
@@ -27,7 +32,9 @@ export default function PersonalInfo({ register, errors }: FormInfoProps) {
               onChange={(value) => value}
             />
             {errors.email && (
-              <div className={`${classes.error}`}>{errors.email.message}</div>
+              <div className={`${classes.error}`}>
+                {errors.email.message as string}
+              </div>
             )}
           </div>
 
@@ -54,9 +61,9 @@ export default function PersonalInfo({ register, errors }: FormInfoProps) {
               placeholder="Password"
               onChange={(value) => value}
             />
-            {errors.password && (
+            {errors?.password && (
               <div className={`${classes.error}`}>
-                {errors.password.message}
+                {errors.password?.message as string}
               </div>
             )}
           </div>
@@ -87,7 +94,7 @@ export default function PersonalInfo({ register, errors }: FormInfoProps) {
               />
               {errors.firstName && (
                 <div className={`${classes.error}`}>
-                  {errors.firstName.message}
+                  {errors.firstName.message as string}
                 </div>
               )}
             </div>
@@ -115,7 +122,7 @@ export default function PersonalInfo({ register, errors }: FormInfoProps) {
               />
               {errors.lastName && (
                 <div className={`${classes.error}`}>
-                  {errors.lastName.message}
+                  {errors.lastName.message as string}
                 </div>
               )}
             </div>
@@ -152,7 +159,7 @@ export default function PersonalInfo({ register, errors }: FormInfoProps) {
             />
             {errors.dateBirth && (
               <div className={`${classes.error}`}>
-                {errors.dateBirth.message}
+                {errors.dateBirth.message as string}
               </div>
             )}
           </div>

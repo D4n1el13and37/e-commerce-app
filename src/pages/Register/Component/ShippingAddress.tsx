@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { SingleValue } from 'react-select';
+import { useState } from 'react';
 
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
+import CountrySelect, { CountryOption } from './AddressForm/CountrySelect';
 
-import CountrySelect from './AddressForm/CountrySelect';
-
-import { FormInfoProps } from './interfaceRegister';
 import classes from './Rigister.module.scss';
 
 export default function ShippingAddress() {
@@ -16,16 +15,24 @@ export default function ShippingAddress() {
     formState: { errors },
   } = useFormContext();
 
+  const [selectedCountry, setSelectedCountry] =
+    useState<SingleValue<CountryOption> | null>(null);
+
   return (
     <div>
       <h3 className={`${classes.form__subtitle}`}>Shipping Address</h3>
       <div className={`${classes.address}`}>
         <div className={`${classes.address__information}`}>
           <div>
-            <CountrySelect control={control} name="countryShipping" />
-            {errors.countryShipping && (
+            <CountrySelect
+              control={control}
+              name="countryShipping"
+              setSelectedCountry={setSelectedCountry}
+              value={selectedCountry}
+            />
+            {errors.countryShipping?.message && (
               <div className={`${classes.error}`}>
-                {errors.countryShipping.message}
+                {errors.countryShipping?.message as string}
               </div>
             )}
           </div>
@@ -43,7 +50,7 @@ export default function ShippingAddress() {
             />
             {errors.streetShipping && (
               <div className={`${classes.error}`}>
-                {errors.streetShipping.message}
+                {errors.streetShipping.message as string}
               </div>
             )}
           </div>
@@ -66,7 +73,7 @@ export default function ShippingAddress() {
               />
               {errors.cityShipping && (
                 <div className={`${classes.error}`}>
-                  {errors.cityShipping.message}
+                  {errors.cityShipping.message as string}
                 </div>
               )}
             </div>
@@ -74,28 +81,30 @@ export default function ShippingAddress() {
             <div>
               <Input
                 {...register('postcodeShipping', {
-                  // required: 'Postcode is required',
-                  // validate: (value) => {
-                  //   if (
-                  //     selectedCountry &&
-                  //     !selectedCountry.regex.test(value) &&
-                  //     value.length !== selectedCountry.lengthPostalcode
-                  //   ) {
-                  //     return 'Invalid postcode for this country';
-                  //   }
-                  //   return true;
-                  // },
+                  required: 'Postcode is required',
+                  validate: (value) => {
+                    console.log(selectedCountry);
+
+                    if (
+                      selectedCountry &&
+                      !selectedCountry.regex.test(value) &&
+                      value.length !== selectedCountry.lengthPostalcode
+                    ) {
+                      return 'Invalid postcode for this country';
+                    }
+                    return true;
+                  },
                 })}
                 id="postcodeShipping"
                 fieldName="Postcode"
                 type="text"
                 placeholder="Postcode"
-                // disabled={!selectedCountry}
+                disabled={!selectedCountry}
                 onChange={(value) => value}
               />
               {errors.postcodeShipping && (
                 <div className={`${classes.error}`}>
-                  {errors.postcodeShipping.message}
+                  {errors.postcodeShipping.message as string}
                 </div>
               )}
             </div>

@@ -1,18 +1,22 @@
+import { useFormContext } from 'react-hook-form';
+import { SingleValue } from 'react-select';
 import { useState } from 'react';
+
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
-import { CountryOption, CountrySelect } from './AddressForm/CountrySelect';
-import { FormInfoProps } from './interfaceRegister';
-import classes from './Rigister.module.scss';
 import Input from '../../../components/ui/input/Input';
+import CountrySelect, { CountryOption } from './AddressForm/CountrySelect';
 
-export default function BillingAddress({ register, errors }: FormInfoProps) {
-  const [selectedCountry, setSelectedCountry] = useState<CountryOption | null>(
-    null
-  );
+import classes from './Rigister.module.scss';
 
-  const handleCountryChange = (selectedOption: CountryOption) => {
-    setSelectedCountry(selectedOption);
-  };
+export default function BillingAddress() {
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  const [selectedCountry, setSelectedCountry] =
+    useState<SingleValue<CountryOption> | null>(null);
 
   return (
     <div>
@@ -20,31 +24,33 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
       <div className={`${classes.address}`}>
         <div className={`${classes.address__information}`}>
           <div>
-            {/* <CountrySelect
-              onCountryChange={handleCountryChange}
-              {...register('countryBilling', {})}
-            /> */}
-            {errors.countryBilling && (
+            <CountrySelect
+              control={control}
+              name="countryBilling"
+              setSelectedCountry={setSelectedCountry}
+              value={selectedCountry}
+            />
+            {errors.countryBilling?.message && (
               <div className={`${classes.error}`}>
-                {errors.countryBilling.message}
+                {errors.countryBilling?.message as string}
               </div>
             )}
           </div>
 
           <div>
             <Input
-              {...register('streetBilling', {
-                required: 'Street must have at least 1 character',
+              {...register('BillingtBilling', {
+                required: 'Billingt must have at least 1 character',
               })}
-              id={`streetBilling`}
-              fieldName="Street"
+              id={`BillingtBilling`}
+              fieldName="Billingt"
               type="text"
-              placeholder="Street"
+              placeholder="Billingt"
               onChange={(value) => value}
             />
-            {errors.streetBilling && (
+            {errors.BillingtBilling && (
               <div className={`${classes.error}`}>
-                {errors.streetBilling.message}
+                {errors.BillingtBilling.message as string}
               </div>
             )}
           </div>
@@ -56,7 +62,7 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
                   required: 'City must have at least 1 character',
                   pattern: {
                     value: /^[a-zA-Z\s]+$/,
-                    message: 'Street name must contain only letters',
+                    message: 'City name must contain only letters',
                   },
                 })}
                 id="cityBilling"
@@ -67,7 +73,7 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
               />
               {errors.cityBilling && (
                 <div className={`${classes.error}`}>
-                  {errors.cityBilling.message}
+                  {errors.cityBilling.message as string}
                 </div>
               )}
             </div>
@@ -75,17 +81,19 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
             <div>
               <Input
                 {...register('postcodeBilling', {
-                  // required: 'Postcode is required',
-                  // validate: (value) => {
-                  //   if (
-                  //     selectedCountry &&
-                  //     !selectedCountry.regex.test(value) &&
-                  //     value.length !== selectedCountry.lengthPostalcode
-                  //   ) {
-                  //     return 'Invalid postcode for this country';
-                  //   }
-                  //   return true;
-                  // },
+                  required: 'Postcode is required',
+                  validate: (value) => {
+                    console.log(selectedCountry);
+
+                    if (
+                      selectedCountry &&
+                      !selectedCountry.regex.test(value) &&
+                      value.length !== selectedCountry.lengthPostalcode
+                    ) {
+                      return 'Invalid postcode for this country';
+                    }
+                    return true;
+                  },
                 })}
                 id="postcodeBilling"
                 fieldName="Postcode"
@@ -96,7 +104,7 @@ export default function BillingAddress({ register, errors }: FormInfoProps) {
               />
               {errors.postcodeBilling && (
                 <div className={`${classes.error}`}>
-                  {errors.postcodeBilling.message}
+                  {errors.postcodeBilling.message as string}
                 </div>
               )}
             </div>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 import { SingleValue } from 'react-select';
 
@@ -22,11 +21,18 @@ interface countryType {
 interface CountrySelectProps {
   control: Control<FieldValues>;
   name: string;
+  setSelectedCountry: (country: SingleValue<CountryOption> | null) => void;
+  value: SingleValue<CountryOption> | null;
 }
 
-export default function CountrySelect({ control, name }: CountrySelectProps) {
-  const [selectedCountry, setSelectedCountry] =
-    useState<SingleValue<CountryOption> | null>(null);
+export default function CountrySelect({
+  control,
+  name,
+  setSelectedCountry,
+  value,
+}: CountrySelectProps) {
+  // const [selectedCountry, setSelectedCountry] =
+  //   useState<SingleValue<CountryOption> | null>(null);
 
   // функция для загрузки данных
   const loadCountry = async (inputValue: string) => {
@@ -67,7 +73,7 @@ export default function CountrySelect({ control, name }: CountrySelectProps) {
           defaultOptions
           loadOptions={loadCountry}
           placeholder="Select a country"
-          value={selectedCountry}
+          value={value}
           onChange={(option) => {
             setSelectedCountry(option);
             field.onChange(option ? option.name : '');

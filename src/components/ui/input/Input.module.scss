@@ -19,8 +19,8 @@
   appearance: none;
   margin: 0;
   outline: none;
-  border: 1px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
-  border-radius: 5px;
+  border: 1px solid rgba(152, 153, 152, 0.5);
+  border-radius: 12px;
   padding: 8px 12px;
   width: 100%;
   height: 40px;
@@ -41,7 +41,7 @@
     color: var(--grey-color, #989998);
   }
 
-  &:focus-visible {
+  &:focus {
     border: 1px solid var(--accent-color);
   }
 
@@ -52,13 +52,7 @@
   }
 
   &:disabled {
-    border: 2px solid var(--schemes-outline-50, rgba(152, 153, 152, 0.5));
+    border: 2px solid rgba(152, 153, 152, 0.5);
     cursor: default;
-  }
-
-  &:invalid {
-    border-color: var(--error-color, #ff5449);
-    color: var(--error-color, #ff5449);
-    opacity: 1;
   }
 }

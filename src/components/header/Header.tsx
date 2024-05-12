@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
-import Button from '../ui/button/Button';
+import HeaderAuthBtns from '../headerAuthBtns/headerAuthBtns';
 
 const Header: React.FC = () => (
   <header>
@@ -31,23 +31,12 @@ const Header: React.FC = () => (
           </li>
         </ul>
       </nav>
-      <ul className={`${classes.shop_nav__list}`}>
-        <li>
-          <Button type="submit" isMain={true} isFilled={false}>
-            Log In
-          </Button>
-        </li>
-        <li>
-          <Button type="submit" isMain={true} isFilled={true}>
-            Sig In
-          </Button>
-        </li>
-        <li className={`${classes.shop_nav__item_card}`}>
-          <a href="#" className={`${classes.card}`} aria-label="Shopping card">
-            <span className={`${classes.card__quantity}`}>16</span>
-          </a>
-        </li>
-      </ul>
+      <div className={`${classes.header__links}`}>
+        <HeaderAuthBtns />
+        <a href="#" className={`${classes.card}`} aria-label="Shopping card">
+          <span className={`${classes.card__quantity}`}>16</span>
+        </a>
+      </div>
     </div>
   </header>
 );

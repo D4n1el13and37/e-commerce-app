@@ -7,6 +7,12 @@
     padding: 32px var(--container-offset) 3px;
     max-width: var(--container-width);
   }
+
+  &__links {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--gap) * 2);
+  }
 }
 
 .nav {

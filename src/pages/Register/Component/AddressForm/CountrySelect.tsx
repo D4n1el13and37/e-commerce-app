@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
-import Input from '../../../ui/input/Input';
+import { useState } from 'react';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { SingleValue } from 'react-select';
+
+import AsyncSelect from 'react-select/async';
 
 export interface CountryOption {
+  name: string;
   label: string;
   value: string;
   regex: RegExp;
@@ -10,61 +13,68 @@ export interface CountryOption {
 }
 
 interface countryType {
+  cca2: string;
   flag: string;
   name: { common: string };
   postalCode: { regex: string | RegExp; format: string };
 }
 
-interface Props {
-  onCountryChange: (selectedOption: CountryOption) => {};
+interface CountrySelectProps {
+  control: Control<FieldValues>;
+  name: string;
 }
 
-export const CountrySelect = ({ onCountryChange }: Props) => {
-  const [inputValue, setInputValue] = useState('');
-  const [countryOptions, setCountryOptions] = useState([]);
+export default function CountrySelect({ control, name }: CountrySelectProps) {
+  const [selectedCountry, setSelectedCountry] =
+    useState<SingleValue<CountryOption> | null>(null);
 
-  const handleInputChange = (newValue: string) => {
-    setInputValue(newValue);
-  };
-
-  const handleCountryChange = (selectedOption: CountryOption) => {
-    onCountryChange(selectedOption);
-    setInputValue(selectedOption.label);
-    console.log('selectedOption', selectedOption);
-  };
-
-  useEffect(() => {
-    if (inputValue.length > 1) {
-      const fetchCountries = async () => {
+  // функция для загрузки данных
+  const loadCountry = async (inputValue: string) => {
+    try {
+      if (inputValue.length > 1) {
         const response = await fetch(
           `https://restcountries.com/v3.1/name/${inputValue}`
         );
-        if (response.ok) {
-          const countries = await response.json();
-          const options = countries.map((country: countryType) => ({
-            label: `${country.flag} ${country.name.common}`,
-            regex: country.postalCode
-              ? new RegExp(country.postalCode.regex)
-              : null,
-            lengthPostalcode: country.postalCode
-              ? country.postalCode.format.length
-              : undefined,
-          }));
-          setCountryOptions(options);
-        } else {
-          setCountryOptions([]);
-        }
-      };
-      fetchCountries();
+        const data = await response.json();
+        return data.map((country: countryType) => ({
+          name: country.name.common,
+          label: `${country.flag} ${country.name.common}`,
+          value: country.cca2,
+          regex: country.postalCode
+            ? new RegExp(country.postalCode.regex)
+            : null,
+          lengthPostalcode: country.postalCode
+            ? country.postalCode.format.length
+            : undefined,
+        }));
+      }
+    } catch (e) {
+      if (e instanceof Error) {
+        throw new Error(e.message);
+      }
     }
-  }, [inputValue]);
+    return [];
+  };
 
   return (
-    <Select
-      options={countryOptions}
-      onInputChange={handleInputChange}
-      onChange={handleCountryChange}
-      placeholder="Select a country"
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <AsyncSelect
+          {...field}
+          cacheOptions
+          defaultOptions
+          loadOptions={loadCountry}
+          placeholder="Select a country"
+          value={selectedCountry}
+          onChange={(option) => {
+            setSelectedCountry(option);
+            field.onChange(option ? option.name : '');
+          }}
+          // styles={selectStyles}
+        />
+      )}
     />
   );
-};
+}

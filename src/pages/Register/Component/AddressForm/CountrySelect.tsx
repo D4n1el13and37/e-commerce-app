@@ -31,9 +31,6 @@ export default function CountrySelect({
   setSelectedCountry,
   value,
 }: CountrySelectProps) {
-  // const [selectedCountry, setSelectedCountry] =
-  //   useState<SingleValue<CountryOption> | null>(null);
-
   // функция для загрузки данных
   const loadCountry = async (inputValue: string) => {
     try {

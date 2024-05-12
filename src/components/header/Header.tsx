@@ -5,12 +5,12 @@ import HeaderAuthBtns from '../headerAuthBtns/headerAuthBtns';
 
 const Header: React.FC = () => (
   <header>
-    <div className={`${classes.header__container}`}>
+    <div className={classes.header__container}>
       <a href="/">
         <img src={Logo} alt="Site logo YesToPlants" />
       </a>
       <nav>
-        <ul className={`${classes.nav__list}`}>
+        <ul className={classes.nav__list}>
           <li>
             <a
               href="#"
@@ -20,21 +20,21 @@ const Header: React.FC = () => (
             </a>
           </li>
           <li>
-            <a href="#" className={`${classes.nav__link}`}>
+            <a href="#" className={classes.nav__link}>
               Catalog
             </a>
           </li>
           <li>
-            <a href="#" className={`${classes.nav__link}`}>
+            <a href="#" className={classes.nav__link}>
               About
             </a>
           </li>
         </ul>
       </nav>
-      <div className={`${classes.header__links}`}>
+      <div className={classes.header__links}>
         <HeaderAuthBtns />
-        <a href="#" className={`${classes.card}`} aria-label="Shopping card">
-          <span className={`${classes.card__quantity}`}>16</span>
+        <a href="#" className={classes.card} aria-label="Shopping card">
+          <span className={classes.card__quantity}>16</span>
         </a>
       </div>
     </div>

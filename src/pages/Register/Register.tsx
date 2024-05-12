@@ -1,4 +1,3 @@
-import React from 'react';
 import RegisterForm from './Component/RegisterForm';
 import Button from '../../components/ui/button/Button';
 import classes from './Component/Rigister.module.scss';

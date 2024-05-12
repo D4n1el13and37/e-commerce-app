@@ -11,7 +11,11 @@ import { RegisterFormFields } from './interfaceRegister';
 export default function RegisterForm() {
   const methods = useForm<RegisterFormFields>({ mode: 'onBlur' });
   const { handleSubmit } = methods;
-  const onSubmit = (data: RegisterFormFields) => console.log(data);
+  const onSubmit = (data: RegisterFormFields) => {
+    // Оставила для проверки какие данные передаются
+    // eslint-disable-next-line no-console
+    console.log(data);
+  };
 
   return (
     <FormProvider {...methods}>

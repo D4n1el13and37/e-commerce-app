@@ -83,8 +83,6 @@ export default function ShippingAddress() {
                 {...register('postcodeShipping', {
                   required: 'Postcode is required',
                   validate: (value) => {
-                    console.log(selectedCountry);
-
                     if (
                       selectedCountry &&
                       !selectedCountry.regex.test(value) &&

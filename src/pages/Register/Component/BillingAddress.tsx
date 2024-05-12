@@ -83,8 +83,6 @@ export default function BillingAddress() {
                 {...register('postcodeBilling', {
                   required: 'Postcode is required',
                   validate: (value) => {
-                    console.log(selectedCountry);
-
                     if (
                       selectedCountry &&
                       !selectedCountry.regex.test(value) &&

@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import classes from './Button.module.scss';
 
-interface ButtonInterface {
-  onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  title?: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isMain?: boolean;
-  children?: React.ReactNode;
   isDisabled?: boolean;
   isFilled?: boolean;
+  children?: React.ReactNode;
 }
 
-function Button({ ...props }: ButtonInterface) {
-  return (
-    <button
-      data-testid="button"
-      disabled={props.isDisabled}
-      onClick={props.onClick}
-      title={props.title}
-      className={`${props.isMain ? `${classes.main} ` : ''}${props.isFilled ? `${classes.filled} ` : ''}${classes.button}`}
-      type={props.type || 'button'}
-    >
-      {props.children}
-    </button>
-  );
-}
+const Button: React.FC<ButtonProps> = ({
+  isMain,
+  isDisabled,
+  isFilled,
+  children,
+  ...props
+}) => (
+  <button
+    data-testid="button"
+    disabled={isDisabled}
+    className={`${isMain ? `${classes.main} ` : ''}${isFilled ? `${classes.filled} ` : ''}${classes.button}`}
+    {...props}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

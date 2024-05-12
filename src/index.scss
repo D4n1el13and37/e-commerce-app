@@ -39,7 +39,7 @@
 :focus-visible {
   outline: 2px dotted var(--primary-color);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 ::selection {
@@ -72,6 +72,12 @@ a {
   text-decoration: none;
 }
 
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
 .container {
   margin: 0 auto;
   padding: 0 var(--container-offset);
@@ -82,4 +88,27 @@ a {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--gap);
+}
+
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
+    color: var(--error-color, #ff5449);
+  }
 }

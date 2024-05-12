@@ -1,8 +1,9 @@
 // import { useState, useEffect } from 'react';
 // import { projectKey, getApiRoot } from './api/BuildClient';
-import Button from './components/ui/button/Button';
-import Checkbox from './components/ui/checkbox/Checkbox';
-import Input from './components/ui/input/Input';
+// import Button from './components/ui/button/Button';
+// import Checkbox from './components/ui/checkbox/Checkbox';
+// import Input from './components/ui/input/Input';
+import LoginPage from './pages/Login/LoginPage';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -33,8 +34,17 @@ function App() {
   // }
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-      <Checkbox
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100dvh',
+      }}
+    >
+      {/* <Checkbox
         label="Are you sure?"
         isChecked={true}
         // onChange={(e) => {
@@ -53,8 +63,8 @@ function App() {
       <Button>+</Button>
       <Button isFilled={true} isDisabled={true}>
         -
-      </Button>
-      <Input
+      </Button> */}
+      {/* <Input
         id="password"
         width="350px"
         type="password"
@@ -69,7 +79,8 @@ function App() {
         error=""
         placeholder="Enter your name"
         onChange={(value) => value}
-      />
+      /> */}
+      <LoginPage />
     </div>
   );
 }

@@ -25,7 +25,8 @@ function LoginPage() {
   //     console.log(data);
   //   };
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    console.log(data);
+    // console.log(data);
+    JSON.stringify(data);
   };
 
   return (

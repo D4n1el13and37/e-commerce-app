@@ -21,6 +21,7 @@ const Home: React.FC = () => (
         <div className="hero__slider_wrapper">
           <div className="hero__slider_scrollbar swiper-scrollbar"></div>
         </div>
+
         <Slider />
       </div>
     </div>

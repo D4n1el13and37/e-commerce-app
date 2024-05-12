@@ -39,7 +39,13 @@
 :focus-visible {
   outline: 2px dotted var(--primary-color);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 12px;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
 }
 
 ::selection {

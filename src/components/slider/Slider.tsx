@@ -1,10 +1,11 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Scrollbar } from 'swiper/modules';
+import { Autoplay, Pagination, Scrollbar } from 'swiper/modules';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import 'swiper/scss/scrollbar';
+import 'swiper/scss/autoplay';
 import './Slider.scss';
 
 import slide1 from './slide-1.png';
@@ -16,6 +17,7 @@ const Slider: React.FC = () => {
   return (
     <>
       <Swiper
+        modules={[Pagination, Scrollbar, Autoplay]}
         direction={'vertical'}
         scrollbar={{
           hide: false,
@@ -34,8 +36,10 @@ const Slider: React.FC = () => {
             return `<span class="${className}">${slideName}</span>`;
           },
         }}
-        modules={[Pagination, Scrollbar]}
         className="hero__slider"
+        autoplay={{
+          delay: 5000,
+        }}
       >
         <SwiperSlide>
           <img src={slide1} alt="Flowering" />

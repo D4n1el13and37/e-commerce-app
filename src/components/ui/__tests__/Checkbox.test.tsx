@@ -4,7 +4,7 @@ import Checkbox from '../checkbox/Checkbox';
 
 describe('Checkbox component tests', () => {
   it('render disabled checkbox', () => {
-    render(<Checkbox isDisabled={true} />);
+    render(<Checkbox disabled={true} />);
     expect(screen.getByTestId('checkbox')).toBeDisabled();
   });
 
@@ -14,7 +14,7 @@ describe('Checkbox component tests', () => {
   });
 
   it('render required checkbox', () => {
-    render(<Checkbox isRequred={true} />);
+    render(<Checkbox required={true} />);
     expect(screen.getByTestId('checkbox')).toBeRequired();
   });
 
@@ -36,7 +36,7 @@ describe('Checkbox component Label test', () => {
   });
 
   it('does not toggle checkbox state when disabled', () => {
-    render(<Checkbox isDisabled={true} />);
+    render(<Checkbox disabled={true} />);
     const checkbox = screen.getByTestId('checkbox-label');
     fireEvent.click(checkbox);
     expect(checkbox).not.toBeChecked();

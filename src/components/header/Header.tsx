@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 // import HeaderUser from '../headerUser/HeaderUser';
-import HeaderAuthBtns from '../headerAuthBtns/HeaderAuthBtns.tsx';
+import HeaderAuthBtns from './headerAuthBtns/HeaderAuthBtns';
 
 const Header: React.FC = () => (
   <header>

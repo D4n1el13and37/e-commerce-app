@@ -1,10 +1,10 @@
 // import { useState, useEffect } from 'react';
 // import { projectKey, getApiRoot } from './api/BuildClient';
+// import Button from './components/ui/button/Button';
+// import Checkbox from './components/ui/checkbox/Checkbox';
+// import Input from './components/ui/input/Input';
 import Header from './components/header/Header';
-import Button from './components/ui/button/Button';
-import Checkbox from './components/ui/checkbox/Checkbox';
 import Home from './pages/Home/Home';
-import Input from './components/ui/input/Input';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});

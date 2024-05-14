@@ -1,6 +1,6 @@
 .register {
-  height: 100vh;
-  place-items: center;
+  align-content: space-around;
+  padding: 48px 0;
   height: 100vh;
 }
 
@@ -8,11 +8,10 @@
   display: flex;
   flex-direction: column;
   grid-column: 2 / -1;
-
   border-radius: 12px;
   padding: 60px;
   background-color: #fff;
-  gap: 48px;
+  gap: 42px;
 
   &__title {
     font-weight: 400;

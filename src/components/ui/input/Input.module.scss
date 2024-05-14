@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
   gap: 8px;
 }
 
@@ -54,5 +55,28 @@
   &:disabled {
     border: 2px solid rgba(152, 153, 152, 0.5);
     cursor: default;
+  }
+}
+
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
+    color: var(--error-color, #ff5449);
   }
 }

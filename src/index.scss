@@ -90,6 +90,7 @@ input {
   gap: var(--gap);
 }
 
+/* remove from here? */
 .error {
   border-color: var(--error-color, #ff5449);
   color: var(--error-color, #ff5449);

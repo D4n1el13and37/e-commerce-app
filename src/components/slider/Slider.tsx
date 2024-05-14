@@ -8,17 +8,25 @@ import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
 import './Slider.scss';
 
-import slide1 from './slide-1.png';
-import slide2 from './slide-2.png';
+import slide1 from './1.png';
+import slide2 from './2.png';
+import slide3 from './3.png';
+import slide4 from './4.png';
 
 const Slider: React.FC = () => {
-  const slideContent = ['Flowering', 'Green', 'Succulents', 'Miniatures'];
+  const slidesData = [
+    { src: slide1, descr: 'Flowering' },
+    { src: slide2, descr: 'Green' },
+    { src: slide3, descr: 'Succulents' },
+    { src: slide4, descr: 'Miniatures' },
+  ];
 
   return (
     <>
       <Swiper
         modules={[Pagination, Scrollbar, Autoplay]}
         direction={'vertical'}
+        speed={1000}
         scrollbar={{
           hide: false,
           draggable: true,
@@ -32,8 +40,8 @@ const Slider: React.FC = () => {
           enabled: true,
           el: '.hero__slider_pagination',
           renderBullet(index, className) {
-            const slideName = slideContent[index];
-            return `<span class="${className}">${slideName}</span>`;
+            const slideDescr = slidesData[index].descr;
+            return `<span class="${className}">${slideDescr}</span>`;
           },
         }}
         className="hero__slider"
@@ -41,18 +49,11 @@ const Slider: React.FC = () => {
           delay: 5000,
         }}
       >
-        <SwiperSlide>
-          <img src={slide1} alt="Flowering" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide2} alt="Green" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide1} alt="Succulents" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide1} alt="Miniatures" />
-        </SwiperSlide>
+        {slidesData.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <img src={slide.src} alt={slide.descr} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

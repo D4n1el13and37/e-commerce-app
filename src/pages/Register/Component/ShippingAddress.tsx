@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
-import CountrySelect, { CountryOption } from './AddressForm/CountrySelect';
+import { CountrySelect, CountryOption } from './AddressForm/CountrySelect';
 
 import classes from './Rigister.module.scss';
 

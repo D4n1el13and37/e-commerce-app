@@ -18,20 +18,22 @@ interface countryType {
   postalCode: { regex: string | RegExp; format: string };
 }
 
+type countryValue = SingleValue<CountryOption> | null;
+
 interface CountrySelectProps {
   control: Control<FieldValues>;
   name: string;
-  setSelectedCountry: (country: SingleValue<CountryOption> | null) => void;
-  value: SingleValue<CountryOption> | null;
+  setSelectedCountry: (country: countryValue) => void;
+  value: countryValue;
 }
 
-export default function CountrySelect({
+export function CountrySelect({
   control,
   name,
   setSelectedCountry,
   value,
 }: CountrySelectProps) {
-  // функция для загрузки данных
+  // function for loading data
   const loadCountry = async (inputValue: string) => {
     try {
       if (inputValue.length > 1) {

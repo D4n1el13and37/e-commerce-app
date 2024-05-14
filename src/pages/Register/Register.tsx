@@ -13,6 +13,7 @@ export default function Register() {
             height="19"
             viewBox="0 0 12 19"
             fill="none"
+            aria-label="Go Back"
           >
             <path
               d="M10.5 18L2 9.5L10.5 1"

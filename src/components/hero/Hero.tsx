@@ -16,10 +16,10 @@ const Hero: React.FC = () => (
     <div className={classes.hero__right}>
       <div className="hero__wrapper">
         <div className="hero__slider_wrapper">
-          <div className="hero__slider_pagination"></div>
+          <div className="hero__slider_pagination" />
         </div>
         <div className="hero__slider_wrapper">
-          <div className="hero__slider_scrollbar swiper-scrollbar"></div>
+          <div className="hero__slider_scrollbar swiper-scrollbar" />
         </div>
         <Slider />
       </div>

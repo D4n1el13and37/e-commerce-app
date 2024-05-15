@@ -22,40 +22,38 @@ const Slider: React.FC = () => {
   ];
 
   return (
-    <>
-      <Swiper
-        modules={[Pagination, Scrollbar, Autoplay]}
-        direction={'vertical'}
-        speed={1000}
-        scrollbar={{
-          hide: false,
-          draggable: true,
-          dragSize: 24,
-          enabled: true,
-          verticalClass: 'hero__slider_scrollbar_vertical',
-          el: '.hero__slider_scrollbar',
-        }}
-        pagination={{
-          clickable: true,
-          enabled: true,
-          el: '.hero__slider_pagination',
-          renderBullet(index, className) {
-            const slideDescr = slidesData[index].descr;
-            return `<span class="${className}">${slideDescr}</span>`;
-          },
-        }}
-        className="hero__slider"
-        autoplay={{
-          delay: 5000,
-        }}
-      >
-        {slidesData.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <img src={slide.src} alt={slide.descr} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+    <Swiper
+      modules={[Pagination, Scrollbar, Autoplay]}
+      direction={'vertical'}
+      speed={1000}
+      scrollbar={{
+        hide: false,
+        draggable: true,
+        dragSize: 24,
+        enabled: true,
+        verticalClass: 'hero__slider_scrollbar_vertical',
+        el: '.hero__slider_scrollbar',
+      }}
+      pagination={{
+        clickable: true,
+        enabled: true,
+        el: '.hero__slider_pagination',
+        renderBullet(index, className) {
+          const slideDescr = slidesData[index].descr;
+          return `<span class="${className}">${slideDescr}</span>`;
+        },
+      }}
+      className="hero__slider"
+      autoplay={{
+        delay: 5000,
+      }}
+    >
+      {slidesData.map((slide, index) => (
+        <SwiperSlide key={index}>
+          <img src={slide.src} alt={slide.descr} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

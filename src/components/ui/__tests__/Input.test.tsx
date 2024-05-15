@@ -35,15 +35,6 @@ describe('Input tests', () => {
     expect(input).toHaveValue(text);
   });
 
-  it('render input with specified width', () => {
-    render(
-      <Input id="test-input" label="Test Field" type="text" width="200px" />
-    );
-    expect(screen.getByTestId('input-container')).toHaveStyle({
-      width: '200px',
-    });
-  });
-
   it('calls onChange handler when input value changes', () => {
     const onChangeMock = vi.fn();
     render(

@@ -1,8 +1,8 @@
 import React from 'react';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
-// import HeaderUser from '../headerUser/HeaderUser';
 import HeaderAuthBtns from './headerAuthBtns/HeaderAuthBtns';
+// import HeaderUser from './headerUser/HeaderUser';
 
 const Header: React.FC = () => {
   const navLinks = [
@@ -35,6 +35,7 @@ const Header: React.FC = () => {
         </nav>
         <div className={classes.header__links}>
           <HeaderAuthBtns />
+          {/* <HeaderUser /> */}
           <a href="#" className={classes.card} aria-label="Shopping card">
             <span className={classes.card__quantity}>16</span>
           </a>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import classes from './HeaderUser.module.scss';
 
 const HeaderUser: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const toggleMenu = () => {
-    setIsActive(!isActive);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsActive((prevState) => !prevState);
+  }, []);
 
   return (
     <div className={classes.container}>

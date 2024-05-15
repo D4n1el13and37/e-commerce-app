@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 import HeaderAuthBtns from './headerAuthBtns/HeaderAuthBtns';
 import HeaderUser from './headerUser/HeaderUser';
 
 const Header: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  /*   const [loggedIn, setLoggedIn] = useState(false);
+
+  const login = () => {
+    setLoggedIn(true);
+  }; */
 
   const navLinks = [
     { name: 'Home', path: '/', isActive: true },
@@ -36,8 +40,9 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className={classes.header__links}>
-          {!loggedIn && <HeaderAuthBtns />}
-          {loggedIn && <HeaderUser />}
+          {/* {!loggedIn && <HeaderAuthBtns />} */}
+          {/* {loggedIn && <HeaderUser />} */}
+          <HeaderAuthBtns />
           <a href="/card" className={classes.card} aria-label="Shopping card">
             <span className={classes.card__quantity}>16</span>
           </a>

@@ -7,14 +7,6 @@ import HeaderUser from './headerUser/HeaderUser';
 const Header: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // const login = () => {
-  //   setLoggedIn(true);
-  // };
-
-  // const logout = () => {
-  //   setLoggedIn(false);
-  // };
-
   const navLinks = [
     { name: 'Home', path: '/', isActive: true },
     { name: 'Catalog', path: '/catalog', isActive: false },
@@ -46,7 +38,7 @@ const Header: React.FC = () => {
         <div className={classes.header__links}>
           {!loggedIn && <HeaderAuthBtns />}
           {loggedIn && <HeaderUser />}
-          <a href="#" className={classes.card} aria-label="Shopping card">
+          <a href="/card" className={classes.card} aria-label="Shopping card">
             <span className={classes.card__quantity}>16</span>
           </a>
         </div>

@@ -3,7 +3,6 @@
 // import Button from './components/ui/button/Button';
 // import Checkbox from './components/ui/checkbox/Checkbox';
 // import Input from './components/ui/input/Input';
-import Header from './components/header/Header';
 import Home from './pages/Home/Home';
 
 function App() {
@@ -51,7 +50,6 @@ function App() {
     //   </Button>
     // </div>
     <>
-      <Header />
       <Home />
     </>
   );

@@ -1,5 +1,8 @@
 // import LoginPage from './pages/Login/LoginPage';
 // import Home from './pages/Home/Home';
+// import NotFound from './pages/NotFound/NotFound';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 
 function App() {
@@ -31,20 +34,24 @@ function App() {
   // }
 
   return (
-    <div
-    // style={{
-    //   display: 'flex',
-    //   flexWrap: 'wrap',
-    //   gap: '8px',
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    //   height: '100dvh',
-    // }}
-    >
-      {/* <Home />
-      <LoginPage /> */}
-      <NotFound />
-    </div>
+    // <div
+    // // style={{
+    // //   display: 'flex',
+    // //   flexWrap: 'wrap',
+    // //   gap: '8px',
+    // //   alignItems: 'center',
+    // //   justifyContent: 'center',
+    // //   height: '100dvh',
+    // // }}
+    // >
+    //   {/* <Home />
+    //   <LoginPage /> */}
+    //   {/* <NotFound /> */}
+    // </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

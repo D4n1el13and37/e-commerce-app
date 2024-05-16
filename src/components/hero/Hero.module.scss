@@ -1,0 +1,25 @@
+.hero {
+  &__container {
+    margin: 0 auto;
+    padding: 0 var(--container-offset) 44px;
+    max-width: var(--container-width);
+  }
+
+  &__left {
+    place-content: center;
+    grid-column: 2 / 7;
+  }
+
+  &__title {
+    margin-bottom: calc(var(--gap) * 2);
+    font-weight: 500;
+    font-size: var(--main-title-size, 57px);
+    line-height: 112%;
+    color: var(--text-color);
+    text-wrap: balance;
+  }
+
+  &__right {
+    grid-column: 5 span;
+  }
+}

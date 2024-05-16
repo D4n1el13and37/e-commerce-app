@@ -23,6 +23,11 @@ const createBaseClient = () =>
     .withHttpMiddleware(httpMiddlewareOptions)
     .withLoggerMiddleware();
 
+export const createDefaultClient = (): ApiRoot => {
+  const client = createBaseClient().build();
+  return createApiBuilderFromCtpClient(client);
+};
+
 // Anonymous client
 export const createAnonymousClient = (): ApiRoot => {
   const options: AnonymousAuthMiddlewareOptions = {

@@ -1,5 +1,6 @@
 import {
   createAnonymousClient,
+  createDefaultClient,
   createPasswordClient,
   createTokenClient,
 } from './clientBuilder';
@@ -7,7 +8,7 @@ import {
 type ClientType = 'anonymous' | 'password' | 'token';
 
 const getApiRoot = (
-  type: ClientType,
+  type?: ClientType,
   params: { token?: string; email?: string; password?: string } = {}
 ) => {
   switch (type) {
@@ -24,7 +25,7 @@ const getApiRoot = (
       }
       return createAnonymousClient();
     default:
-      throw new Error('Unsupported client type');
+      return createDefaultClient();
   }
 };
 

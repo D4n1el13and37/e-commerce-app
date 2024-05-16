@@ -94,3 +94,27 @@ li {
   grid-template-columns: repeat(12, 1fr);
   gap: var(--gap);
 }
+
+/* remove from here? */
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
+    color: var(--error-color, #ff5449);
+  }
+}

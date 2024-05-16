@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
   gap: 8px;
 }
 
@@ -20,7 +21,7 @@
   margin: 0;
   outline: none;
   border: 1px solid rgba(152, 153, 152, 0.5);
-  border-radius: 5px;
+  border-radius: 12px;
   padding: 8px 12px;
   width: 100%;
   height: 40px;
@@ -55,10 +56,27 @@
     border: 2px solid rgba(152, 153, 152, 0.5);
     cursor: default;
   }
+}
 
-  &:invalid {
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
     border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
     color: var(--error-color, #ff5449);
-    opacity: 1;
   }
 }

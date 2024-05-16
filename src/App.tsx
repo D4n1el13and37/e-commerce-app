@@ -3,7 +3,8 @@
 // import Button from './components/ui/button/Button';
 // import Checkbox from './components/ui/checkbox/Checkbox';
 // import Input from './components/ui/input/Input';
-import Home from './pages/Home/Home';
+// import Home from './pages/Home/Home';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -50,7 +51,7 @@ function App() {
     //   </Button>
     // </div>
     <>
-      <Home />
+      <NotFound />
     </>
   );
 }

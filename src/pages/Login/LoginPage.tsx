@@ -46,7 +46,7 @@ function LoginPage() {
         </svg>
       </Button> */}
       <div className="headline">
-        <h2>Hello, Welcome back!</h2>
+        <h2>Welcome back!</h2>
         <span>Sign In to continue</span>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,44 +1,44 @@
 .login__container {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
   border-radius: 12px;
-  gap: 42px;
   padding: 60px;
+  background-color: #fff;
+  gap: 42px;
 }
 
 .headline {
   font-family: var(--font-family);
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
 
   h2 {
-    color: var(--text-color, #242424);
     font-weight: 400;
-    font-size: 36px;
+    font-size: var(--page-title-size);
     line-height: 44px; /* 122.222% */
+    color: var(--text-color, #242424);
   }
 
   span {
-    color: var(--Schemes-Secondary, #626c57);
-    text-align: center;
-    font-size: 16px;
+    font-size: var(--main-font-size);
     line-height: 24px; /* 150% */
+    text-align: center;
     text-transform: capitalize;
+    color: var(--Schemes-Secondary, #626c57);
   }
 }
 
 form {
   display: flex;
-  gap: 42px;
   flex-direction: column;
+  gap: 42px;
 }
 
 .form_container {
-  width: 478px;
   display: flex;
-  gap: 12px;
   flex-direction: column;
+  width: 478px;
+  gap: 12px;
 }
 
 .input_container {
@@ -48,12 +48,11 @@ form {
   .error_container {
     position: relative;
     height: 20px;
-    content: '';
 
     span {
-      font-size: 14px;
       position: absolute;
       bottom: 0;
+      font-size: 14px;
     }
   }
 }

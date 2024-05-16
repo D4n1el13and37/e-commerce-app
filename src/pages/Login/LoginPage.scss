@@ -56,3 +56,15 @@ form {
     }
   }
 }
+
+.server_error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: -24px;
+  }
+}

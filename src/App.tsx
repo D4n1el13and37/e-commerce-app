@@ -1,8 +1,4 @@
-// import { useState, useEffect } from 'react';
-// import { projectKey, getApiRoot } from './api/BuildClient';
-// import Button from './components/ui/button/Button';
-// import Checkbox from './components/ui/checkbox/Checkbox';
-// import Input from './components/ui/input/Input';
+// import LoginPage from './pages/Login/LoginPage';
 // import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 
@@ -35,24 +31,20 @@ function App() {
   // }
 
   return (
-    // <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-    //   <Checkbox label="Are you sure?" isChecked={true} />
-    //   <Checkbox isRequred={true} />
-    //   <Checkbox isDisabled={true} />
-    //   <Button type="submit" isMain={true} isFilled={true}>
-    //     Filled
-    //   </Button>
-    //   <Button isMain={true} type="submit">
-    //     Main
-    //   </Button>
-    //   <Button>+</Button>
-    //   <Button isFilled={true} isDisabled={true}>
-    //     -
-    //   </Button>
-    // </div>
-    <>
+    <div
+    // style={{
+    //   display: 'flex',
+    //   flexWrap: 'wrap',
+    //   gap: '8px',
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   height: '100dvh',
+    // }}
+    >
+      {/* <Home />
+      <LoginPage /> */}
       <NotFound />
-    </>
+    </div>
   );
 }
 

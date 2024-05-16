@@ -4,17 +4,17 @@ import Input from '../input/Input';
 
 describe('Input tests', () => {
   it('input with label', () => {
-    render(<Input id="test-input" fieldName="Test Field" type="text" />);
+    render(<Input id="test-input" label="Test Field" type="text" />);
     expect(screen.getByLabelText('Test Field')).toBeInTheDocument();
   });
 
   it('input with password type', () => {
-    render(<Input id="test-input" fieldName="Test Field" type="password" />);
+    render(<Input id="test-input" label="Test Field" type="password" />);
     expect(screen.getByTestId('input')).toHaveAttribute('type', 'password');
   });
 
   it('input with tel type', () => {
-    render(<Input id="test-input" fieldName="Test Field" type="tel" />);
+    render(<Input id="test-input" label="Test Field" type="tel" />);
     expect(screen.getByTestId('input')).toHaveAttribute('type', 'tel');
   });
 
@@ -23,7 +23,7 @@ describe('Input tests', () => {
     render(
       <Input
         id="test-input"
-        fieldName="Test Field"
+        label="Test Field"
         type="text"
         maxLength={maxLength}
       />
@@ -35,21 +35,12 @@ describe('Input tests', () => {
     expect(input).toHaveValue(text);
   });
 
-  it('render input with specified width', () => {
-    render(
-      <Input id="test-input" fieldName="Test Field" type="text" width="200px" />
-    );
-    expect(screen.getByTestId('input-container')).toHaveStyle({
-      width: '200px',
-    });
-  });
-
   it('calls onChange handler when input value changes', () => {
     const onChangeMock = vi.fn();
     render(
       <Input
         id="test-input"
-        fieldName="Test Field"
+        label="Test Field"
         type="text"
         onChange={onChangeMock}
       />

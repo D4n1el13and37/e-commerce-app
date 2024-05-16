@@ -12,16 +12,18 @@ const EmailInput: React.FC<InputProps> = ({ register, errors }) => (
   <Input
     type="text"
     label="Email address"
+    autoComplete="email"
     id="email"
     placeholder="user@example.com"
     error={errors?.email?.message}
     {...register('email', {
       required: 'Email is requred',
       validate: (value) => {
+        const mailArray = value.split('@');
         if (!value.includes('@')) {
           return 'Email should contain @';
         }
-        if (!/^[^\s@]+/.test(value)) {
+        if (mailArray[0].length < 1 || /[^a-zA-Z0-9]+/.test(mailArray[0])) {
           return 'Should contain a valid username';
         }
         if (/\s/.test(value)) {

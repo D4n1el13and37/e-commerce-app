@@ -19,7 +19,7 @@ const PasswordField: React.FC<InputProps> = ({ register, errors }) => {
       setShowPassword(!showPassword);
       e.preventDefault();
     },
-    [showPassword]
+    [showPassword, setShowPassword]
   );
 
   return (
@@ -27,6 +27,7 @@ const PasswordField: React.FC<InputProps> = ({ register, errors }) => {
       <Input
         data-testid="password"
         label="Password"
+        autoComplete="current-password"
         type={showPassword ? 'text' : 'password'}
         id="password"
         placeholder="Enter password"

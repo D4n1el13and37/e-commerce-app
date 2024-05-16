@@ -1,0 +1,29 @@
+.not_found_section {
+  &__left {
+    place-self: center;
+    grid-column: 2 / 6;
+  }
+
+  &__title {
+    margin-bottom: 22px;
+    font-weight: 400;
+    font-size: var(--main-title-size, 57px);
+    line-height: 112%;
+    color: var(--text-color);
+  }
+
+  &__descr {
+    margin-bottom: 44px;
+    max-width: 320px;
+    font-weight: 400;
+    font-size: var(--page-title-size);
+    line-height: 122%;
+    color: var(--accent-color);
+    text-wrap: balance;
+  }
+
+  &__right {
+    place-self: center;
+    grid-column: 7 span;
+  }
+}

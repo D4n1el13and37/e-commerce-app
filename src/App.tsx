@@ -1,5 +1,6 @@
-import LoginPage from './pages/Login/LoginPage';
-import Home from './pages/Home/Home';
+// import LoginPage from './pages/Login/LoginPage';
+// import Home from './pages/Home/Home';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -31,17 +32,18 @@ function App() {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '8px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100dvh',
-      }}
+    // style={{
+    //   display: 'flex',
+    //   flexWrap: 'wrap',
+    //   gap: '8px',
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   height: '100dvh',
+    // }}
     >
-      <Home />
-      <LoginPage />
+      {/* <Home />
+      <LoginPage /> */}
+      <NotFound />
     </div>
   );
 }

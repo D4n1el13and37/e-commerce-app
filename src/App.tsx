@@ -9,28 +9,6 @@ import Register from './pages/Register/Register';
 // import LoginPage from './pages/Login/LoginPage';
 
 function App() {
-  // const getProducts = async () => {
-  //   try {
-  //     const project = await getApiRoot()
-  //       .withProjectKey({ projectKey })
-  //       .products()
-  //       .get()
-  //       .execute();
-
-  //     setProjectDetails(project.body);
-  //   } catch (e) {
-  //     if (e instanceof Error) {
-  //       throw new Error(e.message);
-  //     } else {
-  //       throw new Error('An unknown error occurred');
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-
   return (
     // <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
     //   <Checkbox label="Are you sure?" isChecked={true} />

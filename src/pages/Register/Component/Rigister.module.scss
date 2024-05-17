@@ -1,0 +1,94 @@
+.register {
+  align-content: space-around;
+  padding: 48px 0;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / -1;
+  border-radius: 12px;
+  padding: 60px;
+  background-color: #fff;
+  gap: 42px;
+
+  &__title {
+    font-weight: 400;
+    font-size: var(--page-title-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__subtitle {
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: var(--third-font-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__addresses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px;
+  }
+
+  &__personalData {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px;
+  }
+
+  .profile {
+    display: grid;
+    gap: 12px;
+
+    &__person {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .credentials {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--error-color, #ff5449);
+}
+
+.address {
+  &__information {
+    display: grid;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  &__code {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+.input_container {
+  position: relative;
+  height: 82px;
+
+  .error_container {
+    position: relative;
+    height: 20px;
+
+    span {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
+    }
+  }
+}

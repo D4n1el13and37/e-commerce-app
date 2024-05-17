@@ -4,8 +4,6 @@ import NotFound from './pages/NotFound/NotFound';
 import LoginPage from './pages/Login/LoginPage';
 
 function App() {
-  // const [projectDetails, setProjectDetails] = useState({});
-
   // const getProducts = async () => {
   //   try {
   //     const project = await getApiRoot()
@@ -27,9 +25,6 @@ function App() {
   // useEffect(() => {
   //   getProducts();
   // }, []);
-  // function handler() {
-  //   console.log('click');
-  // }
 
   return (
     <Routes>

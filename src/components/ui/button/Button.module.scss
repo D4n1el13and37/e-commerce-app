@@ -7,6 +7,10 @@
   color: var(--primary-color, #758963);
   background-color: transparent;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   @media (any-hover: hover) {
     &:hover {
       border: 1px solid var(--accent-color, #3f5028);

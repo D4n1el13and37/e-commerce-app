@@ -1,4 +1,6 @@
 import Register from './pages/Register/Register';
+// import LoginPage from './pages/Login/LoginPage';
+// import Home from './pages/Home/Home';
 
 function App() {
   // const getProducts = async () => {

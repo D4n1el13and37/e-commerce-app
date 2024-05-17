@@ -14,6 +14,7 @@
   --error-color: #ff5449;
   --light-color: #f9f9f9;
   --grey-color: #989998;
+  --text-color: #242424;
 
   // sizes
   --main-font-size: 16px;
@@ -78,6 +79,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 .container {
   margin: 0 auto;
   padding: 0 var(--container-offset);
@@ -88,4 +93,28 @@ a {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--gap);
+}
+
+/* remove from here? */
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
+    color: var(--error-color, #ff5449);
+  }
 }

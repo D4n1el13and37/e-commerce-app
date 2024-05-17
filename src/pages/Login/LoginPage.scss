@@ -1,0 +1,58 @@
+.login__container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 60px;
+  background-color: #fff;
+  gap: 42px;
+}
+
+.headline {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+
+  h2 {
+    font-weight: 400;
+    font-size: var(--page-title-size);
+    line-height: 44px; /* 122.222% */
+    color: var(--text-color, #242424);
+  }
+
+  span {
+    font-size: var(--main-font-size);
+    line-height: 24px; /* 150% */
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--Schemes-Secondary, #626c57);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  width: 478px;
+  gap: 12px;
+}
+
+.input_container {
+  position: relative;
+  height: 82px;
+
+  .error_container {
+    position: relative;
+    height: 20px;
+
+    span {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
+    }
+  }
+}

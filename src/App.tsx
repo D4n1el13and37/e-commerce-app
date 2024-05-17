@@ -35,20 +35,6 @@ function App() {
   // }
 
   return (
-    // <div
-    // // style={{
-    // //   display: 'flex',
-    // //   flexWrap: 'wrap',
-    // //   gap: '8px',
-    // //   alignItems: 'center',
-    // //   justifyContent: 'center',
-    // //   height: '100dvh',
-    // // }}
-    // >
-    //   {/* <Home />
-    //   <LoginPage /> */}
-    //   {/* <NotFound /> */}
-    // </div>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />

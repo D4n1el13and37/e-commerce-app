@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { /* useLocation , */ useNavigate } from 'react-router-dom';
 import Button from '../../components/ui/button/Button';
@@ -6,6 +7,7 @@ import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
 import EmailInput from '../../components/form/email/EmailInput';
 import { loginWithPassword } from '../../api/authMethods';
+import { login } from '../../store/authSlice';
 
 export interface LoginForm {
   email: string;
@@ -14,6 +16,7 @@ export interface LoginForm {
 
 function LoginPage() {
   const navigate = useNavigate(); // navigate to path...
+  const dispatch = useDispatch();
   // const location = useLocation(); // to save where we were
   const {
     register,
@@ -30,6 +33,7 @@ function LoginPage() {
   function removeError() {
     setTimeout(() => setIsError(''), 3000);
   }
+
   //   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
   //     await new Promise((resolve) => {
   //       setTimeout(resolve, 1000);
@@ -39,7 +43,11 @@ function LoginPage() {
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
     loginWithPassword(data.email, data.password)
-      .then(() => navigate('/main', { replace: true }))
+      .then(() => {
+        const { token } = JSON.parse(localStorage.getItem('tokendata')!).token;
+        dispatch(login({ token }));
+        navigate('/main', { replace: true });
+      })
       .catch((e) => {
         setIsError(e.message);
         removeError();

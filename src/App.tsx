@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import NotFound from './pages/NotFound/NotFound';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
 import Main from './pages/Main/Main';
+import store from './store/store';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -47,16 +49,17 @@ function App() {
   // </div>;
 
   return (
-    <Routes>
-      <Route path="/" errorElement={<NotFound />} element={<Home />} />
-      <Route
-        path="/login"
-        errorElement={<NotFound />}
-        element={<LoginPage />}
-      />
-      <Route path="/main" errorElement={<NotFound />} element={<Main />} />
-      {/* <Route path="/*" element={<LoginPage />} /> */}
-      {/* <Route
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" errorElement={<NotFound />} element={<Home />} />
+        <Route
+          path="/login"
+          errorElement={<NotFound />}
+          element={<LoginPage />}
+        />
+        <Route path="/main" errorElement={<NotFound />} element={<Main />} />
+        {/* <Route path="/*" element={<LoginPage />} /> */}
+        {/* <Route
     //   path="/protected"
     //   element={
     //     <RequireAuth>
@@ -64,7 +67,8 @@ function App() {
           </RequireAuth>
         }
       /> */}
-    </Routes>
+      </Routes>
+    </Provider>
   );
 }
 

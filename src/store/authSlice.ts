@@ -18,6 +18,7 @@ const authSlice = createSlice({
         token: action.payload.token,
         isAuthenticated: true,
       };
+      // console.log('User log-in from REDUX');
       return newState;
     },
     logout: () => {

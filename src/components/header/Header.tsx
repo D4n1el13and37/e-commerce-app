@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 import HeaderAuthBtns from './headerAuthBtns/HeaderAuthBtns';
@@ -20,21 +21,21 @@ const Header: React.FC = () => {
   return (
     <header>
       <div className={classes.header__container}>
-        <a href="/">
+        <Link to="/">
           <img src={Logo} alt="Site logo YesToPlants" />
-        </a>
+        </Link>
         <nav>
           <ul className={classes.nav__list}>
             {navLinks.map((link, index) => (
               <li key={index}>
-                <a
-                  href={link.path}
-                  className={`${classes.nav__link} ${
-                    link.isActive ? classes.nav__link_active : ''
-                  }`}
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive ? classes.nav__link_active : undefined
+                  }
                 >
                   {link.name}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>

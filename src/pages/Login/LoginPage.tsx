@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { /* useLocation , */ useNavigate } from 'react-router-dom';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
@@ -12,6 +13,8 @@ export interface LoginForm {
 }
 
 function LoginPage() {
+  const navigate = useNavigate(); // navigate to path...
+  // const location = useLocation(); // to save where we were
   const {
     register,
     handleSubmit,
@@ -35,10 +38,12 @@ function LoginPage() {
   //   };
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    loginWithPassword(data.email, data.password).catch((e) => {
-      setIsError(e.message);
-      removeError();
-    });
+    loginWithPassword(data.email, data.password)
+      .then(() => navigate('/', { replace: true }))
+      .catch((e) => {
+        setIsError(e.message);
+        removeError();
+      });
   };
 
   return (

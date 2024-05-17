@@ -32,6 +32,7 @@
   "dependencies": {
     "@commercetools/platform-sdk": "^4.2.0",
     "@commercetools/sdk-client-v2": "^2.1.0",
+    "@reduxjs/toolkit": "^2.2.5",
     "@vitejs/plugin-react": "^4.2.1",
     "isomorphic-fetch": "^3.0.0",
     "react": "^18.2.0",
@@ -43,7 +44,6 @@
     "vite": "^5.2.10"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.6",
     "@testing-library/user-event": "^14.5.2",

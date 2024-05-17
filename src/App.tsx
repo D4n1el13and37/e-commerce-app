@@ -2,7 +2,7 @@ import Register from './pages/Register/Register';
 // import LoginPage from './pages/Login/LoginPage';
 // import Home from './pages/Home/Home';
 // import NotFound from './pages/NotFound/NotFound';
-import LoginPage from './pages/Login/LoginPage';
+// import LoginPage from './pages/Login/LoginPage';
 
 function App() {
   // const getProducts = async () => {
@@ -44,7 +44,7 @@ function App() {
     //   </Button>
     // </div>
     <>
-      <div
+      {/* <div
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -55,7 +55,7 @@ function App() {
         }}
       >
         <LoginPage />
-      </div>
+      </div> */}
       <Register />
     </>
   );

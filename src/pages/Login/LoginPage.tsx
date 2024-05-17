@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
@@ -10,13 +10,11 @@ export interface LoginForm {
 }
 
 function LoginPage() {
+  const methods = useForm<LoginForm>({ mode: 'onChange' });
   const {
-    register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<LoginForm>({
-    mode: 'onChange',
-  });
+  } = methods;
   //   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
   //     await new Promise((resolve) => {
   //       setTimeout(resolve, 1000);
@@ -49,29 +47,31 @@ function LoginPage() {
         <h2>Welcome back!</h2>
         <span>Sign In to continue</span>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form_container">
-          <div className="input_container">
-            <EmailInput register={register} errors={errors} />
-            <div className="error_container">
-              {errors.email && (
-                <span className="error">{errors.email.message}</span>
-              )}
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form_container">
+            <div className="input_container">
+              <EmailInput />
+              <div className="error_container">
+                {errors.email && (
+                  <span className="error">{errors.email.message}</span>
+                )}
+              </div>
+            </div>
+            <div className="input_container">
+              <PasswordField />
+              <div className="error_container">
+                <span className="error">
+                  {errors.password && errors.password.message}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="input_container">
-            <PasswordField register={register} errors={errors} />
-            <div className="error_container">
-              <span className="error">
-                {errors.password && errors.password.message}
-              </span>
-            </div>
-          </div>
-        </div>
-        <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-          {isSubmitting ? 'Loading...' : 'Submit'}
-        </Button>
-      </form>
+          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+            {isSubmitting ? 'Loading...' : 'Submit'}
+          </Button>
+        </form>
+      </FormProvider>
     </div>
   );
 }

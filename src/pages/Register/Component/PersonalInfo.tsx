@@ -1,5 +1,9 @@
 import { useFormContext } from 'react-hook-form';
+
 import Input from '../../../components/ui/input/Input';
+import EmailInput from '../../../components/form/email/EmailInput';
+import PasswordInput from '../../../components/form/password/PasswordInput';
+
 import classes from './Rigister.module.scss';
 
 export default function PersonalInfo() {
@@ -13,58 +17,18 @@ export default function PersonalInfo() {
       <h3 className={`${classes.form__subtitle}`}>Personal information</h3>
       <div className={`${classes.form__personalData}`}>
         <div className={`${classes.credentials}`}>
-          <div>
-            <Input
-              {...register('email', {
-                required: 'Email is required',
-                validate: (value: string) => {
-                  const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-                  if (!regexEmail.test(value)) {
-                    return 'Please enter a valid email address in the format "name@domain.com".';
-                  }
-                  return true;
-                },
-              })}
-              id="email"
-              label="Email"
-              type="email"
-              placeholder="Email"
-              onChange={(value) => value}
-            />
-            {errors.email && (
-              <div className={`${classes.error}`}>
-                {errors.email.message as string}
-              </div>
-            )}
+          <div className={`${classes.input_container}`}>
+            <EmailInput />
+            <div className={`${classes.error_container}`}>
+              {errors.email && (
+                <span className="error">{errors.email.message as string}</span>
+              )}
+            </div>
           </div>
-
           <div>
-            <Input
-              {...register('password', {
-                required: 'Password is required',
-                minLength: {
-                  value: 8,
-                  message: 'Password must have at least 8 characters',
-                },
-                validate: (value: string) => {
-                  const regexPasssword =
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]+$/;
-                  if (!regexPasssword.test(value)) {
-                    return 'Password must include at least one uppercase letter, one lowercase letter, and one number';
-                  }
-                  return true;
-                },
-              })}
-              id="password"
-              label="Password"
-              type="password"
-              placeholder="Password"
-              onChange={(value) => value}
-            />
-            {errors?.password && (
-              <div className={`${classes.error}`}>
-                {errors.password?.message as string}
-              </div>
+            <PasswordInput />
+            {errors.password && (
+              <span className="error">{errors.password.message as string}</span>
             )}
           </div>
         </div>
@@ -72,68 +36,84 @@ export default function PersonalInfo() {
           <div className={`${classes.profile__person}`}>
             <div className={`${classes.profile__name}`}>
               <Input
+                id="firstName"
+                autoComplete="firstName"
+                label="First Name"
+                type="text"
+                placeholder="First Name"
+                error={
+                  errors.firstName
+                    ? (errors.firstName.message as string)
+                    : undefined
+                }
                 {...register('firstName', {
                   required: 'First name is required',
                   minLength: {
                     value: 1,
-                    message: 'First name must have at least 1 characters',
+                    message: 'First name must have at least 1 character',
                   },
                   validate: (value: string) => {
                     const regexFirstName = /^[a-zA-Z]+$/;
                     if (!regexFirstName.test(value)) {
-                      return 'First name must have just letters';
+                      return 'First name must contain only latin letters';
                     }
                     return true;
                   },
                 })}
-                id="firstName"
-                label="First Name"
-                type="text"
-                placeholder="First Name"
-                onChange={(value) => value}
               />
               {errors.firstName && (
-                <div className={`${classes.error}`}>
+                <div className="error">
                   {errors.firstName.message as string}
                 </div>
               )}
             </div>
             <div className={`${classes.profile__lastName}`}>
               <Input
-                {...register('lastName', {
-                  required: 'Last name is required',
-                  minLength: {
-                    value: 1,
-                    message: 'Last name must have at least 1 characters',
-                  },
-                  validate: (value: string) => {
-                    const regexLastName = /^[a-zA-Z]+$/;
-                    if (!regexLastName.test(value)) {
-                      return 'Last name must have just letters';
-                    }
-                    return true;
-                  },
-                })}
                 id="lastName"
                 label="Last Name"
                 type="text"
                 placeholder="Last Name"
-                onChange={(value) => value}
+                error={
+                  errors.lastName
+                    ? (errors.lastName.message as string)
+                    : undefined
+                }
+                {...register('lastName', {
+                  required: 'Last name is required',
+                  minLength: {
+                    value: 1,
+                    message: 'Last name must have at least 1 character',
+                  },
+                  validate: (value: string) => {
+                    const regexLastName = /^[a-zA-Z]+$/;
+                    if (!regexLastName.test(value)) {
+                      return 'Last name must contain only latin letters';
+                    }
+                    return true;
+                  },
+                })}
               />
               {errors.lastName && (
-                <div className={`${classes.error}`}>
+                <span className="error">
                   {errors.lastName.message as string}
-                </div>
+                </span>
               )}
             </div>
           </div>
           <div>
             <Input
+              id="dateBirth"
+              label="Date of Birth"
+              type="date"
+              error={
+                errors.dateBirth
+                  ? (errors.dateBirth.message as string)
+                  : undefined
+              }
               {...register('dateBirth', {
                 required: 'Date of birth is required',
                 validate: (value: string) => {
                   const minimumAge = 13;
-
                   const dateToday = new Date();
                   const dateBirth = new Date(value);
                   const userAge =
@@ -145,22 +125,18 @@ export default function PersonalInfo() {
 
                   if (
                     userAge < minimumAge ||
-                    (userAge === 13 && !isBirthdayPassed)
+                    (userAge === minimumAge && !isBirthdayPassed)
                   ) {
                     return 'You must be at least 13 years old';
                   }
                   return true;
                 },
               })}
-              id="dateBirth"
-              label="Date of birth"
-              type="date"
-              onChange={(value) => value}
             />
             {errors.dateBirth && (
-              <div className={`${classes.error}`}>
+              <span className="error">
                 {errors.dateBirth.message as string}
-              </div>
+              </span>
             )}
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import { CustomerDraft, MyCustomerDraft } from '@commercetools/platform-sdk';
 
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
@@ -11,9 +10,14 @@ import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
 
 export default function RegisterForm() {
-  const methods = useForm<RegisterFormFields>({ mode: 'onBlur' });
-  const { handleSubmit } = methods;
-  const onSubmit = async (data: RegisterFormFields) => {
+  const methods = useForm<RegisterFormFields>({ mode: 'onChange' });
+  const {
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = methods;
+  const onSubmit = (data: RegisterFormFields) => {
+    JSON.stringify(errors);
+    JSON.stringify(data);
     // const newCustomerDetails: MyCustomerDraft = {
     //   email: data.email,
     //   password: data.password,
@@ -61,21 +65,22 @@ export default function RegisterForm() {
     <FormProvider {...methods}>
       <form className={`${classes.form}`} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={`${classes.form__title}`}>Sign up</h2>
-
         <PersonalInfo />
-
         <div className={`${classes.form__addresses}`}>
           <ShippingAddress />
           <BillingAddress />
         </div>
-
         <Checkbox
           label="Are the billing and shipping addresses the same?"
           isChecked={true}
         />
-
-        <Button type="submit" isMain={true} isFilled={true}>
-          Submit
+        <Button
+          type="submit"
+          isMain={true}
+          isFilled={true}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Loading...' : 'Submit'}
         </Button>
       </form>
     </FormProvider>

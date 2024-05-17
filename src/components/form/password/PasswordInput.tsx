@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useCallback, useState } from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister, useFormContext } from 'react-hook-form';
 import pass from './Password.module.scss';
 import { LoginForm } from '../../../pages/Login/LoginPage';
 import Input from '../../ui/input/Input';
@@ -11,7 +11,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errors: FieldErrors<LoginForm>;
 }
 
-const PasswordField: React.FC<InputProps> = ({ register, errors }) => {
+const PasswordField: React.FC = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassworVisibility = useCallback(
@@ -31,7 +36,9 @@ const PasswordField: React.FC<InputProps> = ({ register, errors }) => {
         type={showPassword ? 'text' : 'password'}
         id="password"
         placeholder="Enter password"
-        error={errors.password?.message}
+        error={
+          errors.password ? (errors.password.message as string) : undefined
+        }
         {...register('password', {
           required: 'Password is requred',
           minLength: {

@@ -6,7 +6,7 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
 import { CountrySelect, CountryOption } from './AddressForm/CountrySelect';
 
-import classes from './Rigister.module.scss';
+import classesRegister from './Rigister.module.scss';
 
 export default function ShippingAddress() {
   const {
@@ -20,9 +20,9 @@ export default function ShippingAddress() {
 
   return (
     <div>
-      <h3 className={`${classes.form__subtitle}`}>Shipping Address</h3>
-      <div className={`${classes.address}`}>
-        <div className={`${classes.address__information}`}>
+      <h3 className={`${classesRegister.form__subtitle}`}>Shipping Address</h3>
+      <div className={`${classesRegister.address}`}>
+        <div className={`${classesRegister.address__information}`}>
           <div>
             <CountrySelect
               control={control}
@@ -31,55 +31,71 @@ export default function ShippingAddress() {
               value={selectedCountry}
             />
             {errors.countryShipping?.message && (
-              <div className={`${classes.error}`}>
+              <span className="error">
                 {errors.countryShipping?.message as string}
-              </div>
+              </span>
             )}
           </div>
-
           <div>
             <Input
-              {...register('streetShipping', {
-                required: 'Street must have at least 1 character',
-              })}
-              id={`streetShipping`}
-              label="Street"
+              id="cityShipping"
+              label="City"
               type="text"
-              placeholder="Street"
-              onChange={(value) => value}
+              placeholder="City"
+              error={
+                errors.cityShipping
+                  ? (errors.cityShipping.message as string)
+                  : undefined
+              }
+              {...register('cityShipping', {
+                required: 'City must have at least 1 character',
+                pattern: {
+                  value: /^[a-zA-Z\s]+$/,
+                  message: 'City name must contain only letters',
+                },
+              })}
             />
-            {errors.streetShipping && (
-              <div className={`${classes.error}`}>
-                {errors.streetShipping.message as string}
-              </div>
+            {errors.cityShipping && (
+              <span className="error">
+                {errors.cityShipping.message as string}
+              </span>
             )}
           </div>
 
-          <div className={`${classes.address__code}`}>
+          <div className={`${classesRegister.address__code}`}>
             <div>
               <Input
-                {...register('cityShipping', {
-                  required: 'City must have at least 1 character',
-                  pattern: {
-                    value: /^[a-zA-Z\s]+$/,
-                    message: 'Street name must contain only letters',
-                  },
-                })}
-                id="cityShipping"
-                label="City"
+                id={`streetShipping`}
+                label="Street"
                 type="text"
-                placeholder="City"
-                onChange={(value) => value}
+                placeholder="Street"
+                error={
+                  errors.streetShipping
+                    ? (errors.streetShipping.message as string)
+                    : undefined
+                }
+                {...register('streetShipping', {
+                  required: 'Street must have at least 1 character',
+                })}
               />
-              {errors.cityShipping && (
-                <div className={`${classes.error}`}>
-                  {errors.cityShipping.message as string}
-                </div>
+              {errors.streetShipping && (
+                <span className="error">
+                  {errors.streetShipping.message as string}
+                </span>
               )}
             </div>
-
             <div>
               <Input
+                id="postcodeShipping"
+                label="Postcode"
+                type="text"
+                placeholder="Postcode"
+                disabled={!selectedCountry}
+                error={
+                  errors.postcodeShipping
+                    ? (errors.postcodeShipping.message as string)
+                    : undefined
+                }
                 {...register('postcodeShipping', {
                   required: 'Postcode is required',
                   validate: (value) => {
@@ -93,17 +109,11 @@ export default function ShippingAddress() {
                     return true;
                   },
                 })}
-                id="postcodeShipping"
-                label="Postcode"
-                type="text"
-                placeholder="Postcode"
-                disabled={!selectedCountry}
-                onChange={(value) => value}
               />
               {errors.postcodeShipping && (
-                <div className={`${classes.error}`}>
+                <span className="error">
                   {errors.postcodeShipping.message as string}
-                </div>
+                </span>
               )}
             </div>
           </div>

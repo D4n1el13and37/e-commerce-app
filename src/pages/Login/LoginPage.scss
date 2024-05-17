@@ -1,8 +1,11 @@
 .login__container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px;
   padding: 60px;
+  height: 100dvh;
   background-color: #fff;
   gap: 42px;
 }

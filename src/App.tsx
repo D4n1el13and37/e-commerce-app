@@ -1,10 +1,10 @@
+import Register from './pages/Register/Register';
 // import LoginPage from './pages/Login/LoginPage';
 // import Home from './pages/Home/Home';
-import NotFound from './pages/NotFound/NotFound';
+// import NotFound from './pages/NotFound/NotFound';
+import LoginPage from './pages/Login/LoginPage';
 
 function App() {
-  // const [projectDetails, setProjectDetails] = useState({});
-
   // const getProducts = async () => {
   //   try {
   //     const project = await getApiRoot()
@@ -26,25 +26,38 @@ function App() {
   // useEffect(() => {
   //   getProducts();
   // }, []);
-  // function handler() {
-  //   console.log('click');
-  // }
 
   return (
-    <div
-    // style={{
-    //   display: 'flex',
-    //   flexWrap: 'wrap',
-    //   gap: '8px',
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    //   height: '100dvh',
-    // }}
-    >
-      {/* <Home />
-      <LoginPage /> */}
-      <NotFound />
-    </div>
+    // <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+    //   <Checkbox label="Are you sure?" isChecked={true} />
+    //   <Checkbox isRequred={true} />
+    //   <Checkbox isDisabled={true} />
+    //   <Button type="submit" isMain={true} isFilled={true}>
+    //     Filled
+    //   </Button>
+    //   <Button isMain={true} type="submit">
+    //     Main
+    //   </Button>
+    //   <Button>+</Button>
+    //   <Button isFilled={true} isDisabled={true}>
+    //     -
+    //   </Button>
+    // </div>
+    <>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '8px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100dvh',
+        }}
+      >
+        <LoginPage />
+      </div>
+      <Register />
+    </>
   );
 }
 

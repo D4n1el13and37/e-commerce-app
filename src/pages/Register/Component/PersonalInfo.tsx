@@ -26,7 +26,7 @@ export default function PersonalInfo() {
                 },
               })}
               id="email"
-              fieldName="Email"
+              label="Email"
               type="email"
               placeholder="Email"
               onChange={(value) => value}
@@ -56,7 +56,7 @@ export default function PersonalInfo() {
                 },
               })}
               id="password"
-              fieldName="Password"
+              label="Password"
               type="password"
               placeholder="Password"
               onChange={(value) => value}
@@ -87,7 +87,7 @@ export default function PersonalInfo() {
                   },
                 })}
                 id="firstName"
-                fieldName="First Name"
+                label="First Name"
                 type="text"
                 placeholder="First Name"
                 onChange={(value) => value}
@@ -115,7 +115,7 @@ export default function PersonalInfo() {
                   },
                 })}
                 id="lastName"
-                fieldName="Last Name"
+                label="Last Name"
                 type="text"
                 placeholder="Last Name"
                 onChange={(value) => value}
@@ -153,7 +153,7 @@ export default function PersonalInfo() {
                 },
               })}
               id="dateBirth"
-              fieldName="Date of birth"
+              label="Date of birth"
               type="date"
               onChange={(value) => value}
             />

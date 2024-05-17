@@ -39,18 +39,18 @@ export default function BillingAddress() {
 
           <div>
             <Input
-              {...register('BillingtBilling', {
+              {...register('streetBilling', {
                 required: 'Billingt must have at least 1 character',
               })}
-              id={`BillingtBilling`}
-              fieldName="Billingt"
+              id={`streetBilling`}
+              // label="Street"
               type="text"
-              placeholder="Billingt"
+              placeholder="Street"
               onChange={(value) => value}
             />
-            {errors.BillingtBilling && (
+            {errors.streetBilling && (
               <div className={`${classes.error}`}>
-                {errors.BillingtBilling.message as string}
+                {errors.streetBilling.message as string}
               </div>
             )}
           </div>
@@ -66,7 +66,7 @@ export default function BillingAddress() {
                   },
                 })}
                 id="cityBilling"
-                fieldName="City"
+                label="City"
                 type="text"
                 placeholder="City"
                 onChange={(value) => value}
@@ -94,7 +94,7 @@ export default function BillingAddress() {
                   },
                 })}
                 id="postcodeBilling"
-                fieldName="Postcode"
+                label="Postcode"
                 type="text"
                 placeholder="Postcode"
                 disabled={!selectedCountry}

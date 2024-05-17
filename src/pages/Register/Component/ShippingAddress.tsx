@@ -43,7 +43,7 @@ export default function ShippingAddress() {
                 required: 'Street must have at least 1 character',
               })}
               id={`streetShipping`}
-              fieldName="Street"
+              label="Street"
               type="text"
               placeholder="Street"
               onChange={(value) => value}
@@ -66,7 +66,7 @@ export default function ShippingAddress() {
                   },
                 })}
                 id="cityShipping"
-                fieldName="City"
+                label="City"
                 type="text"
                 placeholder="City"
                 onChange={(value) => value}
@@ -94,7 +94,7 @@ export default function ShippingAddress() {
                   },
                 })}
                 id="postcodeShipping"
-                fieldName="Postcode"
+                label="Postcode"
                 type="text"
                 placeholder="Postcode"
                 disabled={!selectedCountry}

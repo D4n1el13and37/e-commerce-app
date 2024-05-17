@@ -21,10 +21,10 @@ function LoginPage() {
     formState: { errors, isSubmitting },
   } = useForm<LoginForm>({
     mode: 'onChange',
-    // defaultValues: {
-    //   email: 'cainowa@gmail.com',
-    //   password: '1234567Qwer',
-    // },
+    defaultValues: {
+      email: 'cainowa@gmail.com',
+      password: '1234567Qwer',
+    },
   });
   const [isError, setIsError] = useState('');
   function removeError() {
@@ -39,7 +39,7 @@ function LoginPage() {
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
     loginWithPassword(data.email, data.password)
-      .then(() => navigate('/', { replace: true }))
+      .then(() => navigate('/main', { replace: true }))
       .catch((e) => {
         setIsError(e.message);
         removeError();

@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound/NotFound';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
+import Main from './pages/Main/Main';
 
 function App() {
   // const [projectDetails, setProjectDetails] = useState({});
@@ -53,6 +54,7 @@ function App() {
         errorElement={<NotFound />}
         element={<LoginPage />}
       />
+      <Route path="/main" errorElement={<NotFound />} element={<Main />} />
       {/* <Route path="/*" element={<LoginPage />} /> */}
       {/* <Route
     //   path="/protected"

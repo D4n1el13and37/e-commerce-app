@@ -1,10 +1,11 @@
+import { CustomerSignInResult } from '@commercetools/platform-sdk';
 import getApiRoot from './api';
 import { projectKey } from './clientConfig';
 
 export async function loginWithPassword(
   email: string,
   password: string
-): Promise<void> {
+): Promise<CustomerSignInResult> {
   try {
     const apiRoot = getApiRoot('password', { email, password });
     const response = await apiRoot
@@ -18,8 +19,7 @@ export async function loginWithPassword(
         },
       })
       .execute();
-
-    JSON.stringify(response);
+    return response.body;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);

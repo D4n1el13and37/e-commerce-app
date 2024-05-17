@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
 import EmailInput from '../../components/form/email/EmailInput';
+import { loginWithPassword } from '../../api/authMethods';
 
 export interface LoginForm {
   email: string;
@@ -21,9 +23,17 @@ function LoginPage() {
   //     });
   //     console.log(data);
   //   };
+
+  const [isError, setIsError] = useState('');
+  function removeError() {
+    setTimeout(() => setIsError(''), 3000);
+  }
+
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    // console.log(data);
-    JSON.stringify(data);
+    loginWithPassword(data.email, data.password).catch((e) => {
+      setIsError(e.message);
+      removeError();
+    });
   };
 
   return (
@@ -67,9 +77,16 @@ function LoginPage() {
               </div>
             </div>
           </div>
-          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-            {isSubmitting ? 'Loading...' : 'Submit'}
-          </Button>
+          <div className="server_error">
+            {isError && (
+              <span className="error">
+                The username or password is incorrect
+              </span>
+            )}
+            <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+              {isSubmitting ? 'Loading...' : 'Submit'}
+            </Button>
+          </div>
         </form>
       </FormProvider>
     </div>

@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
 
@@ -29,20 +30,34 @@ function App() {
   //   console.log('click');
   // }
 
+  // <div
+  //   style={{
+  //     display: 'flex',
+  //     flexWrap: 'wrap',
+  //     gap: '8px',
+  //     alignItems: 'center',
+  //     justifyContent: 'center',
+  //     height: '100dvh',
+  //   }}
+  // >
+  //   <Home />
+  //   <LoginPage />
+  // </div>;
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '8px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100dvh',
-      }}
-    >
-      <Home />
-      <LoginPage />
-    </div>
+    <Routes>
+      {/* <Route element={<Layout />}> </Route> */}
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginPage />} />
+      {/* <Route
+        path="/protected"
+        element={
+          <RequireAuth>
+            <ProtectedPage />
+          </RequireAuth>
+        }
+      /> */}
+    </Routes>
   );
 }
 

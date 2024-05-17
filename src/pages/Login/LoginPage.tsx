@@ -1,8 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useState } from 'react';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
 import EmailInput from '../../components/form/email/EmailInput';
+import { loginWithPassword } from '../../api/authMethods';
 
 export interface LoginForm {
   email: string;
@@ -16,16 +18,27 @@ function LoginPage() {
     formState: { errors, isSubmitting },
   } = useForm<LoginForm>({
     mode: 'onChange',
+    // defaultValues: {
+    //   email: 'cainowa@gmail.com',
+    //   password: '1234567Qwer',
+    // },
   });
+  const [isError, setIsError] = useState('');
+  function removeError() {
+    setTimeout(() => setIsError(''), 3000);
+  }
   //   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
   //     await new Promise((resolve) => {
   //       setTimeout(resolve, 1000);
   //     });
   //     console.log(data);
   //   };
+
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    // console.log(data);
-    JSON.stringify(data);
+    loginWithPassword(data.email, data.password).catch((e) => {
+      setIsError(e.message);
+      removeError();
+    });
   };
 
   return (
@@ -68,9 +81,14 @@ function LoginPage() {
             </div>
           </div>
         </div>
-        <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-          {isSubmitting ? 'Loading...' : 'Submit'}
-        </Button>
+        <div className="server_error">
+          {isError && (
+            <span className="error">The username or password is incorrect</span>
+          )}
+          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+            {isSubmitting ? 'Loading...' : 'Submit'}
+          </Button>
+        </div>
       </form>
     </div>
   );

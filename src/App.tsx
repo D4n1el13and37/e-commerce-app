@@ -10,34 +10,7 @@ import Register from './pages/Register/Register';
 
 function App() {
   return (
-    // <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-    //   <Checkbox label="Are you sure?" isChecked={true} />
-    //   <Checkbox isRequred={true} />
-    //   <Checkbox isDisabled={true} />
-    //   <Button type="submit" isMain={true} isFilled={true}>
-    //     Filled
-    //   </Button>
-    //   <Button isMain={true} type="submit">
-    //     Main
-    //   </Button>
-    //   <Button>+</Button>
-    //   <Button isFilled={true} isDisabled={true}>
-    //     -
-    //   </Button>
-    // </div>
     <>
-      {/* <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '8px',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100dvh',
-        }}
-      >
-        <LoginPage />
-      </div> */}
       <Register />
       {/* <Routes>
         <Route path="/" element={<Home />} />

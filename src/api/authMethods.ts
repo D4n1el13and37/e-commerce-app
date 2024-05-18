@@ -1,6 +1,7 @@
-import { MyCustomerDraft } from '@commercetools/platform-sdk';
+import { MyCustomerDraft, Customer } from '@commercetools/platform-sdk';
 import getApiRoot from './api';
 import { projectKey } from './clientConfig';
+import { RegisterFormFields } from './InterfaceApi';
 
 export async function loginWithPassword(
   email: string,
@@ -71,28 +72,9 @@ export async function anon(): Promise<void> {
   }
 }
 
-export interface RegisterFormFields {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  streetShipping: string;
-  cityShipping: string;
-  postcodeShipping: string;
-  countryShipping: string;
-  streetBilling: string;
-  cityBilling: string;
-  postcodeBilling: string;
-  countryBilling: string;
-  dateBirth: string;
-
-  defaultBillingAddress?: boolean;
-  defaultShippingAddress?: boolean;
-}
-
 export async function RegistartionUser(
   data: RegisterFormFields
-): Promise<void> {
+): Promise<Customer> {
   const newCustomerDetails: MyCustomerDraft = {
     email: data.email,
     password: data.password,
@@ -126,8 +108,10 @@ export async function RegistartionUser(
       .customers()
       .post({ body: newCustomerDetails })
       .execute();
-    const newCustomer = request.body.customer;
+    const newCustomer: Customer = request.body.customer;
     JSON.stringify(newCustomer);
+
+    return newCustomer;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);

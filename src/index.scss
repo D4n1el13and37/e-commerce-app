@@ -123,12 +123,6 @@ li {
   display: none;
 }
 
-@media (max-width: (1024px)) {
-  :root {
-    --main-title-size: 36px;
-  }
-}
-
 @media (max-width: (900px)) {
   .burger {
     position: relative;
@@ -183,5 +177,11 @@ li {
       top: 50%;
       transform: rotate(-45deg);
     }
+  }
+}
+
+@media (max-width: (1024px)) {
+  :root {
+    --main-title-size: 36px;
   }
 }

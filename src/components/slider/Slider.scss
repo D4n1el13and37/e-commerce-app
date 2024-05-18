@@ -23,7 +23,7 @@
   &_scrollbar {
     position: absolute;
     right: -40px;
-    top: 7px;
+    top: 32px;
     z-index: 2;
     width: 2px;
     height: 143px;
@@ -91,6 +91,7 @@
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
   right: 0;
+  top: 25px;
   bottom: 0;
   transform: translate3d(0, -50%, 0);
 

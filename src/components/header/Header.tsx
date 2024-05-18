@@ -53,24 +53,20 @@ const Header: React.FC = () => {
               {/* <HeaderUser /> */}
             </div>
           </nav>
-          <div className={classes.header__links}>
-            {/* {!loggedIn && <HeaderAuthBtns />} */}
-            {/* {loggedIn && <HeaderUser />} */}
-            <a href="/card" className={classes.card} aria-label="Shopping card">
-              <span className={classes.card__quantity}>16</span>
-            </a>
-          </div>
+          <a href="/card" className={classes.card} aria-label="Shopping card">
+            <span className={classes.card__quantity}>16</span>
+          </a>
         </div>
 
         <button
-          className={`burger ${isMenuOpen ? 'burger--active' : ''}`}
+          className={`${classes.burger} ${isMenuOpen ? `${classes.burger__active}` : ''}`}
           aria-label="Open menu"
           aria-expanded={isMenuOpen ? 'true' : 'false'}
           onClick={toggleMenu}
         >
-          <span className="burger__line"></span>
-          <span className="burger__line"></span>
-          <span className="burger__line"></span>
+          <span className={classes.burger__line}></span>
+          <span className={classes.burger__line}></span>
+          <span className={classes.burger__line}></span>
         </button>
       </div>
     </header>

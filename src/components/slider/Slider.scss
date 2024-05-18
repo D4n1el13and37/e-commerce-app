@@ -28,13 +28,17 @@
     width: 2px;
     height: 143px;
     background-color: #d9d9d9;
+
+    @media (max-width: (900px)) {
+      top: 37px;
+      background-color: transparent;
+    }
   }
 }
 
 .swiper {
   position: relative;
   width: 100%;
-  height: 760px;
   user-select: none;
 
   &-scrollbar-drag {
@@ -48,6 +52,7 @@
   }
 
   &-pagination-bullet {
+    border-radius: 0;
     width: fit-content;
     height: fit-content;
     font-weight: 400;
@@ -74,10 +79,6 @@
       transition: var(--duration) color ease-in-out;
     }
   }
-
-  @media (max-width: (1024px)) {
-    height: 670px;
-  }
 }
 
 .swiper-vertical > .swiper-pagination-bullets .swiper-pagination-bullet,
@@ -92,4 +93,9 @@
   right: 0;
   bottom: 0;
   transform: translate3d(0, -50%, 0);
+
+  @media (max-width: (900px)) {
+    right: -25px;
+    top: 30px;
+  }
 }

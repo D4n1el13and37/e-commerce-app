@@ -6,16 +6,26 @@
     margin: 0 auto;
     padding: 32px var(--container-offset) 3px;
     max-width: var(--container-width);
+
+    @media (max-width: (900px)) {
+      padding: 17px var(--container-offset) 3px;
+    }
   }
 
   &__links {
     display: inline-flex;
     align-items: center;
     gap: calc(var(--gap) * 2);
+
+    @media (max-width: (900px)) {
+      margin-left: auto;
+    }
   }
 }
 
 .nav {
+  display: block;
+
   &__list {
     display: flex;
     align-items: center;
@@ -43,6 +53,10 @@
       transition: var(--duration) color ease-in-out;
     }
   }
+
+  @media (max-width: (900px)) {
+    display: none;
+  }
 }
 
 .shop_nav {
@@ -50,6 +64,10 @@
     display: flex;
     align-items: center;
     gap: calc(var(--gap) / 2);
+
+    @media (max-width: (900px)) {
+      display: none;
+    }
   }
 
   &__item_card {

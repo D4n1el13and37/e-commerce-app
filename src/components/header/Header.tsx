@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         <Link to="/">
           <img src={Logo} alt="Site logo YesToPlants" />
         </Link>
-        <nav>
+        <nav className={classes.nav}>
           <ul className={classes.nav__list}>
             {navLinks.map((link, index) => (
               <li key={index}>
@@ -48,6 +48,12 @@ const Header: React.FC = () => {
             <span className={classes.card__quantity}>16</span>
           </a>
         </div>
+
+        <button className="burger" aria-label="Open menu" aria-expanded="false">
+          <span className="burger__line"></span>
+          <span className="burger__line"></span>
+          <span className="burger__line"></span>
+        </button>
       </div>
     </header>
   );

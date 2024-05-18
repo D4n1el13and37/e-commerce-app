@@ -24,10 +24,10 @@ function LoginPage() {
     formState: { errors, isSubmitting },
   } = useForm<LoginForm>({
     mode: 'onChange',
-    defaultValues: {
-      email: 'cainowa@gmail.com',
-      password: '1234567Qwer',
-    },
+    // defaultValues: {
+    //   email: 'cainowa@gmail.com',
+    //   password: '1234567Qwer',
+    // },
   });
   const [isError, setIsError] = useState('');
   function removeError() {

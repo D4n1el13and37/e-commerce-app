@@ -8,6 +8,10 @@
   &__left {
     place-content: center;
     grid-column: 2 / 7;
+
+    @media (max-width: (1024px)) {
+      grid-column: 5 span;
+    }
   }
 
   &__title {
@@ -21,5 +25,9 @@
 
   &__right {
     grid-column: 5 span;
+
+    @media (max-width: (1024px)) {
+      grid-column: 6 span;
+    }
   }
 }

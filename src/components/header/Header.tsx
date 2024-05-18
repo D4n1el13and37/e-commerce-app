@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    isActive ? classes.nav__link_active : undefined
+                    isActive ? classes.nav__link_active : classes.nav__link
                   }
                 >
                   {link.name}

@@ -74,6 +74,10 @@
       transition: var(--duration) color ease-in-out;
     }
   }
+
+  @media (max-width: (1024px)) {
+    height: 670px;
+  }
 }
 
 .swiper-vertical > .swiper-pagination-bullets .swiper-pagination-bullet,

@@ -47,6 +47,10 @@ const Slider: React.FC = () => {
       autoplay={{
         delay: 5000,
       }}
+      a11y={{
+        prevSlideMessage: 'Previous slide',
+        nextSlideMessage: 'Next slide',
+      }}
     >
       {slidesData.map((slide, index) => (
         <SwiperSlide key={index}>

@@ -118,3 +118,15 @@ li {
     color: var(--error-color, #ff5449);
   }
 }
+
+@media (max-width: (1024px)) {
+  :root {
+    // --main-font-size: 16px;
+    // --second-font-size: 14px;
+    // --third-font-size: 20px;
+    // --price-font-size: 24px;
+    // --title-font-size: 28px;
+    // --page-title-size: 36px;
+    --main-title-size: 36px;
+  }
+}

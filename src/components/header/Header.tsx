@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
@@ -18,38 +18,56 @@ const Header: React.FC = () => {
     { name: 'About', path: '/about', isActive: false },
   ];
 
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header>
       <div className={classes.header__container}>
-        <Link to="/">
+        <Link to="/" className={classes.header__logo}>
           <img src={Logo} alt="Site logo YesToPlants" />
         </Link>
-        <nav className={classes.nav}>
-          <ul className={classes.nav__list}>
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    isActive ? classes.nav__link_active : classes.nav__link
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className={classes.header__links}>
-          {/* {!loggedIn && <HeaderAuthBtns />} */}
-          {/* {loggedIn && <HeaderUser />} */}
-          <HeaderAuthBtns />
-          <a href="/card" className={classes.card} aria-label="Shopping card">
-            <span className={classes.card__quantity}>16</span>
-          </a>
+        <div className={classes.header__content}>
+          <nav
+            className={`${classes.nav} ${isMenuOpen ? classes.nav_active : ''}`}
+          >
+            <div className={classes.nav__content}>
+              <ul className={classes.nav__list}>
+                {navLinks.map((link, index) => (
+                  <li key={index}>
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        isActive ? classes.nav__link_active : classes.nav__link
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+              <HeaderAuthBtns />
+              {/* <HeaderUser /> */}
+            </div>
+          </nav>
+          <div className={classes.header__links}>
+            {/* {!loggedIn && <HeaderAuthBtns />} */}
+            {/* {loggedIn && <HeaderUser />} */}
+            <a href="/card" className={classes.card} aria-label="Shopping card">
+              <span className={classes.card__quantity}>16</span>
+            </a>
+          </div>
         </div>
 
-        <button className="burger" aria-label="Open menu" aria-expanded="false">
+        <button
+          className={`burger ${isMenuOpen ? 'burger--active' : ''}`}
+          aria-label="Open menu"
+          aria-expanded={isMenuOpen ? 'true' : 'false'}
+          onClick={toggleMenu}
+        >
           <span className="burger__line"></span>
           <span className="burger__line"></span>
           <span className="burger__line"></span>

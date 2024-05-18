@@ -39,7 +39,7 @@ const Slider: React.FC = () => {
         enabled: true,
         el: '.hero__slider_pagination',
         renderBullet(index, className) {
-          const slideDescr = slidesData[index].descr;
+          const slideDescr = slidesData[index]?.descr;
           return `<span class="${className}">${slideDescr}</span>`;
         },
       }}

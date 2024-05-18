@@ -12,6 +12,19 @@
     }
   }
 
+  &__logo {
+    z-index: 4;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: (900px)) {
+      margin-left: auto;
+    }
+  }
+
   &__links {
     display: inline-flex;
     align-items: center;
@@ -24,12 +37,45 @@
 }
 
 .nav {
-  display: block;
+  display: flex;
+  align-items: center;
+  margin-right: calc(var(--gap) * 2);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    min-width: 725px;
+
+    @media (max-width: (1355px)) {
+      min-width: 625px;
+    }
+
+    @media (max-width: (1100px)) {
+      min-width: 525px;
+    }
+
+    @media (max-width: (900px)) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: unset;
+      padding-top: 120px;
+      height: 100%;
+      min-width: none;
+      gap: 73px;
+    }
+  }
 
   &__list {
     display: flex;
     align-items: center;
     gap: calc(var(--gap) * 2);
+
+    @media (max-width: (900px)) {
+      flex-direction: column;
+      align-items: center;
+      margin-right: 0;
+      gap: calc(var(--gap) * 2);
+    }
   }
 
   &__link {
@@ -54,19 +100,46 @@
     }
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      var(--duration) visibility ease-in-out,
+      var(--duration) transform ease-in-out;
+  }
+
   @media (max-width: (900px)) {
-    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    justify-content: center;
+    overflow-y: auto;
+    width: 100%;
+    height: 100dvh;
+    background-color: var(--light-color);
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+
+  &_active {
+    visibility: visible;
+    transform: none;
   }
 }
 
 .shop_nav {
+  z-index: 4;
+
   &__list {
     display: flex;
     align-items: center;
     gap: calc(var(--gap) / 2);
 
     @media (max-width: (900px)) {
-      display: none;
+      flex-direction: column;
+
+      button {
+        padding: 12px 141px;
+      }
     }
   }
 
@@ -77,6 +150,7 @@
 
 .card {
   position: relative;
+  z-index: 4;
   display: inline-block;
   width: 32px;
   height: 32px;

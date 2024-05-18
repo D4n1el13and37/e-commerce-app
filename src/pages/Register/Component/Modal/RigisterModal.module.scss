@@ -1,0 +1,14 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__content {
+    margin: var(--gap) 0;
+  }
+
+  &__text {
+    margin-top: 12px;
+    text-align: center;
+  }
+}

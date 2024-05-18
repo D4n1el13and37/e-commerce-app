@@ -1,65 +1,40 @@
-import { Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 import NotFound from './pages/NotFound/NotFound';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
-import Main from './pages/Main/Main';
-import store from './store/store';
+import { autorizationByToken } from './store/authSlice';
+import useAppDispatch from './hooks/useAppDispatch';
+import useAppSelector from './hooks/useAppSelector';
+// import {  } from './store/store';
 
 function App() {
-  // const [projectDetails, setProjectDetails] = useState({});
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
 
-  // const getProducts = async () => {
-  //   try {
-  //     const project = await getApiRoot()
-  //       .withProjectKey({ projectKey })
-  //       .products()
-  //       .get()
-  //       .execute();
+  useEffect(() => {
+    dispatch(autorizationByToken());
+  }, [dispatch]);
 
-  //     setProjectDetails(project.body);
-  //   } catch (e) {
-  //     if (e instanceof Error) {
-  //       throw new Error(e.message);
-  //     } else {
-  //       throw new Error('An unknown error occurred');
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-  // function handler() {
-  //   console.log('click');
-  // }
-
-  // <div
-  //   style={{
-  //     display: 'flex',
-  //     flexWrap: 'wrap',
-  //     gap: '8px',
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //     height: '100dvh',
-  //   }}
-  // >
-  //   <Home />
-  //   <LoginPage />
-  // </div>;
+  // добавить лоадинг перед вызовом
+  // через маунт эффект вызвать чек авторизэйшн (ждем и показываем крутилку)
+  // const [autorized, setAutorized] = useState(false);
 
   return (
-    <Provider store={store}>
-      <Routes>
-        <Route path="/" errorElement={<NotFound />} element={<Home />} />
-        <Route
-          path="/login"
+    <Routes>
+      <Route path="/" errorElement={<NotFound />} element={<Home />} />
+      <Route
+        path="/login"
+        errorElement={<NotFound />}
+        element={!isAuthorized ? <LoginPage /> : <Navigate to="/" />}
+      />
+      {/* <Route
+          path="/main"
           errorElement={<NotFound />}
-          element={<LoginPage />}
-        />
-        <Route path="/main" errorElement={<NotFound />} element={<Main />} />
-        {/* <Route path="/*" element={<LoginPage />} /> */}
-        {/* <Route
+          element={isAuthorized ? <Main /> : <Navigate to="/login" />}
+        /> */}
+      {/* <Route path="/*" element={<LoginPage />} /> */}
+      {/* <Route
     //   path="/protected"
     //   element={
     //     <RequireAuth>
@@ -67,8 +42,7 @@ function App() {
           </RequireAuth>
         }
       /> */}
-      </Routes>
-    </Provider>
+    </Routes>
   );
 }
 

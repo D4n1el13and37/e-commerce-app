@@ -1,4 +1,5 @@
-import { FormProvider, useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
@@ -8,57 +9,30 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 
 import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
+import { RegistartionUser } from '../../../api/authMethods';
+import ModalRegistration from './Modal/Modal';
 
 export default function RegisterForm() {
   const methods = useForm<RegisterFormFields>({ mode: 'onChange' });
   const {
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = methods;
-  const onSubmit = (data: RegisterFormFields) => {
-    JSON.stringify(errors);
-    JSON.stringify(data);
-    // const newCustomerDetails: MyCustomerDraft = {
-    //   email: data.email,
-    //   password: data.password,
-    //   firstName: data.firstName,
-    //   lastName: data.lastName,
-    //   // addresses: [
-    //   //   {
-    //   //     key: 'shipping',
-    //   //     streetName: data.streetShipping,
-    //   //     city: data.cityShipping,
-    //   //     postalCode: data.postcodeShipping,
-    //   //     country: data.countryShipping,
-    //   //   },
-    //   //   {
-    //   //     key: 'billing',
-    //   //     streetName: data.streetBilling,
-    //   //     city: data.cityBilling,
-    //   //     postalCode: data.postcodeBilling,
-    //   //     country: data.countryBilling,
-    //   //   },
-    //   // ],
-    //   // defaultBillingAddress: 1,
-    //   // defaultShippingAddress: 0,
-    // };
-    // try {
-    //   const request = await getApiRoot()
-    //     .withProjectKey({ projectKey })
-    //     // .me()
-    //     // .signup()
-    //     .customers()
-    //     .post({ body: newCustomerDetails })
-    //     .execute();
-    //   const newCustomer = request.body.customer;
-    //   console.log('User created:', newCustomer);
-    // } catch (e) {
-    //   if (e instanceof Error) {
-    //     throw new Error(e.message);
-    //   } else {
-    //     throw new Error('An unknown error occurred');
-    //   }
-    // }
+
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState('');
+  function removeError() {
+    setTimeout(() => setIsError(''), 3000);
+  }
+
+  const onSubmit: SubmitHandler<RegisterFormFields> = async (data) => {
+    try {
+      await RegistartionUser(data);
+      setIsSuccess(true);
+    } catch (error) {
+      if (error instanceof Error) setIsError(error.message);
+      removeError();
+    }
   };
 
   return (
@@ -74,14 +48,21 @@ export default function RegisterForm() {
           label="Are the billing and shipping addresses the same?"
           isChecked={true}
         />
-        <Button
-          type="submit"
-          isMain={true}
-          isFilled={true}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Loading...' : 'Submit'}
-        </Button>
+        <div className="server_error">
+          {isError && (
+            <span className="error">
+              There is already an existing customer with the provided email
+            </span>
+          )}
+          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+            {isSubmitting ? 'Loading...' : 'Submit'}
+          </Button>
+
+          <ModalRegistration
+            isOpen={isSuccess}
+            onRequestClose={() => setIsSuccess(false)}
+          />
+        </div>
       </form>
     </FormProvider>
   );

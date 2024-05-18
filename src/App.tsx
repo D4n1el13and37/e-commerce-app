@@ -4,28 +4,6 @@ import NotFound from './pages/NotFound/NotFound';
 import LoginPage from './pages/Login/LoginPage';
 
 function App() {
-  // const getProducts = async () => {
-  //   try {
-  //     const project = await getApiRoot()
-  //       .withProjectKey({ projectKey })
-  //       .products()
-  //       .get()
-  //       .execute();
-
-  //     setProjectDetails(project.body);
-  //   } catch (e) {
-  //     if (e instanceof Error) {
-  //       throw new Error(e.message);
-  //     } else {
-  //       throw new Error('An unknown error occurred');
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />

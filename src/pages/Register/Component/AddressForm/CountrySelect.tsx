@@ -75,7 +75,7 @@ export function CountrySelect({
           value={value}
           onChange={(option) => {
             setSelectedCountry(option);
-            field.onChange(option ? option.name : '');
+            field.onChange(option ? option.value : '');
           }}
           // styles={selectStyles}
         />

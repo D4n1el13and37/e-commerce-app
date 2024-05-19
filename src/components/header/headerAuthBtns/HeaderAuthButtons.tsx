@@ -12,12 +12,12 @@ const HeaderAuthButtons: React.FC = () => {
 
   return (
     <ul className={classes.shop_nav__list}>
-      <li>
+      <li className={classes.shop_nav__list_item}>
         <Button type="submit" isMain={true} onClick={handleLoginClick}>
           Log In
         </Button>
       </li>
-      <li>
+      <li className={classes.shop_nav__list_item}>
         <Button type="submit" isMain={true} isFilled={true}>
           Sign Up
         </Button>

@@ -127,14 +127,16 @@
     @media (max-width: (900px)) {
       flex-direction: column;
 
-      li:first-child > button {
-        padding: 12px 141px;
+      button {
+        padding: 12px 139px;
+        width: 100%;
       }
+    }
+  }
 
-      li:nth-child(2) > button {
-        border: 1px solid transparent;
-        padding: 12px 143px;
-      }
+  &__list_item {
+    @media (max-width: (900px)) {
+      width: 100%;
     }
   }
 

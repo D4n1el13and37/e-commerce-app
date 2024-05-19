@@ -13,6 +13,6 @@ export interface RegisterFormFields {
   countryBilling: string;
   dateBirth: string;
 
-  defaultBillingAddress?: number;
-  defaultShippingAddress?: number;
+  defaultBillingAddress?: boolean;
+  defaultShippingAddress?: boolean;
 }

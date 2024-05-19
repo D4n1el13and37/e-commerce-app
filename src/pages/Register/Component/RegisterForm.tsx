@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import PersonalInfo from './PersonalInfo';
@@ -20,7 +19,6 @@ export default function RegisterForm() {
     formState: { isSubmitting },
   } = methods;
 
-  // const history = useHistory();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState('');
   function removeError() {

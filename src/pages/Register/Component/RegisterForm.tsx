@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAppDispatch from '../../../hooks/useAppDispatch';
 import { login, register } from '../../../store/authSlice';
 
@@ -16,7 +16,24 @@ import { RegisterFormFields } from './interfaceRegister';
 import ModalRegistration from './Modal/Modal';
 
 export default function RegisterForm() {
-  const methods = useForm<RegisterFormFields>({ mode: 'onChange' });
+  const methods = useForm<RegisterFormFields>({
+    mode: 'onChange',
+    // defaultValues: {
+    //   email: 'test@example.com',
+    //   password: '123Qwerty',
+    //   firstName: 'Egor',
+    //   lastName: 'Krit',
+    //   dateBirth: '12-12-1212',
+    //   streetShipping: 'Evkeoi',
+    //   streetBilling: 'Evkeoi',
+    //   cityShipping: 'Ninzghn',
+    //   cityBilling: 'Ninzghn',
+    //   postcodeShipping: '123123',
+    //   postcodeBilling: '123123',
+    //   countryShipping: 'Russia',
+    //   countryBilling: 'Russia',
+    // },
+  });
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -79,20 +96,25 @@ export default function RegisterForm() {
           checked={isSameAddress}
           onChange={handleCheckboxChange}
         />
-        <div className="server_error">
-          {isError && (
-            <span className="error">
-              There is already an existing customer with the provided email
-            </span>
-          )}
-          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-            {isSubmitting ? 'Loading...' : 'Submit'}
-          </Button>
+        <div>
+          <div className={classes.server__error}>
+            {isError && (
+              <span className="error">
+                There is already an existing customer with the provided email
+              </span>
+            )}
+            <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+              {isSubmitting ? 'Loading...' : 'Submit'}
+            </Button>
 
-          <ModalRegistration
-            isOpen={isSuccess}
-            onRequestClose={() => setIsSuccess(false)}
-          />
+            <ModalRegistration
+              isOpen={isSuccess}
+              onRequestClose={() => setIsSuccess(false)}
+            />
+          </div>
+          <span className={classes.login}>
+            Already have an account? <Link to="/login">Log in</Link>
+          </span>
         </div>
       </form>
     </FormProvider>

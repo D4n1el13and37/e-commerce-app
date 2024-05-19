@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { /* useLocation , */ useNavigate } from 'react-router-dom';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import './LoginPage.scss';
 import EmailInput from '../../components/form/email/EmailInput';
-import { loginWithPassword } from '../../api/authMethods';
+import { login } from '../../store/authSlice';
+import useAppDispatch from '../../hooks/useAppDispatch';
 
 export interface LoginForm {
   email: string;
@@ -12,28 +14,34 @@ export interface LoginForm {
 }
 
 function LoginPage() {
-  const methods = useForm<LoginForm>({ mode: 'onChange' });
-  const {
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = methods;
-  //   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
-  //     await new Promise((resolve) => {
-  //       setTimeout(resolve, 1000);
-  //     });
-  //     console.log(data);
-  //   };
-
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch(); //
+  // const location = useLocation(); // to save where we were(for navigating)
   const [isError, setIsError] = useState('');
   function removeError() {
     setTimeout(() => setIsError(''), 3000);
   }
 
-  const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    loginWithPassword(data.email, data.password).catch((e) => {
-      setIsError(e.message);
-      removeError();
-    });
+  const methods = useForm<LoginForm>({
+    mode: 'onChange',
+    defaultValues: { email: 'test@example.com', password: '123Qwerty' },
+  });
+  const {
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = methods;
+
+  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+    const { email, password } = data;
+    try {
+      await dispatch(login({ email, password })).unwrap();
+      navigate('/main', { replace: true });
+    } catch (e) {
+      if (typeof e === 'string') {
+        setIsError(e);
+        removeError();
+      }
+    }
   };
 
   return (

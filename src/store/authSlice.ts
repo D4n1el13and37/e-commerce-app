@@ -6,7 +6,7 @@ import {
   loginWithPassword,
 } from '../api/authMethods';
 import { LoginForm } from '../pages/Login/LoginPage';
-import { RegisterFormFields } from '../api/InterfaceApi';
+import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
 
 // const key = 'tokendata';
 // const storedData = localStorage.getItem(key);

@@ -97,8 +97,8 @@ export async function RegistartionUser(
     defaultShippingAddress: data.defaultShippingAddress ? 0 : undefined,
     defaultBillingAddress: data.defaultBillingAddress ? 1 : undefined,
 
-    shippingAddresses: [0],
-    billingAddresses: [1],
+    // shippingAddresses: [0],
+    // billingAddresses: [1],
   };
 
   // console.log(

@@ -1,10 +1,12 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Logo from './Logo.svg';
-import classes from './Header.module.scss';
 import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
 import Button from '../ui/button/Button';
-// import HeaderUser from './headerUser/HeaderUser';
+import HeaderUser from './headerUser/HeaderUser';
+import useAppSelector from '../../hooks/useAppSelector';
+
+import Logo from './Logo.svg';
+import classes from './Header.module.scss';
 
 const Header: React.FC = () => {
   const navLinks = [
@@ -33,6 +35,8 @@ const Header: React.FC = () => {
     };
   }, [isMenuOpen]);
 
+  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
+
   return (
     <header>
       <div className={classes.header__container}>
@@ -59,7 +63,7 @@ const Header: React.FC = () => {
                 ))}
               </ul>
               <HeaderAuthButtons />
-              {/* <HeaderUser /> */}
+              {isAuthorized && <HeaderUser />}
             </div>
           </nav>
           <a href="/card" className={classes.card} aria-label="Shopping card">

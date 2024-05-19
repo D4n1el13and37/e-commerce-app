@@ -2,7 +2,7 @@ import RegisterForm from './Component/RegisterForm';
 import Button from '../../components/ui/button/Button';
 import classes from './Component/Rigister.module.scss';
 
-export default function Register() {
+export default function RegisterPage() {
   return (
     <section className={`container`}>
       <div className={`grid ${classes.register}`}>
@@ -22,7 +22,7 @@ export default function Register() {
             />
           </svg>
         </Button>
-        <RegisterForm></RegisterForm>
+        <RegisterForm />
       </div>
     </section>
   );

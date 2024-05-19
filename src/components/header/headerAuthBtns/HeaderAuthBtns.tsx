@@ -11,7 +11,7 @@ const HeaderAuthBtns: React.FC = () => {
   };
 
   const handleRegistartionClick = () => {
-    navigate('registration');
+    navigate('/register');
   };
 
   return (

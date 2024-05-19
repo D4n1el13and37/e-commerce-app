@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import useAppDispatch from '../../../hooks/useAppDispatch';
+import { login, register } from '../../../store/authSlice';
 
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
@@ -9,7 +12,7 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 
 import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
-import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
+// import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
 import ModalRegistration from './Modal/Modal';
 
 export default function RegisterForm() {
@@ -21,19 +24,30 @@ export default function RegisterForm() {
 
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  // const { isAuthorized, isLoading, error } = useAppSelector(
+  //   (state) => state.auth
+  // );
+
   function removeError() {
     setTimeout(() => setIsError(''), 3000);
   }
 
   const onSubmit: SubmitHandler<RegisterFormFields> = async (data) => {
     try {
-      await RegistartionUser(data);
+      await dispatch(register(data)).unwrap();
       setIsSuccess(true);
-      await loginWithPassword(data.email, data.password);
-      // history.push('/');
-    } catch (error) {
-      if (error instanceof Error) setIsError(error.message);
-      removeError();
+      await dispatch(
+        login({ email: data.email, password: data.password })
+      ).unwrap();
+      navigate('/main', { replace: true });
+    } catch (e) {
+      if (typeof e === 'string') {
+        setIsError(e);
+        removeError();
+      }
     }
   };
 

@@ -46,7 +46,7 @@ function LoginPage() {
     const { email, password } = data;
     try {
       await dispatch(login({ email, password })).unwrap();
-      navigate('/', { replace: true });
+      navigate('/home', { replace: true });
     } catch (e) {
       if (typeof e === 'string') {
         setIsError(e);

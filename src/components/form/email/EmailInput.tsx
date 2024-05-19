@@ -31,6 +31,10 @@ const EmailInput: React.FC = () => {
             return 'Email should not end with @';
           }
 
+          if (/[а-яА-ЯёЁ]/.test(value)) {
+            return 'Email should not contain Cyrillic characters';
+          }
+
           // Validate username
           if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]$/.test(localPart)) {
             return 'Username should start and end with a letter or digit';

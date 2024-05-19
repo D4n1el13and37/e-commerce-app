@@ -92,3 +92,32 @@
     }
   }
 }
+
+.server__error {
+  margin-bottom: 12px;
+}
+
+.login {
+  font-family: var(--font-family);
+  font-size: var(--second-font-size);
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #202020;
+
+  a {
+    font-weight: 600;
+    color: var(--primary-color, #758963);
+    transition: color;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color var(--duration, 0.3s) ease-in-out;
+    }
+  }
+
+  @media (any-hover: hover) {
+    a:hover {
+      color: var(--accent-color, #3f5028);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAppDispatch from '../../../hooks/useAppDispatch';
 import { login, register } from '../../../store/authSlice';
 
@@ -64,20 +64,25 @@ export default function RegisterForm() {
           label="Are the billing and shipping addresses the same?"
           isChecked={true}
         />
-        <div className="server_error">
-          {isError && (
-            <span className="error">
-              There is already an existing customer with the provided email
-            </span>
-          )}
-          <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-            {isSubmitting ? 'Loading...' : 'Submit'}
-          </Button>
+        <div>
+          <div className={classes.server__error}>
+            {isError && (
+              <span className="error">
+                There is already an existing customer with the provided email
+              </span>
+            )}
+            <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+              {isSubmitting ? 'Loading...' : 'Submit'}
+            </Button>
 
-          <ModalRegistration
-            isOpen={isSuccess}
-            onRequestClose={() => setIsSuccess(false)}
-          />
+            <ModalRegistration
+              isOpen={isSuccess}
+              onRequestClose={() => setIsSuccess(false)}
+            />
+          </div>
+          <span className={classes.login}>
+            Already have an account? <Link to="/login">Log in</Link>
+          </span>
         </div>
       </form>
     </FormProvider>

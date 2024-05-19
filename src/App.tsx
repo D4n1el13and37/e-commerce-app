@@ -26,13 +26,14 @@ function App() {
       <Route
         path="/login"
         errorElement={<NotFound />}
-        element={!isAuthorized ? <LoginPage /> : <Navigate to="/" />}
+        element={!isAuthorized ? <LoginPage /> : <Navigate to="/home" />}
       />
-      {/* <Route
-          path="/main"
-          errorElement={<NotFound />}
-          element={isAuthorized ? <Main /> : <Navigate to="/login" />}
-        /> */}
+      {/* <Route path="/home" errorElement={<NotFound />} element={<Home />} /> */}
+      <Route
+        path="/home"
+        errorElement={<NotFound />}
+        element={isAuthorized ? <Home /> : <Navigate to="/login" />}
+      />
       {/* <Route path="/*" element={<LoginPage />} /> */}
       {/* <Route
     //   path="/protected"

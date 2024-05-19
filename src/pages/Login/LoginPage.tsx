@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { /* useLocation , */ useNavigate } from 'react-router-dom';
+import { /* useLocation , */ Link, useNavigate } from 'react-router-dom';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
-import './LoginPage.scss';
+import cl from './LoginPage.module.scss';
 import EmailInput from '../../components/form/email/EmailInput';
 import { login } from '../../store/authSlice';
 import useAppDispatch from '../../hooks/useAppDispatch';
+import GoBackButton from '../../components/form/goBack/GoBackButton';
 
 export interface LoginForm {
   email: string;
@@ -45,59 +46,54 @@ function LoginPage() {
   };
 
   return (
-    <div className="login__container">
-      {/* <Button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="11"
-          height="19"
-          viewBox="0 0 11 19"
-          fill="none"
-        >
-          <path
-            d="M10.479 0.604004L2.02063 9.06238L10.479 17.5208"
-            stroke="#758963"
-            stroke-width="1.5"
-          />
-        </svg>
-      </Button> */}
-      <div className="headline">
-        <h2>Welcome back!</h2>
-        <span>Sign In to continue</span>
-      </div>
-      <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form_container">
-            <div className="input_container">
-              <EmailInput />
-              <div className="error_container">
-                {errors.email && (
-                  <span className="error">{errors.email.message}</span>
-                )}
+    <section className={`container`}>
+      <div className={`grid ${cl.login}`}>
+        <GoBackButton />
+        <div className={cl.login__container}>
+          <div className={cl.headline}>
+            <h2>Welcome back!</h2>
+            <span>Sign In to continue</span>
+          </div>
+          <FormProvider {...methods}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className={cl.form__container}>
+                <div className={cl.input__container}>
+                  <EmailInput />
+                  <div className={cl.error__container}>
+                    {errors.email && (
+                      <span className={`error`}>{errors.email.message}</span>
+                    )}
+                  </div>
+                </div>
+                <div className={cl.input__container}>
+                  <PasswordField />
+                  <div className={cl.error__container}>
+                    <span className={`error`}>
+                      {errors.password && errors.password.message}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="input_container">
-              <PasswordField />
-              <div className="error_container">
-                <span className="error">
-                  {errors.password && errors.password.message}
+              <div>
+                <div className={cl.server__error}>
+                  {isError && (
+                    <span className={`error`}>
+                      The username or password is incorrect
+                    </span>
+                  )}
+                  <Button isFilled={true} disabled={isSubmitting} isMain={true}>
+                    {isSubmitting ? 'Loading...' : 'Submit'}
+                  </Button>
+                </div>
+                <span className={cl.register}>
+                  Do not have an account? <Link to="/register">Sign Up</Link>
                 </span>
               </div>
-            </div>
-          </div>
-          <div className="server_error">
-            {isError && (
-              <span className="error">
-                The username or password is incorrect
-              </span>
-            )}
-            <Button isFilled={true} disabled={isSubmitting} isMain={true}>
-              {isSubmitting ? 'Loading...' : 'Submit'}
-            </Button>
-          </div>
-        </form>
-      </FormProvider>
-    </div>
+            </form>
+          </FormProvider>
+        </div>
+      </div>
+    </section>
   );
 }
 

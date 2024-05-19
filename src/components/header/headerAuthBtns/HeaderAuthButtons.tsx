@@ -10,6 +10,10 @@ const HeaderAuthButtons: React.FC = () => {
     navigate('/login');
   };
 
+  const handleRegistartionClick = () => {
+    navigate('/register');
+  };
+
   return (
     <ul className={classes.shop_nav__list}>
       <li className={classes.shop_nav__list_item}>
@@ -18,7 +22,12 @@ const HeaderAuthButtons: React.FC = () => {
         </Button>
       </li>
       <li className={classes.shop_nav__list_item}>
-        <Button type="submit" isMain={true} isFilled={true}>
+        <Button
+          type="submit"
+          isMain={true}
+          isFilled={true}
+          onClick={handleRegistartionClick}
+        >
           Sign Up
         </Button>
       </li>

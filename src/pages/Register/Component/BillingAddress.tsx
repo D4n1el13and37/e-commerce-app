@@ -36,6 +36,7 @@ export default function BillingAddress() {
               </span>
             )}
           </div>
+
           <div>
             <Input
               id="cityBilling"
@@ -106,6 +107,7 @@ export default function BillingAddress() {
                     ) {
                       return 'Invalid postcode for this country';
                     }
+
                     return true;
                   },
                 })}

@@ -1,9 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './Modal.scss';
-// import Button from '../../../../components/ui/button/Button';
 
 import modal from './RigisterModal.module.scss';
+import Button from '../../../../components/ui/button/Button';
+
+import './Modal.scss';
+import srcPlants from '../../../../../public/plantsModal.svg';
 
 interface CustomModalProps {
   isOpen: boolean;
@@ -24,7 +26,7 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
     overlayClassName="ReactModal__Overlay"
   >
     <div className={`${modal.modal}`}>
-      <img src="public/plantsModal.svg" alt="Illustartion happy plant" />
+      <img src={srcPlants} alt="Illustartion happy plant" />
       <div className={`${modal.modal__content}`}>
         <h2 className={`${modal.modal__title}`}>Registration successful!</h2>
         <p className={`${modal.modal__text}`}>
@@ -32,9 +34,9 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
         </p>
       </div>
 
-      {/* <Button isFilled={true} isMain={true} onClick={onRequestClose}>
+      <Button isFilled={true} isMain={true} onClick={onRequestClose}>
         Close
-      </Button> */}
+      </Button>
     </div>
   </Modal>
 );

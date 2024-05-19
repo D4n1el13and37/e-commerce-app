@@ -7,8 +7,6 @@ import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import NotFound from './pages/NotFound/NotFound';
-// import {  } from './store/store';
-// import LoginPage from './pages/Login/LoginPage';
 
 function App() {
   const dispatch = useAppDispatch();

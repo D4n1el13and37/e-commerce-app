@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import classes from './HeaderUser.module.scss';
+import Button from '../../ui/button/Button';
 
 const HeaderUser: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
@@ -10,12 +11,12 @@ const HeaderUser: React.FC = () => {
 
   return (
     <div className={classes.container}>
-      <button
+      <Button
         className={`${classes.button} ${isActive ? classes.active : ''}`}
         aria-expanded={isActive ? 'true' : 'false'}
         aria-controls="list"
         onClick={toggleMenu}
-      ></button>
+      ></Button>
 
       <ul className={classes.menu} aria-hidden={!isActive}>
         <li className={classes.menu_item}>

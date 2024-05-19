@@ -1,17 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
+import Button from '../ui/button/Button';
 // import HeaderUser from './headerUser/HeaderUser';
 
 const Header: React.FC = () => {
-  /*   const [loggedIn, setLoggedIn] = useState(false);
-
-  const login = () => {
-    setLoggedIn(true);
-  }; */
-
   const navLinks = [
     { name: 'Home', path: '/', isActive: true },
     { name: 'Catalog', path: '/catalog', isActive: false },
@@ -23,6 +18,20 @@ const Header: React.FC = () => {
   const toggleMenu = useCallback(() => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   }, []);
+
+  useEffect(() => {
+    const body = document.querySelector('body') as HTMLBodyElement;
+
+    if (isMenuOpen) {
+      body.classList.add('stop-scroll');
+    } else {
+      body.classList.remove('stop-scroll');
+    }
+
+    return () => {
+      body.classList.remove('stop-scroll');
+    };
+  }, [isMenuOpen]);
 
   return (
     <header>
@@ -58,7 +67,7 @@ const Header: React.FC = () => {
           </a>
         </div>
 
-        <button
+        <Button
           className={`${classes.burger} ${isMenuOpen ? `${classes.burger__active}` : ''}`}
           aria-label="Open menu"
           aria-expanded={isMenuOpen ? 'true' : 'false'}
@@ -67,7 +76,7 @@ const Header: React.FC = () => {
           <span className={classes.burger__line}></span>
           <span className={classes.burger__line}></span>
           <span className={classes.burger__line}></span>
-        </button>
+        </Button>
       </div>
     </header>
   );

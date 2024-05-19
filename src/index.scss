@@ -95,6 +95,10 @@ li {
   gap: var(--gap);
 }
 
+.stop-scroll {
+  overflow: hidden;
+}
+
 /* remove from here? */
 .error {
   border-color: var(--error-color, #ff5449);

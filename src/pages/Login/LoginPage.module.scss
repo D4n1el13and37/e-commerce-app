@@ -15,6 +15,11 @@
   padding: 48px 0;
   height: 100vh;
 
+  @media (max-width: (530px)) {
+    align-content: start;
+    grid-column: 1;
+  }
+
   button {
     grid-column: 2 / 2;
 

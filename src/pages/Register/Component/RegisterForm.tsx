@@ -60,10 +60,7 @@ export default function RegisterForm() {
           <ShippingAddress />
           <BillingAddress />
         </div>
-        <Checkbox
-          label="Are the billing and shipping addresses the same?"
-          isChecked={true}
-        />
+        <Checkbox label="Are the billing and shipping addresses the same?" />
         <div className="server_error">
           {isError && (
             <span className="error">

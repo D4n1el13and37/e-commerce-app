@@ -13,10 +13,13 @@ export default function ShippingAddress() {
     control,
     register,
     formState: { errors },
+    watch,
   } = useFormContext();
 
   const [selectedCountry, setSelectedCountry] =
     useState<SingleValue<CountryOption> | null>(null);
+
+  const defaultShippingAddress = watch('defaultShippingAddress', false);
 
   return (
     <div>
@@ -119,7 +122,11 @@ export default function ShippingAddress() {
           </div>
         </div>
 
-        <Checkbox label="Use as default address" />
+        <Checkbox
+          label="Use as default address"
+          {...register('defaultShippingAddress')}
+          checked={defaultShippingAddress}
+        />
       </div>
     </div>
   );

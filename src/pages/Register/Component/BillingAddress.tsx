@@ -13,10 +13,13 @@ export default function BillingAddress() {
     control,
     register,
     formState: { errors },
+    watch,
   } = useFormContext();
 
   const [selectedCountry, setSelectedCountry] =
     useState<SingleValue<CountryOption> | null>(null);
+
+  const defaultBillingAddress = watch('defaultBillingAddress', false);
 
   return (
     <div>
@@ -121,7 +124,11 @@ export default function BillingAddress() {
           </div>
         </div>
 
-        <Checkbox label="Use as default address" />
+        <Checkbox
+          label="Use as default billing address"
+          {...register('defaultBillingAddress')}
+          checked={defaultBillingAddress}
+        />
       </div>
     </div>
   );

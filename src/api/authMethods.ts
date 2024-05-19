@@ -1,7 +1,7 @@
 import { MyCustomerDraft, Customer } from '@commercetools/platform-sdk';
 import getApiRoot from './api';
 import { projectKey } from './clientConfig';
-import { RegisterFormFields } from './InterfaceApi';
+import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
 
 export async function loginWithPassword(
   email: string,
@@ -94,11 +94,14 @@ export async function RegistartionUser(
         country: data.countryBilling,
       },
     ],
-    defaultShippingAddress: 0,
-    defaultBillingAddress: 1,
+    defaultShippingAddress: data.defaultShippingAddress ? 0 : undefined,
+    defaultBillingAddress: data.defaultBillingAddress ? 1 : undefined,
   };
 
-  JSON.stringify(newCustomerDetails, null, 2);
+  // console.log(
+  //   'Sending customer details:',
+  //   JSON.stringify(newCustomerDetails, null, 2)
+  // );
 
   try {
     const request = await getApiRoot()
@@ -107,7 +110,8 @@ export async function RegistartionUser(
       .post({ body: newCustomerDetails })
       .execute();
     const newCustomer: Customer = request.body.customer;
-    JSON.stringify(newCustomer);
+
+    // console.log(JSON.stringify(newCustomer));
 
     return newCustomer;
   } catch (e) {

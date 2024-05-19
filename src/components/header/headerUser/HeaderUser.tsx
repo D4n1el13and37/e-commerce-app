@@ -1,6 +1,9 @@
 import React, { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './HeaderUser.module.scss';
 import Button from '../../ui/button/Button';
+import { logout } from '../../../store/authSlice';
+import useAppDispatch from '../../../hooks/useAppDispatch';
 
 const HeaderUser: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
@@ -8,6 +11,15 @@ const HeaderUser: React.FC = () => {
   const toggleMenu = useCallback(() => {
     setIsActive((prevState) => !prevState);
   }, []);
+
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <div className={classes.container}>
@@ -19,23 +31,20 @@ const HeaderUser: React.FC = () => {
       ></Button>
 
       <ul className={classes.menu} aria-hidden={!isActive}>
-        <li className={classes.menu_item}>
-          <a
-            className={classes.menu_link}
-            href="#"
-            tabIndex={isActive ? 0 : -1}
-          >
+        {/* <li className={classes.menu_item}>
+          <Button className={classes.menu_link} tabIndex={isActive ? 0 : -1}>
             Account
-          </a>
-        </li>
+          </Button>
+        </li> */}
         <li className={classes.menu_item}>
-          <a
+          <Button
             className={classes.menu_link}
-            href="#"
             tabIndex={isActive ? 0 : -1}
+            isMain={true}
+            onClick={handleLogout}
           >
             Log Out
-          </a>
+          </Button>
         </li>
       </ul>
     </div>

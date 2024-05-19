@@ -71,6 +71,10 @@ export const autorizationByToken = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk('auth/logout', async () => {
+  localStorage.removeItem('tokendata');
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -115,6 +119,12 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.currentUser = null;
+        newState.isAutorized = false;
       });
   },
 });

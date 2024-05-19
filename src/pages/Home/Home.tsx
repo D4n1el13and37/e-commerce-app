@@ -5,7 +5,9 @@ import Hero from '../../components/hero/Hero';
 const Home: React.FC = () => (
   <>
     <Header />
-    <Hero />
+    <main>
+      <Hero />
+    </main>
   </>
 );
 

@@ -5,7 +5,7 @@
   // base
   --font-family: 'Montserrat', sans-serif;
   --content-width: 1320px;
-  --container-offset: 15px;
+  --container-offset: 20px;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
 
   // colors
@@ -95,6 +95,10 @@ li {
   gap: var(--gap);
 }
 
+.stop-scroll {
+  overflow: hidden;
+}
+
 /* remove from here? */
 .error {
   border-color: var(--error-color, #ff5449);
@@ -116,5 +120,11 @@ li {
 
   &::placeholder {
     color: var(--error-color, #ff5449);
+  }
+}
+
+@media (max-width: (1024px)) {
+  :root {
+    --main-title-size: 36px;
   }
 }

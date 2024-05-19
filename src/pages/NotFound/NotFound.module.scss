@@ -2,6 +2,10 @@
   &__left {
     place-self: center;
     grid-column: 2 / 6;
+
+    @media (max-width: (900px)) {
+      grid-column: 12 span;
+    }
   }
 
   &__title {
@@ -20,10 +24,20 @@
     line-height: 122%;
     color: var(--accent-color);
     text-wrap: balance;
+
+    @media (max-width: (900px)) {
+      max-width: 440px;
+      font-size: 16px;
+    }
   }
 
   &__right {
     place-self: center;
     grid-column: 7 span;
+
+    @media (max-width: (900px)) {
+      order: -1;
+      grid-column: 12 span;
+    }
   }
 }

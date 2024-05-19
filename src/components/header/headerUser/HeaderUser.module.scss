@@ -50,11 +50,14 @@
 
 .menu_link {
   display: block;
+  border: none;
   padding: 0.5lh 50px;
   font-size: var(--second-font-size);
   line-height: 143%;
   letter-spacing: 0.02em;
   color: var(--grey-color);
+  background: none;
+  cursor: pointer;
 
   @media (any-hover: hover) {
     &:hover {

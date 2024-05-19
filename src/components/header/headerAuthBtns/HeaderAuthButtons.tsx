@@ -19,7 +19,7 @@ const HeaderAuthButtons: React.FC = () => {
       </li>
       <li>
         <Button type="submit" isMain={true} isFilled={true}>
-          Sig In
+          Sign Up
         </Button>
       </li>
     </ul>

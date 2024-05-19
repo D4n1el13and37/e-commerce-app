@@ -49,7 +49,7 @@ export default function RegisterForm() {
     }
 
     try {
-      await dispatch(register(data)).unwrap();
+      await dispatch(register(userData)).unwrap();
       setIsSuccess(true);
 
       await setTimeout(() => {

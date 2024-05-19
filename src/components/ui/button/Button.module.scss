@@ -1,4 +1,7 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--primary-color, #758963);
   border-radius: 12px;
   padding: 15px;
@@ -6,10 +9,6 @@
   height: 45px;
   color: var(--primary-color, #758963);
   background-color: transparent;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   @media (any-hover: hover) {
     &:hover {

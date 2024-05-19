@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Customer } from '@commercetools/platform-sdk';
-import { loginByToken, loginWithPassword } from '../api/authMethods';
+import {
+  RegistartionUser,
+  loginByToken,
+  loginWithPassword,
+} from '../api/authMethods';
 import { LoginForm } from '../pages/Login/LoginPage';
+import { RegisterFormFields } from '../api/InterfaceApi';
 
 // const key = 'tokendata';
 // const storedData = localStorage.getItem(key);
@@ -18,6 +23,21 @@ const initialState: AutorizationState = {
   isAutorized: false,
   isLoading: false,
 };
+
+export const register = createAsyncThunk(
+  'auth/register',
+  async (userData: RegisterFormFields, thunkAPI) => {
+    try {
+      const response = await RegistartionUser(userData);
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message); // ???
+      }
+      throw new Error('Error from REDUX login function');
+    }
+  }
+);
 
 export const login = createAsyncThunk(
   'auth/login',
@@ -85,6 +105,16 @@ const authSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.currentUser = null;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.isAutorized = true;
+        newState.currentUser = action.payload;
+      })
+      .addCase(register.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
       });
   },
 });

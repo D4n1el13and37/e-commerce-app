@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../ui/button/Button';
 import classes from '../Header.module.scss';
 
-const HeaderAuthBtns: React.FC = () => {
+const HeaderAuthButtons: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -16,12 +16,12 @@ const HeaderAuthBtns: React.FC = () => {
 
   return (
     <ul className={classes.shop_nav__list}>
-      <li>
+      <li className={classes.shop_nav__list_item}>
         <Button type="submit" isMain={true} onClick={handleLoginClick}>
           Log In
         </Button>
       </li>
-      <li>
+      <li className={classes.shop_nav__list_item}>
         <Button
           type="submit"
           isMain={true}
@@ -35,4 +35,4 @@ const HeaderAuthBtns: React.FC = () => {
   );
 };
 
-export default HeaderAuthBtns;
+export default HeaderAuthButtons;

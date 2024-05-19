@@ -6,8 +6,16 @@
   }
 
   &__left {
-    place-content: center;
+    place-self: center;
     grid-column: 2 / 7;
+
+    @media (max-width: (1024px)) {
+      grid-column: 5 span;
+    }
+
+    @media (max-width: (650px)) {
+      grid-column: 12 span;
+    }
   }
 
   &__title {
@@ -17,9 +25,22 @@
     line-height: 112%;
     color: var(--text-color);
     text-wrap: balance;
+
+    @media (max-width: (900px)) {
+      font-weight: 400;
+    }
   }
 
   &__right {
     grid-column: 5 span;
+
+    @media (max-width: (1024px)) {
+      grid-column: 6 span;
+    }
+
+    @media (max-width: (650px)) {
+      order: -1;
+      grid-column: 11 span;
+    }
   }
 }

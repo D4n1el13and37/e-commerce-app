@@ -80,22 +80,24 @@ export async function RegistartionUser(
     lastName: data.lastName,
     addresses: [
       {
-        key: 'shipping',
         streetName: data.streetShipping,
         city: data.cityShipping,
         postalCode: data.postcodeShipping,
         country: data.countryShipping,
       },
       {
-        key: 'billing',
         streetName: data.streetBilling,
         city: data.cityBilling,
         postalCode: data.postcodeBilling,
         country: data.countryBilling,
       },
     ],
+
     defaultShippingAddress: data.defaultShippingAddress ? 0 : undefined,
     defaultBillingAddress: data.defaultBillingAddress ? 1 : undefined,
+
+    shippingAddresses: [0],
+    billingAddresses: [1],
   };
 
   // console.log(

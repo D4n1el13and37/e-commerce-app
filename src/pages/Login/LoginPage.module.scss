@@ -71,7 +71,7 @@
     line-height: 24px;
     text-align: center;
     text-transform: capitalize;
-    color: var(--Schemes-Secondary, #626c57);
+    color: var(--primary-color);
   }
 }
 
@@ -101,7 +101,7 @@ form {
     span {
       position: absolute;
       bottom: 0;
-      font-size: 14px;
+      font-size: var(--second-font-size);
     }
   }
 }

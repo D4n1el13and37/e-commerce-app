@@ -1,12 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import NotFound from './pages/NotFound/NotFound';
+import Register from './pages/Register/Register';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
 import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
+import NotFound from './pages/NotFound/NotFound';
 // import {  } from './store/store';
+// import LoginPage from './pages/Login/LoginPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,6 +29,11 @@ function App() {
         path="/login"
         errorElement={<NotFound />}
         element={!isAuthorized ? <LoginPage /> : <Navigate to="/main" />}
+      />
+      <Route
+        path="/register"
+        errorElement={<NotFound />}
+        element={!isAuthorized ? <Register /> : <Navigate to="/main" />}
       />
       {/* <Route path="/home" errorElement={<NotFound />} element={<Home />} /> */}
       <Route

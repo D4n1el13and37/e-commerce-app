@@ -6,7 +6,7 @@
   }
 
   &__left {
-    place-content: center;
+    place-self: center;
     grid-column: 2 / 7;
 
     @media (max-width: (1024px)) {

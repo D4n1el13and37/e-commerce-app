@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../ui/button/Button';
 import classes from '../Header.module.scss';
 
-const HeaderAuthBtns: React.FC = () => {
+const HeaderAuthButtons: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -26,4 +26,4 @@ const HeaderAuthBtns: React.FC = () => {
   );
 };
 
-export default HeaderAuthBtns;
+export default HeaderAuthButtons;

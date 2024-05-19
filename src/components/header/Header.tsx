@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
-import HeaderAuthBtns from './headerAuthBtns/HeaderAuthBtns';
+import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
 // import HeaderUser from './headerUser/HeaderUser';
 
 const Header: React.FC = () => {
@@ -20,9 +20,9 @@ const Header: React.FC = () => {
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  }, []);
 
   return (
     <header>
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <HeaderAuthBtns />
+              <HeaderAuthButtons />
               {/* <HeaderUser /> */}
             </div>
           </nav>

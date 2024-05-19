@@ -127,8 +127,13 @@
     @media (max-width: (900px)) {
       flex-direction: column;
 
-      button {
+      li:first-child > button {
         padding: 12px 141px;
+      }
+
+      li:nth-child(2) > button {
+        border: 1px solid transparent;
+        padding: 12px 143px;
       }
     }
   }

@@ -67,16 +67,16 @@
 }
 
 .filled {
-  border: none;
+  border: 1px solid transparent;
   color: var(--light-color, #f9f9f9);
   background: var(--primary-color, #758963);
 
   @media (any-hover: hover) {
     &:hover {
-      border: none;
+      border: 1px solid transparent;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
-      color: var(--Main-White, #fff);
-      background: var(--Schemes-Surface-Tint, #3f5028);
+      color: #fff;
+      background: var(--accent-color, #3f5028);
       cursor: pointer;
     }
   }
@@ -88,7 +88,7 @@
   }
 
   &:disabled {
-    border: none;
+    border: 1px solid transparent;
     box-shadow: none;
     color: var(--light-color, #f9f9f9);
     background: var(--grey-color, #989998);

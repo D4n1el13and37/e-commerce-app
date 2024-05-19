@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import PersonalInfo from './PersonalInfo';
@@ -9,7 +10,7 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 
 import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
-import { RegistartionUser } from '../../../api/authMethods';
+import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
 import ModalRegistration from './Modal/Modal';
 
 export default function RegisterForm() {
@@ -19,6 +20,7 @@ export default function RegisterForm() {
     formState: { isSubmitting },
   } = methods;
 
+  // const history = useHistory();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState('');
   function removeError() {
@@ -29,6 +31,8 @@ export default function RegisterForm() {
     try {
       await RegistartionUser(data);
       setIsSuccess(true);
+      await loginWithPassword(data.email, data.password);
+      // history.push('/');
     } catch (error) {
       if (error instanceof Error) setIsError(error.message);
       removeError();

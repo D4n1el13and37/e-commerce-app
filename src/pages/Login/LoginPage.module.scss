@@ -17,6 +17,10 @@
 
   button {
     grid-column: 2 / 2;
+
+    @media (max-width: (768px)) {
+      grid-column: 1;
+    }
   }
 }
 
@@ -28,10 +32,26 @@
   grid-column: 3 / 12;
   border-radius: 12px;
   padding: 60px;
+  width: 100%;
   max-width: 596px;
   max-height: 512px;
   background-color: #fff;
   gap: 42px;
+
+  @media (max-width: (768px)) {
+    grid-column: 2 / -1;
+    padding: 40px;
+  }
+
+  @media (max-width: (600px)) {
+    grid-column: 2 / -1;
+  }
+
+  @media (max-width: (530px)) {
+    grid-column: 1 / 13;
+    padding: 20px;
+    max-width: 100%;
+  }
 }
 
 .headline {
@@ -66,7 +86,7 @@ form {
 .form__container {
   display: flex;
   flex-direction: column;
-  width: 478px;
+  min-width: 100%;
   gap: 12px;
 }
 

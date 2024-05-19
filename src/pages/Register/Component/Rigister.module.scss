@@ -5,8 +5,8 @@
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   grid-column: 2 / -1;
   border-radius: 12px;
   padding: 60px;
@@ -26,11 +26,11 @@
     color: var(--accent-color, #3f5028);
   }
 
-  &__addresses {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 70px;
-  }
+  // &__addresses {
+  //   display: grid;
+  //   // grid-template-columns: repeat(2, 1fr);
+  //   gap: 70px;
+  // }
 
   &__personalData {
     display: grid;

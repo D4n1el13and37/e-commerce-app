@@ -25,24 +25,39 @@ export default function RegisterForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState('');
 
+  const [isSameAddress, setSameAddress] = useState(true);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // const { isAuthorized, isLoading, error } = useAppSelector(
-  //   (state) => state.auth
-  // );
 
   function removeError() {
     setTimeout(() => setIsError(''), 3000);
   }
 
+  const handleCheckboxChange = () => {
+    setSameAddress(!isSameAddress);
+  };
+
   const onSubmit: SubmitHandler<RegisterFormFields> = async (data) => {
+    const userData = { ...data };
+
+    if (isSameAddress) {
+      userData.streetBilling = userData.streetShipping;
+      userData.cityBilling = userData.cityShipping;
+      userData.postcodeBilling = userData.postcodeShipping;
+      userData.countryBilling = userData.countryShipping;
+    }
+
     try {
-      await dispatch(register(data)).unwrap();
+      await dispatch(register(userData)).unwrap();
       setIsSuccess(true);
-      await dispatch(
-        login({ email: data.email, password: data.password })
-      ).unwrap();
-      navigate('/main', { replace: true });
+
+      await setTimeout(() => {
+        dispatch(
+          login({ email: data.email, password: data.password })
+        ).unwrap();
+        navigate('/main', { replace: true });
+      }, 1000);
     } catch (e) {
       if (typeof e === 'string') {
         setIsError(e);
@@ -56,13 +71,13 @@ export default function RegisterForm() {
       <form className={`${classes.form}`} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={`${classes.form__title}`}>Sign up</h2>
         <PersonalInfo />
-        <div className={`${classes.form__addresses}`}>
-          <ShippingAddress />
-          <BillingAddress />
-        </div>
+        <ShippingAddress />
+        {!isSameAddress && <BillingAddress />}
+
         <Checkbox
           label="Are the billing and shipping addresses the same?"
-          isChecked={true}
+          checked={isSameAddress}
+          onChange={handleCheckboxChange}
         />
         <div className="server_error">
           {isError && (

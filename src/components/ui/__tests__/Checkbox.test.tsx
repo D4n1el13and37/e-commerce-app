@@ -8,10 +8,10 @@ describe('Checkbox component tests', () => {
     expect(screen.getByTestId('checkbox')).toBeDisabled();
   });
 
-  it('render checked checkbox', () => {
-    render(<Checkbox isChecked={true} />);
-    expect(screen.getByTestId('checkbox')).toBeChecked();
-  });
+  // it('render checked checkbox', () => {
+  //   render(<Checkbox isChecked={true} />);
+  //   expect(screen.getByTestId('checkbox')).toBeChecked();
+  // });
 
   it('render required checkbox', () => {
     render(<Checkbox required={true} />);

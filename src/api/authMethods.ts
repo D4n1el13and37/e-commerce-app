@@ -78,6 +78,7 @@ export async function RegistartionUser(
     password: data.password,
     firstName: data.firstName,
     lastName: data.lastName,
+    dateOfBirth: data.dateBirth,
     addresses: [
       {
         streetName: data.streetShipping,

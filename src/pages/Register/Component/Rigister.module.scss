@@ -94,7 +94,16 @@
 }
 
 .server__error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 12px;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: -24px;
+  }
 }
 
 .login {

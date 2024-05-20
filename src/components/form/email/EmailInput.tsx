@@ -19,19 +19,49 @@ const EmailInput: React.FC = () => {
       {...register('email', {
         required: 'Email is required',
         validate: (value) => {
-          const mailArray = value.split('@');
+          const [localPart, domain] = value.split('@');
+
           if (!value.includes('@')) {
             return 'Email should contain @';
           }
-          if (mailArray[0].length < 1 || /[^a-zA-Z0-9]+/.test(mailArray[0])) {
-            return 'Should contain a valid username';
+          if (!localPart || !domain) {
+            return 'Email should have a valid format';
+          }
+          if (value.endsWith('@')) {
+            return 'Email should not end with @';
+          }
+
+          if (/[а-яА-ЯёЁ]/.test(value)) {
+            return 'Email should not contain Cyrillic characters';
+          }
+
+          // Validate username
+          if (!/^[a-zA-Z0-9]/.test(localPart)) {
+            return 'Username should start with a letter or digit';
+          }
+          if (!/[a-zA-Z0-9]$/.test(localPart)) {
+            return 'Username should end with a letter or digit';
+          }
+          if (/[^a-zA-Z0-9._-]/.test(localPart)) {
+            return 'Username contains invalid characters';
+          }
+          if (/(\.\.|__|--|[._-]{2})/.test(localPart)) {
+            return 'Invalid sequence of special characters in username';
+          }
+
+          // Validate domain
+          if (
+            !/^[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(domain)
+          ) {
+            return 'Email should have a valid format';
+          }
+          if (/(\.\.|--|[-.]{2})/.test(domain)) {
+            return 'Invalid sequence of special characters in domain';
           }
           if (/\s/.test(value)) {
             return 'Email should not contain spaces';
           }
-          if (!/\w+\.\w+/.test(value)) {
-            return 'Should contain a valid domain name';
-          }
+
           return true;
         },
       })}

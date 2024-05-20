@@ -1,12 +1,12 @@
 import { useFormContext } from 'react-hook-form';
 import { SingleValue } from 'react-select';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
 import { CountrySelect, CountryOption } from './AddressForm/CountrySelect';
 
-import classesRegister from './Rigister.module.scss';
+import classes from './Rigister.module.scss';
 
 export default function ShippingAddress() {
   const {
@@ -14,6 +14,7 @@ export default function ShippingAddress() {
     register,
     formState: { errors },
     watch,
+    trigger,
   } = useFormContext();
 
   const [selectedCountry, setSelectedCountry] =
@@ -21,11 +22,17 @@ export default function ShippingAddress() {
 
   const defaultShippingAddress = watch('defaultShippingAddress', false);
 
+  useEffect(() => {
+    if (selectedCountry) {
+      trigger('postcodeShipping');
+    }
+  }, [selectedCountry, trigger]);
+
   return (
     <div>
-      <h3 className={`${classesRegister.form__subtitle}`}>Shipping Address</h3>
-      <div className={`${classesRegister.address}`}>
-        <div className={`${classesRegister.address__information}`}>
+      <h3 className={`${classes.form__subtitle}`}>Shipping Address</h3>
+      <div className={`${classes.address}`}>
+        <div className={`${classes.address__information}`}>
           <div>
             <CountrySelect
               control={control}
@@ -33,13 +40,15 @@ export default function ShippingAddress() {
               setSelectedCountry={setSelectedCountry}
               value={selectedCountry}
             />
-            {errors.countryShipping?.message && (
-              <span className="error">
-                {errors.countryShipping?.message as string}
-              </span>
-            )}
+            <div className={`${classes.error_container}`}>
+              {errors.countryShipping && (
+                <span className="error">
+                  {errors.countryShipping.message as string}
+                </span>
+              )}
+            </div>
           </div>
-          <div>
+          <div className={`${classes.input_container}`}>
             <Input
               id="cityShipping"
               label="City"
@@ -58,15 +67,18 @@ export default function ShippingAddress() {
                 },
               })}
             />
-            {errors.cityShipping && (
-              <span className="error">
-                {errors.cityShipping.message as string}
-              </span>
-            )}
+
+            <div className={`${classes.error_container}`}>
+              {errors.cityShipping && (
+                <span className="error">
+                  {errors.cityShipping.message as string}
+                </span>
+              )}
+            </div>
           </div>
 
-          <div className={`${classesRegister.address__code}`}>
-            <div>
+          <div className={`${classes.address__code}`}>
+            <div className={`${classes.input_container}`}>
               <Input
                 id={`streetShipping`}
                 label="Street"
@@ -81,13 +93,16 @@ export default function ShippingAddress() {
                   required: 'Street must have at least 1 character',
                 })}
               />
-              {errors.streetShipping && (
-                <span className="error">
-                  {errors.streetShipping.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container}`}>
+                {errors.streetShipping && (
+                  <span className="error">
+                    {errors.streetShipping.message as string}
+                  </span>
+                )}
+              </div>
             </div>
-            <div>
+            <div className={`${classes.input_container}`}>
               <Input
                 id="postcodeShipping"
                 label="Postcode"
@@ -102,22 +117,21 @@ export default function ShippingAddress() {
                 {...register('postcodeShipping', {
                   required: 'Postcode is required',
                   validate: (value) => {
-                    if (
-                      selectedCountry &&
-                      !selectedCountry.regex.test(value) &&
-                      value.length !== selectedCountry.lengthPostalcode
-                    ) {
-                      return 'Invalid postcode for this country';
+                    if (selectedCountry && !selectedCountry.regex.test(value)) {
+                      return `Invalid postcode format for ${selectedCountry.name}`;
                     }
                     return true;
                   },
                 })}
               />
-              {errors.postcodeShipping && (
-                <span className="error">
-                  {errors.postcodeShipping.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container}`}>
+                {errors.postcodeShipping && (
+                  <span className="error">
+                    {errors.postcodeShipping.message as string}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>

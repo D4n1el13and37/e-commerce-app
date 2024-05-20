@@ -30,8 +30,6 @@ export default function RegisterForm() {
     //   cityBilling: 'Ninzghn',
     //   postcodeShipping: '123123',
     //   postcodeBilling: '123123',
-    //   countryShipping: 'Russia',
-    //   countryBilling: 'Russia',
     // },
   });
   const {

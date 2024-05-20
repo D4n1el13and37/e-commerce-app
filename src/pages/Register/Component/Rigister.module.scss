@@ -2,6 +2,10 @@
   align-content: space-around;
   padding: 48px 0;
   height: 100vh;
+
+  @media (max-width: (1024px)) {
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
 .form {
@@ -12,6 +16,18 @@
   padding: 60px;
   background-color: #fff;
   gap: 42px;
+
+  @media (max-width: (1024px)) {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    padding: 40px;
+  }
+
+  @media (max-width: (1024px)) {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    padding: 20px;
+  }
 
   &__title {
     font-weight: 400;
@@ -36,6 +52,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 70px;
+
+    @media (max-width: (1024px)) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .profile {
@@ -46,6 +66,10 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+
+      @media (max-width: (1024px)) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 
@@ -74,6 +98,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+
+    @media (max-width: (1024px)) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

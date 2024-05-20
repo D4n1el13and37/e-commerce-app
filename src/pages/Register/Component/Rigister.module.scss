@@ -4,7 +4,7 @@
   // height: 100vh;
 
   @media (max-width: (1024px)) {
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
   }
 }
 
@@ -46,7 +46,7 @@
     gap: 20px;
 
     @media (max-width: (1024px)) {
-      grid-template-columns: 1fr;
+      grid-template-columns: max-content;
     }
   }
 

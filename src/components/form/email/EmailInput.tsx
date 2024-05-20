@@ -37,26 +37,26 @@ const EmailInput: React.FC = () => {
 
           // Validate username
           if (!/^[a-zA-Z0-9]/.test(localPart)) {
-            return 'Username should start with a letter or digit';
+            return 'Invalid username';
           }
           if (!/[a-zA-Z0-9]$/.test(localPart)) {
-            return 'Username should end with a letter or digit';
+            return 'Invalid username';
           }
           if (/[^a-zA-Z0-9._-]/.test(localPart)) {
             return 'Username contains invalid characters';
           }
           if (/(\.\.|__|--|[._-]{2})/.test(localPart)) {
-            return 'Invalid sequence of special characters in username';
+            return 'Invalid sequence of special characters';
           }
 
           // Validate domain
           if (
-            !/^[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(domain)
+            !/^[a-zA-Z0-9][a-zA-Z0-9.]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(domain)
           ) {
-            return 'Email should have a valid format';
+            return 'Domain should have a valid format';
           }
           if (/(\.\.|--|[-.]{2})/.test(domain)) {
-            return 'Invalid sequence of special characters in domain';
+            return 'Invalid sequence of special characters';
           }
           if (/\s/.test(value)) {
             return 'Email should not contain spaces';

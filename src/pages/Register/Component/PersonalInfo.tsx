@@ -149,6 +149,7 @@ export default function PersonalInfo() {
                   ) {
                     return 'You must be at least 13 years old';
                   }
+                  return true;
                 },
               })}
             />

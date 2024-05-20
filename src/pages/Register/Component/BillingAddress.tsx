@@ -103,14 +103,9 @@ export default function BillingAddress() {
                 {...register('postcodeBilling', {
                   required: 'Postcode is required',
                   validate: (value) => {
-                    if (
-                      selectedCountry &&
-                      !selectedCountry.regex.test(value) &&
-                      value.length !== selectedCountry.lengthPostalcode
-                    ) {
-                      return 'Invalid postcode for this country';
+                    if (selectedCountry && !selectedCountry.regex.test(value)) {
+                      return `Invalid postcode format for ${selectedCountry.name}`;
                     }
-
                     return true;
                   },
                 })}

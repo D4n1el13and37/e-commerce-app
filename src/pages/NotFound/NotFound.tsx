@@ -10,7 +10,7 @@ const NotFound: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBackClick = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   return (

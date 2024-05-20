@@ -15,14 +15,11 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
     dispatch(autorizationByToken());
   }, [dispatch]);
-
-  // добавить лоадинг перед вызовом
-  // через маунт эффект вызвать чек авторизэйшн (ждем и показываем крутилку)
-  // const [autorized, setAutorized] = useState(false);
 
   const router = useMemo(
     () =>
@@ -49,13 +46,17 @@ function App() {
             },
             {
               path: 'main',
-              element: isAuthorized ? <Home /> : <NotFound />,
+              element: isAuthorized ? <Home /> : <Navigate to="/" />,
             },
           ],
         },
       ]),
     [isAuthorized]
   );
+
+  // if (isLoading) {
+  //   return <div>Loadiiing...</div>;
+  // }
 
   return <RouterProvider router={router} />;
 }

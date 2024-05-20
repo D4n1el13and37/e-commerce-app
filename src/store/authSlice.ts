@@ -6,7 +6,7 @@ import {
   loginWithPassword,
 } from '../api/authMethods';
 import { LoginForm } from '../pages/Login/LoginPage';
-import { RegisterFormFields } from '../api/InterfaceApi';
+import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
 
 // const key = 'tokendata';
 // const storedData = localStorage.getItem(key);
@@ -109,12 +109,6 @@ const authSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.currentUser = null;
-      })
-      .addCase(register.fulfilled, (state, action) => {
-        const newState = state;
-        newState.isLoading = false;
-        newState.isAutorized = true;
-        newState.currentUser = action.payload;
       })
       .addCase(register.rejected, (state) => {
         const newState = state;

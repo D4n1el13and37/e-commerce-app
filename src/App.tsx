@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 import { useEffect } from 'react';
-import Register from './pages/Register/Register';
+import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
 import { autorizationByToken } from './store/authSlice';
@@ -40,7 +40,7 @@ function App() {
         },
         {
           path: 'register',
-          element: !isAuthorized ? <Register /> : <Navigate to="/main" />,
+          element: !isAuthorized ? <RegisterPage /> : <Navigate to="/main" />,
         },
         {
           path: 'main',

@@ -5,8 +5,8 @@
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   grid-column: 2 / -1;
   border-radius: 12px;
   padding: 60px;
@@ -26,11 +26,11 @@
     color: var(--accent-color, #3f5028);
   }
 
-  &__addresses {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 70px;
-  }
+  // &__addresses {
+  //   display: grid;
+  //   // grid-template-columns: repeat(2, 1fr);
+  //   gap: 70px;
+  // }
 
   &__personalData {
     display: grid;
@@ -89,6 +89,44 @@
       position: absolute;
       bottom: 0;
       font-size: 14px;
+    }
+  }
+}
+
+.server__error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: -24px;
+  }
+}
+
+.login {
+  font-family: var(--font-family);
+  font-size: var(--second-font-size);
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #202020;
+
+  a {
+    font-weight: 600;
+    color: var(--primary-color, #758963);
+    transition: color;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color var(--duration, 0.3s) ease-in-out;
+    }
+  }
+
+  @media (any-hover: hover) {
+    a:hover {
+      color: var(--accent-color, #3f5028);
+      cursor: pointer;
     }
   }
 }

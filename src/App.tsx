@@ -11,7 +11,6 @@ import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import NotFound from './pages/NotFound/NotFound';
-import NeedAutorizePage from './pages/NeedAutorizePage/NeedAutorizePage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -44,7 +43,7 @@ function App() {
         },
         {
           path: 'main',
-          element: isAuthorized ? <Home /> : <NeedAutorizePage />,
+          element: isAuthorized ? <Home /> : <NotFound />,
         },
       ],
     },

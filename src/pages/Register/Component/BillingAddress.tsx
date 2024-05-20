@@ -24,7 +24,7 @@ export default function BillingAddress() {
 
   useEffect(() => {
     if (selectedCountry) {
-      trigger('postcodeShipping');
+      trigger('postcodeBilling');
     }
   }, [selectedCountry, trigger]);
 

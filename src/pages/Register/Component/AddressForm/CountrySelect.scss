@@ -1,0 +1,50 @@
+/* stylelint-disable declaration-no-important */
+// Here we need important because because we change the styles of the element from the library and it has inline styles. to change them I use important.
+
+.react-select__control {
+  border: 1px solid rgba(152, 153, 152, 0.5) !important;
+  border-radius: 12px !important;
+  padding: 0 3px !important;
+  height: 40px !important;
+  box-shadow: none !important;
+  background-color: var(--light-color) !important;
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--accent-color) !important;
+    }
+  }
+
+  &:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0 var(--accent-color) !important;
+  }
+}
+
+.react-select__placeholder {
+  color: var(--grey-color, #989998) !important;
+}
+
+.react-select__single-value {
+  color: var(--text-color, #242424) !important;
+}
+
+.react-select__menu {
+  border-radius: 12px !important;
+  box-shadow: 0 0 0 1px rgba(152, 153, 152, 0.5) !important;
+}
+
+.react-select__option {
+  color: var(--text-color, #242424) !important;
+  background-color: #fff !important;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--light-color) !important;
+    }
+  }
+
+  &:focus {
+    background-color: var(--light-color) !important;
+  }
+}

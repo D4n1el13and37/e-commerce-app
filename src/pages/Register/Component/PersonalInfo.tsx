@@ -25,16 +25,22 @@ export default function PersonalInfo() {
               )}
             </div>
           </div>
-          <div>
+          <div className={`${classes.input_container}`}>
             <PasswordInput />
-            {errors.password && (
-              <span className="error">{errors.password.message as string}</span>
-            )}
+            <div className={`${classes.error_container}`}>
+              {errors.password && (
+                <span className="error">
+                  {errors.password.message as string}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className={`${classes.profile}`}>
           <div className={`${classes.profile__person}`}>
-            <div className={`${classes.profile__name}`}>
+            <div
+              className={`${classes.profile__name} ${classes.input_container}`}
+            >
               <Input
                 id="firstName"
                 autoComplete="firstName"
@@ -61,13 +67,17 @@ export default function PersonalInfo() {
                   },
                 })}
               />
-              {errors.firstName && (
-                <div className="error">
-                  {errors.firstName.message as string}
-                </div>
-              )}
+              <div className={`${classes.error_container}`}>
+                {errors.firstName && (
+                  <span className="error">
+                    {errors.firstName.message as string}
+                  </span>
+                )}
+              </div>
             </div>
-            <div className={`${classes.profile__lastName}`}>
+            <div
+              className={`${classes.profile__lastName} ${classes.input_container}`}
+            >
               <Input
                 id="lastName"
                 label="Last Name"
@@ -93,14 +103,17 @@ export default function PersonalInfo() {
                   },
                 })}
               />
-              {errors.lastName && (
-                <span className="error">
-                  {errors.lastName.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container} `}>
+                {errors.lastName && (
+                  <span className="error">
+                    {errors.lastName.message as string}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
-          <div>
+          <div className={`${classes.input_container}`}>
             <Input
               id="dateBirth"
               label="Date of Birth"
@@ -133,11 +146,14 @@ export default function PersonalInfo() {
                 },
               })}
             />
-            {errors.dateBirth && (
-              <span className="error">
-                {errors.dateBirth.message as string}
-              </span>
-            )}
+
+            <div className={`${classes.error_container}`}>
+              {errors.dateBirth && (
+                <span className="error">
+                  {errors.dateBirth.message as string}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>

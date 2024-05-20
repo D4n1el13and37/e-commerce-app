@@ -3,14 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';
 
-import SadPlant from './sad-plant.svg';
+import SadPlant from '../NotFound/sad-plant.svg';
 import s from './NotFound.module.scss';
 
-const NotFound: React.FC = () => {
+const NeedAutorizePage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleGoBackClick = () => {
-    navigate('/');
+  const handleGoAutorize = () => {
+    navigate('/login');
+  };
+  const handleGoRegister = () => {
+    navigate('/register');
   };
 
   return (
@@ -19,12 +22,20 @@ const NotFound: React.FC = () => {
       <section className={s.not_found_section}>
         <div className="container grid">
           <div className={s.not_found_section__left}>
-            <h1 className={s.not_found_section__title}>404 Error</h1>
+            <h1 className={s.not_found_section__title}>
+              You are not autorized
+            </h1>
             <p className={s.not_found_section__descr}>
-              Page not found. Let's get you back on track!
+              The page is available only to authorized users
             </p>
-            <Button isMain={true} onClick={handleGoBackClick}>
-              Back to main
+            <Button isMain={true} onClick={handleGoAutorize}>
+              Go to login
+            </Button>
+            <p className={s.not_found_section__descr}>
+              or create a new account
+            </p>
+            <Button isMain={true} onClick={handleGoRegister}>
+              Register new Account
             </Button>
           </div>
           <div className={s.not_found_section__right}>
@@ -36,4 +47,4 @@ const NotFound: React.FC = () => {
   );
 };
 
-export default NotFound;
+export default NeedAutorizePage;

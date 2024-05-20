@@ -12,6 +12,7 @@ export default function PersonalInfo() {
     formState: { errors },
   } = useFormContext();
 
+  const currentDate = new Date().toISOString().split('T')[0];
   return (
     <div>
       <h3 className={`${classes.form__subtitle}`}>Personal information</h3>
@@ -25,16 +26,22 @@ export default function PersonalInfo() {
               )}
             </div>
           </div>
-          <div>
+          <div className={`${classes.input_container}`}>
             <PasswordInput />
-            {errors.password && (
-              <span className="error">{errors.password.message as string}</span>
-            )}
+            <div className={`${classes.error_container}`}>
+              {errors.password && (
+                <span className="error">
+                  {errors.password.message as string}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className={`${classes.profile}`}>
           <div className={`${classes.profile__person}`}>
-            <div className={`${classes.profile__name}`}>
+            <div
+              className={`${classes.profile__name} ${classes.input_container}`}
+            >
               <Input
                 id="firstName"
                 autoComplete="firstName"
@@ -61,13 +68,17 @@ export default function PersonalInfo() {
                   },
                 })}
               />
-              {errors.firstName && (
-                <div className="error">
-                  {errors.firstName.message as string}
-                </div>
-              )}
+              <div className={`${classes.error_container}`}>
+                {errors.firstName && (
+                  <span className="error">
+                    {errors.firstName.message as string}
+                  </span>
+                )}
+              </div>
             </div>
-            <div className={`${classes.profile__lastName}`}>
+            <div
+              className={`${classes.profile__lastName} ${classes.input_container}`}
+            >
               <Input
                 id="lastName"
                 label="Last Name"
@@ -93,18 +104,22 @@ export default function PersonalInfo() {
                   },
                 })}
               />
-              {errors.lastName && (
-                <span className="error">
-                  {errors.lastName.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container} `}>
+                {errors.lastName && (
+                  <span className="error">
+                    {errors.lastName.message as string}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
-          <div>
+          <div className={`${classes.input_container}`}>
             <Input
               id="dateBirth"
               label="Date of Birth"
               type="date"
+              max={currentDate}
               error={
                 errors.dateBirth
                   ? (errors.dateBirth.message as string)
@@ -116,6 +131,11 @@ export default function PersonalInfo() {
                   const minimumAge = 13;
                   const dateToday = new Date();
                   const dateBirth = new Date(value);
+
+                  if (dateBirth > dateToday) {
+                    return 'Date cannot be in the future';
+                  }
+
                   const userAge =
                     dateToday.getFullYear() - dateBirth.getFullYear();
                   const isBirthdayPassed =
@@ -133,11 +153,14 @@ export default function PersonalInfo() {
                 },
               })}
             />
-            {errors.dateBirth && (
-              <span className="error">
-                {errors.dateBirth.message as string}
-              </span>
-            )}
+
+            <div className={`${classes.error_container}`}>
+              {errors.dateBirth && (
+                <span className="error">
+                  {errors.dateBirth.message as string}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>

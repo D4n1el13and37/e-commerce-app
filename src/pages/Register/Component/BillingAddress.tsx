@@ -6,7 +6,7 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
 import { CountrySelect, CountryOption } from './AddressForm/CountrySelect';
 
-import classesRegister from './Rigister.module.scss';
+import classes from './Rigister.module.scss';
 
 export default function BillingAddress() {
   const {
@@ -23,9 +23,9 @@ export default function BillingAddress() {
 
   return (
     <div>
-      <h3 className={`${classesRegister.form__subtitle}`}>Billing Address</h3>
-      <div className={`${classesRegister.address}`}>
-        <div className={`${classesRegister.address__information}`}>
+      <h3 className={`${classes.form__subtitle}`}>Billing Address</h3>
+      <div className={`${classes.address}`}>
+        <div className={`${classes.address__information}`}>
           <div>
             <CountrySelect
               control={control}
@@ -33,14 +33,15 @@ export default function BillingAddress() {
               setSelectedCountry={setSelectedCountry}
               value={selectedCountry}
             />
-            {errors.countryBilling?.message && (
-              <span className="error">
-                {errors.countryBilling?.message as string}
-              </span>
-            )}
+            <div className={`${classes.error_container}`}>
+              {errors.countryBilling && (
+                <span className="error">
+                  {errors.countryBilling.message as string}
+                </span>
+              )}
+            </div>
           </div>
-
-          <div>
+          <div className={`${classes.input_container}`}>
             <Input
               id="cityBilling"
               label="City"
@@ -59,15 +60,18 @@ export default function BillingAddress() {
                 },
               })}
             />
-            {errors.cityBilling && (
-              <span className="error">
-                {errors.cityBilling.message as string}
-              </span>
-            )}
+
+            <div className={`${classes.error_container}`}>
+              {errors.cityBilling && (
+                <span className="error">
+                  {errors.cityBilling.message as string}
+                </span>
+              )}
+            </div>
           </div>
 
-          <div className={`${classesRegister.address__code}`}>
-            <div>
+          <div className={`${classes.address__code}`}>
+            <div className={`${classes.input_container}`}>
               <Input
                 id={`streetBilling`}
                 label="Street"
@@ -82,13 +86,16 @@ export default function BillingAddress() {
                   required: 'Street must have at least 1 character',
                 })}
               />
-              {errors.streetBilling && (
-                <span className="error">
-                  {errors.streetBilling.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container}`}>
+                {errors.streetBilling && (
+                  <span className="error">
+                    {errors.streetBilling.message as string}
+                  </span>
+                )}
+              </div>
             </div>
-            <div>
+            <div className={`${classes.input_container}`}>
               <Input
                 id="postcodeBilling"
                 label="Postcode"
@@ -103,29 +110,27 @@ export default function BillingAddress() {
                 {...register('postcodeBilling', {
                   required: 'Postcode is required',
                   validate: (value) => {
-                    if (
-                      selectedCountry &&
-                      !selectedCountry.regex.test(value) &&
-                      value.length !== selectedCountry.lengthPostalcode
-                    ) {
-                      return 'Invalid postcode for this country';
+                    if (selectedCountry && !selectedCountry.regex.test(value)) {
+                      return `Invalid postcode format for ${selectedCountry.name}`;
                     }
-
                     return true;
                   },
                 })}
               />
-              {errors.postcodeBilling && (
-                <span className="error">
-                  {errors.postcodeBilling.message as string}
-                </span>
-              )}
+
+              <div className={`${classes.error_container}`}>
+                {errors.postcodeBilling && (
+                  <span className="error">
+                    {errors.postcodeBilling.message as string}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
 
         <Checkbox
-          label="Use as default billing address"
+          label="Use as default address"
           {...register('defaultBillingAddress')}
           checked={defaultBillingAddress}
         />

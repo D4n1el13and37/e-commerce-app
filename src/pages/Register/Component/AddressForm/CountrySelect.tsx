@@ -3,6 +3,8 @@ import { SingleValue } from 'react-select';
 
 import AsyncSelect from 'react-select/async';
 
+import './CountrySelect.scss';
+
 export interface CountryOption {
   name: string;
   label: string;
@@ -77,7 +79,7 @@ export function CountrySelect({
             setSelectedCountry(option);
             field.onChange(option ? option.value : '');
           }}
-          // styles={selectStyles}
+          classNamePrefix="react-select"
         />
       )}
     />

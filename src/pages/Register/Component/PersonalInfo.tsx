@@ -54,15 +54,15 @@ export default function PersonalInfo() {
                     : undefined
                 }
                 {...register('firstName', {
-                  required: 'First name is required',
+                  required: 'Required',
                   minLength: {
                     value: 1,
-                    message: 'First name must have at least 1 character',
+                    message: 'At least 1 character',
                   },
                   validate: (value: string) => {
                     const regexFirstName = /^[a-zA-Z]+$/;
                     if (!regexFirstName.test(value)) {
-                      return 'First name must contain only latin letters';
+                      return 'Only latin letters';
                     }
                     return true;
                   },
@@ -90,22 +90,22 @@ export default function PersonalInfo() {
                     : undefined
                 }
                 {...register('lastName', {
-                  required: 'Last name is required',
+                  required: 'Required',
                   minLength: {
                     value: 1,
-                    message: 'Last name must have at least 1 character',
+                    message: 'At least 1 character',
                   },
                   validate: (value: string) => {
                     const regexLastName = /^[a-zA-Z]+$/;
                     if (!regexLastName.test(value)) {
-                      return 'Last name must contain only latin letters';
+                      return 'Only latin letters';
                     }
                     return true;
                   },
                 })}
               />
 
-              <div className={`${classes.error_container} `}>
+              <div className={`${classes.error_container}`}>
                 {errors.lastName && (
                   <span className="error">
                     {errors.lastName.message as string}
@@ -126,14 +126,14 @@ export default function PersonalInfo() {
                   : undefined
               }
               {...register('dateBirth', {
-                required: 'Date of birth is required',
+                required: 'Required',
                 validate: (value: string) => {
                   const minimumAge = 13;
                   const dateToday = new Date();
                   const dateBirth = new Date(value);
 
                   if (dateBirth > dateToday) {
-                    return 'Date cannot be in the future';
+                    return 'Cannot be in the future';
                   }
 
                   const userAge =
@@ -147,7 +147,7 @@ export default function PersonalInfo() {
                     userAge < minimumAge ||
                     (userAge === minimumAge && !isBirthdayPassed)
                   ) {
-                    return 'You must be at least 13 years old';
+                    return 'Must be at least 13 years old';
                   }
                   return true;
                 },

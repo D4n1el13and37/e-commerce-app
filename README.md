@@ -79,17 +79,17 @@ To work with the application, you should follow the steps below:
 
 Below are the scripts available for running and managing project. Each script is designed to streamline specific tasks, from development and building to linting and testing.
 
-- `npm run stylelint` — runs Stylelint on all styles files
+- `npm run stylelint` — runs `Stylelint` on all styles files
 
-- `npm run style-fix` — automatically fixes many common style issues detected by Stylelint
+- `npm run style-fix` — automatically fixes many common style issues detected by `Stylelint`
 
 - `npm run dev` — starts the development server using `Vite`
 
-- `npm run build` — compiles the `TypeScript` code and builds the project using `Vite`, preparing it for production deployment.
+- `npm run build` — compiles the `TypeScript` code and builds the project using `Vite`, preparing it for production deployment
 
-- `npm run lint` — runs `ESLint` to check the code for potential errors and style issues, ensuring code quality and adherence to best practices.
+- `npm run lint` — runs `ESLint` to check the code for potential errors and style issues, ensuring code quality and adherence to best practices
 
-- `npm run lint:fix` — automatically fixes many common linting issues, improving code quality without manual intervention.
+- `npm run lint:fix` — automatically fixes many common linting issues, improving code quality without manual intervention
 
 - `npm run format` — uses `Prettier` to automatically format the codebase
 
@@ -98,6 +98,12 @@ Below are the scripts available for running and managing project. Each script is
 - `npm run test` — executes tests written with `Vitest`
 
 - `npm run prepare` — sets up `Husky`
+
+- `npm run test` — executes tests using `Vitest`, ensuring the reliability and correctness of the codebase
+
+- `npm run ts-checker` — runs the `TypeScript` compiler without emitting output files
+
+- `npm run coverage` — generates a coverage report using `Vitest`
 
 ## Contributors 📚
 

@@ -12,6 +12,7 @@ export default function PersonalInfo() {
     formState: { errors },
   } = useFormContext();
 
+  const currentDate = new Date().toISOString().split('T')[0];
   return (
     <div>
       <h3 className={`${classes.form__subtitle}`}>Personal information</h3>
@@ -118,6 +119,7 @@ export default function PersonalInfo() {
               id="dateBirth"
               label="Date of Birth"
               type="date"
+              max={currentDate}
               error={
                 errors.dateBirth
                   ? (errors.dateBirth.message as string)
@@ -129,6 +131,11 @@ export default function PersonalInfo() {
                   const minimumAge = 13;
                   const dateToday = new Date();
                   const dateBirth = new Date(value);
+
+                  if (dateBirth > dateToday) {
+                    return 'Date cannot be in the future';
+                  }
+
                   const userAge =
                     dateToday.getFullYear() - dateBirth.getFullYear();
                   const isBirthdayPassed =
@@ -142,7 +149,6 @@ export default function PersonalInfo() {
                   ) {
                     return 'You must be at least 13 years old';
                   }
-                  return true;
                 },
               })}
             />

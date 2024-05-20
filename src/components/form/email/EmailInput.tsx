@@ -36,8 +36,14 @@ const EmailInput: React.FC = () => {
           }
 
           // Validate username
-          if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]$/.test(localPart)) {
-            return 'Username should start and end with a letter or digit';
+          if (!/^[a-zA-Z0-9]/.test(localPart)) {
+            return 'Username should start with a letter or digit';
+          }
+          if (!/[a-zA-Z0-9]$/.test(localPart)) {
+            return 'Username should end with a letter or digit';
+          }
+          if (/[^a-zA-Z0-9._-]/.test(localPart)) {
+            return 'Username contains invalid characters';
           }
           if (/(\.\.|__|--|[._-]{2})/.test(localPart)) {
             return 'Invalid sequence of special characters in username';

@@ -101,7 +101,9 @@ form {
 
   .error__container {
     position: relative;
+    overflow-x: scroll;
     height: 20px;
+    white-space: nowrap;
 
     span {
       position: absolute;

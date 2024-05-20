@@ -1,10 +1,10 @@
 .register {
   align-content: space-around;
   padding: 48px 0;
-  height: 100vh;
+  // height: 100vh;
 
   @media (max-width: (1024px)) {
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
   }
 }
 

@@ -1,7 +1,5 @@
 import { Control, Controller, FieldValues } from 'react-hook-form';
-import { SingleValue } from 'react-select';
-
-import AsyncSelect from 'react-select/async';
+import Select from 'react-select';
 
 import './CountrySelect.scss';
 
@@ -10,24 +8,53 @@ export interface CountryOption {
   label: string;
   value: string;
   regex: RegExp;
-  lengthPostalcode: number;
+  lengthPostalcode: number | undefined;
 }
-
-interface countryType {
-  cca2: string;
-  flag: string;
-  name: { common: string };
-  postalCode: { regex: string | RegExp; format: string };
-}
-
-type countryValue = SingleValue<CountryOption> | null;
 
 interface CountrySelectProps {
   control: Control<FieldValues>;
   name: string;
-  setSelectedCountry: (country: countryValue) => void;
-  value: countryValue;
+  setSelectedCountry: (country: CountryOption | null) => void;
+  value: CountryOption | null;
 }
+
+const countryOptions: CountryOption[] = [
+  {
+    name: 'United States',
+    label: '🇺🇸 United States',
+    value: 'US',
+    regex: /^[0-9]{5}(-[0-9]{4})?$/,
+    lengthPostalcode: 5,
+  },
+  {
+    name: 'Canada',
+    label: '🇨🇦 Canada',
+    value: 'CA',
+    regex: /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/,
+    lengthPostalcode: 6,
+  },
+  {
+    name: 'Germany',
+    label: '🇩🇪 Germany',
+    value: 'DE',
+    regex: /^\d{5}$/,
+    lengthPostalcode: 5,
+  },
+  {
+    name: 'France',
+    label: '🇫🇷 France',
+    value: 'FR',
+    regex: /^\d{5}$/,
+    lengthPostalcode: 5,
+  },
+  {
+    name: 'Australia',
+    label: '🇦🇺 Australia',
+    value: 'AU',
+    regex: /^\d{4}$/,
+    lengthPostalcode: 4,
+  },
+];
 
 export function CountrySelect({
   control,
@@ -35,48 +62,18 @@ export function CountrySelect({
   setSelectedCountry,
   value,
 }: CountrySelectProps) {
-  // function for loading data
-  const loadCountry = async (inputValue: string) => {
-    try {
-      if (inputValue.length > 1) {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/name/${inputValue}`
-        );
-        const data = await response.json();
-        return data.map((country: countryType) => ({
-          name: country.name.common,
-          label: `${country.flag} ${country.name.common}`,
-          value: country.cca2,
-          regex: country.postalCode
-            ? new RegExp(country.postalCode.regex)
-            : null,
-          lengthPostalcode: country.postalCode
-            ? country.postalCode.format.length
-            : undefined,
-        }));
-      }
-    } catch (e) {
-      if (e instanceof Error) {
-        throw new Error(e.message);
-      }
-    }
-    return [];
-  };
-
   return (
     <Controller
       name={name}
       control={control}
       render={({ field }) => (
-        <AsyncSelect
+        <Select
           {...field}
-          cacheOptions
-          defaultOptions
-          loadOptions={loadCountry}
+          options={countryOptions}
           placeholder="Select a country"
           value={value}
           onChange={(option) => {
-            setSelectedCountry(option);
+            setSelectedCountry(option as CountryOption | null);
             field.onChange(option ? option.value : '');
           }}
           classNamePrefix="react-select"

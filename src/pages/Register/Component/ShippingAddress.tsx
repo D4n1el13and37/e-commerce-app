@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { SingleValue } from 'react-select';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
@@ -14,12 +14,19 @@ export default function ShippingAddress() {
     register,
     formState: { errors },
     watch,
+    trigger,
   } = useFormContext();
 
   const [selectedCountry, setSelectedCountry] =
     useState<SingleValue<CountryOption> | null>(null);
 
   const defaultShippingAddress = watch('defaultShippingAddress', false);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      trigger('postcodeShipping');
+    }
+  }, [selectedCountry, trigger]);
 
   return (
     <div>

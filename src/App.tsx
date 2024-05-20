@@ -1,4 +1,8 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
 import { useEffect } from 'react';
 import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
@@ -20,36 +24,32 @@ function App() {
   // через маунт эффект вызвать чек авторизэйшн (ждем и показываем крутилку)
   // const [autorized, setAutorized] = useState(false);
 
-  return (
-    <Routes>
-      <Route path="/" errorElement={<NotFound />} element={<Home />} />
-      <Route
-        path="/login"
-        errorElement={<NotFound />}
-        element={!isAuthorized ? <LoginPage /> : <Navigate to="/main" />}
-      />
-      <Route
-        path="/register"
-        errorElement={<NotFound />}
-        element={!isAuthorized ? <RegisterPage /> : <Navigate to="/main" />}
-      />
-      {/* <Route path="/home" errorElement={<NotFound />} element={<Home />} /> */}
-      <Route
-        path="/main"
-        errorElement={<NotFound />}
-        element={isAuthorized ? <Home /> : <Navigate to="/login" />}
-      />
-      {/* <Route path="/*" element={<LoginPage />} /> */}
-      {/* <Route
-    //   path="/protected"
-    //   element={
-    //     <RequireAuth>
-    //       {/* <ProtectedPage />
-          </RequireAuth>
-        }
-      /> */}
-    </Routes>
-  );
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      errorElement: <NotFound />,
+      children: [
+        {
+          path: '',
+          element: <Home />,
+        },
+        {
+          path: 'login',
+          element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
+        },
+        {
+          path: 'register',
+          element: !isAuthorized ? <RegisterPage /> : <Navigate to="/main" />,
+        },
+        {
+          path: 'main',
+          element: isAuthorized ? <Home /> : <NotFound />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

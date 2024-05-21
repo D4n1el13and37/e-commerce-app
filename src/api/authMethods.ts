@@ -1,7 +1,8 @@
-import { MyCustomerDraft, Customer } from '@commercetools/platform-sdk';
+import { Customer } from '@commercetools/platform-sdk';
 import getApiRoot from './api';
 import { projectKey } from './clientConfig';
 import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
+import { MyCustom } from './authInterface';
 
 export async function loginWithPassword(
   email: string,
@@ -73,7 +74,7 @@ export async function anon(): Promise<void> {
 export async function RegistartionUser(
   data: RegisterFormFields
 ): Promise<Customer> {
-  const newCustomerDetails: MyCustomerDraft = {
+  const newCustomerDetails: MyCustom = {
     email: data.email,
     password: data.password,
     firstName: data.firstName,
@@ -97,14 +98,9 @@ export async function RegistartionUser(
     defaultShippingAddress: data.defaultShippingAddress ? 0 : undefined,
     defaultBillingAddress: data.defaultBillingAddress ? 1 : undefined,
 
-    // shippingAddresses: [0],
-    // billingAddresses: [1],
+    shippingAddresses: [0],
+    billingAddresses: [1],
   };
-
-  // console.log(
-  //   'Sending customer details:',
-  //   JSON.stringify(newCustomerDetails, null, 2)
-  // );
 
   try {
     const request = await getApiRoot()

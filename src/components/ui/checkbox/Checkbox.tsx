@@ -8,13 +8,10 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ label, ...props }, ref) => (
     <>
-      <label
-        data-testid="checkbox-label"
-        className={`${classes.checkbox_wrappper}`}
-      >
+      <label data-testid="checkbox-label" className={classes.checkbox_wrappper}>
         <input
           ref={ref}
-          className={`${classes.input}`}
+          className={classes.input}
           type="checkbox"
           data-testid="checkbox"
           {...props}

@@ -83,8 +83,8 @@ export default function RegisterForm() {
 
   return (
     <FormProvider {...methods}>
-      <form className={`${classes.form}`} onSubmit={handleSubmit(onSubmit)}>
-        <h2 className={`${classes.form__title}`}>Sign up</h2>
+      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <h2 className={classes.form__title}>Sign up</h2>
         <PersonalInfo />
         <ShippingAddress />
         {!isSameAddress && <BillingAddress />}

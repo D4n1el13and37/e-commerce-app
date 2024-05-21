@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
 import Button from '../ui/button/Button';
 import HeaderUser from './headerUser/HeaderUser';
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
         </Link>
         <div className={classes.header__content}>
           <nav
-            className={`${classes.nav} ${isMenuOpen ? classes.nav_active : ''}`}
+            className={cn(classes.nav, { [classes.nav_active]: isMenuOpen })}
           >
             <div className={classes.nav__content}>
               <ul className={classes.nav__list}>
@@ -54,7 +55,10 @@ const Header: React.FC = () => {
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        isActive ? classes.nav__link_active : classes.nav__link
+                        cn({
+                          [classes.nav__link_active]: isActive,
+                          [classes.nav__link]: !isActive,
+                        })
                       }
                     >
                       {link.name}
@@ -72,7 +76,9 @@ const Header: React.FC = () => {
         </div>
 
         <Button
-          className={`${classes.burger} ${isMenuOpen ? `${classes.burger__active}` : ''}`}
+          className={cn(classes.burger, {
+            [classes.burger__active]: isMenuOpen,
+          })}
           aria-label="Open menu"
           aria-expanded={isMenuOpen ? 'true' : 'false'}
           onClick={toggleMenu}

@@ -25,11 +25,11 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
     className="ReactModal__Content"
     overlayClassName="ReactModal__Overlay"
   >
-    <div className={`${modal.modal}`}>
+    <div className={modal.modal}>
       <img src={srcPlants} alt="Illustartion happy plant" />
-      <div className={`${modal.modal__content}`}>
-        <h2 className={`${modal.modal__title}`}>Registration successful!</h2>
-        <p className={`${modal.modal__text}`}>
+      <div className={modal.modal__content}>
+        <h2 className={modal.modal__title}>Registration successful!</h2>
+        <p className={modal.modal__text}>
           You will be logged in automatically.
         </p>
       </div>

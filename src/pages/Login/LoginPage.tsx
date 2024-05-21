@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { /* useLocation , */ Link, useNavigate } from 'react-router-dom';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import cn from 'classnames';
 import Button from '../../components/ui/button/Button';
 import PasswordField from '../../components/form/password/PasswordInput';
 import cl from './LoginPage.module.scss';
@@ -47,7 +48,7 @@ function LoginPage() {
 
   return (
     <section className={`container`}>
-      <div className={`grid ${cl.login}`}>
+      <div className={cn('grid', cl.login)}>
         <GoBackButton />
         <div className={cl.login__container}>
           <div className={cl.headline}>

@@ -1,10 +1,11 @@
 import React from 'react';
+import cn from 'classnames';
 import Slider from '../slider/Slider';
 import classes from './Hero.module.scss';
 import Button from '../../components/ui/button/Button';
 
 const Hero: React.FC = () => (
-  <section className={`${classes.hero__container} grid`}>
+  <section className={cn(classes.hero__container, 'grid')}>
     <div className={classes.hero__left}>
       <h1 className={classes.hero__title}>
         We have the perfect plants for your workplace

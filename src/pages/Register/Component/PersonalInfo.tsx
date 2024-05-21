@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-
+import cn from 'classnames';
 import Input from '../../../components/ui/input/Input';
 import EmailInput from '../../../components/form/email/EmailInput';
 import PasswordInput from '../../../components/form/password/PasswordInput';
@@ -15,20 +15,20 @@ export default function PersonalInfo() {
   const currentDate = new Date().toISOString().split('T')[0];
   return (
     <div>
-      <h3 className={`${classes.form__subtitle}`}>Personal information</h3>
-      <div className={`${classes.form__personalData}`}>
-        <div className={`${classes.credentials}`}>
-          <div className={`${classes.input_container}`}>
+      <h3 className={classes.form__subtitle}>Personal information</h3>
+      <div className={classes.form__personalData}>
+        <div className={classes.credentials}>
+          <div className={classes.input_container}>
             <EmailInput />
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.email && (
                 <span className="error">{errors.email.message as string}</span>
               )}
             </div>
           </div>
-          <div className={`${classes.input_container}`}>
+          <div className={classes.input_container}>
             <PasswordInput />
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.password && (
                 <span className="error">
                   {errors.password.message as string}
@@ -37,11 +37,9 @@ export default function PersonalInfo() {
             </div>
           </div>
         </div>
-        <div className={`${classes.profile}`}>
-          <div className={`${classes.profile__person}`}>
-            <div
-              className={`${classes.profile__name} ${classes.input_container}`}
-            >
+        <div className={classes.profile}>
+          <div className={classes.profile__person}>
+            <div className={cn(classes.profile__name, classes.input_container)}>
               <Input
                 id="firstName"
                 autoComplete="firstName"
@@ -77,7 +75,7 @@ export default function PersonalInfo() {
               </div>
             </div>
             <div
-              className={`${classes.profile__lastName} ${classes.input_container}`}
+              className={cn(classes.profile__lastName, classes.input_container)}
             >
               <Input
                 id="lastName"
@@ -105,7 +103,7 @@ export default function PersonalInfo() {
                 })}
               />
 
-              <div className={`${classes.error_container}`}>
+              <div className={classes.error_container}>
                 {errors.lastName && (
                   <span className="error">
                     {errors.lastName.message as string}
@@ -114,7 +112,7 @@ export default function PersonalInfo() {
               </div>
             </div>
           </div>
-          <div className={`${classes.input_container}`}>
+          <div className={classes.input_container}>
             <Input
               id="dateBirth"
               label="Date of Birth"
@@ -154,7 +152,7 @@ export default function PersonalInfo() {
               })}
             />
 
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.dateBirth && (
                 <span className="error">
                   {errors.dateBirth.message as string}

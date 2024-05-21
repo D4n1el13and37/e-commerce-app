@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import cn from 'classnames';
 import classes from './HeaderUser.module.scss';
 import Button from '../../ui/button/Button';
 import { logout } from '../../../store/authSlice';
@@ -24,7 +25,7 @@ const HeaderUser: React.FC = () => {
   return (
     <div className={classes.container}>
       <Button
-        className={`${classes.button} ${isActive ? classes.active : ''}`}
+        className={cn(classes.button, { [classes.active]: isActive })}
         aria-expanded={isActive ? 'true' : 'false'}
         aria-controls="list"
         onClick={toggleMenu}

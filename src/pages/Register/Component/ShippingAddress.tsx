@@ -30,9 +30,9 @@ export default function ShippingAddress() {
 
   return (
     <div>
-      <h3 className={`${classes.form__subtitle}`}>Shipping Address</h3>
-      <div className={`${classes.address}`}>
-        <div className={`${classes.address__information}`}>
+      <h3 className={classes.form__subtitle}>Shipping Address</h3>
+      <div className={classes.address}>
+        <div className={classes.address__information}>
           <div>
             <CountrySelect
               control={control}
@@ -40,7 +40,7 @@ export default function ShippingAddress() {
               setSelectedCountry={setSelectedCountry}
               value={selectedCountry}
             />
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.countryShipping && (
                 <span className="error">
                   {errors.countryShipping.message as string}
@@ -48,7 +48,7 @@ export default function ShippingAddress() {
               )}
             </div>
           </div>
-          <div className={`${classes.input_container}`}>
+          <div className={classes.input_container}>
             <Input
               id="cityShipping"
               label="City"
@@ -68,7 +68,7 @@ export default function ShippingAddress() {
               })}
             />
 
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.cityShipping && (
                 <span className="error">
                   {errors.cityShipping.message as string}
@@ -77,8 +77,8 @@ export default function ShippingAddress() {
             </div>
           </div>
 
-          <div className={`${classes.address__code}`}>
-            <div className={`${classes.input_container}`}>
+          <div className={classes.address__code}>
+            <div className={classes.input_container}>
               <Input
                 id={`streetShipping`}
                 label="Street"
@@ -94,7 +94,7 @@ export default function ShippingAddress() {
                 })}
               />
 
-              <div className={`${classes.error_container}`}>
+              <div className={classes.error_container}>
                 {errors.streetShipping && (
                   <span className="error">
                     {errors.streetShipping.message as string}
@@ -102,7 +102,7 @@ export default function ShippingAddress() {
                 )}
               </div>
             </div>
-            <div className={`${classes.input_container}`}>
+            <div className={classes.input_container}>
               <Input
                 id="postcodeShipping"
                 label="Postcode"
@@ -125,7 +125,7 @@ export default function ShippingAddress() {
                 })}
               />
 
-              <div className={`${classes.error_container}`}>
+              <div className={classes.error_container}>
                 {errors.postcodeShipping && (
                   <span className="error">
                     {errors.postcodeShipping.message as string}

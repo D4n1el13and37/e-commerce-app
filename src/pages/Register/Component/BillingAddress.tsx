@@ -30,9 +30,9 @@ export default function BillingAddress() {
 
   return (
     <div>
-      <h3 className={`${classes.form__subtitle}`}>Billing Address</h3>
-      <div className={`${classes.address}`}>
-        <div className={`${classes.address__information}`}>
+      <h3 className={classes.form__subtitle}>Billing Address</h3>
+      <div className={classes.address}>
+        <div className={classes.address__information}>
           <div>
             <CountrySelect
               control={control}
@@ -40,7 +40,7 @@ export default function BillingAddress() {
               setSelectedCountry={setSelectedCountry}
               value={selectedCountry}
             />
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.countryBilling && (
                 <span className="error">
                   {errors.countryBilling.message as string}
@@ -48,7 +48,7 @@ export default function BillingAddress() {
               )}
             </div>
           </div>
-          <div className={`${classes.input_container}`}>
+          <div className={classes.input_container}>
             <Input
               id="cityBilling"
               label="City"
@@ -68,7 +68,7 @@ export default function BillingAddress() {
               })}
             />
 
-            <div className={`${classes.error_container}`}>
+            <div className={classes.error_container}>
               {errors.cityBilling && (
                 <span className="error">
                   {errors.cityBilling.message as string}
@@ -77,8 +77,8 @@ export default function BillingAddress() {
             </div>
           </div>
 
-          <div className={`${classes.address__code}`}>
-            <div className={`${classes.input_container}`}>
+          <div className={classes.address__code}>
+            <div className={classes.input_container}>
               <Input
                 id={`streetBilling`}
                 label="Street"
@@ -94,7 +94,7 @@ export default function BillingAddress() {
                 })}
               />
 
-              <div className={`${classes.error_container}`}>
+              <div className={classes.error_container}>
                 {errors.streetBilling && (
                   <span className="error">
                     {errors.streetBilling.message as string}
@@ -102,7 +102,7 @@ export default function BillingAddress() {
                 )}
               </div>
             </div>
-            <div className={`${classes.input_container}`}>
+            <div className={classes.input_container}>
               <Input
                 id="postcodeBilling"
                 label="Postcode"
@@ -125,7 +125,7 @@ export default function BillingAddress() {
                 })}
               />
 
-              <div className={`${classes.error_container}`}>
+              <div className={classes.error_container}>
                 {errors.postcodeBilling && (
                   <span className="error">
                     {errors.postcodeBilling.message as string}

@@ -7,32 +7,19 @@ interface Address {
 }
 
 export interface MyCustom {
-  readonly email: string;
-
-  readonly password: string;
-
-  readonly firstName?: string;
-
-  readonly lastName?: string;
-
-  readonly middleName?: string;
-
-  readonly title?: string;
-
-  readonly salutation?: string;
-
-  readonly dateOfBirth?: string;
-
-  readonly companyName?: string;
-
-  readonly vatId?: string;
-
-  readonly addresses?: Address[];
-
-  readonly defaultShippingAddress?: number;
-
-  readonly defaultBillingAddress?: number;
-
-  readonly shippingAddresses: [0];
-  readonly billingAddresses: [1];
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  title?: string;
+  salutation?: string;
+  dateOfBirth?: string;
+  companyName?: string;
+  vatId?: string;
+  addresses?: Address[];
+  defaultShippingAddress?: number;
+  defaultBillingAddress?: number;
+  shippingAddresses: [0];
+  billingAddresses: [1];
 }

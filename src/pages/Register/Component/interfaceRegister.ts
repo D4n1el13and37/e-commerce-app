@@ -17,8 +17,11 @@ export interface RegisterFormFields {
   postcodeBilling: string;
   countryBilling: string;
 
-  defaultBillingAddress?: boolean;
-  defaultShippingAddress?: boolean;
+  defaultBillingAddress?: number;
+  defaultShippingAddress?: number;
+
+  shippingAddresses?: number[];
+  billingAddresses?: number[];
 }
 
 export interface FormInfoProps {

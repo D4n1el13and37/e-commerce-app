@@ -3,7 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
@@ -15,39 +15,48 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
     dispatch(autorizationByToken());
   }, [dispatch]);
 
-  // добавить лоадинг перед вызовом
-  // через маунт эффект вызвать чек авторизэйшн (ждем и показываем крутилку)
-  // const [autorized, setAutorized] = useState(false);
+  const router = useMemo(
+    () =>
+      createBrowserRouter([
+        {
+          path: '/',
+          errorElement: <NotFound />,
+          children: [
+            {
+              path: '',
+              element: <Home />,
+            },
+            {
+              path: 'login',
+              element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
+            },
+            {
+              path: 'register',
+              element: !isAuthorized ? (
+                <RegisterPage />
+              ) : (
+                <Navigate to="/main" />
+              ),
+            },
+            {
+              path: 'main',
+              element: isAuthorized ? <Home /> : <Navigate to="/" />,
+            },
+          ],
+        },
+      ]),
+    [isAuthorized]
+  );
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      errorElement: <NotFound />,
-      children: [
-        {
-          path: '',
-          element: <Home />,
-        },
-        {
-          path: 'login',
-          element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
-        },
-        {
-          path: 'register',
-          element: !isAuthorized ? <RegisterPage /> : <Navigate to="/main" />,
-        },
-        {
-          path: 'main',
-          element: isAuthorized ? <Home /> : <NotFound />,
-        },
-      ],
-    },
-  ]);
+  // if (isLoading) {
+  //   return <div>Loadiiing...</div>;
+  // }
 
   return <RouterProvider router={router} />;
 }

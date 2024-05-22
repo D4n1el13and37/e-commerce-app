@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
+import cn from 'classnames';
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -19,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         id={id}
         type={type}
-        className={`${classes.input} ${error && classes.error}`}
+        className={cn(classes.input, { [classes.error]: error })}
         {...props}
       />
     </div>

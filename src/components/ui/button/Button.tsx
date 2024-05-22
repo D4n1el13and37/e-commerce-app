@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
+import cn from 'classnames';
 import classes from './Button.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +19,10 @@ const Button: React.FC<ButtonProps> = ({
   <button
     data-testid="button"
     disabled={isDisabled}
-    className={`${isMain ? `${classes.main} ` : ''}${isFilled ? `${classes.filled} ` : ''}${classes.button}`}
+    className={cn(classes.button, {
+      [classes.main]: isMain,
+      [classes.filled]: isFilled,
+    })}
     {...props}
   >
     {children}

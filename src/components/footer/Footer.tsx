@@ -19,6 +19,7 @@ const Footer: React.FC = () => (
           <ul className={s.footer__list}>
             <li className={s.footer__item}>
               <a
+                target="_blank"
                 href="https://github.com/d4n1el13and37"
                 className={s.footer__link}
               >
@@ -27,6 +28,7 @@ const Footer: React.FC = () => (
             </li>
             <li className={s.footer__item}>
               <a
+                target="_blank"
                 href="https://github.com/Mineclinee"
                 className={s.footer__link}
               >
@@ -35,6 +37,7 @@ const Footer: React.FC = () => (
             </li>
             <li className={s.footer__item}>
               <a
+                target="_blank"
                 href="https://github.com/annkainova"
                 className={s.footer__link}
               >

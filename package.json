@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/D4n1el13and37/e-commerce-app",
   "scripts": {
+    "stylelint": "npx stylelint **/*.scss",
+    "style-fix": "npx stylelint **/*.scss --fix",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --max-warnings=0",
@@ -25,39 +27,59 @@
     "format": "prettier . --write --cache",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest",
+    "ts-checker": "tsc --noEmit",
+    "coverage": "npx vitest --coverage"
   },
   "dependencies": {
     "@commercetools/platform-sdk": "^4.2.0",
     "@commercetools/sdk-client-v2": "^2.1.0",
+    "@reduxjs/toolkit": "^2.2.5",
     "@vitejs/plugin-react": "^4.2.1",
+    "classnames": "^2.5.1",
     "isomorphic-fetch": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.4",
+    "react-modal": "^3.16.1",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.23.0",
+    "react-select": "^5.8.0",
+    "swiper": "^11.1.1",
     "vite": "^5.2.10"
   },
   "devDependencies": {
-    "@reduxjs/toolkit": "^2.2.3",
+    "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.6",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-modal": "^3.16.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
+    "@vitest/coverage-v8": "^1.6.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
+    "modern-normalize": "^2.0.0",
     "prettier": "^3.2.5",
+    "sass": "^1.76.0",
+    "stylelint": "^16.5.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
     "typescript": "^5.2.2",
     "vitest": "^1.5.2"
   },
   "lint-staged": {
-    "*.{ts, tsx}": "npm run lint:fix",
+    "*.{ts, tsx}": [
+      "npm run lint:fix"
+    ],
+    "*.{css, scss}": "npm run stylelint",
     "*": "npm run format"
   }
 }

@@ -1,34 +1,64 @@
-import { useState, useEffect } from 'react';
-import { projectKey, getApiRoot } from './api/BuildClient';
-import './App.css';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import RegisterPage from './pages/Register/RegisterPage';
+import LoginPage from './pages/Login/LoginPage';
+import Home from './pages/Home/Home';
+import { autorizationByToken } from './store/authSlice';
+import useAppDispatch from './hooks/useAppDispatch';
+import useAppSelector from './hooks/useAppSelector';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
-  const [projectDetails, setProjectDetails] = useState({});
-
-  const getProducts = async () => {
-    try {
-      const project = await getApiRoot().withProjectKey({ projectKey }).products().get().execute();
-
-      setProjectDetails(project.body);
-    } catch (e) {
-      if (e instanceof Error) {
-        throw new Error(e.message);
-      } else {
-        throw new Error('An unknown error occurred');
-      }
-    }
-  };
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    dispatch(autorizationByToken());
+  }, [dispatch]);
 
-  return (
-    <>
-      <div>Project Details</div>
-      {JSON.stringify(projectDetails, undefined, 2)}
-    </>
+  const router = useMemo(
+    () =>
+      createBrowserRouter([
+        {
+          path: '/',
+          errorElement: <NotFound />,
+          children: [
+            {
+              path: '',
+              element: <Home />,
+            },
+            {
+              path: 'login',
+              element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
+            },
+            {
+              path: 'register',
+              element: !isAuthorized ? (
+                <RegisterPage />
+              ) : (
+                <Navigate to="/main" />
+              ),
+            },
+            {
+              path: 'main',
+              element: isAuthorized ? <Home /> : <Navigate to="/" />,
+            },
+          ],
+        },
+      ]),
+    [isAuthorized]
   );
+
+  // if (isLoading) {
+  //   return <div>Loadiiing...</div>;
+  // }
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

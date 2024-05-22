@@ -1,0 +1,130 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap';
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+  // base
+  --font-family: 'Montserrat', sans-serif;
+  --content-width: 1320px;
+  --container-offset: 20px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // colors
+  --primary-color: #758963;
+  --accent-color: #3f5028;
+  --error-color: #ff5449;
+  --light-color: #f9f9f9;
+  --grey-color: #989998;
+  --text-color: #242424;
+
+  // sizes
+  --main-font-size: 16px;
+  --second-font-size: 14px;
+  --third-font-size: 20px;
+  --price-font-size: 24px;
+  --title-font-size: 28px;
+  --page-title-size: 36px;
+  --main-title-size: 57px;
+
+  // indents
+  --gap: 24px;
+
+  // animation
+  --duration: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px dotted var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
+::selection {
+  background-color: var(--primary-color);
+}
+
+html {
+  height: 100%;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-width: 360px;
+  min-height: 100%;
+  font-family: var(--font-family), sans-serif;
+  font-size: var(--main-font-size, 16px);
+  background-color: var(--light-color, #f9f9f9);
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-offset);
+  max-width: var(--container-width);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gap);
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
+/* remove from here? */
+.error {
+  border-color: var(--error-color, #ff5449);
+  color: var(--error-color, #ff5449);
+
+  &:focus {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  &:user-valid {
+    border-color: var(--error-color, #ff5449);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-color: var(--error-color, #ff5449);
+    }
+  }
+
+  &::placeholder {
+    color: var(--error-color, #ff5449);
+  }
+}
+
+@media (max-width: (1024px)) {
+  :root {
+    --main-title-size: 36px;
+  }
+}

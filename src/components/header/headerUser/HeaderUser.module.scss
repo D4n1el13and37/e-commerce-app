@@ -1,0 +1,83 @@
+.container {
+  width: 40px;
+  height: 40px;
+
+  @media (max-width: (900px)) {
+    order: 2;
+  }
+}
+
+.button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  color: currentcolor;
+  background-image: url('./user.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+}
+
+.menu {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  overflow: hidden;
+  border-radius: 12px;
+  line-height: 0;
+  color: transparent;
+  transform: translateX(-70%);
+  margin-block-start: 1.05lh;
+
+  &_item {
+    place-content: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      line-height var(--duration) ease-in-out,
+      color var(--duration) ease-in-out;
+  }
+}
+
+.menu_link {
+  display: block;
+  border: none;
+  padding: 0.5lh 50px;
+  font-size: var(--second-font-size);
+  line-height: 143%;
+  letter-spacing: 0.02em;
+  color: var(--grey-color);
+  background: none;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) color ease-in-out;
+  }
+}
+
+.button.active ~ .menu {
+  min-width: 168px;
+  min-height: 52px;
+  line-height: 1.2;
+  color: currentcolor;
+  background-color: #fff;
+}

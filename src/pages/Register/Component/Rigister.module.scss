@@ -1,0 +1,151 @@
+.register {
+  align-content: space-around;
+  padding: 48px 0;
+
+  @media (max-width: (1024px)) {
+    grid-template-rows: repeat(2, min-content);
+  }
+}
+
+.form {
+  grid-column: 2 / -1;
+  border-radius: 12px;
+  padding: 60px;
+  background-color: #fff;
+  gap: 42px;
+
+  @media (max-width: (1024px)) {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    padding: 40px;
+  }
+
+  @media (max-width: (1024px)) {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    padding: 20px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: var(--page-title-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__subtitle {
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: var(--third-font-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__personalData {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media (max-width: (1024px)) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .profile {
+    display: grid;
+    gap: 12px;
+
+    &__person {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+
+      @media (max-width: (1024px)) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .credentials {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--error-color, #ff5449);
+}
+
+.address {
+  &__information {
+    display: grid;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  &__code {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    @media (max-width: (1024px)) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.input_container {
+  position: relative;
+  height: 82px;
+
+  .error_container {
+    position: relative;
+    height: 20px;
+
+    span {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
+    }
+  }
+}
+
+.server__error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: -24px;
+  }
+}
+
+.login {
+  font-family: var(--font-family);
+  font-size: var(--second-font-size);
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #202020;
+
+  a {
+    font-weight: 600;
+    color: var(--primary-color, #758963);
+    transition: color;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color var(--duration, 0.3s) ease-in-out;
+    }
+  }
+
+  @media (any-hover: hover) {
+    a:hover {
+      color: var(--accent-color, #3f5028);
+      cursor: pointer;
+    }
+  }
+}

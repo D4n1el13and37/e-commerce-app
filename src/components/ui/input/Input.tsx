@@ -1,0 +1,30 @@
+import { InputHTMLAttributes, forwardRef } from 'react';
+import cn from 'classnames';
+import classes from './Input.module.scss';
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  type: 'text' | 'password' | 'email' | 'date' | 'number' | 'search' | 'tel';
+  label: string;
+  id: string;
+  error?: string;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, id, label, error, ...props }, ref) => (
+    <div className={classes.container} data-testid="input-container">
+      <label htmlFor={id} className={classes.label}>
+        {label && <span>{label}</span>}
+      </label>
+      <input
+        data-testid="input"
+        ref={ref}
+        id={id}
+        type={type}
+        className={cn(classes.input, { [classes.error]: error })}
+        {...props}
+      />
+    </div>
+  )
+);
+
+export default Input;

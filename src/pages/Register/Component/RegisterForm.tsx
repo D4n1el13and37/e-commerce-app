@@ -67,12 +67,13 @@ export default function RegisterForm() {
       await dispatch(register(userData)).unwrap();
       setIsSuccess(true);
 
-      await setTimeout(() => {
-        dispatch(
-          login({ email: data.email, password: data.password })
-        ).unwrap();
+      await dispatch(
+        login({ email: data.email, password: data.password })
+      ).unwrap();
+
+      setTimeout(() => {
         navigate('/main', { replace: true });
-      }, 1000);
+      }, 1500);
     } catch (e) {
       if (typeof e === 'string') {
         setIsError(e);

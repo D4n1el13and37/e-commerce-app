@@ -21,7 +21,6 @@ const createBaseClient = () =>
     .withProjectKey(projectKey)
     .withClientCredentialsFlow(authMiddlewareOptions)
     .withHttpMiddleware(httpMiddlewareOptions);
-// .withLoggerMiddleware();
 
 export const createDefaultClient = (): ApiRoot => {
   const client = createBaseClient().build();

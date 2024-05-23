@@ -1,0 +1,430 @@
+[
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Orchids",
+      "ru-RU": "Орхидеи"
+    },
+    "slug": {
+      "en-US": "orchids",
+      "ru-RU": "orchidei"
+    },
+    "description": {
+      "en-US": "Orchids are the most varied of all plant groups—they come from all over the world from deserts to woodlands to tropical forests, but the orchids most people love are from tropical and subtropical climates. A flowering orchid is the quintessential tropical plant with its color varieties of white, yellow, pink, purple, red, orange, and variegated. Avoid dry air, direct heat or drafts, and direct sunlight. Instead, provide a warm humid environment. In general, once per week; allow to dry between waterings; do not overwater.",
+      "ru-RU": "Орхидеи являются самой разнообразной группой растений - они происходят со всего мира, от пустынь до лесов и тропических лесов, но орхидеи, которые любят большинство людей, родом из тропических и субтропических климатов. Цветущая орхидея - это воплощение тропического растения с разнообразием цветов от белого, желтого, розового, пурпурного, красного, оранжевого до пестрых. Избегайте сухого воздуха, прямого тепла или сквозняков и прямого солнечного света. Вместо этого обеспечьте теплую влажную среду. Обычно поливайте раз в неделю; давайте почве высыхать между поливами; не заливайте водой."
+    },
+    "masterVariant": {
+      "sku": "FLW-1",
+      "key": "variant-key-FLW-1",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2499
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/NlUPRFLF444OXKmfxFPRDHyqeI0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basic-indoor-orchid-care-1902822-04-7d58691d8e7a40b78e74f69f5b40948f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Orchid Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/1v0LDPJmgb9AvOa3ordCRY3NFpQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basic-indoor-orchid-care-1902822-08-d562b7be935b4354ab9c30dddad7a3d5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Orchid Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/XOa-pVu2jLNyvZNe6Pu14kbK4Gc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basic-indoor-orchid-care-1902822-moss-17d84d7f134f4ca18831cadad4b46e7a.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Orchid Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "African Violet",
+      "ru-RU": "Африканская фиалка"
+    },
+    "slug": {
+      "en-US": "african-violet",
+      "ru-RU": "african-fialka"
+    },
+    "description": {
+      "en-US": "African violets are a popular houseplant for good reason. They are favorites because they do not require a dormant rest period, which allows them to bloom year-round. Although they do not require a lot of maintenance, these small, leafy plants sometimes do best in a container that allows for watering from the bottom. If you prefer to use a standard pot without a water reservoir, water carefully from the top avoiding the leaves, and let the soil dry between waterings. African violet leaves will spot, turn brown and die if cold water gets on them. Remove spent leaves from the bottom of the plant and pot up only when the size of the plant indicates a larger pot is needed. These bloomers do not have extensive root systems and, in general, will not require more than a 5- or 6-inch pot at maturity. While African violets are not demanding plants, they sometimes flourish for years and then die without warning.",
+      "ru-RU": "Африканские фиалки являются популярными комнатными растениями по уважительной причине. Они любимы, потому что им не требуется период покоя, что позволяет им цвести круглый год. Хотя они не требуют много ухода, эти маленькие, лиственные растения иногда лучше всего растут в контейнере, который позволяет поливать их снизу. Если вы предпочитаете использовать стандартный горшок без резервуара для воды, поливайте осторожно сверху, избегая попадания воды на листья, и дайте почве высохнуть между поливами. Листья африканских фиалок могут покрываться пятнами, коричневеть и погибать, если на них попадает холодная вода. Удаляйте увядшие листья с нижней части растения и пересаживайте только тогда, когда размер растения указывает на необходимость большего горшка. Эти цветущие растения не имеют обширной корневой системы и, как правило, не требуют горшков больше 5-6 дюймов в зрелом возрасте. Хотя африканские фиалки не требовательные растения, иногда они процветают в течение многих лет, а затем умирают без видимых причин."
+    },
+    "masterVariant": {
+      "sku": "FLW-2",
+      "key": "variant-key-FLW-2",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1999
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/9eyBkAR9xIFA6Nr6q85Cjpt_xsw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-african-violets-indoors-1902733-02-ae7c409a65ba4b949cb33518c37dd90e.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "African Violet Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/c_LbME-eZjObXMsEhVT9H8j4xrE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-african-violets-indoors-1902733-03-2ee94d854f384216bd6e85ec6a908bde.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "African Violet Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/PopSVFcKj8sV22Rz8qlCyo5Prcc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-african-violets-indoors-1902733-04-510307171c344cc3b2abb9b43c0055fc.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "African Violet Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "flowering-plants" },
+      { "key": "easy-to-care" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Begonias",
+      "ru-RU": "Бегонии"
+    },
+    "slug": {
+      "en-US": "begonias",
+      "ru-RU": "begonii"
+    },
+    "description": {
+      "en-US": "If you are used to growing begonias outdoors, then you know that many varieties make excellent houseplants, blooming almost continuously in good conditions. To bloom well it will need a bright location, but do not place it too close to a window or it could be harmed by the draft. Some of the fancier-leaved Rex begonia varieties do not even need to be in bloom to be colorful. Besides Rex begonias, look for the fibrous-rooted types like wax-leafed, angel-wing, and hairy-leafed varieties.",
+      "ru-RU": "Если вы привыкли выращивать бегонии на улице, то знаете, что многие сорта отлично подходят в качестве комнатных растений, цветущих почти непрерывно при хороших условиях. Для хорошего цветения им нужно яркое место, но не ставьте их слишком близко к окну, иначе их может повредить сквозняк. Некоторые из более декоративных листовых сортов Рекс бегонии даже не нуждаются в цветении, чтобы быть красочными. Помимо Рекс бегоний, ищите виды с волокнистыми корнями, такие как восковая листовая, ангельское крыло и волосистые сорта."
+    },
+    "masterVariant": {
+      "sku": "FLW-3",
+      "key": "variant-key-FLW-3",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2499
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/gPebA4K-UBae7chcWxuaVp_1uFY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileyWaxBegonias-22-bcb41a9b5b05494794580ba77193af88.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Begonia Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Bromeliad",
+      "ru-RU": "Бромелия"
+    },
+    "slug": {
+      "en-US": "bromeliad",
+      "ru-RU": "bromelia"
+    },
+    "description": {
+      "en-US": "These quirky-looking plants are members of the pineapple family. Luckily, most do not get quite as large as pineapple trees. Bromeliads are distinguished by their colorful basal rosettes and showy flowers. The plants are tropical and many varieties are epiphytes or air plants absorbing moisture through the atmosphere rather than the plants on which they host. Bromeliads do well in bright light situations. They do not require a lot of water, but when they are watered well, let the water catch between the leaves, where it will be absorbed slowly.",
+      "ru-RU": "Эти забавные растения являются членами семейства ананасовых. К счастью, большинство из них не достигает таких размеров, как ананасовые деревья. Бромелии отличаются своими красочными базальными розетками и яркими цветами. Растения тропические, и многие сорта являются эпифитами или воздушными растениями, поглощающими влагу из атмосферы, а не из растений, на которых они растут. Бромелии хорошо растут в условиях яркого освещения. Они не требуют много воды, но когда их хорошо поливают, пусть вода собирается между листьями, где она будет медленно впитываться."
+    },
+    "masterVariant": {
+      "sku": "FLW-4",
+      "key": "variant-key-FLW-4",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2999
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/noARTC7Oo_FHqDJfKjs6i4vLkIE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-bromeliads-indoors-1902667-06-f139bfa580cd4247bc66bb0f932154e2.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bromeliad Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/0rp39ReCZaJzpVSPi4Rmb1QznaU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-bromeliads-indoors-1902667-05-f2e4e45435d643179aada4d4da0a4b78.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bromeliad Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/mSdU4HjzZC5hR69OrxtBCt_aLmc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-bromeliads-indoors-1902667-01-ce75eb3f6d0f4c08ace2b86c1c52a9f2.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bromeliad Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/34SkhQMKJbxv48Y64Jj1hW32k20=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-bromeliads-indoors-1902667-04-349ab02495bd41c59c38435695686816.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bromeliad Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Chenille Plant",
+      "ru-RU": "Растение Шениль"
+    },
+    "slug": {
+      "en-US": "chenille-plant",
+      "ru-RU": "shenil-plant"
+    },
+    "description": {
+      "en-US": "Both chenille and red-hot cattail are apt descriptions for this tropical plant. Few people can resist rubbing the catkin-like fuzzy, red flowers. The chenille plant is a fast grower and a long bloomer. Chenille plant can be grown outdoors during the summer and brought indoors when the temperatures cool in fall. It will go partially dormant in winter, so do not feed it until there is new growth in the spring. Stem tips may be removed during the growing season to encourage branching. Chenille plant needs high humidity to thrive. Mist it when it is indoors to keep it healthy.",
+      "ru-RU": "И шениль, и красный хвостик — подходящие описания для этого тропического растения. Мало кто может устоять перед тем, чтобы не погладить пушистые, красные цветы, похожие на кошачий хвост. Растение шениль быстро растет и долго цветет. Шениль можно выращивать на открытом воздухе летом и заносить в помещение, когда осенью температура понижается. Оно частично впадает в состояние покоя зимой, поэтому не подкармливайте его до появления нового роста весной. Кончики стеблей можно удалять в период вегетации для стимулирования ветвления. Растение шениль нуждается в высокой влажности для процветания. Опрыскивайте его, когда оно находится в помещении, чтобы сохранить его здоровье."
+    },
+    "masterVariant": {
+      "sku": "FLW-4",
+      "key": "variant-key-FLW-4",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2999
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/vB6mAp2n_ukGHDVSS5wYaRsXQ3k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-best-flowering-houseplants-1402664-04-7f99decc091f4259985981cad43c39cd.jpeg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chenille Plant Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/_WvjVwr1rHljfyCEEn7D68AMEX8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chenille-plant-1315697-2-ad49b1d16ee44e82ae6b341d6235a0c5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chenille Plant Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/HulxeDojdv6Px9zyrcFzGEc5dmY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chenilleflowers-58d141965f9b581d722c590b-23092a2880714b25801834e8cd475f7e.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chenille Plant Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Christmas Cactus",
+      "ru-RU": "Рождественский кактус"
+    },
+    "slug": {
+      "en-US": "christmas-cactus",
+      "ru-RU": "rozdestvenskiy-kaktus"
+    },
+    "description": {
+      "en-US": "Christmas cactus seems to thrive on neglect. It does not even need you to manipulate its light exposure to set buds for Christmas blooms. It is especially long-lived and propagates easily from cuttings. The long segmented leaves are notched at the margins. Stem tips produce flowers with petals of different lengths and a color palette in hues of pinks to reds. In addition to Christmas bloomers, this family of plants includes some that produce flowers at Easter. Christmas cactus does well when placed near a window. Do not let the pads touch a cold window or the plant can suffer cold damage. Although Christmas cactus needs well-draining soil, it also needs high humidity.",
+      "ru-RU": "Рождественский кактус кажется процветает при недостатке внимания. Ему даже не нужно регулировать освещение для формирования бутонов к рождественскому цветению. Он особенно долговечен и легко размножается черенками. Длинные сегментированные листья имеют зазубрины по краям. Кончики стеблей производят цветы с лепестками разной длины и цветовой палитрой от розовых до красных оттенков. В дополнение к рождественским цветам, в этом семействе растений есть и те, что цветут на Пасху. Рождественский кактус хорошо растет возле окна. Не допускайте, чтобы листья касались холодного окна, иначе растение может пострадать от холода. Хотя рождественскому кактусу нужна хорошо дренированная почва, ему также нужна высокая влажность."
+    },
+    "masterVariant": {
+      "sku": "FLW-5",
+      "key": "variant-key-FLW-5",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1499
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/_k86cMgjgtx51IQzDGNlAxbejM8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-best-flowering-houseplants-1402664-05-0d9bf43ff22441dfb1fac9823b8610e1.jpeg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Christmas Cactus Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/kFn2M6s7SiJas-XT9N_a6_EHhxI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/christmas-cactus-4176983-9-4f10761b08024f71b1e31f386c8ae65f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Christmas Cactus Image"
+        },
+
+        {
+          "url": "https://www.thespruce.com/thmb/zJsYH7npdZORqwCrNZhV05QJfj8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/christmas-cactus-4176983-7-3756e3cea70f4a6486af314de8dde16e.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Christmas Cactus Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }, { "key": "succulents" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Clivia or Kaffir Lily",
+      "ru-RU": "Кливия или Каффирская лилия"
+    },
+    "slug": {
+      "en-US": "clivia-kaffir-lily",
+      "ru-RU": "klivia"
+    },
+    "description": {
+      "en-US": "This amaryllis relative is grown from a bulb and, like its cousin, needs to be pot bound to flower, so do not plant it in a large container. Like the amaryllis, clivia goes through a dormant period before sending up a flower stalk. It will need total darkness at night when it goes dormant in late fall. Accomplish this by placing it in an unused closet or in a cardboard box. The stalk will sprout anytime from December through April, and then, normal care can be resumed.",
+      "ru-RU": "Этот родственник амариллиса выращивается из луковицы и, как и его родственник, нуждается в тесном горшке для цветения, поэтому не сажайте его в большой контейнер. Как и амариллис, кливия проходит период покоя перед тем, как выпустить цветонос. В это время ей нужна полная темнота ночью, что достигается путем помещения растения в неиспользуемый шкаф или картонную коробку. Стебель появится в любое время с декабря по апрель, после чего можно будет возобновить обычный уход."
+    },
+    "masterVariant": {
+      "sku": "FLW-6",
+      "key": "variant-key-FLW-6",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1799
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/CNTmDsIhCYGqRIS6avCQwhKof68=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_03-0aeafd41ef3541c985ba1fad56db7551.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Clivia Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/XGNizgeaP9z-1OTmJBKqOEjeYaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_07-f7d5862d4cc940038cd9dc0ebcbe90fc.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Clivia Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/_HoQplPyeUqmzsGCUJ1xBKxwHjg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_01-1bd7e7d311754a0a847430740d715acb.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Clivia Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/Ts7h2SpU5Dic_zqdOW5uUL_AFhQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1166217952-b04162b3e74047279ef6877ee213dd75.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Clivia Lily Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "flowering-plants" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kalanchoe",
+      "ru-RU": "Каланхоэ"
+    },
+    "slug": {
+      "en-US": "kalanchoe",
+      "ru-RU": "kalanhoe"
+    },
+    "description": {
+      "en-US": "Many succulents make easy-care houseplants, but few look as lovely as kalanchoe (kal-un-KOH-ee) in bloom. As with all succulents, kalanchoe does not like wet soil. The plant should be kept moist spring through autumn but reduce winter watering to light, occasional applications. Kalanchoe is native to the tropics and while it is a lovely plant in bloom, it is difficult to get it to rebloom outside of its native range.",
+      "ru-RU": "Многие суккуленты являются легкими в уходе комнатными растениями, но немногие выглядят так же прекрасно, как цветущее каланхоэ (кал-ун-КОХ-е). Как и все суккуленты, каланхоэ не любит мокрую почву. Растение должно быть влажным с весны до осени, но зимой полив следует сократить до легкого, случайного полива. Каланхоэ родом из тропиков, и хотя это прекрасное растение в цвету, его сложно заставить снова зацвести за пределами его родного ареала."
+    },
+    "masterVariant": {
+      "sku": "FLW-7",
+      "key": "variant-key-FLW-7",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1299
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/5GnI4p-eR2fNI9yfW_4u4VEyXGo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-hero-da950f5afb5645fdb60151d859d53df0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/wHqqN93Fscg_5nDevftniDVqfbY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-06-eb7fab84baba4c98b46065971e3aa1f0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/WlKytJQhv0FVDz07wBJ9ki4tms0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-533272615-7f6c4fb4622f4fecbe9bc22207b04d57.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "flowering-plants" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Peace Lily",
+      "ru-RU": "Спатифиллум"
+    },
+    "slug": {
+      "en-US": "peace-lily",
+      "ru-RU": "saptifillum"
+    },
+    "description": {
+      "en-US": "The peace lily is so low-maintenance that it is a great houseplant for the houseplant challenged or as a housewarming gift. It does not require much direct light and can handle occasional over or under-watering. The glossy, dark green leaves are offset by white spathes or bracts that enclose the tiny flower clusters and look almost like variegated leaves. The flowers are lightly scented, but close proximity is required to notice it. It will flower in even the shadiest of homes.",
+      "ru-RU": "Спатифиллум настолько неприхотлив, что является отличным выбором для тех, кто не справляется с уходом за комнатными растениями, или в качестве подарка на новоселье. Он не требует большого количества прямого света и может выдержать случайные переувлажнения или пересыхания. Глянцевые, темно-зеленые листья украшены белыми покрывалами или прицветниками, которые окружают крошечные цветочные кластеры и выглядят почти как пестрые листья. Цветы слегка пахнут, но чтобы почувствовать запах, нужно находиться в непосредственной близости. Он будет цвести даже в самых тенистых уголках дома."
+    },
+    "masterVariant": {
+      "sku": "FLW-8",
+      "key": "variant-key-FLW-8",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1599
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/c_824pEbpilaXUpZxR_i_P5A6RM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-peace-lilies-1902767-hero-01-01-9cd2172cd5ef4d7198351df445b8e851.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Peace Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/39YWjiNsVNJ0IIKemBFjeJaZSLY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-peace-lilies-1902767-03-01-d56d2fbc4c4b44408ce7b8384a8e2148.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Peace Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/Kdnq7yB_icTNEKn-5KGHfEKaMWA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-peace-lilies-1902767-02-642dbcd8ab944e66864748ac616e691b.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Peace Lily Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/nt0yhpTciP-2Df-ALqoPGKC79M8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-peace-lilies-1902767-01-04-d93a2b294ecf4424a69c614b2e8e1a49.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Peace Lily Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "easy-to-care" }, { "key": "flowering-plants" }],
+    "publish": true
+  }
+]

@@ -1,0 +1,522 @@
+[
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Fiddle Leaf Fig",
+      "ru-RU": "Фикус Лират"
+    },
+    "slug": {
+      "en-US": "fiddle-leaf-fig",
+      "ru-RU": "fikus-lirat"
+    },
+    "description": {
+      "en-US": "The fiddle leaf fig hails from the jungle, so a bright bathroom would be an ideal indoor location. A living room will also work if you protect the tree from drafts and give it enough bright filtered light and humidity. Outdoors will also do wonders for the fiddle leaf fig, so give it a temporary home as a patio plant during June.",
+      "ru-RU": "Фиговое дерево родом из джунглей, поэтому идеальным местом для его размещения в помещении будет светлая ванная комната. Гостиная также подойдет, если вы защитите дерево от сквозняков и обеспечите ему достаточно яркий фильтрованный свет и влажность. Инжир на открытом воздухе также будет полезен, поэтому в июне устройте ему временный дом в качестве растения для патио."
+    },
+    "masterVariant": {
+      "sku": "TRS-1",
+      "key": "variant-key-TRS-1",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 125
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/j1IREt0UMI1lHkyzbOmLoIRvq_Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-01-b92727e971c043cbb74c79c75a593bc3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Fiddle Leaf Fig Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/wxnKUBFYKRkBiY35tamGaMeqd_k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-05-32d2eb47c63a427cabec0f5a52445013.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Fiddle Leaf Fig Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Benjamin fig",
+      "ru-RU": "Фикус Бенджамина"
+    },
+    "slug": {
+      "en-US": "benjamin-leaf-fig",
+      "ru-RU": "benjamin-ficus-tree"
+    },
+    "description": {
+      "en-US": "Weeping fig (Ficus benjamina's common name is known as the ficus tree) grows as a large broadleaf evergreen tree in tropical and subtropical climates, but it is more often grown as a houseplant in homes and offices and featured in interior commercial landscaping. Here it will thrive in filtered bright sunlight and well-draining potting soil. The ficus tree is known for its longevity, living between 20 to 50 years. Weeping figs are toxic to pets.",
+      "ru-RU": "Плакучий инжир ( общее название фикуса Бенджамина, известное как фикусовое дерево ) растет как большое широколиственное вечнозеленое дерево в тропическом и субтропическом климате, но его чаще выращивают как комнатное растение в домах и офисах, а также используют во внутреннем коммерческом ландшафтном дизайне. Здесь он будет хорошо себя чувствовать при фильтрованном ярком солнечном свете и хорошо дренируемой почве. Фикус известен своим долголетием: он живет от 20 до 50 лет . Плакучий инжир токсичен для домашних животных."
+    },
+    "masterVariant": {
+      "sku": "TRS-2",
+      "key": "variant-key-TRS-2",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 100
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/4qao5lrDkR-rbshjRhxXxUtVoxE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-ficus-trees-1902757-1-80b8738caf8f42f28a24af94c3d4f314.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Benjamin Leaf Fig Image"
+        },
+        {
+          "url": "https://cdn.leroymerlin.ru/lmru/image/upload/f_auto/q_auto/dpr_1.0/c_pad/w_1000/h_1000/v1707922019/lmcode/p52hdHR4jEKY4bqNHlDEuA/89352944_tmp.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Benjamin Leaf Fig Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Schefflera (Umbrella Tree)",
+      "ru-RU": "Шеффлера (Зонтичное Дерево)"
+    },
+    "slug": {
+      "en-US": "umbrella-tree",
+      "ru-RU": "umbrella-schefflera-tree"
+    },
+    "description": {
+      "en-US": "Schefflera, commonly called umbrella plants or trees, make excellent tropical houseplants. These plants produce flowers, but plants grown indoors rarely develop flowers. Schefflera grows best in indirect, filtered light, requiring a rich, loamy, well-draining soil and temperatures consistently warmer than 60°F.",
+      "ru-RU": "Шеффлера, обычно называемая зонтичным растением или деревом, является отличным тропическим комнатным растением. Эти растения дают цветы, но растения, выращенные в помещении, редко цветут. Шеффлера лучше всего растет при непрямом, фильтрованном свете, требуя богатой, суглинистой, хорошо дренируемой почвы и температуры, постоянно выше 60°F."
+    },
+    "masterVariant": {
+      "sku": "TRS-3",
+      "key": "variant-key-TRS-3",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 8000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/Zttu71T_kFeMiFV-BA1C7Il9KYA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-RECIRC-cdce731067d449d4b4a17e8505ef9f24.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/hpKgqP4YHFoAJrxg3VP9ns6kE6I=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-detail-a03554c4501f4cdaa3f78bb7e41071c5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/Zxilic3AUW4yqGzDZIGt6_Mwrsc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-6-a24adaf956154b809d95be791d10ba81.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/s77bmkgCT4oh6oZQy3TFeo76qp4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-3-1c002fb86237451789114b85b8cfa792.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Jade (Crassula ovata)",
+      "ru-RU": "Дерево нефрит"
+    },
+    "slug": {
+      "en-US": "crassula-ovata-tree",
+      "ru-RU": "jade-tree"
+    },
+    "description": {
+      "en-US": "The jade tree is probably the lowest maintenance indoor tree on this list, making it perfect for beginners and anyone who doesn't have a lot of time to care for houseplants. The succulent leaves and trunk of this plant give it a sculptural look. Jade trees are also ideal as bonsai specimens. Water the plant every few weeks and locate it near a window with bright light.",
+      "ru-RU": "Дерево нефрит, вероятно, самое неприхотливое комнатное дерево в этом списке, что делает его идеальным для начинающих и тех, у кого нет много времени на уход за домашними растениями. Сочные листья и ствол этого растения придают ему скульптурный вид. Деревья нефрита также идеально подходят в качестве экземпляров для бонсай. Поливайте растение каждые несколько недель и размещайте его возле окна с ярким светом."
+    },
+    "masterVariant": {
+      "sku": "TRS-4",
+      "key": "variant-key-TRS-4",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/T7k7dFu3U_UxjLepks8A-iXIPq8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-jade-plants-indoors-1902981-04-257462b8baf44352b881336423291f60.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Jade (Crassula ovata) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/92gqDycGP8BOlBN962q6FeM01hU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-jade-plants-indoors-1902981-06-521a25bd63284fdfb8ba991e6ed49e43.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Jade (Crassula ovata) Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "indoor-trees" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Dragon Tree(Dracaena marginata)",
+      "ru-RU": "Драконовое дерево"
+    },
+    "slug": {
+      "en-US": "dragon-tree",
+      "ru-RU": "dracaena-marginata"
+    },
+    "description": {
+      "en-US": "The dragon tree (Dracaena draco) is an evergreen succulent tree native to subtropical zones and can be grown outdoors or as a houseplant. In the landscape, the dragon tree grows tall and develops a thick cylindrical trunk topped with rosettes that have sword-shaped leaves. The much shorter houseplant produces the same leaves. The plant is toxic to animals, especially cats.",
+      "ru-RU": "Драконовое дерево ( Dracaena draco) — вечнозеленое суккулентное дерево, произрастающее в субтропических зонах, которое можно выращивать на открытом воздухе или как комнатное растение. В ландшафте драконовое дерево вырастает в высоту и имеет толстый цилиндрический ствол, увенчанный розетками с листьями в форме меча. Гораздо более низкое комнатное растение дает такие же листья. Растение токсично для животных, особенно кошек."
+    },
+    "masterVariant": {
+      "sku": "TRS-5",
+      "key": "variant-key-TRS-5",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 10000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/MIjjt_14F1afnpq4ep7ccmA2wl4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-02-ba6496fa99b74838b9595a6c7dbfd21f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/mpT078GtVGms9ls9_Jn0PXIO3Yo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-hero-db8b3d62c7454679a04be31c3b44c1bb-c2235352994b44abbff11be830349d2b.jpeg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/HeB1whC1Snqh-JYkbBDRVwnP_zY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-03-1a4094af24c845a59e3054ce2d0d94dc.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "easy-to-care" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat (Citrus japonica)",
+      "ru-RU": "Кумкват (Цитрус японский)"
+    },
+
+    "slug": {
+      "en-US": "kumquat-centennial-tree",
+      "ru-RU": "kumquat-centennial-variegated"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "GPC-6-centennial-variegated",
+      "key": "variant-key-GPC-6-centennial-variegated",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 40000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://justfruitsandexotics.com/wp-content/uploads/5b95c26161a7d-800x599.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/GlAW0Eo6RSBVkyPmT60fvPQHDro=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-01-81c9f69139684871855bb117f2b8e662.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/PpvP0K-xiSBYLuhn5t1nHQmpJ5w=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-08-a2fd07e1235e476faa050ea4b0a1cee3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat 'Nagami' (Citrus japonica)",
+      "ru-RU": "Кумкват 'Нагами' (Цитрус японский)"
+    },
+
+    "slug": {
+      "en-US": "kumquat-nagami-tree",
+      "ru-RU": "dracaena-nagami"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "GPC-7-Nagami",
+      "key": "variant-key-GPC-7-Nagami",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 120000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://toptopiary.co.uk/cdn/shop/products/05019-kumquat-5l-55-65cm-high_1d13cc33-a20c-4b57-bba5-a3ed4cdcdb38.jpg?v=1602851082",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami image"
+        },
+        {
+          "url": "https://i.imgur.com/mcjnfxZ.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami Image"
+        },
+        {
+          "url": "https://www.kipogeorgiki.gr/image/cache/data/FYT_KAR_Dentra/Kumquat/02.-Karpoi-Koumkouat-sto-Dentro-800x600.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat (Citrus japonica)",
+      "ru-RU": "Кумкват (Цитрус японский)"
+    },
+    "slug": {
+      "en-US": "kumquat-tree",
+      "ru-RU": "kumquat-citrus-tree"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "TRS-8",
+      "key": "variant-key-TRS-8",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 54000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/GlAW0Eo6RSBVkyPmT60fvPQHDro=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-01-81c9f69139684871855bb117f2b8e662.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/PpvP0K-xiSBYLuhn5t1nHQmpJ5w=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-08-a2fd07e1235e476faa050ea4b0a1cee3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/66KASFJIjimslzWxicYKJ8tE7LM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-10-7b9737e53cc94b63af548d860d68b933.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/b8GyuGxYrksAh-Um5z8wV-nXKpA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-12-9de9407e01214ef6a69204bb09f572ab.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Bay Laurel (Laurus nobilis)",
+      "ru-RU": "Лавровое дерево"
+    },
+    "slug": {
+      "en-US": "bay-laurel",
+      "ru-RU": "bay-laurel-tree"
+    },
+    "description": {
+      "en-US": "The bay laurel tree has pointed oval leaves that are a common cooking ingredient. It’s fairly easy to keep this plant as an indoor tree to have its leaves right at your fingertips. Bay laurel has a slow growth rate and responds well to pruning, so you will be able to keep the plant at a manageable size. Use a container that just fits the plant’s root ball because bay laurel likes to be a little cramped. Make sure not to overwater it.",
+      "ru-RU": "Лавр — вечнозеленый кустарник или дерево, произрастающее в Средиземноморье, наиболее известный своими листьями, которые широко используются в качестве кухонной приправы. Заостренные овальные листья темно-зеленого цвета с кожистой текстурой и имеют слабый аромат как в свежем, так и в сушеном виде. Но при добавлении в кулинарные жидкости лавровый лист выделяет эфирные масла, которые придают супам, тушеным блюдам и соусам острый, мятный и слегка горьковатый вкус."
+    },
+    "masterVariant": {
+      "sku": "TRS-9",
+      "key": "variant-key-TRS-9",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 20000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/c4ucfm3d7UfajQcJ0cY2kYB9hsU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-hero-385455f6b5cf4f1ebcdfadfb271e5697.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/5l1bydz78BuHVGE2QQ9yYJL5laQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-01-06a0a0843bbe47be9b9593eb882aef1c.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/b64uW-wBVzrYkaWqRq8rjQmMjuo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-03-30045293cbe9406bb9a9780d854e0784.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        }
+      ]
+    },
+    "categories": [
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Money Tree",
+      "ru-RU": "Денежное дерево"
+    },
+    "slug": {
+      "en-US": "money-tree",
+      "ru-RU": "money-rus-tree"
+    },
+    "description": {
+      "en-US": "A Guiana chestnut is a tree that comes from Central and South America. The Guiana chestnut is a beloved houseplant for those who practice feng shui, as this plant is believed to create more positive energy ('chi') in the home. These are sturdy plants making them easy to care for.",
+      "ru-RU": "Гвианский каштан – дерево родом из Центральной и Южной Америки. Гвианский каштан — любимое комнатное растение тех, кто практикует фэн-шуй, поскольку считается, что это растение создает в доме больше положительной энергии («ци»). Это крепкие растения, поэтому за ними легко ухаживать."
+    },
+    "masterVariant": {
+      "sku": "TRS-10",
+      "key": "variant-key-TRS-10",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 22000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/vdJ4ph93q5BmUZCP9pMUUl7pTok=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TheSpruce1-0cdbe5809c914e25b1d24b0122f39c11.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/VKM0MV9o1c3WiDFRIfA6B2dW5uY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/The-Spruce-RECIRC-2fa016ab938c4eb9aa952cba2fdb955f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/HyWN3_e8ZzPXRrTNmqJZ1vR4m94=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TheSpruce4-90f0df3a95ab4e62a0ee84c032627bcd.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Olive Trees",
+      "ru-RU": "Оливковое мини дерево"
+    },
+    "slug": {
+      "en-US": "olive-tree",
+      "ru-RU": "olive-mini-tree"
+    },
+    "description": {
+      "en-US": "Growing an olive tree indoors is pretty straightforward, though some maintenance is required to make these trees thrive indoors. Olive trees are native to the Mediterranean and love full sunlight. While the soil of an olive tree should never fully dry out, do be mindful not to overwater.",
+      "ru-RU": "Вырастить оливковое дерево в помещении довольно просто, хотя для того, чтобы эти деревья хорошо росли в помещении, требуется некоторый уход. Оливковые деревья родом из Средиземноморья и любят солнечный свет. Хотя почва оливкового дерева никогда не должна полностью высыхать, будьте осторожны и не допускайте чрезмерного полива."
+    },
+    "masterVariant": {
+      "sku": "TRS-11",
+      "key": "variant-key-TRS-11",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 5000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/7tu6Qt_84-VGvPOKGiyYGvKGKD8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1324175205-0b25411721104da987f5a933e7a8a937.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/834Vwow3-s0iS50FxMRi_nZ9m_E=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/SPR-grow-olive-trees-indoors-6752705-04-7fa85be1d70042c4844a623cf9caea5f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/q4PaZioe-a6Wl_QiccADnlJzNr8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/SPR-grow-olive-trees-indoors-6752705-07-798c92ea4ae4478588c6c09e6d64c2eb.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        }
+      ]
+    },
+    "categories": [{ "key": "indoor-trees" }],
+    "publish": true
+  }
+]

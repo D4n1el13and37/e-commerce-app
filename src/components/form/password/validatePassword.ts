@@ -5,7 +5,7 @@ const validatePassword = (value: string) => {
   if (/[а-яА-Я]/.test(value)) {
     return 'Password should not contain cirrillic';
   }
-  if (/!(?=.*[!@#$%^&*])/.test(value)) {
+  if (/(?=.*[^a-zA-Z0-9])/.test(value)) {
     return 'Password should contain only latin`s letters and number';
   }
   if (!value.match(/(?=.*[A-Z])/)) {

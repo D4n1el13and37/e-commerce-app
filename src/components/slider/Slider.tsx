@@ -52,7 +52,6 @@ const Slider: React.FC = () => {
         nextSlideMessage: 'Next slide',
       }}
       autoHeight={true}
-      // slidesPerView={'auto'}
     >
       {slidesData.map((slide, index) => (
         <SwiperSlide key={index}>

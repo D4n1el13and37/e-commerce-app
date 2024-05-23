@@ -36,6 +36,11 @@
   }
 }
 
+.hero__slider .swiper-slide {
+  /* stylelint-disable-next-line declaration-no-important */
+  height: auto !important;
+}
+
 .swiper {
   position: relative;
   width: 100%;

@@ -39,7 +39,7 @@ const Slider: React.FC = () => {
         enabled: true,
         el: '.hero__slider_pagination',
         renderBullet(index, className) {
-          const slideDescr = slidesData[index]?.descr;
+          const slideDescr = slidesData[index].descr;
           return `<span class="${className}">${slideDescr}</span>`;
         },
       }}
@@ -52,7 +52,7 @@ const Slider: React.FC = () => {
         nextSlideMessage: 'Next slide',
       }}
       autoHeight={true}
-      slidesPerView={'auto'}
+      // slidesPerView={'auto'}
     >
       {slidesData.map((slide, index) => (
         <SwiperSlide key={index}>

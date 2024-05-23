@@ -1,3 +1,16 @@
+.product__wrapper {
+  position: relative;
+  opacity: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+}
+
+.product__scrollbar {
+  bottom: 10px;
+}
+
 .product__slider {
   margin-bottom: var(--gap);
   border-radius: 12px;
@@ -73,6 +86,28 @@
 }
 
 .product__thumb {
+  @media (any-hover: hover) {
+    &:hover {
+      .product__wrapper {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .swiper-horizontal > .swiper-scrollbar,
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    left: 0;
+    width: 100%;
+  }
+
   .swiper-slide {
     display: flex;
     align-items: center;

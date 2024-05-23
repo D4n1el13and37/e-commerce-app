@@ -9,7 +9,7 @@ import SliderProduct from '../../components/sliderProduct/SliderProduct';
 const Product: React.FC = () => (
   <>
     <Header />
-    <main style={{ paddingTop: '48px' }}>
+    <main style={{ paddingTop: '48px', height: '10000px' }}>
       <section className={s.product}>
         <div className="container grid">
           <div className={s.product__left}>

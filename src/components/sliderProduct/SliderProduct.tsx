@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import SwiperCore from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Navigation, Thumbs, Scrollbar } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/navigation';
 import 'swiper/scss/thumbs';
+import 'swiper/scss/scrollbar';
 import './SliderProduct.scss';
 
 import slide1 from './1.jpg';
@@ -23,7 +24,6 @@ const SliderProduct: React.FC = () => {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         navigation
-        // height={576}
         centeredSlides
         a11y={{
           prevSlideMessage: 'Previous slide',
@@ -57,9 +57,16 @@ const SliderProduct: React.FC = () => {
         slidesPerView={3}
         freeMode={true}
         watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Navigation, Thumbs, Scrollbar]}
         className="product__thumb"
         onSwiper={setThumbSwiper}
+        scrollbar={{
+          hide: false,
+          draggable: true,
+          // dragSize: 278,
+          enabled: true,
+          el: '.product__scrollbar',
+        }}
       >
         <SwiperSlide>
           <img src={slide1} alt="#" />
@@ -82,6 +89,9 @@ const SliderProduct: React.FC = () => {
             alt="#"
           />
         </SwiperSlide>
+        <div className="product__wrapper">
+          <div className="product__scrollbar swiper-scrollbar" />
+        </div>
       </Swiper>
     </>
   );

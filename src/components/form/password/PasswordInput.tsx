@@ -43,7 +43,7 @@ const PasswordField: React.FC = () => {
           required: 'Password is requred',
           minLength: {
             value: 8,
-            message: 'Shoud be longer than 8 symbols',
+            message: 'Shoud be at least 8 symbols',
           },
           validate: validatePassword,
         })}

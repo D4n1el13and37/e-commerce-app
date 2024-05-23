@@ -61,9 +61,20 @@ export default function ShippingAddress() {
               }
               {...register('cityShipping', {
                 required: 'City must have at least 1 character',
-                pattern: {
-                  value: /^[a-zA-Z\s]+$/,
-                  message: 'City name must contain only letters',
+                validate: (value: string) => {
+                  if (!/^[a-zA-Z]/.test(value)) {
+                    return 'Should start with latin latters';
+                  }
+                  if (/\s{2,}/.test(value)) {
+                    return `Only one " " is allowed between words`;
+                  }
+                  if (/--/.test(value)) {
+                    return `Only one "-" is allowed between words`;
+                  }
+                  if (!/^[a-zA-Z]+(?:[-\s][a-zA-Z]+)*$/.test(value)) {
+                    return `After a " " or "-" there should be a word`;
+                  }
+                  return true;
                 },
               })}
             />

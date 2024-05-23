@@ -11,6 +11,7 @@ import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import NotFound from './pages/NotFound/NotFound';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -47,6 +48,10 @@ function App() {
             {
               path: 'main',
               element: isAuthorized ? <Home /> : <Navigate to="/" />,
+            },
+            {
+              path: 'account',
+              element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
             },
           ],
         },

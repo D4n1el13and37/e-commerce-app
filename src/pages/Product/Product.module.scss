@@ -1,0 +1,53 @@
+.product {
+  &__left {
+    grid-column: 8 span;
+  }
+
+  &__right {
+    grid-column: 9 / 4 span;
+    padding-left: 48px;
+  }
+
+  &__name {
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: var(--title-font-size);
+    line-height: 129%;
+    color: var(--text-color);
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  &__price_current {
+    margin-right: var(--gap);
+    font-size: var(--title-font-size);
+    line-height: 129%;
+    color: var(--primary-color);
+  }
+
+  &__price_old {
+    font-size: var(--main-font-size);
+    line-height: 143%;
+    letter-spacing: 0.02em;
+    text-decoration: line-through;
+    text-decoration-color: var(--primary-color);
+    color: var(--grey-color);
+  }
+
+  &__descr {
+    margin-bottom: 107px;
+    font-size: var(--main-font-size);
+    line-height: 150%;
+    color: var(--grey-color);
+  }
+
+  &__info_card {
+    button {
+      width: 100%;
+    }
+  }
+}

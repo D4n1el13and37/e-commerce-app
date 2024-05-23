@@ -1,0 +1,110 @@
+.product__slider {
+  margin-bottom: var(--gap);
+  border-radius: 12px;
+
+  .swiper-wrapper {
+    border-radius: 12px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      display: flex;
+      border-radius: 12px;
+      width: 872px;
+      height: 586px;
+      object-fit: cover;
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      .swiper-button-next,
+      .swiper-button-prev {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary-color);
+    opacity: 0;
+
+    &::after {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--accent-color);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        var(--duration) color ease-in-out,
+        var(--duration) background-color ease-in-out,
+        var(--duration) opacity ease-in-out;
+    }
+  }
+
+  .swiper-button-disabled {
+    background-color: var(--grey-color);
+
+    &::after {
+      color: #fff;
+    }
+  }
+}
+
+.product__thumb {
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 4px solid transparent;
+    border-radius: 12px;
+    max-width: 280px;
+    max-height: 260px;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      display: flex;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border: 4px solid var(--primary-color);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        var(--duration) border ease-in-out,
+        var(--duration) outline-offset ease-in-out;
+    }
+
+    &-thumb-active {
+      border: 4px solid var(--primary-color);
+    }
+  }
+}

@@ -25,6 +25,7 @@ const SliderProduct: React.FC = () => {
         }}
         navigation
         centeredSlides
+        spaceBetween={20}
         a11y={{
           prevSlideMessage: 'Previous slide',
           nextSlideMessage: 'Next slide',
@@ -63,9 +64,16 @@ const SliderProduct: React.FC = () => {
         scrollbar={{
           hide: false,
           draggable: true,
-          // dragSize: 278,
           enabled: true,
           el: '.product__scrollbar',
+        }}
+        breakpoints={{
+          700: {
+            spaceBetween: 15,
+          },
+          1024: {
+            freeMode: false,
+          },
         }}
       >
         <SwiperSlide>

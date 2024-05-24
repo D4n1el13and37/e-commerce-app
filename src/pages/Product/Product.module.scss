@@ -1,3 +1,11 @@
+.main {
+  padding-top: 48px;
+
+  @media (max-width: (450px)) {
+    padding-top: 24px;
+  }
+}
+
 .product {
   &__left {
     grid-column: 8 span;

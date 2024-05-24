@@ -9,7 +9,6 @@ import classes from '../../userProfile.module.scss';
 const ShippingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesShipping = dataUser?.addresses[0];
   const defaultShippingAddress = !!dataUser?.defaultShippingAddressId;
-  console.log(defaultShippingAddress);
   return (
     <div className={cn(classes.profileData__data)}>
       {defaultShippingAddress ? (

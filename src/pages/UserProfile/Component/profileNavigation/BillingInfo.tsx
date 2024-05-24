@@ -9,8 +9,6 @@ import classes from '../../userProfile.module.scss';
 const BillingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesBilling = dataUser?.addresses[1];
   const defaultBillingAddress = !!dataUser?.defaultBillingAddressId;
-
-  console.log(defaultBillingAddress);
   return (
     <div className={cn(classes.profileData__data)}>
       {defaultBillingAddress ? (

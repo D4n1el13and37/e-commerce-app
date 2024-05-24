@@ -8,9 +8,10 @@ import BillingInfo from './profileNavigation/BillingInfo';
 import PersonalInfo from './profileNavigation/PersonalInfo';
 
 import classes from '../userProfile.module.scss';
+import { UserProps } from './UserInfo';
 
-const ProfileInfo: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('ProfileInfo');
+const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
+  const [activeTab, setActiveTab] = useState('СustomerInfo');
 
   const profileNav = [
     { name: 'Profile Info', key: 'СustomerInfo', isActive: true },
@@ -22,15 +23,15 @@ const ProfileInfo: React.FC = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'СustomerInfo':
-        return <CustomerInfo />;
+        return <CustomerInfo dataUser={dataUser} />;
       case 'ShippingInfo':
-        return <ShippingInfo />;
+        return <ShippingInfo dataUser={dataUser} />;
       case 'BillingInfo':
-        return <BillingInfo />;
+        return <BillingInfo dataUser={dataUser} />;
       case 'PersonalInfo':
-        return <PersonalInfo />;
+        return <PersonalInfo dataUser={dataUser} />;
       default:
-        return <CustomerInfo />;
+        return <CustomerInfo dataUser={dataUser} />;
     }
   };
 

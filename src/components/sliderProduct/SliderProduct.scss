@@ -19,6 +19,10 @@
   margin-bottom: var(--gap);
   border-radius: 12px;
 
+  @media (max-width: (450px)) {
+    margin-bottom: calc((var(--gap)) / 2);
+  }
+
   .swiper-wrapper {
     border-radius: 12px;
   }
@@ -117,6 +121,10 @@
   .swiper-scrollbar.swiper-scrollbar-horizontal {
     left: 0;
     width: 100%;
+
+    @media (max-width: (450px)) {
+      height: 2px;
+    }
   }
 
   .swiper-slide {

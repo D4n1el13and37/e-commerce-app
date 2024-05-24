@@ -60,11 +60,19 @@
     font-size: var(--main-font-size);
     line-height: 150%;
     color: var(--grey-color);
+
+    @media (max-width: (1024px)) {
+      margin-bottom: 60px;
+    }
   }
 
   &__info_card {
     button {
       width: 100%;
+
+      @media (max-width: (1024px)) {
+        width: auto;
+      }
     }
   }
 }

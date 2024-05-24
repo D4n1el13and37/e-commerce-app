@@ -68,8 +68,13 @@ const SliderProduct: React.FC = () => {
           el: '.product__scrollbar',
         }}
         breakpoints={{
+          320: {
+            spaceBetween: 10,
+            slidesPerView: 2,
+          },
           700: {
             spaceBetween: 15,
+            slidesPerView: 3,
           },
           1024: {
             freeMode: false,

@@ -89,6 +89,10 @@
         var(--duration) background-color ease-in-out,
         var(--duration) opacity ease-in-out;
     }
+
+    @media (pointer: coarse) {
+      display: none;
+    }
   }
 
   .swiper-button-disabled {
@@ -174,6 +178,36 @@
 
     @media (max-width: (920px)) {
       border-width: 2px;
+    }
+  }
+}
+
+.fancybox__nav {
+  .f-button:disabled {
+    color: var(--grey-color);
+    opacity: 0.4;
+  }
+
+  .f-button {
+    width: 45px;
+    height: 45px;
+
+    @media (max-width: (475px)) {
+      display: none;
+    }
+  }
+
+  @media (any-hover: hover) {
+    .f-button:hover:not([disabled]) {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.fancybox__toolbar__column.is-right {
+  @media (any-hover: hover) {
+    .f-button:hover:not([disabled]) {
+      color: var(--primary-color);
     }
   }
 }

@@ -10,7 +10,7 @@ import classes from './userProfile.module.scss';
 import getCustomer from '../../api/Customer/customer';
 
 const UserProfile: React.FC = () => {
-  const [user, setUser] = useState<Customer | null>(null);
+  const [user, setUser] = useState<Customer | undefined>();
 
   useEffect(() => {
     const fetchCustomer = async () => {

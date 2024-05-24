@@ -8,39 +8,43 @@ import classes from '../../userProfile.module.scss';
 
 const ShippingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesShipping = dataUser?.addresses[0];
-  console.log(addressesShipping);
+  const defaultShippingAddress = !!dataUser?.defaultShippingAddressId;
+  console.log(defaultShippingAddress);
   return (
     <div className={cn(classes.profileData__data)}>
-      <Input
-        id="countryShipping"
-        label="Country"
-        type="text"
-        value={addressesShipping?.country}
-        disabled={true}
-      />
-      <Input
-        id="cityShipping"
-        label="City"
-        type="text"
-        value={addressesShipping?.city}
-        disabled={true}
-      />
+      {defaultShippingAddress ? (
+        <span className={cn(classes.default)}>Default shipping address</span>
+      ) : (
+        ''
+      )}
+      <div className={cn(classes.profileData__field)}>
+        <Input
+          id="countryShipping"
+          label="Country"
+          type="text"
+          value={addressesShipping?.country}
+        />
+        <Input
+          id="cityShipping"
+          label="City"
+          type="text"
+          value={addressesShipping?.city}
+        />
 
-      <Input
-        id={`streetShipping`}
-        label="Street"
-        type="text"
-        value={addressesShipping?.streetName}
-        disabled={true}
-      />
+        <Input
+          id={`streetShipping`}
+          label="Street"
+          type="text"
+          value={addressesShipping?.streetName}
+        />
 
-      <Input
-        id="postcodeShipping"
-        label="Postcode"
-        type="text"
-        value={addressesShipping?.postalCode}
-        disabled={true}
-      />
+        <Input
+          id="postcodeShipping"
+          label="Postcode"
+          type="text"
+          value={addressesShipping?.postalCode}
+        />
+      </div>
     </div>
   );
 };

@@ -8,21 +8,23 @@ import classes from '../../userProfile.module.scss';
 
 const PersonalInfo: React.FC<UserProps> = ({ dataUser }) => (
   <div className={cn(classes.profileData__data)}>
-    <Input
-      type="text"
-      label="Email address"
-      autoComplete="email"
-      id="email"
-      value={dataUser?.email}
-    />
-    <Input
-      data-testid="password"
-      label="Password"
-      autoComplete="current-password"
-      type="text"
-      id="password"
-      value={dataUser?.password}
-    />
+    <div className={cn(classes.profileData__field)}>
+      <Input
+        type="text"
+        label="Email address"
+        autoComplete="email"
+        id="email"
+        value={dataUser?.email}
+      />
+      <Input
+        data-testid="password"
+        label="Password"
+        autoComplete="current-password"
+        type="text"
+        id="password"
+        value={dataUser?.password}
+      />
+    </div>
   </div>
 );
 

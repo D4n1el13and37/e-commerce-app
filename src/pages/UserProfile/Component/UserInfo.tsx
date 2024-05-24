@@ -10,10 +10,10 @@ export interface UserProps {
 const UserInfo: React.FC<UserProps> = ({ dataUser }) => (
   <>
     <div className={cn(classes.header)}>
-      <h4 className={cn(classes.header__text)}>Account</h4>
       <p className={cn(classes.user__name)}>
-        Hello, {dataUser?.firstName ?? ''} {dataUser?.lastName ?? ''}!
+        {dataUser?.firstName ?? ''} {dataUser?.lastName ?? ''}
       </p>
+      <p className={cn(classes.user__email)}>{dataUser?.email ?? ''}</p>
     </div>
     <div className={cn(classes.user__photo)}>
       <img src="" alt="" />

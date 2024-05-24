@@ -8,28 +8,27 @@ import classes from '../../userProfile.module.scss';
 
 const CustomerInfo: React.FC<UserProps> = ({ dataUser }) => (
   <div className={cn(classes.profileData__data)}>
-    <Input
-      id="firstName"
-      autoComplete="firstName"
-      label="First Name"
-      type="text"
-      value={dataUser?.firstName ?? ''}
-      disabled={true}
-    />
-    <Input
-      id="lastName"
-      label="Last Name"
-      type="text"
-      value={dataUser?.lastName ?? ''}
-      disabled={true}
-    />
-    <Input
-      id="dateBirth"
-      label="Date of Birth"
-      type="date"
-      value={dataUser?.dateOfBirth ?? ''}
-      disabled={true}
-    />
+    <div className={cn(classes.profileData__field)}>
+      <Input
+        id="firstName"
+        autoComplete="firstName"
+        label="First Name"
+        type="text"
+        value={dataUser?.firstName ?? ''}
+      />
+      <Input
+        id="lastName"
+        label="Last Name"
+        type="text"
+        value={dataUser?.lastName ?? ''}
+      />
+      <Input
+        id="dateBirth"
+        label="Date of Birth"
+        type="date"
+        value={dataUser?.dateOfBirth ?? ''}
+      />
+    </div>
   </div>
 );
 

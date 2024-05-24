@@ -8,39 +8,44 @@ import classes from '../../userProfile.module.scss';
 
 const BillingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesBilling = dataUser?.addresses[1];
-  console.log(addressesBilling);
+  const defaultBillingAddress = !!dataUser?.defaultBillingAddressId;
+
+  console.log(defaultBillingAddress);
   return (
     <div className={cn(classes.profileData__data)}>
-      <Input
-        id="countryBilling"
-        label="Country"
-        type="text"
-        value={addressesBilling?.country}
-        disabled={true}
-      />
-      <Input
-        id="cityBilling"
-        label="City"
-        type="text"
-        value={addressesBilling?.city}
-        disabled={true}
-      />
+      {defaultBillingAddress ? (
+        <span className={cn(classes.default)}>Default billing address</span>
+      ) : (
+        ''
+      )}
+      <div className={cn(classes.profileData__field)}>
+        <Input
+          id="countryBilling"
+          label="Country"
+          type="text"
+          value={addressesBilling?.country}
+        />
+        <Input
+          id="cityBilling"
+          label="City"
+          type="text"
+          value={addressesBilling?.city}
+        />
 
-      <Input
-        id={`streetBilling`}
-        label="Street"
-        type="text"
-        value={addressesBilling?.streetName}
-        disabled={true}
-      />
+        <Input
+          id={`streetBilling`}
+          label="Street"
+          type="text"
+          value={addressesBilling?.streetName}
+        />
 
-      <Input
-        id="postcodeBilling"
-        label="Postcode"
-        type="text"
-        value={addressesBilling?.postalCode}
-        disabled={true}
-      />
+        <Input
+          id="postcodeBilling"
+          label="Postcode"
+          type="text"
+          value={addressesBilling?.postalCode}
+        />
+      </div>
     </div>
   );
 };

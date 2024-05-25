@@ -17,10 +17,17 @@ const Header: React.FC = () => {
   ];
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isAnimating, setAnimating] = useState(false);
 
   const toggleMenu = useCallback(() => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  }, []);
+    if (isMenuOpen) {
+      setAnimating(true);
+      setMenuOpen(false);
+    } else {
+      setAnimating(false);
+      setMenuOpen(true);
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const body = document.querySelector('body') as HTMLBodyElement;
@@ -46,7 +53,10 @@ const Header: React.FC = () => {
         </Link>
         <div className={classes.header__content}>
           <nav
-            className={cn(classes.nav, { [classes.nav_active]: isMenuOpen })}
+            className={cn(classes.nav, {
+              [classes.nav_active]: isMenuOpen && !isAnimating,
+              [classes.nav_closing]: isAnimating,
+            })}
           >
             <div className={classes.nav__content}>
               <ul className={classes.nav__list}>
@@ -83,9 +93,39 @@ const Header: React.FC = () => {
           aria-expanded={isMenuOpen ? 'true' : 'false'}
           onClick={toggleMenu}
         >
-          <span className={classes.burger__line}></span>
-          <span className={classes.burger__line}></span>
-          <span className={classes.burger__line}></span>
+          <span className={classes.burger__wrapper}>
+            <i className={classes.burger__i}>
+              <svg viewBox="0 0 48 48">
+                <line
+                  x1="6"
+                  y1="38"
+                  x2="42"
+                  y2="38"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                  className="burger__header"
+                ></line>
+                <line
+                  x1="6"
+                  y1="10"
+                  x2="42"
+                  y2="10"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                  className="burger__header"
+                ></line>
+                <line
+                  x1="6"
+                  y1="24"
+                  x2="42"
+                  y2="24"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                  className="burger__header"
+                ></line>
+              </svg>
+            </i>
+          </span>
         </Button>
       </div>
     </header>

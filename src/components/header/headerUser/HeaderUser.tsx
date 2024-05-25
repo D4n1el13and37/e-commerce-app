@@ -32,11 +32,11 @@ const HeaderUser: React.FC = () => {
       ></Button>
 
       <ul className={classes.menu} aria-hidden={!isActive}>
-        {/* <li className={classes.menu_item}>
+        <li className={classes.menu_item}>
           <Button className={classes.menu_link} tabIndex={isActive ? 0 : -1}>
             Account
           </Button>
-        </li> */}
+        </li>
         <li className={classes.menu_item}>
           <Button
             className={classes.menu_link}

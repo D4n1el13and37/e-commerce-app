@@ -114,6 +114,37 @@
   &_active {
     visibility: visible;
     transform: none;
+    animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  &_closing {
+    @media (max-width: (900px)) {
+      animation: slide-out-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
+  }
+}
+
+@keyframes slide-in-above {
+  0% {
+    opacity: 0;
+    transform: translateY(-3.75rem) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes slide-out-above {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-3.75rem) translateZ(0);
   }
 }
 
@@ -189,50 +220,59 @@
     border-radius: 6px;
     width: 30px;
     height: 30px;
+    color: var(--primary-color);
     background-color: transparent;
 
-    &__line {
-      position: absolute;
-      left: 0;
-      width: 14px;
-      height: 1px;
-      background-color: var(--primary-color);
-      transform: translateX(50%);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color 0.25s cubic-bezier(0.4, 0, 1, 1);
+    }
 
-      &:first-child {
-        top: 30%;
-      }
-
-      &:last-child {
-        bottom: 28%;
-      }
+    &__wrapper {
+      position: relative;
+      top: 0.1rem;
+      font-size: 1.5rem;
+      line-height: 1.25;
 
       @media (prefers-reduced-motion: no-preference) {
-        transition:
-          var(--duration) transform ease-in-out,
-          var(--duration) top ease-in-out,
-          var(--duration) left ease-in-out;
+        transition: left 0.1875s cubic-bezier(0.4, 0, 1, 1);
       }
     }
 
-    &__active {
-      z-index: 4;
+    &__i {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+
+      svg {
+        width: 1em;
+        height: 1em;
+        fill: inherit;
+        stroke: currentcolor;
+      }
     }
 
-    &__active .burger__line:nth-child(2) {
-      transform: scale(0);
+    svg line {
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          transform 0.1875s cubic-bezier(0.4, 0, 1, 1),
+          opacity 0.1875s cubic-bezier(0.4, 0, 1, 1);
+      }
     }
 
-    &__active .burger__line:first-child {
-      left: 25%;
-      top: 50%;
-      transform: rotate(45deg);
+    &__active svg line:first-child {
+      transform: rotate(-45grad) translate(-24px, -4px);
     }
 
-    &__active .burger__line:last-child {
-      left: 25%;
-      top: 50%;
-      transform: rotate(-45deg);
+    &__active svg line:nth-child(2) {
+      transform: rotate(45grad) translate(10px, -5px);
+    }
+
+    &__active svg line:last-child {
+      opacity: 0;
+    }
+
+    &__active &__wrapper {
+      left: 1px;
     }
   }
 }

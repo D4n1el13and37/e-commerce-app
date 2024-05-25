@@ -42,7 +42,7 @@
   margin-block-start: 1.05lh;
 
   &_item {
-    place-content: center;
+    place-self: center;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -61,6 +61,7 @@
   letter-spacing: 0.02em;
   color: var(--grey-color);
   background: none;
+  visibility: hidden;
   cursor: pointer;
 
   @media (any-hover: hover) {
@@ -76,8 +77,12 @@
 
 .button.active ~ .menu {
   min-width: 168px;
-  min-height: 52px;
+  min-height: 148px;
   line-height: 1.2;
   color: currentcolor;
   background-color: #fff;
+}
+
+.button.active ~ .menu .menu_link {
+  visibility: visible;
 }

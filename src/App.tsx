@@ -10,12 +10,13 @@ import Home from './pages/Home/Home';
 import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
+import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
-  // const isLoading = useAppSelector((state) => state.auth.isLoading);
+  const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
     dispatch(autorizationByToken());
@@ -31,6 +32,10 @@ function App() {
             {
               path: '',
               element: <Home />,
+            },
+            {
+              path: 'catalog',
+              element: <CatalogPage />,
             },
             {
               path: 'login',
@@ -53,11 +58,9 @@ function App() {
       ]),
     [isAuthorized]
   );
-
-  // if (isLoading) {
-  //   return <div>Loadiiing...</div>;
-  // }
-
+  if (isLoading) {
+    return <div>Loadiiing...</div>;
+  }
   return <RouterProvider router={router} />;
 }
 

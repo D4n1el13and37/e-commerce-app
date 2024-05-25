@@ -1,0 +1,24 @@
+.card__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 312px;
+  gap: 32px;
+
+  .image__wrapper {
+    height: 302px;
+    max-height: 302px;
+    transform: scale(0.7);
+
+    img {
+      border-radius: 12px 12px 0 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .text__wrapper {
+    padding: 0 24px 24px;
+  }
+}

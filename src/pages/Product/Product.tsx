@@ -1,5 +1,4 @@
 import React from 'react';
-// import cn from 'classnames';
 import s from './Product.module.scss';
 import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';

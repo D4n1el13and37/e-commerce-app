@@ -50,7 +50,7 @@ const SliderProduct: React.FC = () => {
           }}
           navigation
           centeredSlides
-          spaceBetween={20}
+          spaceBetween={15}
           a11y={{
             prevSlideMessage: 'Previous slide',
             nextSlideMessage: 'Next slide',
@@ -112,8 +112,15 @@ const SliderProduct: React.FC = () => {
             spaceBetween: 15,
             slidesPerView: 3,
           },
+          920: {
+            slidesPerView: 'auto',
+          },
           1024: {
+            spaceBetween: 15,
             freeMode: false,
+          },
+          1175: {
+            slidesPerView: 'auto',
           },
         }}
       >

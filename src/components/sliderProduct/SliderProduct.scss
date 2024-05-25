@@ -37,12 +37,19 @@
     img {
       display: flex;
       border-radius: 12px;
-      width: 872px;
-      height: 586px;
+      width: 650px;
+      height: 434px;
       object-fit: cover;
     }
 
-    @media (max-width: (920px)) {
+    // @media (max-width: (920px)) {
+    //   img {
+    //     width: auto;
+    //     height: auto;
+    //   }
+    // }
+
+    @media (max-width: (700px)) {
       img {
         width: auto;
         height: auto;
@@ -125,6 +132,7 @@
   .swiper-scrollbar.swiper-scrollbar-horizontal {
     left: 0;
     width: 100%;
+    height: 3px;
 
     @media (max-width: (450px)) {
       height: 2px;
@@ -136,22 +144,26 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border: 4px solid transparent;
+    border: 3px solid transparent;
     border-radius: 12px;
-    max-width: 280px;
-    max-height: 260px;
+    max-width: 205px;
+    max-height: 153px;
+
+    // height: auto;
     background-position: center;
     background-size: cover;
 
     img {
       display: flex;
-      max-width: none;
+
+      // max-width: none;
+      // max-width: 125%;
       object-fit: cover;
     }
 
     @media (any-hover: hover) {
       &:hover {
-        border: 4px solid var(--primary-color);
+        border: 3px solid var(--primary-color);
       }
     }
 
@@ -162,7 +174,7 @@
     }
 
     &-thumb-active {
-      border: 4px solid var(--primary-color);
+      border: 3px solid var(--primary-color);
     }
 
     @media (max-width: (920px)) {
@@ -182,7 +194,25 @@
   }
 }
 
+.fancybox__container {
+  --fancybox-bg: rgba(24, 24, 27, 0.85);
+  --fancybox-hover-color: var(--primary-color);
+  --f-spinner-width: 45px;
+  --f-spinner-height: 45px;
+}
+
 .fancybox__nav {
+  --f-button-next-pos: 1.5rem;
+  --f-button-prev-pos: 1.5rem;
+  --f-button-svg-disabled-opacity: 0.4;
+  --f-button-width: 45px;
+  --f-button-height: 45px;
+
+  @media (max-width: (900px)) {
+    --f-button-next-pos: 0;
+    --f-button-prev-pos: 0;
+  }
+
   .f-button:disabled {
     color: var(--grey-color);
     opacity: 0.4;
@@ -193,7 +223,7 @@
     height: 45px;
 
     @media (max-width: (475px)) {
-      display: none;
+      // display: none;
     }
   }
 
@@ -210,4 +240,12 @@
       color: var(--primary-color);
     }
   }
+}
+
+.is-idle .fancybox__toolbar {
+  animation: none;
+}
+
+.is-idle .fancybox__nav {
+  animation: none;
 }

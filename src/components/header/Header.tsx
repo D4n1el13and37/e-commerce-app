@@ -38,7 +38,17 @@ const Header: React.FC = () => {
       body.classList.remove('stop-scroll');
     }
 
+    const handleResize = () => {
+      if (window.innerWidth > 900 && isMenuOpen) {
+        setMenuOpen(false);
+        body.classList.remove('stop-scroll');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       body.classList.remove('stop-scroll');
     };
   }, [isMenuOpen]);

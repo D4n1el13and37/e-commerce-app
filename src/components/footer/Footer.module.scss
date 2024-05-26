@@ -76,6 +76,8 @@
       opacity: 0;
 
       @media (pointer: coarse) {
+        width: 14px;
+        height: 14px;
         opacity: 1;
       }
 

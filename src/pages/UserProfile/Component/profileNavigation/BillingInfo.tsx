@@ -1,5 +1,3 @@
-import cn from 'classnames';
-
 import React from 'react';
 import Input from '../../../../components/ui/input/Input';
 import { UserProps } from '../UserInfo';
@@ -10,13 +8,13 @@ const BillingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesBilling = dataUser?.addresses[1];
   const defaultBillingAddress = !!dataUser?.defaultBillingAddressId;
   return (
-    <div className={cn(classes.profileData__data)}>
+    <div className={classes.profileData__data}>
       {defaultBillingAddress ? (
-        <span className={cn(classes.default)}>Default billing address</span>
+        <span className={classes.default}>Default billing address</span>
       ) : (
         ''
       )}
-      <div className={cn(classes.profileData__field)}>
+      <div className={classes.profileData__field}>
         <Input
           id="countryBilling"
           label="Country"

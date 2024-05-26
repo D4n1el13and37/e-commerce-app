@@ -14,10 +14,10 @@ const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
   const [activeTab, setActiveTab] = useState('СustomerInfo');
 
   const profileNav = [
-    { name: 'Profile Info', key: 'СustomerInfo', isActive: true },
-    { name: 'Shipping Info', key: 'ShippingInfo', isActive: true },
-    { name: 'Billing Info', key: 'BillingInfo', isActive: true },
-    { name: 'Personal Info', key: 'PersonalInfo', isActive: true },
+    { name: 'Profile Info', key: 'СustomerInfo' },
+    { name: 'Shipping Info', key: 'ShippingInfo' },
+    { name: 'Billing Info', key: 'BillingInfo' },
+    { name: 'Personal Info', key: 'PersonalInfo' },
   ];
 
   const renderContent = () => {
@@ -37,9 +37,9 @@ const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
 
   return (
     <>
-      <div className={cn(classes.profile)}>
-        <div className={cn(classes.profileNav)}>
-          <ul className={cn(classes.profileNav__link)}>
+      <div className={classes.profile}>
+        <div className={classes.profileNav}>
+          <ul className={classes.profileNav__link}>
             {profileNav.map((link, index) => (
               <li key={index}>
                 <Button
@@ -57,7 +57,7 @@ const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
             ))}
           </ul>
         </div>
-        <div className={cn(classes.profileData)}>{renderContent()}</div>
+        <div className={classes.profileData}>{renderContent()}</div>
         {}
       </div>
     </>

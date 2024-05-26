@@ -43,13 +43,6 @@
       object-fit: cover;
     }
 
-    // @media (max-width: (920px)) {
-    //   img {
-    //     width: auto;
-    //     height: auto;
-    //   }
-    // }
-
     @media (max-width: (700px)) {
       img {
         width: auto;
@@ -149,15 +142,11 @@
     border-radius: 12px;
     max-width: 205px;
     max-height: 153px;
-
-    // height: auto;
     background-position: center;
     background-size: cover;
 
     img {
       display: flex;
-
-      // max-width: none;
       max-width: 145%;
       object-fit: cover;
     }
@@ -222,10 +211,6 @@
   .f-button {
     width: 45px;
     height: 45px;
-
-    @media (max-width: (475px)) {
-      // display: none;
-    }
   }
 
   @media (any-hover: hover) {

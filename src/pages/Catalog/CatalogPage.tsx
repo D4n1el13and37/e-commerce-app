@@ -27,20 +27,31 @@ const CatalogPage: React.FC = () => {
       <main>
         <div
           className="catalog list"
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '24px',
+            padding: '40px 0',
+            justifyContent: 'center',
+          }}
         >
-          {prods?.map((card, index) => (
-            <ProductCard
-              key={index + card.masterData.current.name[language]}
-              title={card.masterData.current.name[language]}
-              description={card.masterData.current.description![language]}
-              frontImage={card.masterData.current.masterVariant.images![0]}
-              price={
-                card.masterData.current.masterVariant.prices![0].value
-                  .centAmount
-              }
-            />
-          ))}
+          {prods?.map((card) => {
+            const title = card.masterData.current.name[language];
+            const description = card.masterData.current.description![language];
+            const imageData = card.masterData.current.masterVariant.images![0];
+            const price =
+              card.masterData.current.masterVariant.prices![0].value.centAmount;
+
+            return (
+              <ProductCard
+                key={card.id}
+                title={title}
+                description={description}
+                frontImage={imageData}
+                price={price}
+              />
+            );
+          })}
         </div>
       </main>
     </>

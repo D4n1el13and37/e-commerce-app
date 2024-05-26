@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Product } from '@commercetools/platform-sdk';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from '../../components/card/ProductCard';
 import Header from '../../components/header/Header';
-import { getProducts } from '../../api/products/productsMethods';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { RootState } from '../../store/store';
+import { fetchProducts } from '../../store/productsSlice';
+import useAppSelector from '../../hooks/useAppSelector';
 
 const CatalogPage: React.FC = () => {
-  const [prods, setProds] = useState<Product[]>();
-  useEffect(() => {
-    const getCards = async () => {
-      try {
-        const res = await getProducts();
-        setProds(res.results);
-      } catch (error) {
-        if (error instanceof Error) {
-          throw new Error(error.message);
-        }
-      }
-    };
-    getCards();
-  }, []);
+  const dispatch = useAppDispatch();
+  const { productsList } = useAppSelector((state: RootState) => state.products);
   const language = 'en-US';
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <>
@@ -35,21 +30,30 @@ const CatalogPage: React.FC = () => {
             justifyContent: 'center',
           }}
         >
-          {prods?.map((card) => {
-            const title = card.masterData.current.name[language];
-            const description = card.masterData.current.description![language];
-            const imageData = card.masterData.current.masterVariant.images![0];
+          {productsList.map((productCard) => {
+            const title = productCard.masterData.current.name[language];
+            const description =
+              productCard.masterData.current.description![language];
+            const imageData =
+              productCard.masterData.current.masterVariant.images![0];
             const price =
-              card.masterData.current.masterVariant.prices![0].value.centAmount;
+              productCard.masterData.current.masterVariant.prices![0].value
+                .centAmount;
+            const salePrice =
+              productCard.masterData.current.masterVariant.prices![0]
+                ?.discounted?.value.centAmount;
 
             return (
-              <ProductCard
-                key={card.id}
-                title={title}
-                description={description}
-                frontImage={imageData}
-                price={price}
-              />
+              <Link to={`/catalog/${productCard.id}`} key={productCard.id}>
+                <ProductCard
+                  key={productCard.id}
+                  title={title}
+                  description={description}
+                  frontImage={imageData}
+                  price={price}
+                  salePrice={salePrice}
+                />
+              </Link>
             );
           })}
         </div>

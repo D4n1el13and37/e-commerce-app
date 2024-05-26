@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
@@ -11,6 +11,7 @@ interface Card {
     dimensions?: { h: number; w: number };
   };
   price: number;
+  salePrice?: number | undefined;
 }
 
 const ProductCard: React.FC<Card> = ({
@@ -18,15 +19,18 @@ const ProductCard: React.FC<Card> = ({
   description,
   frontImage,
   price,
+  salePrice,
 }) => {
-  const [sale, setSale] = useState(true); // to made all price with discount
+  const [sale, setSale] = useState(false); // to made all price with discount
   const boundingCardRef = useRef<DOMRect | null>(null);
   const currentPrice = (price / 100).toFixed(2); // think about display
-  const salePrice = Number(currentPrice) - (Number(currentPrice) / 100) * 5;
+  const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2); // i think we should refactor it
 
-  function updatePrice() {
-    setSale(!sale);
-  }
+  useEffect(() => {
+    if (salePrice) {
+      setSale(true);
+    }
+  }, [salePrice]);
 
   /**
    * for clear Ref
@@ -67,15 +71,13 @@ const ProductCard: React.FC<Card> = ({
           <div className={classes.price__actions}>
             {sale ? (
               <div>
-                <span className={classes.price__new}>
-                  {salePrice.toFixed(2)} €
-                </span>
+                <span className={classes.price__new}>{salePriceOutput} €</span>
                 <span className={classes.price__old}>{currentPrice} €</span>
               </div>
             ) : (
               <span>{currentPrice} €</span>
             )}
-            <Button onClick={updatePrice}>+</Button>
+            <Button>+</Button>
           </div>
         </div>
       </div>

@@ -2,41 +2,29 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
-import Button from '../ui/button/Button';
 import HeaderUser from './headerUser/HeaderUser';
 import useAppSelector from '../../hooks/useAppSelector';
+import BurgerMenu from './burgerMenu/burgerMenu';
 
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 
-const Header: React.FC = () => {
-  const navLinks = [
-    { name: 'Home', path: '/', isActive: true },
-    { name: 'Catalog', path: '/catalog', isActive: false },
-    { name: 'About', path: '/about', isActive: false },
-  ];
+const navLinks = [
+  { name: 'Home', path: '/', isActive: true },
+  { name: 'Catalog', path: '/catalog', isActive: false },
+  { name: 'About', path: '/about', isActive: false },
+];
 
+const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isAnimating, setAnimating] = useState(false);
 
   const toggleMenu = useCallback(() => {
-    if (isMenuOpen) {
-      setAnimating(true);
-      setMenuOpen(false);
-    } else {
-      setAnimating(false);
-      setMenuOpen(true);
-    }
+    setMenuOpen(!isMenuOpen);
   }, [isMenuOpen]);
 
   useEffect(() => {
     const body = document.querySelector('body') as HTMLBodyElement;
-
-    if (isMenuOpen) {
-      body.classList.add('stop-scroll');
-    } else {
-      body.classList.remove('stop-scroll');
-    }
+    body.classList.toggle('stop-scroll', isMenuOpen);
 
     const handleResize = () => {
       if (window.innerWidth > 900 && isMenuOpen) {
@@ -64,8 +52,7 @@ const Header: React.FC = () => {
         <div className={classes.header__content}>
           <nav
             className={cn(classes.nav, {
-              [classes.nav_active]: isMenuOpen && !isAnimating,
-              [classes.nav_closing]: isAnimating,
+              [classes.nav_active]: isMenuOpen,
             })}
           >
             <div className={classes.nav__content}>
@@ -95,48 +82,7 @@ const Header: React.FC = () => {
           </a>
         </div>
 
-        <Button
-          className={cn(classes.burger, {
-            [classes.burger__active]: isMenuOpen,
-          })}
-          aria-label="Open menu"
-          aria-expanded={isMenuOpen ? 'true' : 'false'}
-          onClick={toggleMenu}
-        >
-          <span className={classes.burger__wrapper}>
-            <i className={classes.burger__i}>
-              <svg viewBox="0 0 48 48">
-                <line
-                  x1="6"
-                  y1="38"
-                  x2="42"
-                  y2="38"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                  className="burger__header"
-                ></line>
-                <line
-                  x1="6"
-                  y1="10"
-                  x2="42"
-                  y2="10"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                  className="burger__header"
-                ></line>
-                <line
-                  x1="6"
-                  y1="24"
-                  x2="42"
-                  y2="24"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                  className="burger__header"
-                ></line>
-              </svg>
-            </i>
-          </span>
-        </Button>
+        <BurgerMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
     </header>
   );

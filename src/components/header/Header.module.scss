@@ -31,6 +31,10 @@
   align-items: center;
   margin-right: calc(var(--gap) * 2);
 
+  @media (max-width: (900px)) {
+    animation: slide-out-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
@@ -116,12 +120,6 @@
     transform: none;
     animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
-
-  &_closing {
-    @media (max-width: (900px)) {
-      animation: slide-out-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-    }
-  }
 }
 
 @keyframes slide-in-above {
@@ -203,76 +201,5 @@
     color: var(--light-color);
     background-color: var(--primary-color);
     transform: translateY(-50%);
-  }
-}
-
-.burger {
-  display: none;
-}
-
-@media (max-width: (900px)) {
-  .burger {
-    position: relative;
-    z-index: 4;
-    display: block;
-    margin-left: 25px;
-    border: 1px solid var(--primary-color);
-    border-radius: 6px;
-    width: 30px;
-    height: 30px;
-    color: var(--primary-color);
-    background-color: transparent;
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition: color 0.25s cubic-bezier(0.4, 0, 1, 1);
-    }
-
-    &__wrapper {
-      position: relative;
-      top: 0.1rem;
-      font-size: 1.5rem;
-      line-height: 1.25;
-
-      @media (prefers-reduced-motion: no-preference) {
-        transition: left 0.1875s cubic-bezier(0.4, 0, 1, 1);
-      }
-    }
-
-    &__i {
-      position: relative;
-      display: inline-block;
-      margin: 0;
-
-      svg {
-        width: 1em;
-        height: 1em;
-        fill: inherit;
-        stroke: currentcolor;
-      }
-    }
-
-    svg line {
-      @media (prefers-reduced-motion: no-preference) {
-        transition:
-          transform 0.1875s cubic-bezier(0.4, 0, 1, 1),
-          opacity 0.1875s cubic-bezier(0.4, 0, 1, 1);
-      }
-    }
-
-    &__active svg line:first-child {
-      transform: rotate(-45grad) translate(-24px, -4px);
-    }
-
-    &__active svg line:nth-child(2) {
-      transform: rotate(45grad) translate(10px, -5px);
-    }
-
-    &__active svg line:last-child {
-      opacity: 0;
-    }
-
-    &__active &__wrapper {
-      left: 1px;
-    }
   }
 }

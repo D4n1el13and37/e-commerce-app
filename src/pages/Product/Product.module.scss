@@ -1,5 +1,6 @@
 .main {
   padding-top: 48px;
+  padding-bottom: 48px;
 
   @media (max-width: (450px)) {
     padding-top: 24px;
@@ -7,32 +8,6 @@
 }
 
 .product {
-  // &__left {
-  //   grid-column: 8 span;
-
-  //   @media (max-width: (1360px)) {
-  //     grid-column: 9 span;
-  //   }
-
-  //   @media (max-width: (1024px)) {
-  //     grid-column: 12 span;
-  //   }
-  // }
-
-  // &__right {
-  //   grid-column: 9 / 4 span;
-  //   padding-left: 48px;
-
-  //   @media (max-width: (1360px)) {
-  //     grid-column: 3 span;
-  //     padding-left: 0;
-  //   }
-
-  //   @media (max-width: (1024px)) {
-  //     grid-column: 12 span;
-  //   }
-  // }
-
   &__left {
     grid-column: 6 span;
 

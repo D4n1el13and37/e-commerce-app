@@ -12,7 +12,7 @@ import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
-import Product from './pages/Product/Product';
+import ProductPage from './pages/Product/ProductPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -56,7 +56,7 @@ function App() {
             },
             {
               path: 'product',
-              element: <Product />,
+              element: <ProductPage />,
             },
           ],
         },

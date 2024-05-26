@@ -11,9 +11,20 @@ import 'swiper/scss/thumbs';
 import 'swiper/scss/scrollbar';
 import './SliderProduct.scss';
 
-import slide1 from './1.jpg';
+interface Image {
+  url: string;
+  label?: string;
+  dimensions: {
+    w: number;
+    h: number;
+  };
+}
 
-const SliderProduct: React.FC = () => {
+interface SliderProd {
+  images: Image[];
+}
+
+const SliderProduct: React.FC<SliderProd> = ({ images }) => {
   const [thumbsSwiper, setThumbSwiper] = useState<SwiperCore>();
 
   return (
@@ -56,36 +67,15 @@ const SliderProduct: React.FC = () => {
             nextSlideMessage: 'Next slide',
           }}
         >
-          <SwiperSlide data-fancybox="gallery" data-src={slide1}>
-            <img src={slide1} alt="Slide 1" />
-          </SwiperSlide>
-          <SwiperSlide
-            data-fancybox="gallery"
-            data-src="https://www.thespruce.com/thmb/XGNizgeaP9z-1OTmJBKqOEjeYaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_07-f7d5862d4cc940038cd9dc0ebcbe90fc.jpg"
-          >
-            <img
-              src="https://www.thespruce.com/thmb/XGNizgeaP9z-1OTmJBKqOEjeYaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_07-f7d5862d4cc940038cd9dc0ebcbe90fc.jpg"
-              alt="Slide 2"
-            />
-          </SwiperSlide>
-          <SwiperSlide
-            data-fancybox="gallery"
-            data-src="https://www.thespruce.com/thmb/_HoQplPyeUqmzsGCUJ1xBKxwHjg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_01-1bd7e7d311754a0a847430740d715acb.jpg"
-          >
-            <img
-              src="https://www.thespruce.com/thmb/_HoQplPyeUqmzsGCUJ1xBKxwHjg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_01-1bd7e7d311754a0a847430740d715acb.jpg"
-              alt="Slide 3"
-            />
-          </SwiperSlide>
-          <SwiperSlide
-            data-fancybox="gallery"
-            data-src="https://www.thespruce.com/thmb/Ts7h2SpU5Dic_zqdOW5uUL_AFhQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1166217952-b04162b3e74047279ef6877ee213dd75.jpg"
-          >
-            <img
-              src="https://www.thespruce.com/thmb/Ts7h2SpU5Dic_zqdOW5uUL_AFhQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1166217952-b04162b3e74047279ef6877ee213dd75.jpg"
-              alt="Slide 4"
-            />
-          </SwiperSlide>
+          {images.map((image, index) => (
+            <SwiperSlide
+              key={index}
+              data-fancybox="gallery"
+              data-src={image.url}
+            >
+              <img src={image.url} alt={image.label} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </Fancybox>
 
@@ -116,35 +106,23 @@ const SliderProduct: React.FC = () => {
             slidesPerView: 'auto',
           },
           1024: {
+            slidesPerView: 3,
             spaceBetween: 15,
             freeMode: false,
           },
-          1175: {
+          1170: {
             slidesPerView: 'auto',
+          },
+          1360: {
+            slidesPerView: 3,
           },
         }}
       >
-        <SwiperSlide>
-          <img src={slide1} alt="Thumbnail 1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://www.thespruce.com/thmb/XGNizgeaP9z-1OTmJBKqOEjeYaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_07-f7d5862d4cc940038cd9dc0ebcbe90fc.jpg"
-            alt="Thumbnail 2"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://www.thespruce.com/thmb/_HoQplPyeUqmzsGCUJ1xBKxwHjg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fire-lily-plant-profile-4768477_01-1bd7e7d311754a0a847430740d715acb.jpg"
-            alt="Thumbnail 3"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://www.thespruce.com/thmb/Ts7h2SpU5Dic_zqdOW5uUL_AFhQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1166217952-b04162b3e74047279ef6877ee213dd75.jpg"
-            alt="Thumbnail 4"
-          />
-        </SwiperSlide>
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <img src={image.url} alt={image.label} />
+          </SwiperSlide>
+        ))}
         <div className="product__wrapper">
           <div className="product__scrollbar swiper-scrollbar" />
         </div>

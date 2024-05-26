@@ -58,15 +58,39 @@
   }
 
   &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 400;
     font-size: var(--second-font-size);
     line-height: 143%;
     letter-spacing: 0.02em;
     color: var(--grey-color);
+    gap: 8px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: currentcolor;
+      fill: currentcolor;
+      opacity: 0;
+
+      @media (pointer: coarse) {
+        opacity: 1;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity var(--duration) ease-in-out;
+      }
+    }
 
     @media (any-hover: hover) {
       &:hover {
         opacity: 0.7;
+
+        svg {
+          opacity: 0.7;
+        }
       }
     }
 

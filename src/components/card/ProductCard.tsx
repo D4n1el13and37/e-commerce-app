@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Button from '../ui/button/Button';
+// import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
 interface Card {
@@ -11,7 +11,7 @@ interface Card {
     dimensions?: { h: number; w: number };
   };
   price: number;
-  toProductPage: () => void;
+  // toProductPage: () => void;
   onAddToCart?: () => void;
   salePrice?: number | undefined;
 }
@@ -22,7 +22,7 @@ const ProductCard: React.FC<Card> = ({
   frontImage,
   price,
   salePrice,
-  toProductPage,
+  // toProductPage,
 }) => {
   const [sale, setSale] = useState(false); // to made all price with discount
   const boundingCardRef = useRef<DOMRect | null>(null);
@@ -38,6 +38,7 @@ const ProductCard: React.FC<Card> = ({
   return (
     <article className={classes.card__wrapper}>
       <div
+        // onClick={toProductPage}
         onMouseEnter={(ev) => {
           // get reference to current card
           boundingCardRef.current = ev.currentTarget.getBoundingClientRect();
@@ -76,7 +77,7 @@ const ProductCard: React.FC<Card> = ({
             ) : (
               <span>{currentPrice} €</span>
             )}
-            <Button onClick={toProductPage}>+</Button>
+            {/* <Button onClick={toProductPage}>+</Button> */}
           </div>
         </div>
       </div>

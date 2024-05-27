@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProductCard from '../../components/card/ProductCard';
 import Header from '../../components/header/Header';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -14,7 +14,6 @@ const CatalogPage: React.FC = () => {
   const { productsList, language } = useAppSelector(
     (state: RootState) => state.products
   );
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -39,15 +38,17 @@ const CatalogPage: React.FC = () => {
                 ?.value.centAmount;
 
             return (
-              <ProductCard
-                key={product.id}
-                title={title}
-                description={description}
-                frontImage={imageData}
-                price={price}
-                salePrice={salePrice}
-                toProductPage={() => navigate(`/catalog/${product.id}`)}
-              />
+              <Link to={`/catalog/${product.id}`} key={product.id}>
+                <ProductCard
+                  key={product.id}
+                  title={title}
+                  description={description}
+                  frontImage={imageData}
+                  price={price}
+                  salePrice={salePrice}
+                  // toProductPage={() => navigate(`/catalog/${product.id}`)}
+                />
+              </Link>
             );
           })}
         </div>

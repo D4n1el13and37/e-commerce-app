@@ -34,7 +34,7 @@ const UserProfile: React.FC = () => {
       <main className={cn('container')}>
         <div className={cn('grid', classes.account)}>
           <UserInfo dataUser={user} />
-          <ProfileInfo dataUser={user} />
+          <ProfileInfo dataUser={user} setDataUser={setUser} />
         </div>
       </main>
     </>

@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import React, { useState } from 'react';
+import { Customer } from '@commercetools/platform-sdk';
 import Button from '../../../components/ui/button/Button';
 import CustomerInfo from './profileNavigation/СustomerInfo';
 import ShippingInfo from './profileNavigation/ShippingInfo';
@@ -8,9 +9,13 @@ import BillingInfo from './profileNavigation/BillingInfo';
 import PersonalInfo from './profileNavigation/PersonalInfo';
 
 import classes from '../userProfile.module.scss';
-import { UserProps } from './UserInfo';
 
-const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
+export interface ProfileInfoProps {
+  dataUser: Customer | undefined;
+  setDataUser: React.Dispatch<React.SetStateAction<Customer | undefined>>;
+}
+
+const ProfileInfo: React.FC<ProfileInfoProps> = ({ dataUser, setDataUser }) => {
   const [activeTab, setActiveTab] = useState('СustomerInfo');
 
   const profileNav = [
@@ -23,15 +28,15 @@ const ProfileInfo: React.FC<UserProps> = ({ dataUser }) => {
   const renderContent = () => {
     switch (activeTab) {
       case 'СustomerInfo':
-        return <CustomerInfo dataUser={dataUser} />;
+        return <CustomerInfo dataUser={dataUser} setDataUser={setDataUser} />;
       case 'ShippingInfo':
-        return <ShippingInfo dataUser={dataUser} />;
+        return <ShippingInfo dataUser={dataUser} setDataUser={setDataUser} />;
       case 'BillingInfo':
-        return <BillingInfo dataUser={dataUser} />;
+        return <BillingInfo dataUser={dataUser} setDataUser={setDataUser} />;
       case 'PersonalInfo':
-        return <PersonalInfo dataUser={dataUser} />;
+        return <PersonalInfo dataUser={dataUser} setDataUser={setDataUser} />;
       default:
-        return <CustomerInfo dataUser={dataUser} />;
+        return <CustomerInfo dataUser={dataUser} setDataUser={setDataUser} />;
     }
   };
 

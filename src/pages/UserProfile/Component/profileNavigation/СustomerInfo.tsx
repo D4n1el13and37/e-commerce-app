@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CustomerSetDateOfBirthAction,
   CustomerSetFirstNameAction,
   CustomerSetLastNameAction,
 } from '@commercetools/platform-sdk';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { UserProps } from '../UserInfo';
 
 import { updateCustomer } from '../../../../api/Customer/customer';
+import { ProfileInfoProps } from '../ProfileInfo';
 
 import Input from '../../../../components/ui/input/Input';
 import Button from '../../../../components/ui/button/Button';
@@ -20,21 +20,30 @@ interface CustomerInfoData {
   dateBirth: string;
 }
 
-const CustomerInfo: React.FC<UserProps> = ({ dataUser }) => {
+const CustomerInfo: React.FC<ProfileInfoProps> = ({
+  dataUser,
+  setDataUser,
+}) => {
   const methods = useForm<CustomerInfoData>({
     mode: 'onChange',
-    defaultValues: {
-      firstName: dataUser?.firstName || '',
-      lastName: dataUser?.lastName || '',
-      dateBirth: dataUser?.dateOfBirth || '',
-    },
   });
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = methods;
+
+  useEffect(() => {
+    if (dataUser) {
+      reset({
+        firstName: dataUser.firstName || '',
+        lastName: dataUser.lastName || '',
+        dateBirth: dataUser.dateOfBirth || '',
+      });
+    }
+  }, [dataUser, reset]);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -65,6 +74,7 @@ const CustomerInfo: React.FC<UserProps> = ({ dataUser }) => {
 
         const updatedCustomer = await updateCustomer(dataUser.id, updateData);
         JSON.stringify(updatedCustomer);
+        setDataUser(updatedCustomer);
         // console.log('Customer updated:', updatedCustomer);
       }
       setIsEdit(false);

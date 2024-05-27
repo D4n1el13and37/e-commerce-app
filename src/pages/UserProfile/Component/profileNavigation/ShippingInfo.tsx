@@ -1,5 +1,3 @@
-import cn from 'classnames';
-
 import React from 'react';
 import Input from '../../../../components/ui/input/Input';
 import { UserProps } from '../UserInfo';
@@ -10,13 +8,13 @@ const ShippingInfo: React.FC<UserProps> = ({ dataUser }) => {
   const addressesShipping = dataUser?.addresses[0];
   const defaultShippingAddress = !!dataUser?.defaultShippingAddressId;
   return (
-    <div className={cn(classes.profileData__data)}>
+    <div className={classes.profileData__data}>
       {defaultShippingAddress ? (
-        <span className={cn(classes.default)}>Default shipping address</span>
+        <span className={classes.default}>Default shipping address</span>
       ) : (
         ''
       )}
-      <div className={cn(classes.profileData__field)}>
+      <div className={classes.profileData__field}>
         <Input
           id="countryShipping"
           label="Country"

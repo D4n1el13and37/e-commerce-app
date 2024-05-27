@@ -13,7 +13,7 @@ export async function getCustomer(): Promise<Customer> {
       .get()
       .execute();
 
-    return response.body; // change to customer response
+    return response.body;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);
@@ -43,7 +43,7 @@ export async function updateCustomer(
       .post({ body: data })
       .execute();
 
-    return response.body; // change to customer response
+    return response.body;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);

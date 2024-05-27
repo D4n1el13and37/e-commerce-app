@@ -17,7 +17,6 @@ const UserProfile: React.FC = () => {
       try {
         const customer = await getCustomer();
         setUser(customer);
-        // console.log(customer);
       } catch (e) {
         if (e instanceof Error) {
           throw new Error(e.message);

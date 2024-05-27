@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-import srcPlants from './successModalImg.svg';
+import srcPlants from './img/successModalImg.svg';
 
 import './SuccessModal.scss';
 import modal from './SuccessModal.module.scss';

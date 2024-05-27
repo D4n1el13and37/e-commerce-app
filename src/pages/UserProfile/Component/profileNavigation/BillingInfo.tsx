@@ -1,10 +1,10 @@
 import React from 'react';
 import Input from '../../../../components/ui/input/Input';
-import { UserProps } from '../UserInfo';
 
 import classes from '../../userProfile.module.scss';
+import { ProfileInfoProps } from '../ProfileInfo';
 
-const BillingInfo: React.FC<UserProps> = ({ dataUser }) => {
+const BillingInfo: React.FC<ProfileInfoProps> = ({ dataUser }) => {
   const addressesBilling = dataUser?.addresses[1];
   const defaultBillingAddress = !!dataUser?.defaultBillingAddressId;
   return (

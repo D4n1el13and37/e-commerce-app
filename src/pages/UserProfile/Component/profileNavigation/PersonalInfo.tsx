@@ -1,10 +1,10 @@
 import React from 'react';
 import Input from '../../../../components/ui/input/Input';
-import { UserProps } from '../UserInfo';
 
 import classes from '../../userProfile.module.scss';
+import { ProfileInfoProps } from '../ProfileInfo';
 
-const PersonalInfo: React.FC<UserProps> = ({ dataUser }) => (
+const PersonalInfo: React.FC<ProfileInfoProps> = ({ dataUser }) => (
   <div className={classes.profileData__data}>
     <div className={classes.profileData__field}>
       <Input

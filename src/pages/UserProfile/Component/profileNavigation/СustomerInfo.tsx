@@ -10,13 +10,12 @@ import { updateCustomer } from '../../../../api/Customer/customer';
 import { ProfileInfoProps } from '../ProfileInfo';
 
 import Button from '../../../../components/ui/button/Button';
-
-import classes from '../../userProfile.module.scss';
-
 import SuccesModal from '../SuccesModal/SuccessModal';
 import FirstName from '../../../../components/form/firstName/firstName';
 import LastName from '../../../../components/form/lastName/lastName';
 import DateBirth from '../../../../components/form/dateBirth/dateBirth';
+
+import classes from '../../userProfile.module.scss';
 
 interface CustomerInfoData {
   firstName: string;
@@ -31,6 +30,7 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
   const methods = useForm<CustomerInfoData>({
     mode: 'onChange',
   });
+
   const {
     handleSubmit,
     setValue,

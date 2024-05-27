@@ -4,17 +4,19 @@ import {
   CustomerSetFirstNameAction,
   CustomerSetLastNameAction,
 } from '@commercetools/platform-sdk';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { updateCustomer } from '../../../../api/Customer/customer';
 import { ProfileInfoProps } from '../ProfileInfo';
 
-import Input from '../../../../components/ui/input/Input';
 import Button from '../../../../components/ui/button/Button';
 
 import classes from '../../userProfile.module.scss';
 
-import SuccesModal from '../SuccesModal/SuccesModal';
+import SuccesModal from '../SuccesModal/SuccessModal';
+import FirstName from '../../../../components/form/firstName/firstName';
+import LastName from '../../../../components/form/lastName/lastName';
+import DateBirth from '../../../../components/form/dateBirth/dateBirth';
 
 interface CustomerInfoData {
   firstName: string;
@@ -30,7 +32,6 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
     mode: 'onChange',
   });
   const {
-    register,
     handleSubmit,
     setValue,
     reset,
@@ -48,10 +49,10 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
   }, [dataUser, reset]);
 
   const [isEdit, setIsEdit] = useState(false);
-  const [isEditSucces, setisEditSucces] = useState(false);
+  const [isEditSuccess, setIsEditSuccess] = useState(false);
 
   function removeMessage() {
-    setTimeout(() => setIsEdit(false), 3000);
+    setTimeout(() => setIsEditSuccess(false), 3000);
   }
 
   const onSubmit: SubmitHandler<CustomerInfoData> = async (data) => {
@@ -80,12 +81,10 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
         };
 
         const updatedCustomer = await updateCustomer(dataUser.id, updateData);
-        JSON.stringify(updatedCustomer);
         setDataUser(updatedCustomer);
-        // console.log('Customer updated:', updatedCustomer);
       }
       setIsEdit(false);
-      setisEditSucces(true);
+      setIsEditSuccess(true);
       removeMessage();
     } catch (e) {
       if (e instanceof Error) {
@@ -99,125 +98,68 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
   };
   return (
     <div className={classes.profileData__data}>
-      <form
-        className={classes.profileData__field}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className={classes.input_container}>
-          <Input
-            id="firstName"
-            autoComplete="firstName"
-            label="First Name"
-            type="text"
-            readOnly={!isEdit}
-            onClick={handleInputClick}
-            {...register('firstName', {
-              required: 'Required',
-              minLength: {
-                value: 1,
-                message: 'At least 1 character',
-              },
-              validate: (value: string) => {
-                const regexFirstName = /^[a-zA-Z]+$/;
-                if (!regexFirstName.test(value)) {
-                  return 'Only latin letters';
-                }
-                return true;
-              },
-            })}
-            onChange={(value) => setValue('firstName', value.target.value)}
-          />
-          <div className={`${classes.error_container}`}>
-            {errors.firstName && (
-              <span className="error">
-                {errors.firstName.message as string}
-              </span>
-            )}
+      <FormProvider {...methods}>
+        <form
+          className={classes.profileData__field}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className={classes.input_container}>
+            <FirstName
+              readOnly={!isEdit}
+              onClick={handleInputClick}
+              onChange={(value) => setValue('firstName', value.target.value)}
+            />
+            <div className={`${classes.error_container}`}>
+              {errors.firstName && (
+                <span className="error">
+                  {errors.firstName.message as string}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
-        <div className={classes.input_container}>
-          <Input
-            id="lastName"
-            label="Last Name"
-            type="text"
-            readOnly={!isEdit}
-            onClick={handleInputClick}
-            {...register('lastName', {
-              required: 'Required',
-              minLength: {
-                value: 1,
-                message: 'At least 1 character',
-              },
-              validate: (value: string) => {
-                const regexLastName = /^[a-zA-Z]+$/;
-                if (!regexLastName.test(value)) {
-                  return 'Only latin letters';
-                }
-                return true;
-              },
-            })}
-            onChange={(value) => setValue('lastName', value.target.value)}
-          />
-          <div className={classes.error_container}>
-            {errors.lastName && (
-              <span className="error">{errors.lastName.message as string}</span>
-            )}
+          <div className={classes.input_container}>
+            <LastName
+              readOnly={!isEdit}
+              onClick={handleInputClick}
+              onChange={(value) => setValue('lastName', value.target.value)}
+            />
+            <div className={classes.error_container}>
+              {errors.lastName && (
+                <span className="error">
+                  {errors.lastName.message as string}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
-        <div className={classes.input_container}>
-          <Input
-            id="dateBirth"
-            label="Date of Birth"
-            type="date"
-            readOnly={!isEdit}
-            onClick={handleInputClick}
-            {...register('dateBirth', {
-              required: 'Required',
-              validate: (value: string) => {
-                const minimumAge = 13;
-                const dateToday = new Date();
-                const dateBirth = new Date(value);
-
-                if (dateBirth > dateToday) {
-                  return 'Cannot be in the future';
-                }
-
-                const userAge =
-                  dateToday.getFullYear() - dateBirth.getFullYear();
-                const isBirthdayPassed =
-                  dateToday.getMonth() > dateBirth.getMonth() ||
-                  (dateToday.getMonth() === dateBirth.getMonth() &&
-                    dateToday.getDate() >= dateBirth.getDate());
-
-                if (
-                  userAge < minimumAge ||
-                  (userAge === minimumAge && !isBirthdayPassed)
-                ) {
-                  return 'Must be at least 13 years old';
-                }
-                return true;
-              },
-            })}
-            onChange={(value) => setValue('dateBirth', value.target.value)}
-          />
-
-          <div className={classes.error_container}>
-            {errors.dateBirth && (
-              <span className="error">
-                {errors.dateBirth.message as string}
-              </span>
-            )}
+          <div className={classes.input_container}>
+            <DateBirth
+              readOnly={!isEdit}
+              onClick={handleInputClick}
+              onChange={(value) => setValue('dateBirth', value.target.value)}
+            />
+            <div className={classes.error_container}>
+              {errors.dateBirth && (
+                <span className="error">
+                  {errors.dateBirth.message as string}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
 
-        <Button type="submit" isFilled={true} isMain={true} disabled={!isEdit}>
-          Save Changes
-        </Button>
-        <SuccesModal
-          isOpen={isEditSucces}
-          onRequestClose={() => setisEditSucces(false)}
-        />
-      </form>
+          <Button
+            type="submit"
+            isFilled={true}
+            isMain={true}
+            disabled={!isEdit}
+          >
+            Save Changes
+          </Button>
+          <SuccesModal
+            isOpen={isEditSuccess}
+            onRequestClose={() => setIsEditSuccess(false)}
+          />
+        </form>
+      </FormProvider>
     </div>
   );
 };

@@ -2,17 +2,13 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
 
-interface FirstNameProps {
+interface LastNameProps {
   readOnly?: boolean;
   onClick?: () => void;
   onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FirstName: React.FC<FirstNameProps> = ({
-  readOnly,
-  onClick,
-  onChange,
-}) => {
+const LastName: React.FC<LastNameProps> = ({ readOnly, onClick, onChange }) => {
   const {
     register,
     formState: { errors },
@@ -20,16 +16,14 @@ const FirstName: React.FC<FirstNameProps> = ({
 
   return (
     <Input
-      id="firstName"
-      autoComplete="firstName"
-      label="First Name"
+      id="lastName"
+      autoComplete="lastName"
+      label="Last Name"
       type="text"
       readOnly={readOnly}
       onClick={onClick}
-      error={
-        errors.firstName ? (errors.firstName.message as string) : undefined
-      }
-      {...register('firstName', {
+      error={errors.lastName ? (errors.lastName.message as string) : undefined}
+      {...register('lastName', {
         required: 'Required',
         minLength: {
           value: 1,
@@ -48,4 +42,4 @@ const FirstName: React.FC<FirstNameProps> = ({
   );
 };
 
-export default FirstName;
+export default LastName;

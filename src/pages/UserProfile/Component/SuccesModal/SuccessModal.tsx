@@ -1,17 +1,17 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-import srcPlants from '../../../../../public/succesModalImg.svg';
+import srcPlants from './successModalImg.svg';
 
-import './SuccesModal.scss';
-import modal from './succesModal.module.scss';
+import './SuccessModal.scss';
+import modal from './SuccessModal.module.scss';
 
 interface CustomModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-const ModalRegistration: React.FC<CustomModalProps> = ({
+const SuccessModal: React.FC<CustomModalProps> = ({
   isOpen,
   onRequestClose,
 }) => (
@@ -27,10 +27,10 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
   >
     <div className={modal.modal}>
       <div className={modal.modal__content}>
-        <p className={modal.modal__text}>Successful!</p>
+        <p className={modal.modal__text}>Success!</p>
       </div>
       <img src={srcPlants} alt="Illustartion happy plant" />
     </div>
   </Modal>
 );
-export default ModalRegistration;
+export default SuccessModal;

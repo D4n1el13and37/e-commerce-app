@@ -3,7 +3,7 @@ import {
   HttpMiddlewareOptions,
 } from '@commercetools/sdk-client-v2';
 
-export const projectKey = import.meta.env.VITE_PROJECT_KEY || '';
+export const projectKey = 'yes-to-plants';
 export const authHost = 'https://auth.europe-west1.gcp.commercetools.com';
 export const apiHost = 'https://api.europe-west1.gcp.commercetools.com';
 export const clientId = import.meta.env.VITE_CLIENT_ID || '';

@@ -4,7 +4,7 @@ import {
   RegistartionUser,
   loginByToken,
   loginWithPassword,
-} from '../api/authMethods';
+} from '../api/authintification/authMethods';
 import { LoginForm } from '../pages/Login/LoginPage';
 import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
 

@@ -22,6 +22,10 @@ const HeaderUser: React.FC = () => {
     navigate('/');
   };
 
+  const handleAccount = () => {
+    navigate('/account');
+  };
+
   return (
     <div className={classes.container}>
       <Button
@@ -33,7 +37,11 @@ const HeaderUser: React.FC = () => {
 
       <ul className={classes.menu} aria-hidden={!isActive}>
         <li className={classes.menu_item}>
-          <Button className={classes.menu_link} tabIndex={isActive ? 0 : -1}>
+          <Button
+            className={classes.menu_link}
+            tabIndex={isActive ? 0 : -1}
+            onClick={handleAccount}
+          >
             Account
           </Button>
         </li>

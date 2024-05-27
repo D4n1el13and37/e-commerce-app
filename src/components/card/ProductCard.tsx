@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
@@ -11,6 +11,7 @@ interface Card {
     dimensions?: { h: number; w: number };
   };
   price: number;
+  salePrice?: number | undefined;
 }
 
 const ProductCard: React.FC<Card> = ({
@@ -18,31 +19,66 @@ const ProductCard: React.FC<Card> = ({
   description,
   frontImage,
   price,
+  salePrice,
 }) => {
-  const [sale, setSale] = useState(false);
+  const [sale, setSale] = useState(false); // to made all price with discount
+  const boundingCardRef = useRef<DOMRect | null>(null);
+  const currentPrice = (price / 100).toFixed(2); // think about display
+  const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2); // i think we should refactor it
 
-  function updatePrice() {
-    setSale(!sale);
+  useEffect(() => {
+    if (salePrice) {
+      setSale(true);
+    }
+  }, [salePrice]);
+
+  /**
+   * for clear Ref
+   */
+  function onMouseLeave() {
+    boundingCardRef.current = null;
   }
 
   return (
     <article className={classes.card__wrapper}>
-      <div className={classes.image__wrapper}>
-        {frontImage && <img src={frontImage.url} alt={frontImage.label} />}
-      </div>
-      <div className={classes.text__wrapper}>
-        <h3>{title}</h3>
-        <span>{description}</span>
-        <div className="price">
-          {sale ? (
-            <div>
-              <span>New price && </span>
-              <span>{price}</span>
-            </div>
-          ) : (
-            <span>{price}</span>
-          )}
-          <Button onClick={updatePrice}>+</Button>
+      <div
+        onMouseEnter={(ev) => {
+          // get reference to current card
+          boundingCardRef.current = ev.currentTarget.getBoundingClientRect();
+        }}
+        onMouseLeave={onMouseLeave}
+        onMouseMove={(ev) => {
+          if (!boundingCardRef.current) return;
+          const x = ev.clientX - boundingCardRef.current.left;
+          const y = ev.clientY - boundingCardRef.current.top;
+          const xPercentage = x / boundingCardRef.current.width;
+          const yPercentage = y / boundingCardRef.current.height;
+
+          const xRotation = (yPercentage - 0.5) * 15;
+          const yRotation = (0.5 - xPercentage) * 15;
+
+          ev.currentTarget.style.setProperty('--x-rotation', `${xRotation}deg`);
+          ev.currentTarget.style.setProperty('--y-rotation', `${yRotation}deg`);
+        }}
+        className={classes.card}
+      >
+        <div className={classes.image__wrapper}>
+          {frontImage && <img src={frontImage.url} alt={frontImage.label} />}
+        </div>
+        <div className={classes.text__wrapper}>
+          <h3 className={classes.title}>{title}</h3>
+          <p className={classes.description}>{description}</p>
+          <div className={classes.price__actions}>
+            {sale ? (
+              <div>
+                <span className={classes.price__new}>{salePriceOutput} €</span>
+                <span className={classes.price__old}>{currentPrice} €</span>
+              </div>
+            ) : (
+              <span>{currentPrice} €</span>
+            )}
+            <Button>+</Button>
+          </div>
         </div>
       </div>
     </article>

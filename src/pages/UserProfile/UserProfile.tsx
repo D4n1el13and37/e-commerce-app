@@ -7,7 +7,7 @@ import ProfileInfo from './Component/ProfileInfo';
 import Header from '../../components/header/Header';
 
 import classes from './userProfile.module.scss';
-import getCustomer from '../../api/Customer/customer';
+import { getCustomer } from '../../api/Customer/customer';
 
 const UserProfile: React.FC = () => {
   const [user, setUser] = useState<Customer | undefined>();
@@ -17,6 +17,7 @@ const UserProfile: React.FC = () => {
       try {
         const customer = await getCustomer();
         setUser(customer);
+        // console.log(customer);
       } catch (e) {
         if (e instanceof Error) {
           throw new Error(e.message);

@@ -32,7 +32,7 @@ const SliderProduct: React.FC<SliderProd> = ({ images }) => {
       <Fancybox
         options={{
           Carousel: {
-            infinite: false,
+            infinite: true,
           },
           dragToClose: false,
           contentClick: 'iterateZoom',

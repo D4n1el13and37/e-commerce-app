@@ -4,7 +4,7 @@ import s from './Product.module.scss';
 import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';
 import SliderProduct from '../../components/sliderProduct/SliderProduct';
-import getProduct from '../../api/products/getProductMethods';
+import getProduct from '../../api/products/productsMethods';
 import Footer from '../../components/footer/Footer';
 
 const ProductPage: React.FC = () => {

@@ -1,0 +1,47 @@
+.modal {
+  display: flex;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 133px;
+    height: 100%;
+    background-image: url('./CloudSpech_succesmodal.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__text {
+    padding-right: 5px;
+    font-size: var(----second-font-size);
+    color: var(--grey-color);
+  }
+}
+
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  /* Выровнять по горизонтали к правому краю */
+  align-items: flex-end;
+  /* Выровнять по вертикали к нижнему краю */
+  padding: 20px;
+}
+
+.ReactModal__Content {
+  position: absolute;
+  bottom: 20px;
+  /* Отступ от нижнего края */
+  right: 20px;
+  /* Отступ от правого края */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

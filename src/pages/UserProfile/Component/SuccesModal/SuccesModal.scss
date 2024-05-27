@@ -1,0 +1,53 @@
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.ReactModal__Overlay {
+  position: absolute;
+  margin: 0 auto;
+  height: 100%;
+  max-width: var(--container-width);
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.ReactModal__Content {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 8px;
+  padding: 0;
+  width: 300px;
+  height: 110px;
+  background-color: transparent;
+  animation: slide-in 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.ReactModal__Content--after-open {
+  animation: slide-in 0.3s ease-in-out;
+}
+
+.ReactModal__Content--before-close {
+  animation: slide-out 0.3s ease-in-out;
+}

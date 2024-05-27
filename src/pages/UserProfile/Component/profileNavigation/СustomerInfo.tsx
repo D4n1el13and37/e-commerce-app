@@ -14,6 +14,8 @@ import Button from '../../../../components/ui/button/Button';
 
 import classes from '../../userProfile.module.scss';
 
+import SuccesModal from '../SuccesModal/SuccesModal';
+
 interface CustomerInfoData {
   firstName: string;
   lastName: string;
@@ -46,6 +48,11 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
   }, [dataUser, reset]);
 
   const [isEdit, setIsEdit] = useState(false);
+  const [isEditSucces, setisEditSucces] = useState(false);
+
+  function removeMessage() {
+    setTimeout(() => setIsEdit(false), 3000);
+  }
 
   const onSubmit: SubmitHandler<CustomerInfoData> = async (data) => {
     try {
@@ -78,6 +85,8 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
         // console.log('Customer updated:', updatedCustomer);
       }
       setIsEdit(false);
+      setisEditSucces(true);
+      removeMessage();
     } catch (e) {
       if (e instanceof Error) {
         throw new Error(e.message);
@@ -204,6 +213,10 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
         <Button type="submit" isFilled={true} isMain={true} disabled={!isEdit}>
           Save Changes
         </Button>
+        <SuccesModal
+          isOpen={isEditSucces}
+          onRequestClose={() => setisEditSucces(false)}
+        />
       </form>
     </div>
   );

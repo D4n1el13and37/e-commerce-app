@@ -1,14 +1,13 @@
-import { ProductPagedQueryResponse } from '@commercetools/platform-sdk';
+import {
+  CategoryPagedQueryResponse,
+  ProductPagedQueryResponse,
+  ProductProjection,
+} from '@commercetools/platform-sdk';
 import getApiRoot from '../api';
 import { projectKey } from '../clientConfig';
-// import useAppSelector from '../../hooks/useAppSelector';
-
-// const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
 
 export async function getProducts(): Promise<ProductPagedQueryResponse> {
   try {
-    // const client = isAuthorized ? 'token' : 'anonymous';
-    // const token = JSON.parse(localStorage.getItem('tokendata') || '');
     const apiRoot = getApiRoot();
     const res = await apiRoot
       .withProjectKey({ projectKey })
@@ -16,7 +15,6 @@ export async function getProducts(): Promise<ProductPagedQueryResponse> {
       .get()
       .execute();
 
-    // console.log(JSON.stringify(res));
     return res.body;
   } catch (error) {
     if (error instanceof Error) {
@@ -27,6 +25,43 @@ export async function getProducts(): Promise<ProductPagedQueryResponse> {
   }
 }
 
-export async function g() {
-  return 'console';
+export default async function getProduct(
+  ID: string
+): Promise<ProductProjection> {
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .productProjections()
+      .withId({ ID })
+      .get()
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login via');
+    }
+  }
+}
+
+export async function getCategories(): Promise<CategoryPagedQueryResponse> {
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .categories()
+      .get()
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login via');
+    }
+  }
 }

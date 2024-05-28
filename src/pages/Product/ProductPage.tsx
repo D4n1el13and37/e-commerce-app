@@ -17,6 +17,8 @@ const ProductPage: React.FC = () => {
   );
 
   useEffect(() => {
+    // to scroll into top of the page after transition
+    window.scrollTo(0, 0);
     if (productId) {
       dispatch(fetchProduct(productId));
     }

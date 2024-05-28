@@ -5,8 +5,11 @@
   overflow: hidden;
   border-radius: 12px;
   max-width: 312px;
-  perspective: 1000px;
-  transition: scale var(--duration) ease-in-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    perspective: 1000px;
+    transition: scale var(--duration) ease-in-out;
+  }
 
   .image__wrapper {
     height: 302px;
@@ -23,8 +26,10 @@
     overflow: hidden;
     border-radius: 12px;
 
-    &:hover {
-      transform: rotateX(var(--x-rotation)) rotateY(var(--y-rotation));
+    @media (any-hover: hover) {
+      &:hover {
+        transform: rotateX(var(--x-rotation)) rotateY(var(--y-rotation));
+      }
     }
   }
 
@@ -38,7 +43,10 @@
 
     .title {
       font-size: var(--main-font-size);
-      transition: color var(--duration) ease-in-out;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: color var(--duration) ease-in-out;
+      }
     }
 
     .description {
@@ -46,9 +54,12 @@
       overflow: hidden;
       margin-bottom: 12px;
       font-size: var(--second-font-size);
-      transition: color var(--duration) ease-in-out;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: color var(--duration) ease-in-out;
+      }
     }
 
     .price__actions {
@@ -75,11 +86,13 @@
     }
   }
 
-  &:hover {
-    scale: 1.05;
+  @media (any-hover: hover) {
+    &:hover {
+      scale: 1.05;
 
-    .title {
-      color: var(--accent-color);
+      .title {
+        color: var(--accent-color);
+      }
     }
   }
 }

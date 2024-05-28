@@ -6,7 +6,7 @@ import {
   getProducts,
 } from '../api/products/productsMethods';
 
-interface CustomProduct {
+export interface CustomProduct {
   title: LocalizedString;
   description: LocalizedString;
   price: number;

@@ -7,14 +7,14 @@ const Street: React.FC<AddressField> = ({
   readOnly,
   onClick,
   onChange,
-  typeShipping,
+  typeAddress,
 }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `streetName${typeShipping}`;
+  const nameId = `streetName${typeAddress}`;
 
   return (
     <Input

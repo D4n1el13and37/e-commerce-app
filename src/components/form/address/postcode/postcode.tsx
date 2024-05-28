@@ -7,7 +7,7 @@ const Postcode: React.FC<AddressField> = ({
   readOnly,
   onClick,
   onChange,
-  typeShipping,
+  typeAddress,
   selectedCountry,
 }) => {
   const {
@@ -15,7 +15,7 @@ const Postcode: React.FC<AddressField> = ({
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `postalCode${typeShipping}`;
+  const nameId = `postalCode${typeAddress}`;
 
   return (
     <Input

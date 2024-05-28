@@ -156,7 +156,7 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
 
           <div className={classes.input_container}>
             <City
-              typeShipping="Shipping"
+              typeAddress="Shipping"
               readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('cityShipping', value.target.value)}
@@ -173,7 +173,7 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
 
           <div className={classes.input_container}>
             <Street
-              typeShipping="Shipping"
+              typeAddress="Shipping"
               readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) =>
@@ -192,7 +192,7 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
 
           <div className={classes.input_container}>
             <Postcode
-              typeShipping="Shipping"
+              typeAddress="Shipping"
               readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) =>

@@ -11,7 +11,7 @@ export interface AddressField {
   readOnly?: boolean;
   onClick?: () => void;
   onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-  typeShipping?: string;
+  typeAddress?: string;
   selectedCountry?: selectedCountry | null;
 }
 
@@ -19,14 +19,14 @@ const City: React.FC<AddressField> = ({
   readOnly,
   onClick,
   onChange,
-  typeShipping,
+  typeAddress,
 }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `city${typeShipping}`;
+  const nameId = `city${typeAddress}`;
 
   return (
     <Input

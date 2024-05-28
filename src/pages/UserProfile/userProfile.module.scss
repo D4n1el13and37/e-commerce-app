@@ -100,7 +100,7 @@
 
   &__field {
     display: grid;
-    margin-top: 24px;
+    margin-top: 36px;
     width: 50%;
     gap: 24px;
   }
@@ -112,20 +112,4 @@
   width: 100%;
   color: var(--light-color);
   background-color: var(--primary-color);
-}
-
-.input_container {
-  position: relative;
-  height: 82px;
-
-  .error_container {
-    position: relative;
-    height: 20px;
-
-    span {
-      position: absolute;
-      bottom: 0;
-      font-size: 14px;
-    }
-  }
 }

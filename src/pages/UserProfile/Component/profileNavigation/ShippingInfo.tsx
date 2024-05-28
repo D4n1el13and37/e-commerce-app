@@ -36,7 +36,6 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
   const methods = useForm<AddressInfoData>({
     mode: 'onChange',
   });
-
   const {
     control,
     handleSubmit,
@@ -93,40 +92,35 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
   const onSubmit: SubmitHandler<AddressInfoData> = async (data) => {
     try {
       if (dataUser) {
-        const actions: (
-          | CustomerChangeAddressAction
-          | CustomerSetDefaultShippingAddressAction
-        )[] = [
-          {
-            action: 'changeAddress',
-            address: {
-              id: addressesShipping?.id || '',
-              country: data?.countryShipping,
-              city: data?.cityShipping,
-              streetName: data?.streetNameShipping,
-              postalCode: data?.postalCodeShipping,
-            },
+        const setAddress: CustomerChangeAddressAction = {
+          action: 'changeAddress',
+          addressId: addressesShipping?.id || '',
+          address: {
+            country: data?.countryShipping,
+            city: data?.cityShipping,
+            streetName: data?.streetNameShipping,
+            postalCode: data?.postalCodeShipping,
           },
-        ];
-
-        if (data.defaultShippingAddress) {
-          actions.push({
-            action: 'setDefaultShippingAddress',
-            addressId: addressesShipping?.id || '',
-          });
-        }
+        };
+        const setDefaultAddress: CustomerSetDefaultShippingAddressAction = {
+          action: 'setDefaultShippingAddress',
+          addressId: data.defaultShippingAddress
+            ? addressesShipping?.id
+            : undefined,
+        };
 
         const updateData = {
           version: dataUser?.version,
-          actions,
+          actions: [setAddress, setDefaultAddress],
         };
 
         const updatedCustomer = await updateCustomer(dataUser.id, updateData);
         setDataUser(updatedCustomer);
+
+        setIsEdit(false);
+        setIsEditSuccess(true);
+        removeMessage();
       }
-      setIsEdit(false);
-      setIsEditSuccess(true);
-      removeMessage();
     } catch (e) {
       if (e instanceof Error) {
         throw new Error(e.message);
@@ -150,24 +144,16 @@ const ShippingInfo: React.FC<ProfileInfoProps> = ({
           className={classes.profileData__field}
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className={classes.input_container}>
-            <div onClick={handleInputClick}>
-              <CountrySelect
-                control={control}
-                name="countryShipping"
-                setSelectedCountry={setSelectedCountry}
-                value={selectedCountry}
-                isDisabled={!isEdit}
-              />
-            </div>
-            <div className={classes.error_container}>
-              {errors.countryShipping && (
-                <span className="error">
-                  {errors.countryShipping.message as string}
-                </span>
-              )}
-            </div>
+          <div onClick={handleInputClick}>
+            <CountrySelect
+              control={control}
+              name="countryShipping"
+              setSelectedCountry={setSelectedCountry}
+              value={selectedCountry}
+              isDisabled={!isEdit}
+            />
           </div>
+
           <div className={classes.input_container}>
             <City
               typeShipping="Shipping"

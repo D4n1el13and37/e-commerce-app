@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ProductCard from '../../components/card/ProductCard';
+import cn from 'classnames';
 import Header from '../../components/header/Header';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { RootState } from '../../store/store';
-import { fetchProducts } from '../../store/productsSlice';
+import { fetchProducts, fetchCategories } from '../../store/productsSlice';
 import useAppSelector from '../../hooks/useAppSelector';
+import CategoriesList from './components/categories/CategoriesList';
+import ProductList from './components/product_list/ProductList';
+import Footer from '../../components/footer/Footer';
+
+import cl from './CatalogPage.module.scss';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,50 +18,17 @@ const CatalogPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (
     <>
       <Header />
-      <main>
-        <div
-          className="catalog list"
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '24px',
-            padding: '40px 0',
-            justifyContent: 'center',
-          }}
-        >
-          {productsList.map((productCard) => {
-            const title = productCard.masterData.current.name[language];
-            const description =
-              productCard.masterData.current.description![language];
-            const imageData =
-              productCard.masterData.current.masterVariant.images![0];
-            const price =
-              productCard.masterData.current.masterVariant.prices![0].value
-                .centAmount;
-            const salePrice =
-              productCard.masterData.current.masterVariant.prices![0]
-                ?.discounted?.value.centAmount;
-
-            return (
-              <Link to={`/catalog/${productCard.id}`} key={productCard.id}>
-                <ProductCard
-                  key={productCard.id}
-                  title={title}
-                  description={description}
-                  frontImage={imageData}
-                  price={price}
-                  salePrice={salePrice}
-                />
-              </Link>
-            );
-          })}
-        </div>
+      <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+        <CategoriesList />
+        <ProductList products={productsList} language={language} />
       </main>
+      <Footer />
     </>
   );
 };

@@ -35,6 +35,10 @@ const FirstName: React.FC<FirstNameProps> = ({
           value: 1,
           message: 'At least 1 character',
         },
+        maxLength: {
+          value: 50,
+          message: 'Maximum length 50 character',
+        },
         validate: (value: string) => {
           const regexFirstName = /^[a-zA-Z]+$/;
           if (!regexFirstName.test(value)) {

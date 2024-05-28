@@ -40,14 +40,22 @@
   width: 300px;
   height: 110px;
   background-color: transparent;
-  animation: slide-in 0.3s ease-in-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: slide-in 0.3s ease-in-out;
+  }
+
   pointer-events: none;
 }
 
 .ReactModal__Content--after-open {
-  animation: slide-in 0.3s ease-in-out;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: slide-in 0.3s ease-in-out;
+  }
 }
 
 .ReactModal__Content--before-close {
-  animation: slide-out 0.3s ease-in-out;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: slide-out 0.3s ease-in-out;
+  }
 }

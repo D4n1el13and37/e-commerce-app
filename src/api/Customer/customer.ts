@@ -18,7 +18,7 @@ export async function getCustomer(): Promise<Customer> {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Unknow error');
+      throw new Error('Error from this function getCustomer');
     }
   }
 }
@@ -48,7 +48,7 @@ export async function updateCustomer(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Unknow error');
+      throw new Error('Error from this function updateCustomer');
     }
   }
 }

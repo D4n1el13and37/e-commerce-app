@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../store/store';
+
 import Input from '../../../../components/ui/input/Input';
 
 import classes from '../../userProfile.module.scss';
-import { ProfileInfoProps } from '../ProfileInfo';
 
-const ShippingInfo: React.FC<ProfileInfoProps> = ({ dataUser }) => {
+const ShippingInfo: React.FC = () => {
+  const dataUser = useSelector((state: RootState) => state.customer.dataUser);
+
   const addressesShipping = dataUser?.addresses[0];
   const defaultShippingAddress = !!dataUser?.defaultShippingAddressId;
   return (

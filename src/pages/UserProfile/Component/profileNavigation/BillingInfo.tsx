@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../store/store';
+
 import Input from '../../../../components/ui/input/Input';
 
 import classes from '../../userProfile.module.scss';
-import { ProfileInfoProps } from '../ProfileInfo';
 
-const BillingInfo: React.FC<ProfileInfoProps> = ({ dataUser }) => {
+const BillingInfo: React.FC = () => {
+  const dataUser = useSelector((state: RootState) => state.customer.dataUser);
+
   const addressesBilling = dataUser?.addresses[1];
   const defaultBillingAddress = !!dataUser?.defaultBillingAddressId;
   return (

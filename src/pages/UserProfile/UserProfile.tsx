@@ -32,7 +32,7 @@ const UserProfile: React.FC = () => {
   return (
     <>
       <Header />
-      <main className={cn('container')}>
+      <main className={'container'}>
         <div className={cn('grid', classes.account)}>
           <UserInfo dataUser={user} />
           <ProfileInfo />

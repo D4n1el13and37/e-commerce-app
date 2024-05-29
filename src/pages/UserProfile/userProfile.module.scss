@@ -16,10 +16,13 @@
 
 .user {
   &__name {
+    display: block;
+    overflow: hidden;
     margin-top: 12px;
     font-weight: 400;
     font-style: normal;
     font-size: 36px;
+    text-overflow: ellipsis;
     color: var(--text-color);
   }
 

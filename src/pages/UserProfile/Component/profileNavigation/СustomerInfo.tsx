@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   CustomerSetDateOfBirthAction,
   CustomerSetFirstNameAction,
@@ -7,7 +8,8 @@ import {
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { updateCustomer } from '../../../../api/Customer/customer';
-import { ProfileInfoProps } from '../ProfileInfo';
+import { RootState } from '../../../../store/store';
+import { setDataUser } from '../../../../store/customerSlice';
 
 import Button from '../../../../components/ui/button/Button';
 import SuccessModal from '../SuccesModal/SuccessModal';
@@ -23,10 +25,10 @@ interface CustomerInfoData {
   dateBirth: string;
 }
 
-const CustomerInfo: React.FC<ProfileInfoProps> = ({
-  dataUser,
-  setDataUser,
-}) => {
+const CustomerInfo: React.FC = () => {
+  const dispatch = useDispatch();
+  const dataUser = useSelector((state: RootState) => state.customer.dataUser);
+
   const methods = useForm<CustomerInfoData>({
     mode: 'onChange',
   });
@@ -81,7 +83,7 @@ const CustomerInfo: React.FC<ProfileInfoProps> = ({
         };
 
         const updatedCustomer = await updateCustomer(dataUser.id, updateData);
-        setDataUser(updatedCustomer);
+        dispatch(setDataUser(updatedCustomer));
       }
       setIsEdit(false);
       setIsEditSuccess(true);

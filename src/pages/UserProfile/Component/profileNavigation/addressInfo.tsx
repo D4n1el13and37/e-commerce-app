@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { SingleValue } from 'react-select';
 import {
-  Customer,
   CustomerChangeAddressAction,
   CustomerSetDefaultShippingAddressAction,
   CustomerSetDefaultBillingAddressAction,
 } from '@commercetools/platform-sdk';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
-import classes from '../../userProfile.module.scss';
 import { updateCustomer } from '../../../../api/Customer/customer';
+import { RootState } from '../../../../store/store';
+import { setDataUser } from '../../../../store/customerSlice';
+
+import classes from '../../userProfile.module.scss';
 import CountrySelect from '../../../Register/Component/AddressForm/CountrySelect';
 import {
   CountryOptionInterface,
@@ -36,16 +39,13 @@ export interface AddressInfoData {
 }
 
 interface AddressProps {
-  dataUser: Customer | undefined;
-  setDataUser: React.Dispatch<React.SetStateAction<Customer | undefined>>;
   addressType: 'Shipping' | 'Billing';
 }
 
-const AddressInfo: React.FC<AddressProps> = ({
-  dataUser,
-  setDataUser,
-  addressType,
-}) => {
+const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
+  const dispatch = useDispatch();
+  const dataUser = useSelector((state: RootState) => state.customer.dataUser);
+
   const methods = useForm<AddressInfoData>({ mode: 'onChange' });
   const { control, handleSubmit, setValue, reset, trigger, register } = methods;
 
@@ -120,7 +120,7 @@ const AddressInfo: React.FC<AddressProps> = ({
         };
 
         const updatedCustomer = await updateCustomer(dataUser.id, updateData);
-        setDataUser(updatedCustomer);
+        dispatch(setDataUser(updatedCustomer));
 
         setIsEdit(false);
         setIsEditSuccess(true);

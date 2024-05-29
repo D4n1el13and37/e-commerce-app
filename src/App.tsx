@@ -64,7 +64,7 @@ function App() {
               ),
             },
             {
-              path: 'product',
+              path: 'catalog/:productId',
               element: <ProductPage />,
             },
           ],

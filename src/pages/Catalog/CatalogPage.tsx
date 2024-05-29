@@ -13,8 +13,9 @@ import cl from './CatalogPage.module.scss';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { productsList } = useAppSelector((state: RootState) => state.products);
-  const language = 'en-US';
+  const { productsList, language } = useAppSelector(
+    (state: RootState) => state.products
+  );
 
   useEffect(() => {
     dispatch(fetchProducts());

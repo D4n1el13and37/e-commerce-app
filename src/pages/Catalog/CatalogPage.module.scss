@@ -1,3 +1,7 @@
-// main .catalog__wrapper {
-//   padding: 90px 0;
-// }
+.cards__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 0;
+  gap: 24px;
+}

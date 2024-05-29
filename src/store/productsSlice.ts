@@ -1,9 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Category, Image, LocalizedString } from '@commercetools/platform-sdk';
+import {
+  Category,
+  Image,
+  LocalizedString,
+  ProductProjection,
+} from '@commercetools/platform-sdk';
 import {
   getCardsByCategory,
   getCategories,
   getProducts,
+  getProduct,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -18,12 +24,16 @@ export interface CustomProduct {
 export interface ProductState {
   productsList: CustomProduct[];
   categoriesList: Category[];
+  productByID: ProductProjection | null;
+  language: 'en-US' | 'ru-RU';
   isLoading: boolean;
 }
 
 const initialState: ProductState = {
   productsList: [],
   categoriesList: [],
+  productByID: null,
+  language: 'en-US',
   isLoading: false,
 };
 
@@ -52,7 +62,22 @@ export const fetchProducts = createAsyncThunk(
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message); // ???
       }
-      throw new Error('Error from REDUX login function');
+      throw new Error('Error from REDUX getProducts function');
+    }
+  }
+);
+
+export const fetchProduct = createAsyncThunk(
+  'products/fetchByID',
+  async (productId: string, thunkAPI) => {
+    try {
+      const response = await getProduct(productId);
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error from REDUX getProduct function');
     }
   }
 );
@@ -141,6 +166,19 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsByCategory.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchProduct.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchProduct.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.productByID = action.payload;
+      })
+      .addCase(fetchProduct.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       });

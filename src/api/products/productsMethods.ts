@@ -26,9 +26,7 @@ export async function getProducts(): Promise<ProductPagedQueryResponse> {
   }
 }
 
-export default async function getProduct(
-  ID: string
-): Promise<ProductProjection> {
+export async function getProduct(ID: string): Promise<ProductProjection> {
   try {
     const apiRoot = getApiRoot();
     const res = await apiRoot

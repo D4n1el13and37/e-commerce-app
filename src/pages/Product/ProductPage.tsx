@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { ProductProjection } from '@commercetools/platform-sdk';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import s from './Product.module.scss';
 import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';
 import SliderProduct from '../../components/sliderProduct/SliderProduct';
-import getProduct from '../../api/products/productsMethods';
 import Footer from '../../components/footer/Footer';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import useAppSelector from '../../hooks/useAppSelector';
+import { fetchProduct } from '../../store/productsSlice';
 
 const ProductPage: React.FC = () => {
-  const [prod, setProd] = useState<ProductProjection>();
+  const { productId } = useParams<{ productId: string }>();
+  const dispatch = useAppDispatch();
+  const { productByID: prod, language } = useAppSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    const getProd = async () => {
-      try {
-        const res = await getProduct('de89121f-c2b6-479f-b5aa-62d06bd60d2f');
-        setProd(res);
-      } catch (error) {
-        if (error instanceof Error) {
-          throw new Error(error.message);
-        }
-      }
-    };
-    getProd();
-  }, []);
-
-  const language = 'en-US' as string;
+    // to scroll into top of the page after transition
+    window.scrollTo(0, 0);
+    if (productId) {
+      dispatch(fetchProduct(productId));
+    }
+  }, [dispatch, productId]);
 
   const images = prod?.masterVariant.images || [];
 

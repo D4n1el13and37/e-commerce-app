@@ -2,10 +2,19 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
 
-const EmailInput: React.FC = () => {
+interface EditProps {
+  readOnly?: boolean;
+  onClick?: () => void;
+  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const EmailInput: React.FC<EditProps> = () => {
   const {
     register,
     formState: { errors },
+    readOnly,
+    onClick,
+    onChange,
   } = useFormContext();
 
   return (

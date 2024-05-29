@@ -2,19 +2,16 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
 
-interface EditProps {
+export interface EditProps {
   readOnly?: boolean;
   onClick?: () => void;
   onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const EmailInput: React.FC<EditProps> = () => {
+const EmailInput: React.FC<EditProps> = ({ readOnly, onClick, onChange }) => {
   const {
     register,
     formState: { errors },
-    readOnly,
-    onClick,
-    onChange,
   } = useFormContext();
 
   return (
@@ -24,6 +21,8 @@ const EmailInput: React.FC<EditProps> = () => {
       autoComplete="email"
       id="email"
       placeholder="user@example.com"
+      readOnly={readOnly}
+      onClick={onClick}
       error={errors.email ? (errors.email.message as string) : undefined}
       {...register('email', {
         required: 'Email is required',
@@ -74,6 +73,7 @@ const EmailInput: React.FC<EditProps> = () => {
           return true;
         },
       })}
+      onChange={onChange}
     />
   );
 };

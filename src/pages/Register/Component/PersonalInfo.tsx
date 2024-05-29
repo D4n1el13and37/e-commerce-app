@@ -27,7 +27,7 @@ export default function PersonalInfo() {
             </div>
           </div>
           <div className={classes.input_container}>
-            <PasswordInput />
+            <PasswordInput label="Password" registerPassword="password" />
             <div className={classes.error_container}>
               {errors.password && (
                 <span className="error">

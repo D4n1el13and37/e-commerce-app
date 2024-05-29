@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import Button from '../../../components/ui/button/Button';
 import CustomerInfo from './profileNavigation/СustomerInfo';
-import PersonalInfo from './profileNavigation/PersonalInfo';
+import PersonalInfo from './profileNavigation/PasswordlInfo';
 import classes from '../userProfile.module.scss';
 import AddressInfo from './profileNavigation/AddressInfo';
 

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomerChangeEmailAction } from '@commercetools/platform-sdk';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
-import { updateCustomer } from '../../../../api/Customer/customer';
+import { updateCustomerPassword } from '../../../../api/Customer/customer';
 import { RootState } from '../../../../store/store';
 import { setDataUser } from '../../../../store/customerSlice';
 
@@ -11,12 +10,12 @@ import Button from '../../../../components/ui/button/Button';
 import SuccessModal from '../SuccesModal/SuccessModal';
 
 import classes from '../../userProfile.module.scss';
-import EmailInput from '../../../../components/form/email/EmailInput';
-import Input from '../../../../components/ui/input/Input';
+import PasswordField from '../../../../components/form/password/PasswordInput';
 
 interface PersonalInfoData {
   email: string;
-  password: string;
+  currentPassword: string;
+  newPassword: string;
 }
 
 const PersonalInfo: React.FC = () => {
@@ -27,18 +26,13 @@ const PersonalInfo: React.FC = () => {
     mode: 'onChange',
   });
 
-  const {
-    handleSubmit,
-    setValue,
-    reset,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit, setValue, reset } = methods;
 
   useEffect(() => {
     if (dataUser) {
       reset({
         email: dataUser.email || '',
-        password: dataUser.password || '',
+        // password: dataUser.password || '',
       });
     }
   }, [dataUser, reset]);
@@ -53,18 +47,17 @@ const PersonalInfo: React.FC = () => {
   const onSubmit: SubmitHandler<PersonalInfoData> = async (data) => {
     try {
       if (dataUser) {
-        const setFirstEmailAction: CustomerChangeEmailAction = {
-          action: 'changeEmail',
-          email: data.email,
-        };
+        if (data.currentPassword && data.newPassword) {
+          const updateData = {
+            version: dataUser.version,
+            currentPassword: data.currentPassword,
+            newPassword: data.newPassword,
+          };
 
-        const updateData = {
-          version: dataUser?.version,
-          actions: [setFirstEmailAction],
-        };
-
-        const updatedCustomer = await updateCustomer(dataUser.id, updateData);
-        dispatch(setDataUser(updatedCustomer));
+          const updatedCustomerPassword =
+            await updateCustomerPassword(updateData);
+          dispatch(setDataUser(updatedCustomerPassword));
+        }
       }
       setIsEdit(false);
       setIsEditSuccess(true);
@@ -88,25 +81,25 @@ const PersonalInfo: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className={classes.input_container}>
-            <EmailInput
+            <h3>Change password</h3>
+
+            <PasswordField
+              label="Current Password"
+              registerPassword="currentPassword"
               readOnly={!isEdit}
               onClick={handleInputClick}
-              onChange={(value) => setValue('email', value.target.value)}
+              onChange={(value) =>
+                setValue('currentPassword', value.target.value)
+              }
             />
-            <div className={`${classes.error_container}`}>
-              {errors.email && (
-                <span className="error">{errors.email.message as string}</span>
-              )}
-            </div>
           </div>
           <div className={classes.input_container}>
-            <Input
-              data-testid="password"
-              label="Password"
-              autoComplete="current-password"
-              type="text"
-              id="password"
-              value={dataUser?.password}
+            <PasswordField
+              label="New Password"
+              registerPassword="newPassword"
+              readOnly={!isEdit}
+              onClick={handleInputClick}
+              onChange={(value) => setValue('newPassword', value.target.value)}
             />
           </div>
           <Button

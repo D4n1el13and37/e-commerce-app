@@ -118,7 +118,10 @@
   &_active {
     visibility: visible;
     transform: none;
-    animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
   }
 }
 

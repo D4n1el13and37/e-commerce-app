@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Button from '../ui/button/Button';
+// import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
 interface Card {
@@ -11,6 +11,8 @@ interface Card {
     dimensions?: { h: number; w: number };
   };
   price: number;
+  // toProductPage: () => void;
+  onAddToCart?: () => void;
   salePrice?: number | undefined;
 }
 
@@ -20,6 +22,7 @@ const ProductCard: React.FC<Card> = ({
   frontImage,
   price,
   salePrice,
+  // toProductPage,
 }) => {
   const [sale, setSale] = useState(false); // to made all price with discount
   const boundingCardRef = useRef<DOMRect | null>(null);
@@ -32,21 +35,18 @@ const ProductCard: React.FC<Card> = ({
     }
   }, [salePrice]);
 
-  /**
-   * for clear Ref
-   */
-  function onMouseLeave() {
-    boundingCardRef.current = null;
-  }
-
   return (
     <article className={classes.card__wrapper}>
       <div
+        // onClick={toProductPage}
         onMouseEnter={(ev) => {
           // get reference to current card
           boundingCardRef.current = ev.currentTarget.getBoundingClientRect();
         }}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={() => {
+          // for clear Ref
+          boundingCardRef.current = null;
+        }}
         onMouseMove={(ev) => {
           if (!boundingCardRef.current) return;
           const x = ev.clientX - boundingCardRef.current.left;
@@ -77,7 +77,7 @@ const ProductCard: React.FC<Card> = ({
             ) : (
               <span>{currentPrice} €</span>
             )}
-            <Button>+</Button>
+            {/* <Button onClick={toProductPage}>+</Button> */}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ import Button from '../../../../components/ui/button/Button';
 import SuccessModal from '../SuccesModal/SuccessModal';
 
 import classes from '../../userProfile.module.scss';
-import PasswordField from '../../../../components/form/password/PasswordInput';
+import PasswordFieldEdit from '../../../../components/form/password/PasswordInputEdit';
 
 interface PersonalInfoData {
   email: string;
@@ -38,6 +38,7 @@ const PersonalInfo: React.FC = () => {
   }, [dataUser, reset]);
 
   const [isEdit, setIsEdit] = useState(false);
+  const [isError, setIsError] = useState('');
   const [isEditSuccess, setIsEditSuccess] = useState(false);
 
   function removeMessage() {
@@ -64,6 +65,7 @@ const PersonalInfo: React.FC = () => {
       removeMessage();
     } catch (e) {
       if (e instanceof Error) {
+        setIsError(e.message);
         throw new Error(e.message);
       }
     }
@@ -81,9 +83,9 @@ const PersonalInfo: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className={classes.input_container}>
-            <h3>Change password</h3>
+            {/* <h3>Change password</h3> */}
 
-            <PasswordField
+            <PasswordFieldEdit
               label="Current Password"
               registerPassword="currentPassword"
               readOnly={!isEdit}
@@ -94,7 +96,7 @@ const PersonalInfo: React.FC = () => {
             />
           </div>
           <div className={classes.input_container}>
-            <PasswordField
+            <PasswordFieldEdit
               label="New Password"
               registerPassword="newPassword"
               readOnly={!isEdit}
@@ -102,14 +104,17 @@ const PersonalInfo: React.FC = () => {
               onChange={(value) => setValue('newPassword', value.target.value)}
             />
           </div>
-          <Button
-            type="submit"
-            isFilled={true}
-            isMain={true}
-            disabled={!isEdit}
-          >
-            Save Changes
-          </Button>
+          <div className={classes.server__error}>
+            {isError && <span className="error">{isError}</span>}
+            <Button
+              type="submit"
+              isFilled={true}
+              isMain={true}
+              disabled={!isEdit}
+            >
+              Save Changes
+            </Button>
+          </div>
           <SuccessModal
             isOpen={isEditSuccess}
             onRequestClose={() => setIsEditSuccess(false)}

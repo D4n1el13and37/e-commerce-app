@@ -3,26 +3,9 @@ import { useFormContext } from 'react-hook-form';
 import Input from '../../../ui/input/Input';
 
 import classes from '../../styleForm.module.scss';
+import { AddressField } from '../../formInterface';
 
-interface selectedCountry {
-  name: string;
-  regex: RegExp;
-}
-
-export interface AddressField {
-  readOnly?: boolean;
-  onClick?: () => void;
-  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-  typeAddress?: 'Shipping' | 'Billing';
-  selectedCountry?: selectedCountry | null;
-}
-
-const City: React.FC<AddressField> = ({
-  readOnly,
-  onClick,
-  onChange,
-  typeAddress,
-}) => {
+const City: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
   const {
     register,
     formState: { errors },
@@ -38,7 +21,6 @@ const City: React.FC<AddressField> = ({
         label="City"
         type="text"
         placeholder="City"
-        readOnly={readOnly}
         onClick={onClick}
         error={errors[nameId] ? (errors[nameId]?.message as string) : undefined}
         {...register(nameId, {

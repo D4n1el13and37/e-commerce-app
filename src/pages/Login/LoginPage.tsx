@@ -70,7 +70,7 @@ function LoginPage() {
                   </div>
                 </div>
                 <div className={cl.input__container}>
-                  <PasswordField label="Password" registerPassword="password" />
+                  <PasswordField />
                   <div className={cl.error__container}>
                     <span className={`error`}>
                       {errors.password && errors.password.message}

@@ -121,7 +121,6 @@ const CustomerInfo: React.FC = () => {
           {' '}
           <div className={classes.input_container}>
             <EmailInput
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('email', value.target.value)}
             />
@@ -133,7 +132,6 @@ const CustomerInfo: React.FC = () => {
           </div>
           <div className={classes.input_container}>
             <FirstName
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('firstName', value.target.value)}
             />
@@ -147,7 +145,6 @@ const CustomerInfo: React.FC = () => {
           </div>
           <div className={classes.input_container}>
             <LastName
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('lastName', value.target.value)}
             />
@@ -161,7 +158,6 @@ const CustomerInfo: React.FC = () => {
           </div>
           <div className={classes.input_container}>
             <DateBirth
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('dateBirth', value.target.value)}
             />

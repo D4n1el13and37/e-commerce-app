@@ -5,13 +5,29 @@ import pass from './Password.module.scss';
 import Input from '../../ui/input/Input';
 import validatePassword from './validatePassword';
 import TooggleVisibilityButton from './TooggleVisibilityButton';
+// import { EditProps } from '../email/EmailInput';
 
 // interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 //   register: UseFormRegister<LoginForm>;
 //   errors: FieldErrors<LoginForm>;
 // }
 
-const PasswordField: React.FC = () => {
+interface PasswordProps {
+  readOnly?: boolean;
+  onClick?: () => void;
+  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
+
+  registerPassword: 'password' | 'currentPassword' | 'newPassword';
+  label: 'Password' | 'Current Password' | 'New Password';
+}
+
+const PasswordFieldEdit: React.FC<PasswordProps> = ({
+  readOnly,
+  onClick,
+  onChange,
+  registerPassword,
+  label,
+}) => {
   const {
     register,
     formState: { errors },
@@ -31,15 +47,19 @@ const PasswordField: React.FC = () => {
     <div className={pass.container} data-testid="password-container">
       <Input
         data-testid="password"
-        label="Password"
+        label={label}
         autoComplete="current-password"
         type={showPassword ? 'text' : 'password'}
         id="password"
         placeholder="Enter password"
+        readOnly={readOnly}
+        onClick={onClick}
         error={
-          errors.password ? (errors.password.message as string) : undefined
+          errors[registerPassword]
+            ? (errors[registerPassword]?.message as string)
+            : undefined
         }
-        {...register('password', {
+        {...register(registerPassword, {
           required: 'Password is requred',
           minLength: {
             value: 8,
@@ -47,6 +67,7 @@ const PasswordField: React.FC = () => {
           },
           validate: validatePassword,
         })}
+        onChange={onChange}
       />
       <TooggleVisibilityButton
         showPassword={showPassword}
@@ -56,4 +77,4 @@ const PasswordField: React.FC = () => {
   );
 };
 
-export default PasswordField;
+export default PasswordFieldEdit;

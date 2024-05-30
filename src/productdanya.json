@@ -20,7 +20,7 @@
         {
           "value": {
             "currencyCode": "EUR",
-            "centAmount": 125
+            "centAmount": 12500
           }
         }
       ],
@@ -35,13 +35,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Fiddle Leaf Fig Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
+
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -60,7 +61,7 @@
       "ru-RU": "benjamin-ficus-tree"
     },
     "description": {
-      "en-US": "Weeping fig (Ficus benjamina's common name is known as the ficus tree) grows as a large broadleaf evergreen tree in tropical and subtropical climates, but it is more often grown as a houseplant in homes and offices and featured in interior commercial landscaping. Here it will thrive in filtered bright sunlight and well-draining potting soil. The ficus tree is known for its longevity, living between 20 to 50 years. Weeping figs are toxic to pets.",
+      "en-US": "Weeping fig (Ficus benjamina's common name is known as the ficus tree) grows as a l broadleaf evergreen tree in tropical and subtropical climates, but it is more often grown as a houseplant in homes and offices and featured in interior commercial landscaping. Here it will thrive in filtered bright sunlight and well-draining potting soil. The ficus tree is known for its longevity, living between 20 to 50 years. Weeping figs are toxic to pets.",
       "ru-RU": "Плакучий инжир ( общее название фикуса Бенджамина, известное как фикусовое дерево ) растет как большое широколиственное вечнозеленое дерево в тропическом и субтропическом климате, но его чаще выращивают как комнатное растение в домах и офисах, а также используют во внутреннем коммерческом ландшафтном дизайне. Здесь он будет хорошо себя чувствовать при фильтрованном ярком солнечном свете и хорошо дренируемой почве. Фикус известен своим долголетием: он живет от 20 до 50 лет . Плакучий инжир токсичен для домашних животных."
     },
     "masterVariant": {
@@ -70,7 +71,7 @@
         {
           "value": {
             "currencyCode": "EUR",
-            "centAmount": 100
+            "centAmount": 10000
           }
         }
       ],
@@ -85,13 +86,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Benjamin Leaf Fig Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -120,7 +121,7 @@
         {
           "value": {
             "currencyCode": "EUR",
-            "centAmount": 8000
+            "centAmount": 80000
           }
         }
       ],
@@ -145,13 +146,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Schefflera (Umbrella Tree) Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Shade" }
-    ],
+
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -191,13 +193,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Jade (Crassula ovata) Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Shade" }
-    ],
+
     "categories": [
       { "key": "indoor-trees" },
       { "key": "succulents" },
@@ -247,13 +250,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Dragon Tree Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
+
     "categories": [{ "key": "indoor-trees" }, { "key": "easy-to-care" }],
     "publish": true
   },
@@ -299,13 +303,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Centennial Variegated Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Medium" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -351,13 +355,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Kumquat Nagami Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Hard" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -407,13 +411,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Kumquat Tree Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Full" }
-    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -428,7 +432,7 @@
       "ru-RU": "bay-laurel-tree"
     },
     "description": {
-      "en-US": "The bay laurel tree has pointed oval leaves that are a common cooking ingredient. It’s fairly easy to keep this plant as an indoor tree to have its leaves right at your fingertips. Bay laurel has a slow growth rate and responds well to pruning, so you will be able to keep the plant at a manageable size. Use a container that just fits the plant’s root ball because bay laurel likes to be a little cramped. Make sure not to overwater it.",
+      "en-US": "The bay laurel tree has pointed oval leaves that are a common cooking ingredient. It’s fairly e to keep this plant as an indoor tree to have its leaves right at your fingertips. Bay laurel has a slow growth rate and responds well to pruning, so you will be able to keep the plant at a manageable size. Use a container that just fits the plant’s root ball because bay laurel likes to be a little cramped. Make sure not to overwater it.",
       "ru-RU": "Лавр — вечнозеленый кустарник или дерево, произрастающее в Средиземноморье, наиболее известный своими листьями, которые широко используются в качестве кухонной приправы. Заостренные овальные листья темно-зеленого цвета с кожистой текстурой и имеют слабый аромат как в свежем, так и в сушеном виде. Но при добавлении в кулинарные жидкости лавровый лист выделяет эфирные масла, которые придают супам, тушеным блюдам и соусам острый, мятный и слегка горьковатый вкус."
     },
     "masterVariant": {
@@ -458,13 +462,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Bay Laurel (Laurus nobilis) Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -483,7 +487,7 @@
       "ru-RU": "money-rus-tree"
     },
     "description": {
-      "en-US": "A Guiana chestnut is a tree that comes from Central and South America. The Guiana chestnut is a beloved houseplant for those who practice feng shui, as this plant is believed to create more positive energy ('chi') in the home. These are sturdy plants making them easy to care for.",
+      "en-US": "A Guiana chestnut is a tree that comes from Central and South America. The Guiana chestnut is a beloved houseplant for those who practice feng shui, as this plant is believed to create more positive energy ('chi') in the home. These are sturdy plants making them e to care for.",
       "ru-RU": "Гвианский каштан – дерево родом из Центральной и Южной Америки. Гвианский каштан — любимое комнатное растение тех, кто практикует фэн-шуй, поскольку считается, что это растение создает в доме больше положительной энергии («ци»). Это крепкие растения, поэтому за ними легко ухаживать."
     },
     "masterVariant": {
@@ -513,13 +517,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Money tree Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Hard" },
-      { "name": "lightRequirement", "value": "Full" }
-    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -544,7 +548,7 @@
         {
           "value": {
             "currencyCode": "EUR",
-            "centAmount": 5000
+            "centAmount": 50000
           }
         }
       ],
@@ -564,13 +568,13 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Olive mini-tree Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Medium" },
-      { "name": "lightRequirement", "value": "Shade" }
-    ],
     "categories": [{ "key": "indoor-trees" }],
     "publish": true
   }

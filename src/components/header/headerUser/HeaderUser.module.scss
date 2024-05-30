@@ -1,8 +1,10 @@
 .container {
   width: 40px;
   height: 40px;
+}
 
-  @media (max-width: (900px)) {
+@media (max-width: (900px)) {
+  .container {
     order: 2;
   }
 }
@@ -18,14 +20,16 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+}
 
-  @media (any-hover: hover) {
-    &:hover {
-      opacity: 0.7;
-    }
+@media (any-hover: hover) {
+  .button:hover {
+    opacity: 0.7;
   }
+}
 
-  @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
+  .button {
     transition: var(--duration) opacity ease-in-out;
   }
 }
@@ -40,12 +44,14 @@
   color: transparent;
   transform: translateX(-70%);
   margin-block-start: 1.05lh;
+}
 
-  &_item {
-    place-content: center;
-  }
+.menu_item {
+  place-self: center;
+}
 
-  @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
+  .menu {
     transition:
       line-height var(--duration) ease-in-out,
       color var(--duration) ease-in-out;
@@ -61,15 +67,18 @@
   letter-spacing: 0.02em;
   color: var(--grey-color);
   background: none;
+  visibility: hidden;
   cursor: pointer;
+}
 
-  @media (any-hover: hover) {
-    &:hover {
-      color: var(--primary-color);
-    }
+@media (any-hover: hover) {
+  .menu_link:hover {
+    color: var(--primary-color);
   }
+}
 
-  @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
+  .menu_link {
     transition: var(--duration) color ease-in-out;
   }
 }
@@ -80,4 +89,8 @@
   line-height: 1.2;
   color: currentcolor;
   background-color: #fff;
+}
+
+.button.active ~ .menu .menu_link {
+  visibility: visible;
 }

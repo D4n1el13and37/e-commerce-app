@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import Slider from '../slider/Slider';
+import SliderMain from '../sliderMain/SliderMain';
 import classes from './Hero.module.scss';
 import Button from '../../components/ui/button/Button';
 
@@ -22,7 +22,7 @@ const Hero: React.FC = () => (
         <div className="hero__slider_wrapper">
           <div className="hero__slider_scrollbar swiper-scrollbar" />
         </div>
-        <Slider />
+        <SliderMain />
       </div>
     </div>
   </section>

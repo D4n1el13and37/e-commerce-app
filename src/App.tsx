@@ -13,6 +13,7 @@ import useAppSelector from './hooks/useAppSelector';
 import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
+import ProductPage from './pages/Product/ProductPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -61,6 +62,10 @@ function App() {
               ) : (
                 <Navigate to="/account" />
               ),
+            },
+            {
+              path: 'catalog/:productId',
+              element: <ProductPage />,
             },
           ],
         },

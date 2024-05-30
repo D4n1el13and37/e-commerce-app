@@ -3,8 +3,9 @@ import cn from 'classnames';
 import Button from '../../../components/ui/button/Button';
 import CustomerInfo from './profileNavigation/СustomerInfo';
 import PersonalInfo from './profileNavigation/PersonalInfo';
-import classes from '../userProfile.module.scss';
 import AddressInfo from './profileNavigation/AddressInfo';
+
+import classes from '../userProfile.module.scss';
 
 const ProfileInfo: React.FC = () => {
   const [activeTab, setActiveTab] = useState('СustomerInfo');

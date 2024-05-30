@@ -161,7 +161,6 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
 
           <City
             typeAddress={addressType}
-            readOnly={!isEdit}
             onClick={handleInputClick}
             onChange={(value) =>
               setValue(`city${addressType}`, value.target.value)
@@ -170,7 +169,6 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
 
           <Street
             typeAddress={addressType}
-            readOnly={!isEdit}
             onClick={handleInputClick}
             onChange={(value) =>
               setValue(`streetName${addressType}`, value.target.value)
@@ -190,7 +188,6 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
           <Checkbox
             label={`Use as default ${addressType.toLowerCase()} address`}
             {...register(`default${addressType}Address`)}
-            readOnly={!isEdit}
             onClick={handleInputClick}
             onChange={(e) =>
               setValue(`default${addressType}Address`, e.target.checked)

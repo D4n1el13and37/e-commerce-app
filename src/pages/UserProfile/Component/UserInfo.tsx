@@ -3,7 +3,7 @@ import { Customer } from '@commercetools/platform-sdk';
 import classes from '../userProfile.module.scss';
 
 export interface UserInfoProps {
-  dataUser: Customer | undefined;
+  dataUser: Customer | null;
 }
 
 const UserInfo: React.FC<UserInfoProps> = ({ dataUser }) => (

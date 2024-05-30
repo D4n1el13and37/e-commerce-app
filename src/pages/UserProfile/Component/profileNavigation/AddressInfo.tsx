@@ -177,7 +177,6 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
 
           <Postcode
             typeAddress={addressType}
-            readOnly={!isEdit}
             onClick={handleInputClick}
             onChange={(value) =>
               setValue(`postalCode${addressType}`, value.target.value)

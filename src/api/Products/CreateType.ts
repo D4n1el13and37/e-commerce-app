@@ -27,27 +27,6 @@ const newType: ProductTypeDraft = {
   name: 'Plant Product Type',
   description: 'Product type for various plants',
   attributes: [
-    // {
-    //   name: 'easyToCare',
-    //   label: { en: 'Easy to Care', ru: 'Легкий уход' },
-    //   type: { name: 'boolean' } as AttributeType,
-    //   isRequired: false,
-    //   isSearchable: true,
-    // },
-    // {
-    //   name: 'airPurifying',
-    //   label: { en: 'Air Purifying', ru: 'Очищающие воздух' },
-    //   type: { name: 'boolean' } as AttributeType,
-    //   isRequired: false,
-    //   isSearchable: true,
-    // },
-    // {
-    //   name: 'petFriendly',
-    //   label: { en: 'Pet Friendly', ru: 'Безопасные для животных' },
-    //   type: { name: 'boolean' } as AttributeType,
-    //   isRequired: false,
-    //   isSearchable: true,
-    // },
     {
       name: 'size',
       label: { en: 'Size', ru: 'Размер' },
@@ -63,9 +42,30 @@ const newType: ProductTypeDraft = {
       isSearchable: true,
     },
     {
-      name: 'color',
-      label: { en: 'Color', ru: 'Цвет' },
-      type: { name: 'text' } as AttributeType,
+      name: 'careLevel',
+      label: { en: 'Сare Level', ru: 'Уровень заботы' },
+      type: {
+        name: 'enum',
+        values: [
+          { key: 'e', label: 'Easy' },
+          { key: 'm', label: 'Medium' },
+          { key: 'h', label: 'Hard' },
+        ],
+      } as AttributeType,
+      isRequired: false,
+      isSearchable: true,
+    },
+    {
+      name: 'lightRequirement',
+      label: { en: 'Light Requirement', ru: 'Требование к освещенности' },
+      type: {
+        name: 'enum',
+        values: [
+          { key: 'full', label: 'Full' },
+          { key: 'partial', label: 'Partial' },
+          { key: 'shade', label: 'Shade' },
+        ],
+      } as AttributeType,
       isRequired: false,
       isSearchable: true,
     },

@@ -23,53 +23,48 @@ async function createCategory(
 }
 
 export default async function createCategories() {
-  const plantsId = await createCategory('plants', {
-    en: 'Plants',
-    ru: 'Растения',
-  });
+  // const plantsId = await createCategory('plants', {
+  //   en: 'Plants',
+  //   ru: 'Растения',
+  // });
 
   // Основные категории
+  // await createCategory(
+  //   'indoor-trees',
+  //   { en: 'Indoor Trees', ru: 'Комнатные деревья' },
+  //   plantsId
+  // );
+  // await createCategory(
+  //   'foliage-plants',
+  //   { en: 'Foliage Plants', ru: 'Листовые растения' },
+  //   plantsId
+  // );
+  // await createCategory(
+  //   'succulents',
+  //   { en: 'Succulents', ru: 'Суккуленты' },
+  //   plantsId
+  // );
+  // await createCategory(
+  //   'flowering-plants',
+  //   { en: 'Flowering Plants', ru: 'Цветущие растения' },
+  //   plantsId
+  // );
 
-  await createCategory(
-    'indoor-trees',
-    { en: 'Indoor Trees', ru: 'Комнатные деревья' },
-    plantsId
-  );
-  await createCategory(
-    'foliage-plants',
-    { en: 'Foliage Plants', ru: 'Листовые растения' },
-    plantsId
-  );
-  await createCategory(
-    'succulents',
-    { en: 'Succulents', ru: 'Суккуленты' },
-    plantsId
-  );
-  await createCategory(
-    'flowering-plants',
-    { en: 'Flowering Plants', ru: 'Цветущие растения' },
-    plantsId
-  );
-
-  // Не основные категории можно добавить дополнительно
-  await createCategory(
-    'easy-to-care',
-    { en: 'Easy to Care', ru: 'Легкий уход' },
-    plantsId
-  );
-  await createCategory(
-    'air-purifying',
-    { en: 'Air Purifying', ru: 'Очищающие воздух' },
-    plantsId
-  );
-  await createCategory(
-    'pet-friendly',
-    { en: 'Pet Friendly', ru: 'Безопасные для животных' },
-    plantsId
-  );
-  await createCategory(
-    'indoor-outdoor',
-    { en: 'Indoor/Outdoor', ru: 'В помещении/На улице' },
-    plantsId
-  );
+  // Отдельные категории
+  // await createCategory('easy-to-care', {
+  //   en: 'Easy to Care',
+  //   ru: 'Легкий уход',
+  // });
+  // await createCategory('air-purifying', {
+  //   en: 'Air Purifying',
+  //   ru: 'Очищающие воздух',
+  // });
+  // await createCategory('pet-friendly', {
+  //   en: 'Pet Friendly',
+  //   ru: 'Безопасные для животных',
+  // });
+  await createCategory('indoor-outdoor', {
+    en: 'Indoor/Outdoor',
+    ru: 'В помещении/На улице',
+  });
 }

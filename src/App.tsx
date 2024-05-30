@@ -17,6 +17,7 @@ import { CreateProduct } from './api/Products/createProducts';
 // import productList from './Products.json';
 // import productListVasya from './productsVasya.json';
 import productListDanya from './productdanya.json';
+import createCategories from './api/Products/createCategory';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,65 +27,7 @@ function App() {
     dispatch(autorizationByToken());
   }, [dispatch]);
 
-  // добавить лоадинг перед вызовом
-  // через маунт эффект вызвать чек авторизэйшн (ждем и показываем крутилку)
-  // const [autorized, setAutorized] = useState(false);
-
-  // const newProduct = {
-  //   productTypeKey: 'plant-product-type',
-  //   name: {
-  //     'en-US': 'Fiddle Leaf Fig ',
-  //     'ru-RU': 'Фикус Лират',
-  //   },
-  //   slug: {
-  //     'en-US': 'fiddle-leaf-fig-3',
-  //     'ru-RU': 'fikus-lirat-3',
-  //   },
-  //   description: {
-  //     'en-US':
-  //       'The fiddle leaf fig hails from the jungle, so a bright bathroom would be an ideal indoor location. A living room will also work if you protect the tree from drafts and give it enough bright filtered light and humidity. Outdoors will also do wonders for the fiddle leaf fig, so give it a temporary home as a patio plant during June.',
-  //     'ru-RU':
-  //       'Фиговое дерево родом из джунглей, поэтому идеальным местом для его размещения в помещении будет светлая ванная комната. Гостиная также подойдет, если вы защитите дерево от сквозняков и обеспечите ему достаточно яркий фильтрованный свет и влажность. Инжир на открытом воздухе также будет полезен, поэтому в июне устройте ему временный дом в качестве растения для патио.',
-  //   },
-
-  //   masterVariant: {
-  //     sku: 'GPC-4',
-  //     key: 'variant-key-GPC-4',
-  //     prices: [
-  //       {
-  //         value: {
-  //           currencyCode: 'EUR',
-  //           centAmount: 3999,
-  //         },
-  //       },
-  //     ],
-  //     images: [
-  //       {
-  //         url: 'https://www.thespruce.com/thmb/j1IREt0UMI1lHkyzbOmLoIRvq_Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-01-b92727e971c043cbb74c79c75a593bc3.jpg',
-  //         dimensions: { w: 600, h: 600 },
-  //         label: 'Fiddle Leaf Fig Image',
-  //       },
-  //       {
-  //         url: 'https://www.thespruce.com/thmb/wxnKUBFYKRkBiY35tamGaMeqd_k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-05-32d2eb47c63a427cabec0f5a52445013.jpg',
-  //         dimensions: { w: 600, h: 600 },
-  //         label: 'Fiddle Leaf Fig Image',
-  //       },
-  //     ],
-  //     attributes: [
-  //       { name: 'easyToCare', value: true },
-  //       { name: 'airPurifying', value: true },
-  //       { name: 'petFriendly', value: false },
-  //       { name: 'indoorOutdoor', value: 'Indoor' },
-  //       { name: 'color', value: 'Green' },
-  //     ],
-  //   },
-  //   categories: [
-  //     { key: 'indoor-trees' },
-  //     { key: 'easy-to-care' },
-  //     { key: 'air-purifying' },
-  //   ],
-  //   publish: true,
-  // };
+  createCategories();
 
   productListDanya.forEach((product) => {
     CreateProduct(product)

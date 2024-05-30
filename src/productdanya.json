@@ -37,6 +37,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -82,6 +87,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -137,6 +147,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Shade" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -178,6 +193,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Shade" }
+    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "succulents" },
@@ -229,6 +249,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "easy-to-care" }],
     "publish": true
   },
@@ -276,6 +301,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Medium" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -323,6 +353,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Hard" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -374,6 +409,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Full" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -420,6 +460,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Easy" },
+      { "name": "lightRequirement", "value": "Partial" }
+    ],
     "categories": [
       { "key": "indoor-trees" },
       { "key": "easy-to-care" },
@@ -470,6 +515,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Hard" },
+      { "name": "lightRequirement", "value": "Full" }
+    ],
     "categories": [{ "key": "indoor-trees" }, { "key": "air-purifying" }],
     "publish": true
   },
@@ -516,6 +566,11 @@
         }
       ]
     },
+    "attributes": [
+      { "name": "size", "value": "Large" },
+      { "name": "careLevel", "value": "Medium" },
+      { "name": "lightRequirement", "value": "Shade" }
+    ],
     "categories": [{ "key": "indoor-trees" }],
     "publish": true
   }

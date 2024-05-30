@@ -34,6 +34,7 @@
   "dependencies": {
     "@commercetools/platform-sdk": "^4.2.0",
     "@commercetools/sdk-client-v2": "^2.1.0",
+    "@fancyapps/ui": "^5.0.36",
     "@reduxjs/toolkit": "^2.2.5",
     "@vitejs/plugin-react": "^4.2.1",
     "classnames": "^2.5.1",

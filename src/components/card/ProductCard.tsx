@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 // import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
-interface Card {
+export interface Card {
   title: string;
   description: string;
   frontImage: {
@@ -77,7 +77,7 @@ const ProductCard: React.FC<Card> = ({
             ) : (
               <span>{currentPrice} €</span>
             )}
-            {/* <Button onClick={toProductPage}>+</Button> */}
+            {/* <Button>+</Button> */}
           </div>
         </div>
       </div>

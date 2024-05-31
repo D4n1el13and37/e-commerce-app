@@ -42,13 +42,13 @@
         }
       ],
       "attributes": [
-        { "name": "size", "value": "Medium" },
-        { "name": "careLevel", "value": "Medium" },
-        { "name": "lightRequirement", "value": "Partial" }
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
 
-    "categories": [{ "key": "flowering-plants" }],
+    "categories": [{ "key": "plants" }, { "key": "flowering-plants" }],
     "publish": true
   },
   {
@@ -96,11 +96,12 @@
       "attributes": [
         { "name": "size", "value": "s" },
         { "name": "careLevel", "value": "e" },
-        { "name": "lightRequirement", "value": "Partial" }
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
 
     "categories": [
+      { "key": "plants" },
       { "key": "flowering-plants" },
       { "key": "easy-to-care" },
       { "key": "pet-friendly" }
@@ -145,7 +146,11 @@
         { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "flowering-plants" },
+      { "key": "easy-to-care" }
+    ],
     "publish": true
   },
   {
@@ -202,7 +207,11 @@
       ]
     },
 
-    "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "flowering-plants" },
+      { "key": "easy-to-care" }
+    ],
     "publish": true
   },
   {
@@ -246,14 +255,19 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Chenille Plant Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Medium" },
-      { "name": "careLevel", "value": "Medium" },
-      { "name": "lightRequirement", "value": "Partial" }
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "plants" },
+      { "key": "flowering-plants" }
     ],
-    "categories": [{ "key": "flowering-plants" }],
     "publish": true
   },
   {
@@ -298,14 +312,20 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Christmas Cactus Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Medium" },
-      { "name": "careLevel", "value": "Hard" },
-      { "name": "lightRequirement", "value": "Full" }
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "plants" },
+      { "key": "flowering-plants" },
+      { "key": "succulents" }
     ],
-    "categories": [{ "key": "flowering-plants" }, { "key": "succulents" }],
     "publish": true
   },
   {
@@ -354,14 +374,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Clivia Lily Image"
         }
+      ],
+      "attributes": [
+        { "key": "plants" },
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Small" },
-      { "name": "careLevel", "value": "Hard" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
-    "categories": [{ "key": "flowering-plants" }],
+    "categories": [{ "key": "plants" }, { "key": "flowering-plants" }],
     "publish": true
   },
   {
@@ -405,14 +426,16 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Kalanchoe Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Large" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Shade" }
-    ],
+
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "easy-to-care" },
       { "key": "flowering-plants" }
@@ -465,14 +488,19 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Peace Lily Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Medium" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "easy-to-care" },
+      { "key": "flowering-plants" }
     ],
-    "categories": [{ "key": "easy-to-care" }, { "key": "flowering-plants" }],
     "publish": true
   }
 ]

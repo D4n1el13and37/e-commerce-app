@@ -35,9 +35,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Silver Dollar Plant Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "categories": [{ "key": "succulents" }],
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
     "publish": true
   },
   {
@@ -81,9 +86,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Donkey's Tail Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "easy-to-care" },
       { "key": "air-purifying" },
@@ -132,9 +143,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Mexican Snowballs Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "easy-to-care" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
     "publish": true
   },
   {
@@ -173,9 +193,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Echeveria Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "categories": [{ "key": "succulents" }],
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
     "publish": true
   },
   {
@@ -214,9 +239,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "String of Pearls Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "easy-to-care" },
       { "key": "pet-friendly" }
@@ -259,9 +290,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Euphorbia Ingens Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "categories": [{ "key": "succulents" }],
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
     "publish": true
   },
   {
@@ -305,9 +341,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Crown of Thorns Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "air-purifying" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "air-purifying" }
+    ],
     "publish": true
   },
   {
@@ -351,9 +396,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Aloe Vera Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "air-purifying" },
       { "key": "easy-to-care" }
@@ -396,9 +447,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Christmas Cactus Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "pet-friendly" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "pet-friendly" }
+    ],
     "publish": true
   },
   {
@@ -442,9 +502,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Chocolate Soldier Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "easy-to-care" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
     "publish": true
   },
   {
@@ -488,9 +557,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Flapjack Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "easy-to-care" },
       { "key": "pet-friendly" }
@@ -538,9 +613,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Kalanchoe Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "easy-to-care" },
       { "key": "pet-friendly" }
@@ -588,9 +669,15 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Kalanchoe Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
       ]
     },
     "categories": [
+      { "key": "plants" },
       { "key": "succulents" },
       { "key": "flowering-plants" },
       { "key": "easy-to-care" },
@@ -634,9 +721,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Haworthia Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "air-purifying" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "air-purifying" }
+    ],
     "publish": true
   },
   {
@@ -675,9 +771,18 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Ghost Plant Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "categories": [{ "key": "succulents" }, { "key": "easy-to-care" }],
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
     "publish": true
   },
   {
@@ -721,9 +826,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Tree Aeonium Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
-    "categories": [{ "key": "succulents" }],
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
     "publish": true
   }
 ]

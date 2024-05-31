@@ -14,8 +14,8 @@ import NotFound from './pages/NotFound/NotFound';
 
 import { CreateProduct } from './api/Products/createProducts';
 
-// import productList from './Products.json';
-// import productListVasya from './productsVasya.json';
+import productList from './Products.json';
+import productListVasya from './productsVasya.json';
 import productListDanya from './productdanya.json';
 import createCategories from './api/Products/createCategory';
 
@@ -29,7 +29,7 @@ function App() {
 
   createCategories();
 
-  productListDanya.forEach((product) => {
+  productList.forEach((product) => {
     CreateProduct(product)
       .then((element) => {
         // eslint-disable-next-line no-console

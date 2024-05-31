@@ -86,3 +86,49 @@ export async function getCardsByCategory(
     }
   }
 }
+
+interface FilterValue {
+  size: string;
+  careLevel: string;
+  lightRequirement: string;
+  priceRange: number[];
+}
+
+export async function getCardsByFilters(
+  filters: FilterValue
+): Promise<ProductProjectionPagedSearchResponse> {
+  const { size, careLevel, lightRequirement, priceRange } = filters;
+  let filterQuery = '';
+
+  if (size) {
+    filterQuery += `&filter.query.attributes.size.key="${size}"`;
+  }
+  if (careLevel) {
+    filterQuery += `&filter.query.attributes.careLevel.key="${careLevel}"`;
+  }
+  if (lightRequirement) {
+    filterQuery += `&filter.query.attributes.lightRequirement.key="${lightRequirement}"`;
+  }
+  if (priceRange) {
+    const [min, max] = priceRange;
+    filterQuery += `&filter.query.price.centAmount:range(${min},${max || '*'})`;
+  }
+
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .productProjections()
+      .search()
+      .get({ queryArgs: { filter: filterQuery } })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login via');
+    }
+  }
+}

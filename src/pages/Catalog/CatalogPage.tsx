@@ -10,6 +10,7 @@ import ProductList from './components/product_list/ProductList';
 import Footer from '../../components/footer/Footer';
 
 import cl from './CatalogPage.module.scss';
+import FilterSidbar from './components/filters/FilterSidbar';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +28,8 @@ const CatalogPage: React.FC = () => {
       <Header />
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
         <CategoriesList />
+        <FilterSidbar />
+
         <ProductList products={productsList} language={language} />
       </main>
       <Footer />

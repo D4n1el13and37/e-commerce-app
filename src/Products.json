@@ -40,13 +40,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Orchid Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "Medium" },
+        { "name": "careLevel", "value": "Medium" },
+        { "name": "lightRequirement", "value": "Partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Medium" },
-      { "name": "careLevel", "value": "Medium" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
+
     "categories": [{ "key": "flowering-plants" }],
     "publish": true
   },
@@ -91,13 +92,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "African Violet Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "Partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Small" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
+
     "categories": [
       { "key": "flowering-plants" },
       { "key": "easy-to-care" },
@@ -136,6 +138,11 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Begonia Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
       ]
     },
     "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
@@ -187,13 +194,14 @@
           "dimensions": { "w": 600, "h": 600 },
           "label": "Bromeliad Image"
         }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
       ]
     },
-    "attributes": [
-      { "name": "size", "value": "Small" },
-      { "name": "careLevel", "value": "Easy" },
-      { "name": "lightRequirement", "value": "Partial" }
-    ],
+
     "categories": [{ "key": "flowering-plants" }, { "key": "easy-to-care" }],
     "publish": true
   },

@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Checkbox from '../../../../components/ui/checkbox/Checkbox';
 import Button from '../../../../components/ui/button/Button';
+import { fetchProductsByFilters } from '../../../../store/productsSlice';
+import useAppDispatch from '../../../../hooks/useAppDispatch';
+import { FilterValue } from '../../../../api/products/productsMethods';
 
 const FilterSidbar = () => {
-  const [filters, setFilters] = useState({
-    size: '',
-    careLevel: '',
-    lightRequirement: '',
-    priceRange: [0, 10000], // примерный диапазон цен
-  });
+  const dispatch = useAppDispatch();
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
+  const [filters, setFilters] = useState<FilterValue>({
+    size: [],
+    careLevel: [],
+    lightRequirement: [],
+  });
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, checked } = e.target;
+    setFilters((actualFilters) => {
+      const filterKey = name as keyof FilterValue;
+      const newValues = checked
+        ? [...actualFilters[filterKey], value]
+        : actualFilters[filterKey].filter((v) => v !== value);
+
+      return {
+        ...actualFilters,
+        [name]: newValues,
+      };
+    });
+  };
+
+  const handleApplyFilter = async () => {
+    dispatch(fetchProductsByFilters(filters));
   };
 
   return (
@@ -24,19 +41,19 @@ const FilterSidbar = () => {
             <h4>Size plants</h4>
             <Checkbox
               label="Small"
-              name="small"
+              name="size"
               value="s"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Medium"
-              name="medium"
+              name="size"
               value="m"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Large"
-              name="large"
+              name="size"
               value="l"
               onChange={handleFilterChange}
             />
@@ -46,19 +63,19 @@ const FilterSidbar = () => {
             <h4>Сare Level</h4>
             <Checkbox
               label="Easy"
-              name="easy"
+              name="careLevel"
               value="e"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Medium"
-              name="medium"
+              name="careLevel"
               value="m"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Hard"
-              name="hard"
+              name="careLevel"
               value="h"
               onChange={handleFilterChange}
             />
@@ -68,29 +85,28 @@ const FilterSidbar = () => {
             <h4>Light Requirement</h4>
             <Checkbox
               label="Full Sun"
-              name="full"
+              name="lightRequirement"
               value="full"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Partial Sun"
-              name="partial"
+              name="lightRequirement"
               value="partial"
               onChange={handleFilterChange}
             />
             <Checkbox
               label="Shade"
-              name="shade"
+              name="lightRequirement"
               value="shade"
               onChange={handleFilterChange}
             />
           </div>
 
-          <div>
-            <h4>Price</h4>
-          </div>
-
-          <Button>Apply filter</Button>
+          <Button type="button" onClick={handleApplyFilter} isMain={true}>
+            {' '}
+            Apply
+          </Button>
         </form>
       </div>
     </div>

@@ -87,31 +87,35 @@ export async function getCardsByCategory(
   }
 }
 
-interface FilterValue {
-  size: string;
-  careLevel: string;
-  lightRequirement: string;
-  priceRange: number[];
+export interface FilterValue {
+  size: string[];
+  careLevel: string[];
+  lightRequirement: string[];
+  // priceRange: [number, number];
 }
 
 export async function getCardsByFilters(
   filters: FilterValue
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const { size, careLevel, lightRequirement, priceRange } = filters;
-  let filterQuery = '';
+  const { size, careLevel, lightRequirement } = filters;
 
-  if (size) {
-    filterQuery += `&filter.query.attributes.size.key="${size}"`;
+  // Создаем массив фильтровых запросов
+  const filterQueries: string[] = [];
+
+  if (size.length > 0) {
+    size.forEach((s) => {
+      filterQueries.push(`variants.attributes.size.key:"${s}"`);
+    });
   }
-  if (careLevel) {
-    filterQuery += `&filter.query.attributes.careLevel.key="${careLevel}"`;
+  if (careLevel.length > 0) {
+    careLevel.forEach((cl) => {
+      filterQueries.push(`variants.attributes.careLevel.key:"${cl}"`);
+    });
   }
-  if (lightRequirement) {
-    filterQuery += `&filter.query.attributes.lightRequirement.key="${lightRequirement}"`;
-  }
-  if (priceRange) {
-    const [min, max] = priceRange;
-    filterQuery += `&filter.query.price.centAmount:range(${min},${max || '*'})`;
+  if (lightRequirement.length > 0) {
+    lightRequirement.forEach((lr) => {
+      filterQueries.push(`variants.attributes.lightRequirement.key:"${lr}"`);
+    });
   }
 
   try {
@@ -120,7 +124,11 @@ export async function getCardsByFilters(
       .withProjectKey({ projectKey })
       .productProjections()
       .search()
-      .get({ queryArgs: { filter: filterQuery } })
+      .get({
+        queryArgs: {
+          filter: filterQueries,
+        },
+      })
       .execute();
 
     return res.body;

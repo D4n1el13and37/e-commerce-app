@@ -7,10 +7,10 @@ import { fetchProducts, fetchCategories } from '../../store/productsSlice';
 import useAppSelector from '../../hooks/useAppSelector';
 import CategoriesList from './components/categories/CategoriesList';
 import ProductList from './components/product_list/ProductList';
+import FilterSidebar from './components/filters/FilterSidebar';
 import Footer from '../../components/footer/Footer';
 
 import cl from './CatalogPage.module.scss';
-import FilterSidbar from './components/filters/FilterSidbar';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,9 +27,10 @@ const CatalogPage: React.FC = () => {
     <>
       <Header />
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
-        <CategoriesList />
-        <FilterSidbar />
-
+        <div>
+          <CategoriesList />
+          <FilterSidebar />
+        </div>
         <ProductList products={productsList} language={language} />
       </main>
       <Footer />

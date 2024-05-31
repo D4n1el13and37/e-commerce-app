@@ -29,7 +29,7 @@ function App() {
 
   createCategories();
 
-  productList.forEach((product) => {
+  productListVasya.forEach((product) => {
     CreateProduct(product)
       .then((element) => {
         // eslint-disable-next-line no-console

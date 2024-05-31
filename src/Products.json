@@ -263,11 +263,7 @@
       ]
     },
 
-    "categories": [
-      { "key": "plants" },
-      { "key": "plants" },
-      { "key": "flowering-plants" }
-    ],
+    "categories": [{ "key": "plants" }, { "key": "flowering-plants" }],
     "publish": true
   },
   {
@@ -321,7 +317,6 @@
     },
 
     "categories": [
-      { "key": "plants" },
       { "key": "plants" },
       { "key": "flowering-plants" },
       { "key": "succulents" }

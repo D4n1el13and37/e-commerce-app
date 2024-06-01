@@ -11,6 +11,7 @@ import FilterSidebar from './components/filters/FilterSidebar';
 import Footer from '../../components/footer/Footer';
 
 import cl from './CatalogPage.module.scss';
+import SortingMenu from './components/sorting/SortingMenu';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,8 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
+      <SortingMenu />
+
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
         <div>
           <CategoriesList />

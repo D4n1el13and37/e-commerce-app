@@ -99,7 +99,6 @@ export async function getCardsByFilters(
 ): Promise<ProductProjectionPagedSearchResponse> {
   const { size, careLevel, lightRequirement } = filters;
 
-  // Создаем массив фильтровых запросов
   const filterQueries: string[] = [];
 
   const filterSize: string[] = [];
@@ -144,6 +143,41 @@ export async function getCardsByFilters(
       .get({
         queryArgs: {
           filter: filterQueries,
+        },
+      })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login via');
+    }
+  }
+}
+
+export interface SortingValue {
+  sortBy: 'price' | 'name';
+  sortOrder: 'asc' | 'desc';
+}
+
+export async function getCardsBySorting(
+  sorting: SortingValue
+): Promise<ProductProjectionPagedSearchResponse> {
+  const sortField =
+    sorting.sortBy === 'price' ? 'variants.price.centAmount' : 'name.en-US';
+  const sortQuery = `${sortField} ${sorting.sortOrder}`;
+
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .productProjections()
+      .search()
+      .get({
+        queryArgs: {
+          sort: sortQuery,
         },
       })
       .execute();

@@ -13,6 +13,7 @@ const FilterSidbar = () => {
     careLevel: [],
     lightRequirement: [],
   });
+
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
     setFilters((actualFilters) => {

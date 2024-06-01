@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 import { SortingValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';

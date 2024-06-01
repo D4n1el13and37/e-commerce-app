@@ -12,7 +12,7 @@ import { RootState } from '../../../../store/store';
 import { setDataUser } from '../../../../store/customerSlice';
 
 import Button from '../../../../components/ui/button/Button';
-import SuccesModal from '../SuccesModal/SuccessModal';
+import SuccessModal from '../SuccesModal/SuccessModal';
 import FirstName from '../../../../components/form/firstName/firstName';
 import LastName from '../../../../components/form/lastName/lastName';
 import DateBirth from '../../../../components/form/dateBirth/dateBirth';
@@ -157,7 +157,7 @@ const CustomerInfo: React.FC = () => {
           >
             Save Changes
           </Button>
-          <SuccesModal
+          <SuccessModal
             isOpen={isEditSuccess}
             onRequestClose={() => setIsEditSuccess(false)}
           />

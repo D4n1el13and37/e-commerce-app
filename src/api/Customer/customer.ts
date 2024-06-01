@@ -1,8 +1,8 @@
-import { Customer } from '@commercetools/platform-sdk';
+import { Customer, CustomerUpdateAction } from '@commercetools/platform-sdk';
 import getApiRoot from '../api';
 import { projectKey } from '../clientConfig';
 
-export default async function getCustomer(): Promise<Customer> {
+export async function getCustomer(): Promise<Customer> {
   try {
     const tokenData = JSON.parse(localStorage.getItem('tokendata')!).token;
 
@@ -13,12 +13,42 @@ export default async function getCustomer(): Promise<Customer> {
       .get()
       .execute();
 
-    return response.body; // change to customer response
+    return response.body;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login');
+      throw new Error('Error from this function getCustomer');
+    }
+  }
+}
+
+interface UpdateCustomerData {
+  version: number;
+  actions: CustomerUpdateAction[];
+}
+
+export async function updateCustomer(
+  customerId: string,
+  data: UpdateCustomerData
+): Promise<Customer> {
+  try {
+    const tokenData = JSON.parse(localStorage.getItem('tokendata')!).token;
+
+    const apiRoot = getApiRoot('token', tokenData);
+    const response = await apiRoot
+      .withProjectKey({ projectKey })
+      .customers()
+      .withId({ ID: customerId })
+      .post({ body: data })
+      .execute();
+
+    return response.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error from this function updateCustomer');
     }
   }
 }

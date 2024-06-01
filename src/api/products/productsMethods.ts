@@ -102,19 +102,36 @@ export async function getCardsByFilters(
   // Создаем массив фильтровых запросов
   const filterQueries: string[] = [];
 
+  const filterSize: string[] = [];
+  const filterCareLevel: string[] = [];
+  const filterLightRequirement: string[] = [];
+
+  let filterSizeQueries: string;
+  let filterCareLevelQueries: string;
+  let filterLightRequirementQueries: string;
+
   if (size.length > 0) {
     size.forEach((s) => {
-      filterQueries.push(`variants.attributes.size.key:"${s}"`);
+      filterSize.push(`"${s}"`);
+      filterSize.join(',');
+      filterSizeQueries = `variants.attributes.size.key:${filterSize}`;
+      filterQueries.push(filterSizeQueries);
     });
   }
   if (careLevel.length > 0) {
     careLevel.forEach((cl) => {
-      filterQueries.push(`variants.attributes.careLevel.key:"${cl}"`);
+      filterCareLevel.push(`"${cl}"`);
+      filterCareLevel.join(',');
+      filterCareLevelQueries = `variants.attributes.careLevel.key:${filterCareLevel}`;
+      filterQueries.push(filterCareLevelQueries);
     });
   }
   if (lightRequirement.length > 0) {
     lightRequirement.forEach((lr) => {
-      filterQueries.push(`variants.attributes.lightRequirement.key:"${lr}"`);
+      filterLightRequirement.push(`"${lr}"`);
+      filterLightRequirement.join(',');
+      filterLightRequirementQueries = `variants.attributes.lightRequirement.key:${filterLightRequirement}`;
+      filterQueries.push(filterLightRequirementQueries);
     });
   }
 

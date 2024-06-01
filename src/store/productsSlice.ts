@@ -14,6 +14,7 @@ import {
   FilterValue,
   getCardsBySorting,
   SortingValue,
+  searchProducts,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -182,6 +183,26 @@ export const fetchProductsBySorting = createAsyncThunk(
   }
 );
 
+export const fetchSearchProducts = createAsyncThunk(
+  'products/searchProduct',
+  async (query: string, thunkAPI) => {
+    try {
+      const response = await searchProducts(query);
+      const answer = response.results.map((product) => ({
+        value: product.id,
+        label: product.name['en-US'],
+      }));
+
+      return answer;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error searching products');
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -250,6 +271,18 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsBySorting.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchSearchProducts.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchSearchProducts.fulfilled, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchSearchProducts.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

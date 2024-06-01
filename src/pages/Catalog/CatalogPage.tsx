@@ -12,6 +12,7 @@ import Footer from '../../components/footer/Footer';
 
 import cl from './CatalogPage.module.scss';
 import SortingMenu from './components/sorting/SortingMenu';
+import Search from './components/search/Search';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +28,8 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
+      <Search />
+
       <SortingMenu />
 
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>

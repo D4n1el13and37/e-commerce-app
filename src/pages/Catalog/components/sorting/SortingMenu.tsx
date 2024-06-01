@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { SortingValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 
 const sortingOptions = [
-  { value: 'price desc', label: 'Lower price' },
-  { value: 'price asc', label: 'Higher price' },
-  { value: 'name desc', label: 'A-Z' },
-  { value: 'name asc', label: 'Z-A' },
+  { value: 'price desc', label: 'Higher price' },
+  { value: 'price asc', label: 'Lower price' },
+  { value: 'name desc', label: 'Z-A' },
+  { value: 'name asc', label: 'A-Z' },
 ];
 
 const SortingMenu = () => {
@@ -19,20 +19,31 @@ const SortingMenu = () => {
     sortOrder: 'asc',
   });
 
-  const handleSortingChange = (e) => {
-    const value = e.value.split(' ');
-    // console.log('change sorting', value);
+  const handleSortingChange = (
+    selectedOption: SingleValue<{ value: string; label: string }>
+  ) => {
+    if (!selectedOption) {
+      return;
+    }
+    const [sortBy, sortOrder] = selectedOption.value.split(' ');
 
-    setSort({
-      sortBy: value[0],
-      sortOrder: value[1],
-    });
-    // console.log('change sorting', sort);
+    const newSort = {
+      sortBy: sortBy as 'name' | 'price',
+      sortOrder: sortOrder as 'asc' | 'desc',
+    };
+
+    setSort(newSort);
 
     dispatch(fetchProductsBySorting(sort));
   };
 
-  return <Select onChange={handleSortingChange} options={sortingOptions} />;
+  return (
+    <Select
+      onChange={handleSortingChange}
+      options={sortingOptions}
+      placeholder="Сhoose sorting"
+    />
+  );
 };
 
 export default SortingMenu;

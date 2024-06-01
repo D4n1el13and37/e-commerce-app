@@ -1,36 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CustomProduct } from '../../../../store/productsSlice';
 import ProductCard from '../../../../components/card/ProductCard';
-
+import useAppSelector from '../../../../hooks/useAppSelector';
+import { RootState } from '../../../../store/store';
 import cl from './ProductList.module.scss';
 
-interface ProductListProps {
-  products: CustomProduct[];
-  language: string;
-}
+const ProductList: React.FC = () => {
+  const { productsList, language } = useAppSelector(
+    (state: RootState) => state.products
+  );
 
-const ProductList: React.FC<ProductListProps> = ({ products, language }) => (
-  <div className={cl.wrapper}>
-    {products.map((product) => {
-      const title = product.title[language];
-      const description = product.description![language];
-      const imageData = product.images![0];
-      const { price, salePrice, id } = product;
+  return (
+    <div className={cl.wrapper}>
+      {productsList.map((product) => {
+        const title = product.title[language];
+        const description = product.description![language];
+        const imageData = product.images![0];
+        const { price, salePrice, id } = product;
+        const linkPath = `/catalog/product/${id}`;
 
-      return (
-        <Link to={`/catalog/${id}`} key={id}>
-          <ProductCard
-            key={id}
-            title={title}
-            description={description}
-            frontImage={imageData}
-            price={price}
-            salePrice={salePrice}
-          />
-        </Link>
-      );
-    })}
-  </div>
-);
+        return (
+          <Link to={linkPath} key={id}>
+            <ProductCard
+              key={id}
+              title={title}
+              description={description}
+              frontImage={imageData}
+              price={price}
+              salePrice={salePrice}
+            />
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
 export default ProductList;

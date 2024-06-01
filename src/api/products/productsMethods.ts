@@ -156,7 +156,6 @@ export async function getCardsByFilters(
     }
   }
 }
-
 export interface SortingValue {
   sortBy: 'price' | 'name';
   sortOrder: 'asc' | 'desc';
@@ -165,8 +164,7 @@ export interface SortingValue {
 export async function getCardsBySorting(
   sorting: SortingValue
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const sortField =
-    sorting.sortBy === 'price' ? 'variants.price.centAmount' : 'name.en-US';
+  const sortField = sorting.sortBy === 'price' ? 'price' : 'name.en-US';
   const sortQuery = `${sortField} ${sorting.sortOrder}`;
 
   try {
@@ -187,7 +185,7 @@ export async function getCardsBySorting(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during sorting request');
     }
   }
 }

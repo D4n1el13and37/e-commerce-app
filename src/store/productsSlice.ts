@@ -166,7 +166,7 @@ export const fetchProductsBySorting = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };

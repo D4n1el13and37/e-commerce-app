@@ -1,16 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import pass from './Password.module.scss';
-// import { LoginForm } from '../../../pages/Login/LoginPage';
 import Input from '../../ui/input/Input';
 import validatePassword from './validatePassword';
 import TooggleVisibilityButton from './TooggleVisibilityButton';
-// import { EditProps } from '../email/EmailInput';
-
-// interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-//   register: UseFormRegister<LoginForm>;
-//   errors: FieldErrors<LoginForm>;
-// }
 
 interface PasswordProps {
   readOnly?: boolean;

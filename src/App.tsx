@@ -14,6 +14,7 @@ import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
+import ProductList from './pages/Catalog/components/product_list/ProductList';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -38,6 +39,25 @@ function App() {
             {
               path: 'catalog',
               element: <CatalogPage />,
+              children: [
+                {
+                  path: '',
+                  element: <ProductList />,
+                },
+                {
+                  path: ':categoryName',
+                  element: <ProductList />,
+                },
+
+                {
+                  path: ':categoryName/:subcategoryName',
+                  element: <ProductList />,
+                },
+              ],
+            },
+            {
+              path: 'catalog/product/:productId',
+              element: <ProductPage />,
             },
             {
               path: 'login',
@@ -62,10 +82,6 @@ function App() {
               ) : (
                 <Navigate to="/account" />
               ),
-            },
-            {
-              path: 'catalog/:productId',
-              element: <ProductPage />,
             },
           ],
         },

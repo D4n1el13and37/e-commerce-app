@@ -34,7 +34,7 @@ const CategoriesList: React.FC = () => {
       .map((sub) => (
         <div
           key={sub.id}
-          className="child"
+          className={cl.child}
           onClick={() =>
             handleCategory({
               categoryID: sub.id,
@@ -51,9 +51,9 @@ const CategoriesList: React.FC = () => {
     categoriesList
       .filter((category) => category.parent === null)
       .map((cat) => (
-        <div key={cat.id}>
+        <div key={cat.id} className={cl.parent__wrapper}>
           <div
-            className="parent"
+            className={cl.parent}
             onClick={() =>
               handleCategory({ categoryID: cat.id, categoryName: cat.name })
             }

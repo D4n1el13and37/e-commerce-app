@@ -18,7 +18,7 @@ import ProductPage from './pages/Product/ProductPage';
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
     dispatch(autorizationByToken());
@@ -72,9 +72,12 @@ function App() {
       ]),
     [isAuthorized]
   );
-  if (isLoading) {
-    return <div>Loadiiing...</div>;
-  }
+
+  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
+
+  // if (isLoading) {
+  //   return <div>Loadiiing...</div>;
+  // }
   return <RouterProvider router={router} />;
 }
 

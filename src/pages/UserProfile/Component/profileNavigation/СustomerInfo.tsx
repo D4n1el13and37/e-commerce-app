@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  CustomerChangeEmailAction,
   CustomerSetDateOfBirthAction,
   CustomerSetFirstNameAction,
   CustomerSetLastNameAction,
@@ -18,8 +19,10 @@ import LastName from '../../../../components/form/lastName/lastName';
 import DateBirth from '../../../../components/form/dateBirth/dateBirth';
 
 import classes from '../../userProfile.module.scss';
+import EmailInput from '../../../../components/form/email/EmailInput';
 
 interface CustomerInfoData {
+  email: string;
   firstName: string;
   lastName: string;
   dateBirth: string;
@@ -43,6 +46,7 @@ const CustomerInfo: React.FC = () => {
   useEffect(() => {
     if (dataUser) {
       reset({
+        email: dataUser.email || '',
         firstName: dataUser.firstName || '',
         lastName: dataUser.lastName || '',
         dateBirth: dataUser.dateOfBirth || '',
@@ -51,6 +55,7 @@ const CustomerInfo: React.FC = () => {
   }, [dataUser, reset]);
 
   const [isEdit, setIsEdit] = useState(false);
+  const [isError, setIsError] = useState('');
   const [isEditSuccess, setIsEditSuccess] = useState(false);
 
   function removeMessage() {
@@ -60,6 +65,11 @@ const CustomerInfo: React.FC = () => {
   const onSubmit: SubmitHandler<CustomerInfoData> = async (data) => {
     try {
       if (dataUser) {
+        const setFirstEmailAction: CustomerChangeEmailAction = {
+          action: 'changeEmail',
+          email: data.email,
+        };
+
         const setFirstNameAction: CustomerSetFirstNameAction = {
           action: 'setFirstName',
           firstName: data.firstName,
@@ -76,6 +86,7 @@ const CustomerInfo: React.FC = () => {
         const updateData = {
           version: dataUser?.version,
           actions: [
+            setFirstEmailAction,
             setFirstNameAction,
             setLastNameAction,
             setDateOfBirthAction,
@@ -90,6 +101,7 @@ const CustomerInfo: React.FC = () => {
       removeMessage();
     } catch (e) {
       if (e instanceof Error) {
+        setIsError(e.message);
         throw new Error(e.message);
       }
     }
@@ -106,9 +118,20 @@ const CustomerInfo: React.FC = () => {
           className={classes.profileData__field}
           onSubmit={handleSubmit(onSubmit)}
         >
+          {' '}
+          <div className={classes.input_container}>
+            <EmailInput
+              onClick={handleInputClick}
+              onChange={(value) => setValue('email', value.target.value)}
+            />
+            <div className={`${classes.error_container}`}>
+              {errors.email && (
+                <span className="error">{errors.email.message as string}</span>
+              )}
+            </div>
+          </div>
           <div className={classes.input_container}>
             <FirstName
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('firstName', value.target.value)}
             />
@@ -122,7 +145,6 @@ const CustomerInfo: React.FC = () => {
           </div>
           <div className={classes.input_container}>
             <LastName
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('lastName', value.target.value)}
             />
@@ -136,7 +158,6 @@ const CustomerInfo: React.FC = () => {
           </div>
           <div className={classes.input_container}>
             <DateBirth
-              readOnly={!isEdit}
               onClick={handleInputClick}
               onChange={(value) => setValue('dateBirth', value.target.value)}
             />
@@ -148,15 +169,21 @@ const CustomerInfo: React.FC = () => {
               )}
             </div>
           </div>
-
-          <Button
-            type="submit"
-            isFilled={true}
-            isMain={true}
-            disabled={!isEdit}
-          >
-            Save Changes
-          </Button>
+          <div className={classes.server__error}>
+            {isError && (
+              <span className="error">
+                There is already an existing customer with the provided email
+              </span>
+            )}
+            <Button
+              type="submit"
+              isFilled={true}
+              isMain={true}
+              disabled={!isEdit}
+            >
+              Save Changes
+            </Button>
+          </div>
           <SuccessModal
             isOpen={isEditSuccess}
             onRequestClose={() => setIsEditSuccess(false)}

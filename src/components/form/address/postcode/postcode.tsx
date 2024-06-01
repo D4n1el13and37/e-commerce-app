@@ -1,12 +1,11 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../../ui/input/Input';
-import { AddressField } from '../city/city';
+import { AddressField } from '../../formInterface';
 
 import classes from '../../styleForm.module.scss';
 
 const Postcode: React.FC<AddressField> = ({
-  readOnly,
   onClick,
   onChange,
   typeAddress,
@@ -28,7 +27,6 @@ const Postcode: React.FC<AddressField> = ({
         type="text"
         placeholder="Postcode"
         disabled={!selectedCountry}
-        readOnly={readOnly}
         onClick={onClick}
         error={errors[nameId] ? (errors[nameId]?.message as string) : undefined}
         {...register(nameId, {

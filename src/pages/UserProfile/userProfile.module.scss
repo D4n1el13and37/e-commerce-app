@@ -8,7 +8,7 @@
 
   &__text {
     font-weight: 400;
-    font-size: 16px;
+    font-size: var(--main-font-size);
     text-transform: capitalize;
     color: var(--primary-color);
   }
@@ -21,7 +21,7 @@
     margin-top: 12px;
     font-weight: 400;
     font-style: normal;
-    font-size: 36px;
+    font-size: var(--page-title-size);
     text-overflow: ellipsis;
     color: var(--text-color);
   }
@@ -115,6 +115,19 @@
   width: 100%;
   color: var(--light-color);
   background-color: var(--primary-color);
+}
+
+.server__error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: -24px;
+  }
 }
 
 .input_container {

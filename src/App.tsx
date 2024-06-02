@@ -14,11 +14,12 @@ import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
+import ProductList from './pages/Catalog/components/product_list/ProductList';
 
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
     dispatch(autorizationByToken());
@@ -38,6 +39,25 @@ function App() {
             {
               path: 'catalog',
               element: <CatalogPage />,
+              children: [
+                {
+                  path: '',
+                  element: <ProductList />,
+                },
+                {
+                  path: ':categoryName',
+                  element: <ProductList />,
+                },
+
+                {
+                  path: ':categoryName/:subcategoryName',
+                  element: <ProductList />,
+                },
+              ],
+            },
+            {
+              path: 'catalog/product/:productId',
+              element: <ProductPage />,
             },
             {
               path: 'login',
@@ -57,24 +77,19 @@ function App() {
             },
             {
               path: 'account',
-              element: isAuthorized ? (
-                <UserProfile />
-              ) : (
-                <Navigate to="/account" />
-              ),
-            },
-            {
-              path: 'catalog/:productId',
-              element: <ProductPage />,
+              element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
             },
           ],
         },
       ]),
     [isAuthorized]
   );
-  if (isLoading) {
-    return <div>Loadiiing...</div>;
-  }
+
+  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
+
+  // if (isLoading) {
+  //   return <div>Loadiiing...</div>;
+  // }
   return <RouterProvider router={router} />;
 }
 

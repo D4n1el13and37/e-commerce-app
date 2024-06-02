@@ -64,9 +64,8 @@
   display: block;
   border: none;
   padding: 0.5lh 50px;
-  font-size: var(--main-font-size);
+  font-size: var(--second-font-size);
   line-height: 143%;
-  letter-spacing: 0.02em;
   color: var(--grey-color);
   background: none;
   visibility: hidden;
@@ -117,7 +116,7 @@
   content: '';
   position: absolute;
   left: 10%;
-  bottom: -30%;
+  bottom: -45%;
   border-radius: 12px;
   width: 80%;
   height: 1px;

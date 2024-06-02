@@ -77,11 +77,7 @@ function App() {
             },
             {
               path: 'account',
-              element: isAuthorized ? (
-                <UserProfile />
-              ) : (
-                <Navigate to="/account" />
-              ),
+              element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
             },
           ],
         },

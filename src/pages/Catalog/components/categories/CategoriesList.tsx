@@ -1,19 +1,34 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import cn from 'classnames';
+import cl from './Categories.module.scss';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import { fetchProductsByCategory } from '../../../../store/productsSlice';
-
-import cl from './Categories.module.scss';
 
 const CategoriesList: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { categoriesList } = useAppSelector((state) => state.products);
 
+  const { categoryName, subcategoryName } = useParams<{
+    categoryName: string;
+    subcategoryName?: string;
+  }>();
+
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (subcategoryName) {
+      setActiveCategory(subcategoryName);
+    } else if (categoryName) {
+      setActiveCategory(categoryName);
+    }
+  }, [categoryName, subcategoryName]);
+
   const handleCategory = ({
     categoryID,
-    categoryName,
+    categoryName: category,
     parentCategoryName,
   }: {
     categoryID: string;
@@ -21,10 +36,11 @@ const CategoriesList: React.FC = () => {
     parentCategoryName?: string;
   }) => {
     dispatch(fetchProductsByCategory(categoryID));
+    setActiveCategory(category);
     if (parentCategoryName) {
-      navigate(`/catalog/${parentCategoryName}/${categoryName}`);
+      navigate(`/catalog/${parentCategoryName}/${category}`);
     } else {
-      navigate(`/catalog/${categoryName}`);
+      navigate(`/catalog/${category}`);
     }
   };
 
@@ -34,7 +50,7 @@ const CategoriesList: React.FC = () => {
       .map((sub) => (
         <div
           key={sub.id}
-          className={cl.child}
+          className={cn(cl.child, { [cl.active]: activeCategory === sub.name })}
           onClick={() =>
             handleCategory({
               categoryID: sub.id,
@@ -53,7 +69,9 @@ const CategoriesList: React.FC = () => {
       .map((cat) => (
         <div key={cat.id} className={cl.parent__wrapper}>
           <div
-            className={cl.parent}
+            className={cn(cl.parent, {
+              [cl.active]: activeCategory === cat.name,
+            })}
             onClick={() =>
               handleCategory({ categoryID: cat.id, categoryName: cat.name })
             }

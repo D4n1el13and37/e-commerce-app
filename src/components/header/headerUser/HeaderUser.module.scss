@@ -20,16 +20,14 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
-}
 
-@media (any-hover: hover) {
-  .button:hover {
-    opacity: 0.7;
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .button {
+  @media (prefers-reduced-motion: no-preference) {
     transition: var(--duration) opacity ease-in-out;
   }
 }
@@ -48,6 +46,10 @@
   &_item {
     place-self: center;
   }
+
+  &_item:first-child {
+    position: relative;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -62,23 +64,28 @@
   display: block;
   border: none;
   padding: 0.5lh 50px;
-  font-size: var(--second-font-size);
+  font-size: var(--main-font-size);
   line-height: 143%;
   letter-spacing: 0.02em;
   color: var(--grey-color);
   background: none;
   visibility: hidden;
   cursor: pointer;
-}
 
-@media (any-hover: hover) {
-  .menu_link:hover {
-    color: var(--primary-color);
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--accent-color);
+
+      .menu_item {
+        &::after {
+          color: var(--accent-color);
+          background-color: var(--accent-color);
+        }
+      }
+    }
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .menu_link {
+  @media (prefers-reduced-motion: no-preference) {
     transition: var(--duration) color ease-in-out;
   }
 }
@@ -89,8 +96,49 @@
   line-height: 1.2;
   color: currentcolor;
   background-color: #fff;
+  visibility: visible;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) background-color ease-in-out;
+    animation-name: slide-down-menu;
+    animation-duration: var(--duration);
+    animation-fill-mode: forwards;
+  }
+
+  @media (any-hover: hover) {
+    &:hover .menu_item:first-child::after {
+      color: var(--accent-color);
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+.button.active ~ .menu .menu_item:first-child::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  bottom: -30%;
+  border-radius: 12px;
+  width: 80%;
+  height: 1px;
+  background-color: var(--grey-color);
+  transform: translateY(50%);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) background-color ease-in-out;
+  }
 }
 
 .button.active ~ .menu .menu_link {
   visibility: visible;
+}
+
+@keyframes slide-down-menu {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

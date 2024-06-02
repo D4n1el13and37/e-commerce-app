@@ -1,58 +1,57 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ProductCard from '../../components/card/ProductCard';
+import { Outlet, useParams } from 'react-router-dom';
+import cn from 'classnames';
+import cl from './CatalogPage.module.scss';
 import Header from '../../components/header/Header';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { RootState } from '../../store/store';
-import { fetchProducts } from '../../store/productsSlice';
+import {
+  fetchProducts,
+  fetchCategories,
+  fetchProductsByCategory,
+} from '../../store/productsSlice';
+import CategoriesList from './components/categories/CategoriesList';
+// import ProductList from './components/product_list/ProductList';
+import Footer from '../../components/footer/Footer';
+import Breadcrumbs from '../../components/ui/crumbs/BreadCrumbs';
 import useAppSelector from '../../hooks/useAppSelector';
-
-import classes from './CatalogPage.module.scss';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { productsList, language } = useAppSelector(
-    (state: RootState) => state.products
-  );
+  const { categoryName, subcategoryName } = useParams<{
+    categoryName: string;
+    subcategoryName?: string;
+  }>();
+  const { categoriesList } = useAppSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    // load category list if we don't have it on state
+    if (categoriesList.length === 0) {
+      dispatch(fetchCategories());
+    }
+
+    // Choose category for upload products
+    const categoryToLoad = subcategoryName || categoryName;
+    if (categoryToLoad) {
+      const category = categoriesList.find(
+        (cat) => cat.name === categoryToLoad
+      );
+      if (category) {
+        dispatch(fetchProductsByCategory(category.id));
+      }
+    } else {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, categoryName, subcategoryName, categoriesList]);
 
   return (
     <>
       <Header />
-      <main>
-        <div className={classes.cards__wrapper}>
-          {productsList.map((product) => {
-            const title = product.masterData.current.name[language];
-            const description =
-              product.masterData.current.description![language];
-            const imageData =
-              product.masterData.current.masterVariant.images![0];
-            const price =
-              product.masterData.current.masterVariant.prices![0].value
-                .centAmount;
-            const salePrice =
-              product.masterData.current.masterVariant.prices![0]?.discounted
-                ?.value.centAmount;
-
-            return (
-              <Link to={`/catalog/${product.id}`} key={product.id}>
-                <ProductCard
-                  key={product.id}
-                  title={title}
-                  description={description}
-                  frontImage={imageData}
-                  price={price}
-                  salePrice={salePrice}
-                  // toProductPage={() => navigate(`/catalog/${product.id}`)}
-                />
-              </Link>
-            );
-          })}
-        </div>
+      <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+        <Breadcrumbs />
+        <CategoriesList />
+        <Outlet />
       </main>
+      <Footer />
     </>
   );
 };

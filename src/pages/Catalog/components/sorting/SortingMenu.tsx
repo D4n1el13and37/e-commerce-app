@@ -3,7 +3,6 @@ import Select, { SingleValue } from 'react-select';
 import { SortingValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
-import './CountrySelect.scss';
 
 const sortingOptions = [
   { value: 'price desc', label: 'Highest Price' },

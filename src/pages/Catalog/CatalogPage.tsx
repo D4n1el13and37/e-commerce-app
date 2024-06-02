@@ -48,13 +48,17 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-      <SortingMenu />
-      <FilterSidebar />
 
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+        <div className={cl.catalor__sorting}>
+          {' '}
+          <SortingMenu />
+        </div>
         <Breadcrumbs />
-        <CategoriesList />
-        <SortingMenu />
+        <div className={cl.catalor__sidebar}>
+          <CategoriesList />
+          <FilterSidebar />
+        </div>
 
         <Outlet />
       </main>

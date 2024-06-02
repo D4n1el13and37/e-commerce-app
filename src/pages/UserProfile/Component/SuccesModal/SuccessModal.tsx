@@ -1,8 +1,5 @@
 import React from 'react';
-
 import srcPlants from './img/successModalImg.svg';
-
-import './SuccessModal.scss';
 import modal from './SuccessModal.module.scss';
 
 interface CustomModalProps {

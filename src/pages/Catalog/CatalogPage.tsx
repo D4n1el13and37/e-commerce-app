@@ -15,7 +15,6 @@ import Footer from '../../components/footer/Footer';
 import Breadcrumbs from '../../components/ui/crumbs/BreadCrumbs';
 import useAppSelector from '../../hooks/useAppSelector';
 import FilterSidebar from './components/filters/FilterSidebar';
-import SortingMenu from './components/sorting/SortingMenu';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -50,10 +49,7 @@ const CatalogPage: React.FC = () => {
       <Header />
 
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
-        <div className={cl.catalor__sorting}>
-          {' '}
-          <SortingMenu />
-        </div>
+        <div className={cl.catalor__sorting}> </div>
         <Breadcrumbs />
         <div className={cl.catalor__sidebar}>
           <CategoriesList />

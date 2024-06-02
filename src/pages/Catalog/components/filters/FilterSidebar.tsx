@@ -5,14 +5,19 @@ import { fetchProductsByFilters } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 import { FilterValue } from '../../../../api/products/productsMethods';
 
+import classes from './FilterSidebar.module.scss';
+
 const FilterSidbar = () => {
   const dispatch = useAppDispatch();
 
-  const [filters, setFilters] = useState<FilterValue>({
+  const initialFilters: FilterValue = {
     size: [],
     careLevel: [],
     lightRequirement: [],
-  });
+  };
+
+  const [filters, setFilters] = useState<FilterValue>(initialFilters);
+
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
     setFilters((actualFilters) => {
@@ -23,7 +28,7 @@ const FilterSidbar = () => {
 
       return {
         ...actualFilters,
-        [name]: newValues,
+        [filterKey]: newValues,
       };
     });
   };
@@ -32,81 +37,104 @@ const FilterSidbar = () => {
     dispatch(fetchProductsByFilters(filters));
   };
 
+  const handleResetFilters = async () => {
+    setFilters(initialFilters);
+    dispatch(fetchProductsByFilters(initialFilters));
+  };
+
   return (
-    <div className="filter-sidebar">
-      <h3>Filter</h3>
+    <div className={classes.filterSidebar}>
+      {/* <h3>Filter</h3> */}
       <div>
         <form action="">
-          <div>
-            <h4>Size plants</h4>
+          <div className={classes.filterSidebar__sortBox}>
+            <h4 className={classes.filterSidebar__name}>Size plants</h4>
             <Checkbox
               label="Small"
               name="size"
               value="s"
               onChange={handleFilterChange}
+              checked={filters.size.includes('s')}
             />
             <Checkbox
               label="Medium"
               name="size"
               value="m"
               onChange={handleFilterChange}
+              checked={filters.size.includes('m')}
             />
             <Checkbox
               label="Large"
               name="size"
               value="l"
               onChange={handleFilterChange}
+              checked={filters.size.includes('l')}
             />
           </div>
 
-          <div>
-            <h4>Сare Level</h4>
+          <div className={classes.filterSidebar__sortBox}>
+            <h4 className={classes.filterSidebar__name}>Сare Level</h4>
             <Checkbox
               label="Easy"
               name="careLevel"
               value="e"
               onChange={handleFilterChange}
+              checked={filters.careLevel.includes('e')}
             />
             <Checkbox
               label="Medium"
               name="careLevel"
               value="m"
               onChange={handleFilterChange}
+              checked={filters.careLevel.includes('m')}
             />
             <Checkbox
               label="Hard"
               name="careLevel"
               value="h"
               onChange={handleFilterChange}
+              checked={filters.careLevel.includes('h')}
             />
           </div>
 
-          <div>
-            <h4>Light Requirement</h4>
+          <div className={classes.filterSidebar__sortBox}>
+            <h4 className={classes.filterSidebar__name}>Light Requirement</h4>
             <Checkbox
               label="Full Sun"
               name="lightRequirement"
               value="full"
               onChange={handleFilterChange}
+              checked={filters.lightRequirement.includes('full')}
             />
             <Checkbox
               label="Partial Sun"
               name="lightRequirement"
               value="partial"
               onChange={handleFilterChange}
+              checked={filters.lightRequirement.includes('partial')}
             />
             <Checkbox
               label="Shade"
               name="lightRequirement"
               value="shade"
               onChange={handleFilterChange}
+              checked={filters.lightRequirement.includes('shade')}
             />
           </div>
 
-          <Button type="button" onClick={handleApplyFilter} isMain={true}>
-            {' '}
-            Apply
-          </Button>
+          <div className={classes.buttonBox}>
+            <Button
+              type="button"
+              onClick={handleApplyFilter}
+              isMain={true}
+              isFilled={true}
+            >
+              Apply
+            </Button>
+            <Button type="button" onClick={handleResetFilters} isMain={true}>
+              Reset
+            </Button>
+          </div>
         </form>
       </div>
     </div>

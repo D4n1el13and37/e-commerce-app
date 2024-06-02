@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import Button from '../ui/button/Button';
 import classes from './ProductCard.module.scss';
 
 export interface Card {
@@ -11,7 +10,6 @@ export interface Card {
     dimensions?: { h: number; w: number };
   };
   price: number;
-  // toProductPage: () => void;
   onAddToCart?: () => void;
   salePrice?: number | undefined;
 }
@@ -22,12 +20,11 @@ const ProductCard: React.FC<Card> = ({
   frontImage,
   price,
   salePrice,
-  // toProductPage,
 }) => {
   const [sale, setSale] = useState(false); // to made all price with discount
   const boundingCardRef = useRef<DOMRect | null>(null);
-  const currentPrice = (price / 100).toFixed(2); // think about display
-  const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2); // i think we should refactor it
+  const currentPrice = (price / 100).toFixed(2);
+  const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2);
 
   useEffect(() => {
     if (salePrice) {
@@ -77,7 +74,6 @@ const ProductCard: React.FC<Card> = ({
             ) : (
               <span>{currentPrice} €</span>
             )}
-            {/* <Button>+</Button> */}
           </div>
         </div>
       </div>

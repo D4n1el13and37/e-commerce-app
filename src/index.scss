@@ -50,6 +50,7 @@ input {
 }
 
 ::selection {
+  color: var(--text-color);
   background-color: var(--primary-color);
 }
 
@@ -62,11 +63,15 @@ html {
 }
 
 body {
+  height: 100%;
   min-width: 360px;
-  min-height: 100%;
   font-family: var(--font-family), sans-serif;
   font-size: var(--main-font-size, 16px);
   background-color: var(--light-color, #f9f9f9);
+}
+
+main {
+  flex: 1 1 auto;
 }
 
 img {
@@ -81,6 +86,12 @@ a {
 
 li {
   list-style: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .container {

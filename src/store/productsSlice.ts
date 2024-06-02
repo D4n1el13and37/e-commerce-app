@@ -1,4 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  /* PayloadAction, */ createAsyncThunk,
+  createSlice,
+} from '@reduxjs/toolkit';
 import {
   Category,
   Image,
@@ -12,6 +15,8 @@ import {
   getProduct,
   getCardsByFilters,
   FilterValue,
+  getCardsBySorting,
+  SortingValue,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -23,13 +28,32 @@ export interface CustomProduct {
   id?: string;
 }
 
+export interface CustomCategory {
+  id: string;
+  name: string;
+  parent: string | null;
+}
+
 export interface ProductState {
   productsList: CustomProduct[];
-  categoriesList: Category[];
+  categoriesList: CustomCategory[];
   productByID: ProductProjection | null;
   language: 'en-US' | 'ru-RU';
   isLoading: boolean;
 }
+
+const transformCategories = (categories: Category[]): CustomCategory[] =>
+  categories.map((category) => {
+    const parentCategory = categories.find(
+      (cat) => cat.id === category.parent?.id
+    );
+    const parentName = parentCategory ? parentCategory.name.en : null;
+    return {
+      id: category.id,
+      name: category.name.en,
+      parent: category.parent ? parentName : null,
+    };
+  });
 
 const initialState: ProductState = {
   productsList: [],
@@ -153,6 +177,33 @@ export const fetchProductsByFilters = createAsyncThunk(
   }
 );
 
+export const fetchProductsBySorting = createAsyncThunk(
+  'products/productsBySort',
+  async (sorting: SortingValue, thunkAPI) => {
+    try {
+      const response = await getCardsBySorting(sorting);
+      const answer: CustomProduct[] = [];
+      response.results.forEach((card) => {
+        const data = {
+          title: card.name,
+          description: card.description!,
+          price: card.masterVariant.prices![0].value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          id: card.id,
+          images: card.masterVariant.images,
+        };
+        answer.push(data);
+      });
+      return answer;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error fetching products by category');
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -179,7 +230,7 @@ const productsSlice = createSlice({
       .addCase(fetchCategories.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
-        newState.categoriesList = action.payload.results;
+        newState.categoriesList = transformCategories(action.payload.results);
       })
       .addCase(fetchCategories.rejected, (state) => {
         const newState = state;
@@ -208,6 +259,19 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsByFilters.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchProductsBySorting.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchProductsBySorting.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.productsList = action.payload;
+      })
+      .addCase(fetchProductsBySorting.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

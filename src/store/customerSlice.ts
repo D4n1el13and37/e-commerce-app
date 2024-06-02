@@ -2,11 +2,11 @@ import { Customer } from '@commercetools/platform-sdk';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface CustomerState {
-  dataUser: Customer | undefined;
+  dataUser: Customer | null;
 }
 
 const initialState: CustomerState = {
-  dataUser: undefined,
+  dataUser: null,
 };
 
 const customerSlice = createSlice({

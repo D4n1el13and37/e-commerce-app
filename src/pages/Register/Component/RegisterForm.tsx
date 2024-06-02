@@ -18,19 +18,19 @@ import ModalRegistration from './Modal/Modal';
 export default function RegisterForm() {
   const methods = useForm<RegisterFormFields>({
     mode: 'onChange',
-    // defaultValues: {
-    //   email: 'test@example.com',
-    //   password: '123Qwerty',
-    //   firstName: 'Egor',
-    //   lastName: 'Krit',
-    //   dateBirth: '12-12-1212',
-    //   streetShipping: 'Evkeoi',
-    //   streetBilling: 'Evkeoi',
-    //   cityShipping: 'Ninzghn',
-    //   cityBilling: 'Ninzghn',
-    //   postcodeShipping: '123123',
-    //   postcodeBilling: '123123',
-    // },
+    defaultValues: {
+      email: 'test@example.com',
+      password: '123Qwerty',
+      firstName: 'Egor',
+      lastName: 'Krit',
+      dateBirth: '12-12-1212',
+      streetShipping: 'Evkeoi',
+      streetBilling: 'Evkeoi',
+      cityShipping: 'Ninzghn',
+      cityBilling: 'Ninzghn',
+      postcodeShipping: '123123',
+      postcodeBilling: '123123',
+    },
   });
   const {
     handleSubmit,

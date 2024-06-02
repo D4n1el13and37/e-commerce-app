@@ -1,3 +1,35 @@
 .wrapper {
-  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: var(--main-font-size);
+  line-height: 24px;
+  text-transform: capitalize;
+  gap: 8px;
+
+  .child {
+    padding-left: 32px;
+    color: var(--text-color);
+    transition: color var(--duration) ease-in-out;
+  }
+
+  .parent__wrapper {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 8px;
+
+    .parent {
+      color: var(--primary-color, #758963);
+      transition: color var(--duration) ease-in-out;
+    }
+  }
+
+  @media (any-hover: hover) {
+    .parent:hover,
+    .child:hover {
+      color: var(--accent-color, #3f5028);
+    }
+  }
 }

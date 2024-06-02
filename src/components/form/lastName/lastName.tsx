@@ -1,14 +1,9 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
+import { PersonalInfoProps } from '../formInterface';
 
-interface LastNameProps {
-  readOnly?: boolean;
-  onClick?: () => void;
-  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const LastName: React.FC<LastNameProps> = ({ readOnly, onClick, onChange }) => {
+const LastName: React.FC<PersonalInfoProps> = ({ onClick, onChange }) => {
   const {
     register,
     formState: { errors },
@@ -20,7 +15,6 @@ const LastName: React.FC<LastNameProps> = ({ readOnly, onClick, onChange }) => {
       autoComplete="lastName"
       label="Last Name"
       type="text"
-      readOnly={readOnly}
       onClick={onClick}
       error={errors.lastName ? (errors.lastName.message as string) : undefined}
       {...register('lastName', {

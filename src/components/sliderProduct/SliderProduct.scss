@@ -1,0 +1,237 @@
+.product__wrapper {
+  position: relative;
+  opacity: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+
+  @media (pointer: coarse) {
+    opacity: 1;
+  }
+}
+
+.product__scrollbar {
+  bottom: 10px;
+}
+
+.product__slider {
+  margin-bottom: var(--gap);
+  border-radius: 12px;
+
+  @media (max-width: (450px)) {
+    margin-bottom: calc((var(--gap)) / 2);
+  }
+
+  .swiper-wrapper {
+    border-radius: 12px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      display: flex;
+      border-radius: 12px;
+      width: 650px;
+      height: 434px;
+      object-fit: cover;
+    }
+
+    @media (max-width: (700px)) {
+      img {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      .swiper-button-next,
+      .swiper-button-prev {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary-color);
+    opacity: 0;
+
+    &::after {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--accent-color);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        var(--duration) color ease-in-out,
+        var(--duration) background-color ease-in-out,
+        var(--duration) opacity ease-in-out;
+    }
+
+    @media (pointer: coarse) {
+      display: none;
+    }
+  }
+
+  .swiper-button-disabled {
+    background-color: var(--grey-color);
+
+    &::after {
+      color: #fff;
+    }
+  }
+}
+
+.product__thumb {
+  @media (any-hover: hover) {
+    &:hover {
+      .product__wrapper {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) opacity ease-in-out;
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .swiper-horizontal > .swiper-scrollbar,
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    left: 0;
+    width: 100%;
+    height: 3px;
+
+    @media (max-width: (450px)) {
+      height: 2px;
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    max-width: 205px;
+    max-height: 153px;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      display: flex;
+      max-width: 145%;
+      object-fit: cover;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border: 3px solid var(--primary-color);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        var(--duration) border ease-in-out,
+        var(--duration) outline-offset ease-in-out;
+    }
+
+    &-thumb-active {
+      border: 3px solid var(--primary-color);
+    }
+
+    @media (max-width: (920px)) {
+      height: auto;
+      max-width: none;
+      max-height: none;
+
+      img {
+        height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: (920px)) {
+      border-width: 2px;
+    }
+  }
+}
+
+.fancybox__container {
+  --fancybox-bg: rgba(24, 24, 27, 0.85);
+  --fancybox-hover-color: var(--primary-color);
+  --f-spinner-width: 45px;
+  --f-spinner-height: 45px;
+}
+
+.fancybox__nav {
+  --f-button-next-pos: 1.5rem;
+  --f-button-prev-pos: 1.5rem;
+  --f-button-svg-disabled-opacity: 0.4;
+  --f-button-width: 45px;
+  --f-button-height: 45px;
+
+  @media (max-width: (900px)) {
+    --f-button-next-pos: 0;
+    --f-button-prev-pos: 0;
+  }
+
+  .f-button:disabled {
+    color: var(--grey-color);
+    opacity: 0.4;
+  }
+
+  .f-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  @media (any-hover: hover) {
+    .f-button:hover:not([disabled]) {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.fancybox__toolbar__column.is-right {
+  @media (any-hover: hover) {
+    .f-button:hover:not([disabled]) {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.is-idle .fancybox__toolbar {
+  animation: none;
+}
+
+.is-idle .fancybox__nav {
+  animation: none;
+}

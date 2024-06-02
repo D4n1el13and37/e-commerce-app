@@ -26,7 +26,10 @@ function LoginPage() {
 
   const methods = useForm<LoginForm>({
     mode: 'onChange',
-    defaultValues: { email: 'test@example.com', password: '123Qwerty' },
+    defaultValues: {
+      email: 'cainowa123@gmail.com',
+      password: '123Qwerty',
+    },
   });
   const {
     handleSubmit,

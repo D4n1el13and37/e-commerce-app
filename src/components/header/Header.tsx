@@ -73,7 +73,7 @@ const Header: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <HeaderAuthButtons />
+              {!isAuthorized && <HeaderAuthButtons />}
               {isAuthorized && <HeaderUser />}
             </div>
           </nav>

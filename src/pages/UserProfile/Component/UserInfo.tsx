@@ -2,11 +2,11 @@ import React from 'react';
 import { Customer } from '@commercetools/platform-sdk';
 import classes from '../userProfile.module.scss';
 
-export interface UserProps {
-  dataUser: Customer | undefined;
+export interface UserInfoProps {
+  dataUser: Customer | null;
 }
 
-const UserInfo: React.FC<UserProps> = ({ dataUser }) => (
+const UserInfo: React.FC<UserInfoProps> = ({ dataUser }) => (
   <>
     <div className={classes.header}>
       <span className={classes.user__name}>

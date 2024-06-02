@@ -131,6 +131,18 @@ const CustomerInfo: React.FC = () => {
           className={classes.profileData__field}
           onSubmit={handleSubmit(onSubmit)}
         >
+          {' '}
+          <div className={classes.input_container}>
+            <EmailInput
+              onClick={handleInputClick}
+              onChange={(value) => setValue('email', value.target.value)}
+            />
+            <div className={`${classes.error_container}`}>
+              {errors.email && (
+                <span className="error">{errors.email.message as string}</span>
+              )}
+            </div>
+          </div>
           <div className={classes.input_container}>
             <EmailInput
               onClick={handleInputClick}

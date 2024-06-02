@@ -7,11 +7,16 @@
   font-size: var(--main-font-size);
   line-height: 24px;
   text-transform: capitalize;
+  color: var(--text-color);
   gap: 8px;
 
   .child {
     padding-left: 32px;
-    color: var(--text-color);
+
+    &.active {
+      font-weight: 500;
+      color: var(--accent-color, #3f5028);
+    }
 
     @media (prefers-reduced-motion: no-preference) {
       transition: color var(--duration) ease-in-out;
@@ -25,7 +30,10 @@
     gap: 8px;
 
     .parent {
-      color: var(--primary-color, #758963);
+      &.active {
+        font-weight: 500;
+        color: var(--accent-color, #3f5028);
+      }
 
       @media (prefers-reduced-motion: no-preference) {
         transition: color var(--duration) ease-in-out;

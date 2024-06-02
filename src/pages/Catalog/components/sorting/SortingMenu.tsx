@@ -3,12 +3,13 @@ import Select, { SingleValue } from 'react-select';
 import { SortingValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
+import './CountrySelect.scss';
 
 const sortingOptions = [
-  { value: 'price desc', label: 'Higher price' },
-  { value: 'price asc', label: 'Lower price' },
-  { value: 'name desc', label: 'Z-A' },
-  { value: 'name asc', label: 'A-Z' },
+  { value: 'price desc', label: 'Highest Price' },
+  { value: 'price asc', label: 'Lowest Price' },
+  { value: 'name desc', label: 'Name: Z-A' },
+  { value: 'name asc', label: 'Name: A-Z' },
 ];
 
 const SortingMenu = () => {
@@ -32,12 +33,18 @@ const SortingMenu = () => {
       sortOrder: sortOrder as 'asc' | 'desc',
     };
 
-    setSort(newSort);
+    setSort(sort);
 
-    dispatch(fetchProductsBySorting(sort));
+    dispatch(fetchProductsBySorting(newSort));
   };
 
-  return <Select onChange={handleSortingChange} options={sortingOptions} />;
+  return (
+    <Select
+      onChange={handleSortingChange}
+      options={sortingOptions}
+      classNamePrefix="react-select"
+    />
+  );
 };
 
 export default SortingMenu;

@@ -26,7 +26,14 @@ const PersonalInfo: React.FC = () => {
     mode: 'onChange',
   });
 
-  const { handleSubmit, setValue, reset } = methods;
+  const {
+    handleSubmit,
+    setValue,
+    formState: { errors },
+    watch,
+    reset,
+    trigger,
+  } = methods;
 
   useEffect(() => {
     if (dataUser) {
@@ -75,6 +82,17 @@ const PersonalInfo: React.FC = () => {
     setIsEdit(true);
   };
 
+  const currentPassword = watch('currentPassword');
+  const newPassword = watch('newPassword');
+
+  useEffect(() => {
+    trigger('currentPassword');
+  }, [currentPassword, trigger]);
+
+  useEffect(() => {
+    trigger('newPassword');
+  }, [newPassword, trigger]);
+
   return (
     <div className={classes.profileData__data}>
       <FormProvider {...methods}>
@@ -83,8 +101,6 @@ const PersonalInfo: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className={classes.input_container}>
-            {/* <h3>Change password</h3> */}
-
             <PasswordFieldEdit
               label="Current Password"
               registerPassword="currentPassword"
@@ -94,7 +110,13 @@ const PersonalInfo: React.FC = () => {
                 setValue('currentPassword', value.target.value)
               }
             />
+            <div className={classes.error_container}>
+              {errors.currentPassword && (
+                <span className="error">{errors.currentPassword.message}</span>
+              )}
+            </div>
           </div>
+
           <div className={classes.input_container}>
             <PasswordFieldEdit
               label="New Password"
@@ -103,7 +125,13 @@ const PersonalInfo: React.FC = () => {
               onClick={handleInputClick}
               onChange={(value) => setValue('newPassword', value.target.value)}
             />
+            <div className={classes.error_container}>
+              {errors.newPassword && (
+                <span className="error">{errors.newPassword.message}</span>
+              )}
+            </div>
           </div>
+
           <div className={classes.server__error}>
             {isError && <span className="error">{isError}</span>}
             <Button
@@ -115,10 +143,7 @@ const PersonalInfo: React.FC = () => {
               Save Changes
             </Button>
           </div>
-          <SuccessModal
-            isOpen={isEditSuccess}
-            onRequestClose={() => setIsEditSuccess(false)}
-          />
+          <SuccessModal isOpen={isEditSuccess} />
         </form>
       </FormProvider>
     </div>

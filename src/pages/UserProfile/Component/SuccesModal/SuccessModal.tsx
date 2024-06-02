@@ -1,5 +1,4 @@
 import React from 'react';
-import Modal from 'react-modal';
 
 import srcPlants from './img/successModalImg.svg';
 
@@ -8,29 +7,19 @@ import modal from './SuccessModal.module.scss';
 
 interface CustomModalProps {
   isOpen: boolean;
-  onRequestClose: () => void;
 }
 
-const SuccessModal: React.FC<CustomModalProps> = ({
-  isOpen,
-  onRequestClose,
-}) => (
-  <Modal
-    isOpen={isOpen}
-    onRequestClose={onRequestClose}
-    contentLabel="Success Modal"
-    ariaHideApp={false}
-    shouldCloseOnOverlayClick={true}
-    className="ReactModal__Content"
-    overlayClassName="ReactModal__Overlay"
-    closeTimeoutMS={100}
-  >
-    <div className={modal.modal}>
+const SuccessModal: React.FC<CustomModalProps> = ({ isOpen }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className={`${modal.modal} ${isOpen ? modal.show : ''}`}>
       <div className={modal.modal__content}>
         <p className={modal.modal__text}>Success!</p>
       </div>
       <img src={srcPlants} alt="Illustartion happy plant" />
     </div>
-  </Modal>
-);
+  );
+};
+
 export default SuccessModal;

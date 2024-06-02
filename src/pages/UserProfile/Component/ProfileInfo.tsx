@@ -14,7 +14,7 @@ const ProfileInfo: React.FC = () => {
     { name: 'Profile Info', key: 'СustomerInfo' },
     { name: 'Shipping Info', key: 'ShippingInfo' },
     { name: 'Billing Info', key: 'BillingInfo' },
-    { name: 'Personal Info', key: 'PersonalInfo' },
+    { name: 'Password', key: 'PersonalInfo' },
   ];
 
   const renderContent = () => {

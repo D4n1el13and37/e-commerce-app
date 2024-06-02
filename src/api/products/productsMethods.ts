@@ -21,7 +21,7 @@ export async function getProducts(): Promise<ProductPagedQueryResponse> {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Unknown Error during get products');
     }
   }
 }
@@ -41,7 +41,7 @@ export async function getProduct(ID: string): Promise<ProductProjection> {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Unknown Error during get one product');
     }
   }
 }
@@ -60,7 +60,7 @@ export async function getCategories(): Promise<CategoryPagedQueryResponse> {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Unknown Error while fetch categories');
     }
   }
 }
@@ -82,7 +82,7 @@ export async function getCardsByCategory(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Unknown Error while fetch products by category');
     }
   }
 }

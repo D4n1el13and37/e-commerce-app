@@ -60,11 +60,13 @@ const CatalogPage: React.FC = () => {
     };
   }, [isSidebarActive, handleResize]);
 
+  // load category list if we don't have it on state
   useEffect(() => {
     if (categoriesList.length === 0) {
       dispatch(fetchCategories());
     }
 
+    // Choose category for upload products
     const categoryToLoad = subcategoryName || categoryName;
     if (categoryToLoad) {
       const category = categoriesList.find(
@@ -95,7 +97,12 @@ const CatalogPage: React.FC = () => {
             />
           </div>
           <div className={cl.button__wrapper}>
-            <Button isMain={true} isFilled={true} onClick={toggleSidebar}>
+            <Button
+              isMain={true}
+              isFilled={true}
+              onClick={toggleSidebar}
+              aria-label="Open filters menu"
+            >
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="m14 24a1 1 0 0 1 -.6-.2l-4-3a1 1 0 0 1 -.4-.8v-5.62l-7.016-7.893a3.9 3.9 0 0 1 2.916-6.487h14.2a3.9 3.9 0 0 1 2.913 6.488l-7.013 7.892v8.62a1 1 0 0 1 -1 1zm-3-4.5 2 1.5v-7a1 1 0 0 1 .253-.664l7.268-8.177a1.9 1.9 0 0 0 -1.421-3.159h-14.2a1.9 1.9 0 0 0 -1.421 3.158l7.269 8.178a1 1 0 0 1 .252.664z" />
               </svg>
@@ -108,7 +115,12 @@ const CatalogPage: React.FC = () => {
             })}
           >
             <div className={cl.button__close}>
-              <Button isMain={true} isFilled={true} onClick={toggleSidebar}>
+              <Button
+                isMain={true}
+                isFilled={true}
+                onClick={toggleSidebar}
+                aria-label="Close filters menu"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M23.707.293h0a1,1,0,0,0-1.414,0L12,10.586,1.707.293a1,1,0,0,0-1.414,0h0a1,1,0,0,0,0,1.414L10.586,12,.293,22.293a1,1,0,0,0,0,1.414h0a1,1,0,0,0,1.414,0L12,13.414,22.293,23.707a1,1,0,0,0,1.414,0h0a1,1,0,0,0,0-1.414L13.414,12,23.707,1.707A1,1,0,0,0,23.707.293Z" />
                 </svg>

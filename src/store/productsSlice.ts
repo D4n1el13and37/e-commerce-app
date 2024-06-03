@@ -13,6 +13,8 @@ import {
   getCategories,
   getProducts,
   getProduct,
+  getCardsByFilters,
+  FilterValue,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -146,6 +148,33 @@ export const fetchProductsByCategory = createAsyncThunk(
   }
 );
 
+export const fetchProductsByFilters = createAsyncThunk(
+  'products/productsByFilters',
+  async (filters: FilterValue, thunkAPI) => {
+    try {
+      const response = await getCardsByFilters(filters);
+      const answer: CustomProduct[] = [];
+      response.results.forEach((card) => {
+        const data = {
+          title: card.name,
+          description: card.description!,
+          price: card.masterVariant.prices![0].value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          id: card.id,
+          images: card.masterVariant.images,
+        };
+        answer.push(data);
+      });
+      return answer;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error fetching products by filters');
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -188,6 +217,19 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsByCategory.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchProductsByFilters.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchProductsByFilters.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.productsList = action.payload;
+      })
+      .addCase(fetchProductsByFilters.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

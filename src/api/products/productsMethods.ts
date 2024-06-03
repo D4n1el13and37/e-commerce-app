@@ -86,3 +86,77 @@ export async function getCardsByCategory(
     }
   }
 }
+
+export interface FilterValue {
+  size: string[];
+  careLevel: string[];
+  lightRequirement: string[];
+  category?: string;
+}
+
+export async function getCardsByFilters(
+  filters: FilterValue & { category?: string }
+): Promise<ProductProjectionPagedSearchResponse> {
+  const { size, careLevel, lightRequirement, category } = filters;
+
+  const filterQueries: string[] = [];
+
+  const filterSize: string[] = [];
+  const filterCareLevel: string[] = [];
+  const filterLightRequirement: string[] = [];
+
+  let filterSizeQueries: string;
+  let filterCareLevelQueries: string;
+  let filterLightRequirementQueries: string;
+
+  if (category) {
+    filterQueries.push(`categories.id:"${category}"`);
+  }
+
+  if (size.length > 0) {
+    size.forEach((s) => {
+      filterSize.push(`"${s}"`);
+      filterSize.join(',');
+      filterSizeQueries = `variants.attributes.size.key:${filterSize}`;
+      filterQueries.push(filterSizeQueries);
+    });
+  }
+  if (careLevel.length > 0) {
+    careLevel.forEach((cl) => {
+      filterCareLevel.push(`"${cl}"`);
+      filterCareLevel.join(',');
+      filterCareLevelQueries = `variants.attributes.careLevel.key:${filterCareLevel}`;
+      filterQueries.push(filterCareLevelQueries);
+    });
+  }
+  if (lightRequirement.length > 0) {
+    lightRequirement.forEach((lr) => {
+      filterLightRequirement.push(`"${lr}"`);
+      filterLightRequirement.join(',');
+      filterLightRequirementQueries = `variants.attributes.lightRequirement.key:${filterLightRequirement}`;
+      filterQueries.push(filterLightRequirementQueries);
+    });
+  }
+
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .productProjections()
+      .search()
+      .get({
+        queryArgs: {
+          filter: filterQueries,
+        },
+      })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during product filtration');
+    }
+  }
+}

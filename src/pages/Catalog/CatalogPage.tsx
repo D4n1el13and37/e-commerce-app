@@ -14,6 +14,7 @@ import CategoriesList from './components/categories/CategoriesList';
 import Footer from '../../components/footer/Footer';
 import Breadcrumbs from '../../components/ui/crumbs/BreadCrumbs';
 import useAppSelector from '../../hooks/useAppSelector';
+import FilterSidebar from './components/filters/FilterSidebar';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -43,12 +44,22 @@ const CatalogPage: React.FC = () => {
     }
   }, [dispatch, categoryName, subcategoryName, categoriesList]);
 
+  const currentCategory = categoriesList.find(
+    (cat) => cat.name === (subcategoryName || categoryName)
+  )?.id;
+
   return (
     <>
       <Header />
+
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+        <div className={cl.catalor__sorting}> </div>
         <Breadcrumbs />
-        <CategoriesList />
+        <div className={cl.catalor__sidebar}>
+          <CategoriesList />
+          <FilterSidebar currentCategory={currentCategory} />
+        </div>
+
         <Outlet />
       </main>
       <Footer />

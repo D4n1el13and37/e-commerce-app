@@ -170,7 +170,7 @@ export const fetchProductsByFilters = createAsyncThunk(
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error fetching products by category');
+      throw new Error('Error fetching products by filters');
     }
   }
 );

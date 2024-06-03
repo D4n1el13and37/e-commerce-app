@@ -1,4 +1,6 @@
 .not_found_section {
+  padding: 40px 120px;
+
   &__left {
     place-self: center;
     grid-column: 1 / 6;
@@ -11,7 +13,7 @@
   &__title {
     margin-bottom: 22px;
     font-weight: 400;
-    font-size: var(--main-title-size, 57px);
+    font-size: 45px;
     line-height: 112%;
     color: var(--text-color);
   }
@@ -20,10 +22,14 @@
     margin-bottom: 44px;
     max-width: 320px;
     font-weight: 400;
-    font-size: var(--page-title-size);
+    font-size: 28px;
     line-height: 122%;
     color: var(--accent-color);
     text-wrap: balance;
+
+    @media (max-width: (1200px)) {
+      font-size: 22px;
+    }
 
     @media (max-width: (900px)) {
       max-width: 440px;
@@ -39,5 +45,25 @@
       order: -1;
       grid-column: 12 span;
     }
+  }
+
+  @media (max-width: (1200px)) {
+    padding: 20px 80px;
+  }
+
+  @media (max-width: (950px)) {
+    padding: 10px 60px;
+  }
+
+  @media (max-width: (650px)) {
+    padding: 40px;
+  }
+
+  @media (max-width: (520px)) {
+    padding: 10px;
+  }
+
+  @media (max-width: (410px)) {
+    padding: 0;
   }
 }

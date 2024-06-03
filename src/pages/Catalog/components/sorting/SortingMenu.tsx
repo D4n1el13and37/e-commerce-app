@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select, { SingleValue } from 'react-select';
-import {
-  SortingValue,
-  FilterValue,
-} from '../../../../api/products/productsMethods';
+import { FilterValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 
@@ -25,28 +22,22 @@ const SortingMenu: React.FC<SortingProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const [sort, setSort] = useState<SortingValue>({
-    sortBy: '',
-    sortOrder: '',
-    category: currentCategory,
-    filters: currentFilters,
-  });
+  const [selectedOption, setSelectedOption] = useState<SingleValue<{
+    value: string;
+    label: string;
+  }> | null>(null);
 
   useEffect(() => {
-    setSort((prevSort) => ({
-      ...prevSort,
-      category: currentCategory,
-      filters: currentFilters,
-    }));
+    setSelectedOption(null);
   }, [currentCategory, currentFilters]);
 
   const handleSortingChange = (
-    selectedOption: SingleValue<{ value: string; label: string }>
+    option: SingleValue<{ value: string; label: string }>
   ) => {
-    if (!selectedOption) {
+    if (!option) {
       return;
     }
-    const [sortBy, sortOrder] = selectedOption.value.split(' ');
+    const [sortBy, sortOrder] = option.value.split(' ');
 
     const newSort = {
       sortBy: sortBy as 'name' | 'price' | '',
@@ -55,7 +46,7 @@ const SortingMenu: React.FC<SortingProps> = ({
       filters: currentFilters,
     };
 
-    setSort(newSort);
+    setSelectedOption(option);
 
     dispatch(fetchProductsBySorting(newSort));
   };
@@ -65,9 +56,7 @@ const SortingMenu: React.FC<SortingProps> = ({
       onChange={handleSortingChange}
       options={sortingOptions}
       classNamePrefix="react-select"
-      value={sortingOptions.find(
-        (option) => option.value === `${sort.sortBy} ${sort.sortOrder}`
-      )}
+      value={selectedOption}
       placeholder="Select sorting"
     />
   );

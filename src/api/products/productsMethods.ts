@@ -201,7 +201,7 @@ export async function searchProducts(
       .search()
       .get({
         queryArgs: {
-          'text.en-US': `${query}*`,
+          'text.en': `${query}*`,
         },
       })
       .execute();

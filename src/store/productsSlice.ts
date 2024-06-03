@@ -184,21 +184,28 @@ export const fetchProductsBySorting = createAsyncThunk(
 );
 
 export const fetchSearchProducts = createAsyncThunk(
-  'products/searchProduct',
+  'products/search',
   async (query: string, thunkAPI) => {
     try {
       const response = await searchProducts(query);
-      const answer = response.results.map((product) => ({
-        value: product.id,
-        label: product.name['en-US'],
-      }));
-
+      const answer: CustomProduct[] = [];
+      response.results.forEach((card) => {
+        const data = {
+          title: card.name,
+          description: card.description!,
+          price: card.masterVariant.prices![0].value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          id: card.id,
+          images: card.masterVariant.images,
+        };
+        answer.push(data);
+      });
       return answer;
     } catch (error) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error searching products');
+      throw new Error('Error during product search');
     }
   }
 );

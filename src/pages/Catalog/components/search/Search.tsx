@@ -1,14 +1,19 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AsyncSelect from 'react-select/async';
-import { fetchSearchProducts } from '../../../../store/productsSlice';
-
+import {
+  CustomProduct,
+  fetchSearchProducts,
+} from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
+import cl from './Search.module.scss';
 
 interface ProductOption {
-  value: string;
+  value: string | undefined;
   label: string;
 }
-const Search = () => {
+
+const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +25,10 @@ const Search = () => {
     try {
       const action = await dispatch(fetchSearchProducts(inputValue));
       if (Array.isArray(action.payload)) {
-        return action.payload;
+        return action.payload.map((product: CustomProduct) => ({
+          value: product.id,
+          label: product.title['en-US'],
+        }));
       }
       return [];
     } catch (error) {
@@ -35,13 +43,15 @@ const Search = () => {
   };
 
   return (
-    <AsyncSelect
-      cacheOptions
-      loadOptions={loadOptions}
-      onChange={handleChange}
-      placeholder="Search for a product..."
-      isClearable
-    />
+    <div className={cl.search}>
+      <AsyncSelect
+        cacheOptions
+        loadOptions={loadOptions}
+        onChange={handleChange}
+        placeholder="Search for a product..."
+        isClearable
+      />
+    </div>
   );
 };
 

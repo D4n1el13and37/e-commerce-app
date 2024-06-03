@@ -26,8 +26,8 @@ const SortingMenu: React.FC<SortingProps> = ({
   const dispatch = useAppDispatch();
 
   const [sort, setSort] = useState<SortingValue>({
-    sortBy: 'name',
-    sortOrder: 'asc',
+    sortBy: '',
+    sortOrder: '',
     category: currentCategory,
     filters: currentFilters,
   });
@@ -49,8 +49,8 @@ const SortingMenu: React.FC<SortingProps> = ({
     const [sortBy, sortOrder] = selectedOption.value.split(' ');
 
     const newSort = {
-      sortBy: sortBy as 'name' | 'price',
-      sortOrder: sortOrder as 'asc' | 'desc',
+      sortBy: sortBy as 'name' | 'price' | '',
+      sortOrder: sortOrder as 'asc' | 'desc' | '',
       category: currentCategory,
       filters: currentFilters,
     };
@@ -68,6 +68,7 @@ const SortingMenu: React.FC<SortingProps> = ({
       value={sortingOptions.find(
         (option) => option.value === `${sort.sortBy} ${sort.sortOrder}`
       )}
+      placeholder="Select sorting"
     />
   );
 };

@@ -162,8 +162,8 @@ export async function getCardsByFilters(
 }
 
 export interface SortingValue {
-  sortBy: 'price' | 'name';
-  sortOrder: 'asc' | 'desc';
+  sortBy: 'price' | 'name' | '';
+  sortOrder: 'asc' | 'desc' | '';
   category?: string;
   filters?: FilterValue;
 }

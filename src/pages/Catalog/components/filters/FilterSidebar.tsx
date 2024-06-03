@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Checkbox from '../../../../components/ui/checkbox/Checkbox';
 import Button from '../../../../components/ui/button/Button';
 import { fetchProductsByFilters } from '../../../../store/productsSlice';
@@ -17,6 +18,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
   const dispatch = useAppDispatch();
   const currentFilters = useAppSelector((state) => state.filters.filters);
   const [filters, setLocalFilters] = useState<FilterValue>(currentFilters);
+  const location = useLocation();
 
   useEffect(() => {
     setLocalFilters(currentFilters);
@@ -45,7 +47,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
     dispatch(fetchProductsByFilters({ ...filters, category: currentCategory }));
   };
 
-  const handleResetFilters = async () => {
+  const handleResetFilters = useCallback(async () => {
     dispatch(resetFilters());
     dispatch(
       fetchProductsByFilters({
@@ -55,7 +57,11 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
         category: currentCategory,
       })
     );
-  };
+  }, [dispatch, currentCategory]);
+
+  useEffect(() => {
+    handleResetFilters();
+  }, [location.pathname, handleResetFilters]);
 
   return (
     <div className={classes.filterSidebar}>

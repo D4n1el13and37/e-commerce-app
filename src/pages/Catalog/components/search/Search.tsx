@@ -37,7 +37,7 @@ const Search: React.FC = () => {
 
   const handleChange = (selectedOption: ProductOption | null) => {
     if (selectedOption) {
-      navigate(`catalog/product/${selectedOption.value}`);
+      navigate(`product/${selectedOption.value}`);
     }
   };
 

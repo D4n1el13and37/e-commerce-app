@@ -19,6 +19,7 @@ import FilterSidebar from './components/filters/FilterSidebar';
 import SortingMenu from './components/sorting/SortingMenu';
 import Search from './components/search/Search';
 import { RootState } from '../../store/store';
+import Loader from '../../components/laoder/Loader';
 
 const CatalogPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,7 +27,9 @@ const CatalogPage: React.FC = () => {
     categoryName: string;
     subcategoryName?: string;
   }>();
-  const { categoriesList } = useAppSelector((state) => state.products);
+  const { categoriesList, isLoading } = useAppSelector(
+    (state) => state.products
+  );
   const currentFilters = useSelector(
     (state: RootState) => state.filters.filters
   );
@@ -58,6 +61,7 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
+      {isLoading && <Loader />}
       <Search />
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
         <div className={cl.catalor__sorting}>

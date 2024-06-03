@@ -164,20 +164,43 @@ export async function getCardsByFilters(
 export interface SortingValue {
   sortBy: 'price' | 'name';
   sortOrder: 'asc' | 'desc';
+  category?: string;
+  filters?: FilterValue;
 }
 
 export async function getCardsBySorting(
-  sorting: SortingValue & { category?: string }
+  sorting: SortingValue
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const { sortBy, sortOrder, category } = sorting;
-  const sortQuery = [];
+  const { sortBy, sortOrder, category, filters } = sorting;
+  const filterQueries: string[] = [];
 
   if (category) {
-    sortQuery.push(`categories.id:"${category}"`);
+    filterQueries.push(`categories.id:"${category}"`);
+  }
+
+  if (filters) {
+    if (filters.size.length > 0) {
+      const sizeFilter = filters.size
+        .map((s) => `variants.attributes.size.key:"${s}"`)
+        .join(' ');
+      filterQueries.push(sizeFilter);
+    }
+    if (filters.careLevel.length > 0) {
+      const careLevelFilter = filters.careLevel
+        .map((cl) => `variants.attributes.careLevel.key:"${cl}"`)
+        .join(' ');
+      filterQueries.push(careLevelFilter);
+    }
+    if (filters.lightRequirement.length > 0) {
+      const lightRequirementFilter = filters.lightRequirement
+        .map((lr) => `variants.attributes.lightRequirement.key:"${lr}"`)
+        .join(' ');
+      filterQueries.push(lightRequirementFilter);
+    }
   }
 
   const sortField = sortBy === 'price' ? 'price' : 'name.en-US';
-  sortQuery.push(`${sortField} ${sortOrder}`);
+  const sortQuery = `${sortField} ${sortOrder}`;
 
   try {
     const apiRoot = getApiRoot();
@@ -187,8 +210,8 @@ export async function getCardsBySorting(
       .search()
       .get({
         queryArgs: {
-          filter: category ? [`categories.id:"${category}"`] : [],
-          sort: sortQuery,
+          filter: filterQueries,
+          sort: [sortQuery],
         },
       })
       .execute();

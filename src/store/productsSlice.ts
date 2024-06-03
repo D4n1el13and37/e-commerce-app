@@ -180,8 +180,14 @@ export const fetchProductsByFilters = createAsyncThunk(
 export const fetchProductsBySorting = createAsyncThunk(
   'products/productsBySort',
   async (sorting: SortingValue, thunkAPI) => {
+    const state = thunkAPI.getState() as { filters: { filters: FilterValue } };
+    const currentFilters = state.filters.filters;
+
     try {
-      const response = await getCardsBySorting(sorting);
+      const response = await getCardsBySorting({
+        ...sorting,
+        filters: currentFilters,
+      });
       const answer: CustomProduct[] = [];
       response.results.forEach((card) => {
         const data = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Checkbox from '../../../../components/ui/checkbox/Checkbox';
 import Button from '../../../../components/ui/button/Button';
 import { fetchProductsByFilters } from '../../../../store/productsSlice';
@@ -6,6 +6,8 @@ import useAppDispatch from '../../../../hooks/useAppDispatch';
 import { FilterValue } from '../../../../api/products/productsMethods';
 
 import classes from './FilterSidebar.module.scss';
+import useAppSelector from '../../../../hooks/useAppSelector';
+import { setFilters, resetFilters } from '../../../../store/filterSlice';
 
 interface FilterSidebarProps {
   currentCategory?: string;
@@ -13,19 +15,16 @@ interface FilterSidebarProps {
 
 const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
   const dispatch = useAppDispatch();
+  const currentFilters = useAppSelector((state) => state.filters.filters);
+  const [filters, setLocalFilters] = useState<FilterValue>(currentFilters);
 
-  const initialFilters: FilterValue = {
-    size: [],
-    careLevel: [],
-    lightRequirement: [],
-    category: currentCategory || '',
-  };
-
-  const [filters, setFilters] = useState<FilterValue>(initialFilters);
+  useEffect(() => {
+    setLocalFilters(currentFilters);
+  }, [currentFilters]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
-    setFilters((actualFilters) => {
+    setLocalFilters((actualFilters) => {
       const filterKey = name as keyof FilterValue;
       const currentValues = Array.isArray(actualFilters[filterKey])
         ? (actualFilters[filterKey] as string[])
@@ -42,13 +41,19 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
   };
 
   const handleApplyFilter = async () => {
+    dispatch(setFilters(filters));
     dispatch(fetchProductsByFilters({ ...filters, category: currentCategory }));
   };
 
   const handleResetFilters = async () => {
-    setFilters(initialFilters);
+    dispatch(resetFilters());
     dispatch(
-      fetchProductsByFilters({ ...initialFilters, category: currentCategory })
+      fetchProductsByFilters({
+        size: [],
+        careLevel: [],
+        lightRequirement: [],
+        category: currentCategory,
+      })
     );
   };
 

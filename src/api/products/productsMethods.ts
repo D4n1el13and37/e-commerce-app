@@ -91,13 +91,13 @@ export interface FilterValue {
   size: string[];
   careLevel: string[];
   lightRequirement: string[];
-  // priceRange: [number, number];
+  category?: string;
 }
 
 export async function getCardsByFilters(
-  filters: FilterValue
+  filters: FilterValue & { category?: string }
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const { size, careLevel, lightRequirement } = filters;
+  const { size, careLevel, lightRequirement, category } = filters;
 
   const filterQueries: string[] = [];
 
@@ -108,6 +108,10 @@ export async function getCardsByFilters(
   let filterSizeQueries: string;
   let filterCareLevelQueries: string;
   let filterLightRequirementQueries: string;
+
+  if (category) {
+    filterQueries.push(`categories.id:"${category}"`);
+  }
 
   if (size.length > 0) {
     size.forEach((s) => {
@@ -152,7 +156,7 @@ export async function getCardsByFilters(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during product filtration');
     }
   }
 }

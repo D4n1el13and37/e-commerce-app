@@ -38,15 +38,25 @@
     width: 5rem;
     height: 5rem;
     background-color: var(--grey-color);
+
+    @media (max-width: (600px)) {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 }
 
 .profile {
+  position: relative;
   grid-column: 1 / -1;
   margin-top: 24px;
   border-radius: 12px;
   padding: 48px;
   background: #fff;
+
+  @media (max-width: (600px)) {
+    padding: 24px;
+  }
 }
 
 .profileNav {
@@ -61,12 +71,20 @@
   }
 
   &__link {
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @media (max-width: (600px)) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20px;
+    }
   }
 
   &__tab {
+    position: relative;
     display: block;
     border: none;
     padding: 0;
@@ -76,6 +94,25 @@
     color: var(--grey-color);
     background: none;
     cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -26px;
+      z-index: 10;
+      width: 0%;
+      height: 2px;
+      background-color: var(--primary-color);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: width var(--duration) ease-in-out;
+      }
+
+      @media (max-width: (600px)) {
+        bottom: -6px;
+      }
+    }
 
     @media (any-hover: hover) {
       &:hover {
@@ -91,6 +128,22 @@
   &__active {
     position: relative;
     color: var(--primary-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -26px;
+      z-index: 10;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width var(--duration) ease-in-out;
+
+      @media (max-width: (600px)) {
+        bottom: -6px;
+      }
+    }
   }
 }
 
@@ -106,6 +159,10 @@
     margin-top: 36px;
     width: 50%;
     gap: 24px;
+
+    @media (max-width: (900px)) {
+      width: 100%;
+    }
   }
 }
 

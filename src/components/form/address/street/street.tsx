@@ -25,6 +25,18 @@ const Street: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
         error={errors[nameId] ? (errors[nameId]?.message as string) : undefined}
         {...register(nameId, {
           required: 'Street must have at least 1 character',
+          validate: (value) => {
+            if (value.trim() === '') {
+              return 'Street cannot consist of only spaces';
+            }
+            if (!/^[a-zA-Z0-9]/.test(value)) {
+              return 'Should start with latin letters or digits';
+            }
+            if (/\s{2,}/.test(value)) {
+              return `Only one space is allowed between words`;
+            }
+            return true;
+          },
         })}
         onChange={onChange}
       />

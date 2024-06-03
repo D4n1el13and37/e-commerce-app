@@ -53,7 +53,7 @@ const PasswordFieldEdit: React.FC<PasswordProps> = ({
             : undefined
         }
         {...register(registerPassword, {
-          required: 'Password is requred',
+          required: `${label} is requred`,
           minLength: {
             value: 8,
             message: 'Shoud be at least 8 symbols',

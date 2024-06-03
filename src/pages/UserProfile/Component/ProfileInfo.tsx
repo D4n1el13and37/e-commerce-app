@@ -12,9 +12,9 @@ const ProfileInfo: React.FC = () => {
 
   const profileNav = [
     { name: 'Profile Info', key: 'СustomerInfo' },
-    { name: 'Shipping Info', key: 'ShippingInfo' },
-    { name: 'Billing Info', key: 'BillingInfo' },
-    { name: 'Personal Info', key: 'PersonalInfo' },
+    { name: 'Shipping Address', key: 'ShippingInfo' },
+    { name: 'Billing Address', key: 'BillingInfo' },
+    { name: 'Change Password', key: 'PersonalInfo' },
   ];
 
   const renderContent = () => {

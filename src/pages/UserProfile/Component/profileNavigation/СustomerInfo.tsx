@@ -40,6 +40,7 @@ const CustomerInfo: React.FC = () => {
     handleSubmit,
     setValue,
     reset,
+    watch,
     formState: { errors },
   } = methods;
 
@@ -111,6 +112,18 @@ const CustomerInfo: React.FC = () => {
     setIsEdit(true);
   };
 
+  const emailValue = watch('email');
+  const firstNameValue = watch('firstName');
+  const lastNameValue = watch('lastName');
+  const dateBirthValue = watch('dateBirth');
+
+  useEffect(() => {
+    methods.trigger('email');
+    methods.trigger('firstName');
+    methods.trigger('lastName');
+    methods.trigger('dateBirth');
+  }, [emailValue, firstNameValue, lastNameValue, dateBirthValue, methods]);
+
   return (
     <div className={classes.profileData__data}>
       <FormProvider {...methods}>
@@ -118,7 +131,6 @@ const CustomerInfo: React.FC = () => {
           className={classes.profileData__field}
           onSubmit={handleSubmit(onSubmit)}
         >
-          {' '}
           <div className={classes.input_container}>
             <EmailInput
               onClick={handleInputClick}
@@ -126,7 +138,7 @@ const CustomerInfo: React.FC = () => {
             />
             <div className={`${classes.error_container}`}>
               {errors.email && (
-                <span className="error">{errors.email.message as string}</span>
+                <span className="error">{errors.email.message}</span>
               )}
             </div>
           </div>
@@ -137,9 +149,7 @@ const CustomerInfo: React.FC = () => {
             />
             <div className={`${classes.error_container}`}>
               {errors.firstName && (
-                <span className="error">
-                  {errors.firstName.message as string}
-                </span>
+                <span className="error">{errors.firstName.message}</span>
               )}
             </div>
           </div>
@@ -150,9 +160,7 @@ const CustomerInfo: React.FC = () => {
             />
             <div className={classes.error_container}>
               {errors.lastName && (
-                <span className="error">
-                  {errors.lastName.message as string}
-                </span>
+                <span className="error">{errors.lastName.message}</span>
               )}
             </div>
           </div>
@@ -163,9 +171,7 @@ const CustomerInfo: React.FC = () => {
             />
             <div className={classes.error_container}>
               {errors.dateBirth && (
-                <span className="error">
-                  {errors.dateBirth.message as string}
-                </span>
+                <span className="error">{errors.dateBirth.message}</span>
               )}
             </div>
           </div>
@@ -184,10 +190,7 @@ const CustomerInfo: React.FC = () => {
               Save Changes
             </Button>
           </div>
-          <SuccessModal
-            isOpen={isEditSuccess}
-            onRequestClose={() => setIsEditSuccess(false)}
-          />
+          <SuccessModal isOpen={isEditSuccess} />
         </form>
       </FormProvider>
     </div>

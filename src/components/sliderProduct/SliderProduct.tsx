@@ -79,54 +79,56 @@ const SliderProduct: React.FC<SliderProd> = ({ images }) => {
         </Swiper>
       </Fancybox>
 
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={3}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs, Scrollbar]}
-        className="product__thumb"
-        onSwiper={setThumbSwiper}
-        scrollbar={{
-          hide: false,
-          draggable: true,
-          enabled: true,
-          el: '.product__scrollbar',
-        }}
-        breakpoints={{
-          320: {
-            spaceBetween: 10,
-            slidesPerView: 2,
-          },
-          700: {
-            spaceBetween: 15,
-            slidesPerView: 3,
-          },
-          920: {
-            slidesPerView: 'auto',
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 15,
-            freeMode: false,
-          },
-          1170: {
-            slidesPerView: 'auto',
-          },
-          1360: {
-            slidesPerView: 3,
-          },
-        }}
-      >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image.url} alt={image.label} />
-          </SwiperSlide>
-        ))}
-        <div className="product__wrapper">
-          <div className="product__scrollbar swiper-scrollbar" />
-        </div>
-      </Swiper>
+      {images.length > 1 && (
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={3}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs, Scrollbar]}
+          className="product__thumb"
+          onSwiper={setThumbSwiper}
+          scrollbar={{
+            hide: false,
+            draggable: true,
+            enabled: true,
+            el: '.product__scrollbar',
+          }}
+          breakpoints={{
+            320: {
+              spaceBetween: 10,
+              slidesPerView: 2,
+            },
+            700: {
+              spaceBetween: 15,
+              slidesPerView: 3,
+            },
+            920: {
+              slidesPerView: 'auto',
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 15,
+              freeMode: false,
+            },
+            1170: {
+              slidesPerView: 'auto',
+            },
+            1360: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img src={image.url} alt={image.label} />
+            </SwiperSlide>
+          ))}
+          <div className="product__wrapper">
+            <div className="product__scrollbar swiper-scrollbar" />
+          </div>
+        </Swiper>
+      )}
     </>
   );
 };

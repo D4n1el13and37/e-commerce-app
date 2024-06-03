@@ -1,9 +1,13 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+<<<<<<< HEAD
   align-items: center;
   justify-content: space-around;
   grid-column: 3 / -1;
+=======
+  grid-column: 4 / -1;
+>>>>>>> 3cb967e94608e2e4daab7a202fe8365edd3ed415
   gap: 24px;
 
   @media (max-width: (1200px)) {

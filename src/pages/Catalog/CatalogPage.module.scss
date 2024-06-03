@@ -9,3 +9,11 @@
   padding: 40px 0;
   gap: 24px;
 }
+
+.catalor__sorting {
+  grid-column: 11 / -1;
+}
+
+.catalor__sidebar {
+  grid-column: 1 / 3;
+}

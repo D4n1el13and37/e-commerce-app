@@ -91,13 +91,13 @@ export interface FilterValue {
   size: string[];
   careLevel: string[];
   lightRequirement: string[];
-  // priceRange: [number, number];
+  category?: string;
 }
 
 export async function getCardsByFilters(
-  filters: FilterValue
+  filters: FilterValue & { category?: string }
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const { size, careLevel, lightRequirement } = filters;
+  const { size, careLevel, lightRequirement, category } = filters;
 
   const filterQueries: string[] = [];
 
@@ -108,6 +108,10 @@ export async function getCardsByFilters(
   let filterSizeQueries: string;
   let filterCareLevelQueries: string;
   let filterLightRequirementQueries: string;
+
+  if (category) {
+    filterQueries.push(`categories.id:"${category}"`);
+  }
 
   if (size.length > 0) {
     size.forEach((s) => {
@@ -152,20 +156,50 @@ export async function getCardsByFilters(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during product filtration');
     }
   }
 }
 export interface SortingValue {
   sortBy: 'price' | 'name';
   sortOrder: 'asc' | 'desc';
+  category?: string;
+  filters?: FilterValue;
 }
 
 export async function getCardsBySorting(
   sorting: SortingValue
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const sortField = sorting.sortBy === 'price' ? 'price' : 'name.en-US';
-  const sortQuery = `${sortField} ${sorting.sortOrder}`;
+  const { sortBy, sortOrder, category, filters } = sorting;
+  const filterQueries: string[] = [];
+
+  if (category) {
+    filterQueries.push(`categories.id:"${category}"`);
+  }
+
+  if (filters) {
+    if (filters.size.length > 0) {
+      const sizeFilter = filters.size
+        .map((s) => `variants.attributes.size.key:"${s}"`)
+        .join(' ');
+      filterQueries.push(sizeFilter);
+    }
+    if (filters.careLevel.length > 0) {
+      const careLevelFilter = filters.careLevel
+        .map((cl) => `variants.attributes.careLevel.key:"${cl}"`)
+        .join(' ');
+      filterQueries.push(careLevelFilter);
+    }
+    if (filters.lightRequirement.length > 0) {
+      const lightRequirementFilter = filters.lightRequirement
+        .map((lr) => `variants.attributes.lightRequirement.key:"${lr}"`)
+        .join(' ');
+      filterQueries.push(lightRequirementFilter);
+    }
+  }
+
+  const sortField = sortBy === 'price' ? 'price' : 'name.en-US';
+  const sortQuery = `${sortField} ${sortOrder}`;
 
   try {
     const apiRoot = getApiRoot();
@@ -175,7 +209,8 @@ export async function getCardsBySorting(
       .search()
       .get({
         queryArgs: {
-          sort: sortQuery,
+          filter: filterQueries,
+          sort: [sortQuery],
         },
       })
       .execute();

@@ -1,18 +1,9 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
+import { PersonalInfoProps } from '../formInterface';
 
-interface DateBirthProps {
-  readOnly?: boolean;
-  onClick?: () => void;
-  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const DateBirth: React.FC<DateBirthProps> = ({
-  readOnly,
-  onClick,
-  onChange,
-}) => {
+const DateBirth: React.FC<PersonalInfoProps> = ({ onClick, onChange }) => {
   const {
     register,
     formState: { errors },
@@ -23,7 +14,6 @@ const DateBirth: React.FC<DateBirthProps> = ({
       id="dateBirth"
       label="Date of Birth"
       type="date"
-      readOnly={readOnly}
       onClick={onClick}
       error={
         errors.dateBirth ? (errors.dateBirth.message as string) : undefined

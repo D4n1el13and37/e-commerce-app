@@ -1,4 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  /* PayloadAction, */ createAsyncThunk,
+  createSlice,
+} from '@reduxjs/toolkit';
 import {
   Category,
   Image,
@@ -26,13 +29,32 @@ export interface CustomProduct {
   id?: string;
 }
 
+export interface CustomCategory {
+  id: string;
+  name: string;
+  parent: string | null;
+}
+
 export interface ProductState {
   productsList: CustomProduct[];
-  categoriesList: Category[];
+  categoriesList: CustomCategory[];
   productByID: ProductProjection | null;
   language: 'en-US' | 'ru-RU';
   isLoading: boolean;
 }
+
+const transformCategories = (categories: Category[]): CustomCategory[] =>
+  categories.map((category) => {
+    const parentCategory = categories.find(
+      (cat) => cat.id === category.parent?.id
+    );
+    const parentName = parentCategory ? parentCategory.name.en : null;
+    return {
+      id: category.id,
+      name: category.name.en,
+      parent: category.parent ? parentName : null,
+    };
+  });
 
 const initialState: ProductState = {
   productsList: [],
@@ -159,8 +181,14 @@ export const fetchProductsByFilters = createAsyncThunk(
 export const fetchProductsBySorting = createAsyncThunk(
   'products/productsBySort',
   async (sorting: SortingValue, thunkAPI) => {
+    const state = thunkAPI.getState() as { filters: { filters: FilterValue } };
+    const currentFilters = state.filters.filters;
+
     try {
-      const response = await getCardsBySorting(sorting);
+      const response = await getCardsBySorting({
+        ...sorting,
+        filters: currentFilters,
+      });
       const answer: CustomProduct[] = [];
       response.results.forEach((card) => {
         const data = {
@@ -236,7 +264,7 @@ const productsSlice = createSlice({
       .addCase(fetchCategories.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
-        newState.categoriesList = action.payload.results;
+        newState.categoriesList = transformCategories(action.payload.results);
       })
       .addCase(fetchCategories.rejected, (state) => {
         const newState = state;

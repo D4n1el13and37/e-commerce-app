@@ -15,6 +15,8 @@ import {
   getProduct,
   getCardsByFilters,
   FilterValue,
+  getCardsBySorting,
+  SortingValue,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -170,7 +172,40 @@ export const fetchProductsByFilters = createAsyncThunk(
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error fetching products by filters');
+      throw new Error('Error fetching products by category');
+    }
+  }
+);
+
+export const fetchProductsBySorting = createAsyncThunk(
+  'products/productsBySort',
+  async (sorting: SortingValue, thunkAPI) => {
+    const state = thunkAPI.getState() as { filters: { filters: FilterValue } };
+    const currentFilters = state.filters.filters;
+
+    try {
+      const response = await getCardsBySorting({
+        ...sorting,
+        filters: currentFilters,
+      });
+      const answer: CustomProduct[] = [];
+      response.results.forEach((card) => {
+        const data = {
+          title: card.name,
+          description: card.description!,
+          price: card.masterVariant.prices![0].value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          id: card.id,
+          images: card.masterVariant.images,
+        };
+        answer.push(data);
+      });
+      return answer;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error fetching products by category');
     }
   }
 );
@@ -230,6 +265,19 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsByFilters.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchProductsBySorting.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchProductsBySorting.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.productsList = action.payload;
+      })
+      .addCase(fetchProductsBySorting.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

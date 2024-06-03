@@ -44,6 +44,10 @@ const CatalogPage: React.FC = () => {
     }
   }, [dispatch, categoryName, subcategoryName, categoriesList]);
 
+  const currentCategory = categoriesList.find(
+    (cat) => cat.name === (subcategoryName || categoryName)
+  )?.id;
+
   return (
     <>
       <Header />
@@ -53,7 +57,7 @@ const CatalogPage: React.FC = () => {
         <Breadcrumbs />
         <div className={cl.catalor__sidebar}>
           <CategoriesList />
-          <FilterSidebar />
+          <FilterSidebar currentCategory={currentCategory} />
         </div>
 
         <Outlet />

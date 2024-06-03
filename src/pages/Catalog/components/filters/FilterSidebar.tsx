@@ -7,13 +7,18 @@ import { FilterValue } from '../../../../api/products/productsMethods';
 
 import classes from './FilterSidebar.module.scss';
 
-const FilterSidbar = () => {
+interface FilterSidebarProps {
+  currentCategory?: string;
+}
+
+const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
   const dispatch = useAppDispatch();
 
   const initialFilters: FilterValue = {
     size: [],
     careLevel: [],
     lightRequirement: [],
+    category: currentCategory || '',
   };
 
   const [filters, setFilters] = useState<FilterValue>(initialFilters);
@@ -22,9 +27,12 @@ const FilterSidbar = () => {
     const { name, value, checked } = e.target;
     setFilters((actualFilters) => {
       const filterKey = name as keyof FilterValue;
+      const currentValues = Array.isArray(actualFilters[filterKey])
+        ? (actualFilters[filterKey] as string[])
+        : [];
       const newValues = checked
-        ? [...actualFilters[filterKey], value]
-        : actualFilters[filterKey].filter((v) => v !== value);
+        ? [...currentValues, value]
+        : currentValues.filter((v) => v !== value);
 
       return {
         ...actualFilters,
@@ -34,12 +42,14 @@ const FilterSidbar = () => {
   };
 
   const handleApplyFilter = async () => {
-    dispatch(fetchProductsByFilters(filters));
+    dispatch(fetchProductsByFilters({ ...filters, category: currentCategory }));
   };
 
   const handleResetFilters = async () => {
     setFilters(initialFilters);
-    dispatch(fetchProductsByFilters(initialFilters));
+    dispatch(
+      fetchProductsByFilters({ ...initialFilters, category: currentCategory })
+    );
   };
 
   return (
@@ -141,4 +151,4 @@ const FilterSidbar = () => {
   );
 };
 
-export default FilterSidbar;
+export default FilterSidebar;

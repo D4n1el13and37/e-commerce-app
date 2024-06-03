@@ -1,6 +1,10 @@
 .filterSidebar {
   margin-top: 48px;
 
+  @media (max-width: (900px)) {
+    background-color: var(--light-color);
+  }
+
   &__name {
     margin-bottom: 8px;
     color: var(--text-color);
@@ -13,6 +17,17 @@
 }
 
 .buttonBox {
+  z-index: 4;
   display: flex;
+  flex-direction: column;
   gap: 12px;
+
+  button {
+    padding: 12px 32px;
+  }
+
+  @media (max-width: (900px)) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }

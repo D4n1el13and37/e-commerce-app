@@ -6,6 +6,7 @@ import {
   fetchSearchProducts,
 } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
+import s from './Search.module.scss';
 
 interface ProductOption {
   value: string | undefined;
@@ -42,7 +43,7 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={s.search}>
       <AsyncSelect
         cacheOptions
         loadOptions={loadOptions}

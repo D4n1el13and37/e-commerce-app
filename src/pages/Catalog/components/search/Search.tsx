@@ -6,7 +6,6 @@ import {
   fetchSearchProducts,
 } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
-import cl from './Search.module.scss';
 
 interface ProductOption {
   value: string | undefined;
@@ -38,12 +37,12 @@ const Search: React.FC = () => {
 
   const handleChange = (selectedOption: ProductOption | null) => {
     if (selectedOption) {
-      navigate(`/catalog/${selectedOption.value}`);
+      navigate(`catalog/product/${selectedOption.value}`);
     }
   };
 
   return (
-    <div className={cl.search}>
+    <div>
       <AsyncSelect
         cacheOptions
         loadOptions={loadOptions}

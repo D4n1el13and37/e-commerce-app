@@ -236,7 +236,8 @@ export async function searchProducts(
       .search()
       .get({
         queryArgs: {
-          'text.en': `${query}*`,
+          'text.en-US': `${query.toLowerCase()}*`,
+          fuzzy: true,
         },
       })
       .execute();

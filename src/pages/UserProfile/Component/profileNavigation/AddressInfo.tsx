@@ -47,7 +47,8 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
   const dataUser = useSelector((state: RootState) => state.customer.dataUser);
 
   const methods = useForm<AddressInfoData>({ mode: 'onChange' });
-  const { control, handleSubmit, setValue, reset, trigger, register } = methods;
+  const { control, handleSubmit, setValue, reset, watch, trigger, register } =
+    methods;
 
   const address = dataUser?.addresses[0];
   const defaultAddressValue = !!dataUser?.[`default${addressType}AddressId`];
@@ -137,6 +138,18 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
     setIsEdit(true);
   };
 
+  const country = watch(`country${addressType}`);
+  const city = watch(`city${addressType}`);
+  const streetName = watch(`streetName${addressType}`);
+  const postalCode = watch(`postalCode${addressType}`);
+
+  useEffect(() => {
+    methods.trigger(`country${addressType}`);
+    methods.trigger(`city${addressType}`);
+    methods.trigger(`streetName${addressType}`);
+    methods.trigger(`postalCode${addressType}`);
+  }, [country, city, streetName, postalCode, methods, addressType]);
+
   return (
     <div className={classes.profileData__data}>
       {defaultAddressValue ? (
@@ -201,10 +214,7 @@ const AddressInfo: React.FC<AddressProps> = ({ addressType }) => {
             Save Changes
           </Button>
 
-          <SuccessModal
-            isOpen={isEditSuccess}
-            onRequestClose={() => setIsEditSuccess(false)}
-          />
+          <SuccessModal isOpen={isEditSuccess} />
         </form>
       </FormProvider>
     </div>

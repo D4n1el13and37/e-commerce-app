@@ -1,0 +1,18 @@
+.filterSidebar {
+  margin-top: 48px;
+
+  &__name {
+    margin-bottom: 8px;
+    color: var(--text-color);
+  }
+
+  &__sortBox {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.buttonBox {
+  display: flex;
+  gap: 12px;
+}

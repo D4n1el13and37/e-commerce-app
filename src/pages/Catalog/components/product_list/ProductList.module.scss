@@ -1,32 +1,24 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-<<<<<<< HEAD
-  align-items: center;
-  justify-content: space-around;
   grid-column: 3 / -1;
-=======
-  grid-column: 4 / -1;
->>>>>>> 3cb967e94608e2e4daab7a202fe8365edd3ed415
   gap: 24px;
+
+  @media (max-width: (1230px)) {
+    place-content: center;
+  }
 
   @media (max-width: (1200px)) {
     grid-column: 4 / -1;
+    gap: 15px;
   }
 
   @media (max-width: (900px)) {
     grid-column: 1 / -1;
+    gap: 24px;
   }
 
   @media (max-width: (700px)) {
-    gap: 10px;
-  }
-
-  @media (max-width: (675px)) {
-    grid-column: 5 / -1;
-  }
-
-  @media (max-width: (520px)) {
-    grid-column: 1 / -1;
+    gap: 15px;
   }
 }

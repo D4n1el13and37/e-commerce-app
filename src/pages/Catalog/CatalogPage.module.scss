@@ -70,10 +70,6 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(50%);
-    transition:
-      transform var(--duration) ease-in-out,
-      visibility var(--duration) ease-in-out,
-      opacity var(--duration) ease-in-out;
     gap: 24px;
 
     @media (prefers-reduced-motion: no-preference) {

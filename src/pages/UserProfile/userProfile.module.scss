@@ -104,7 +104,10 @@
       width: 0%;
       height: 2px;
       background-color: var(--primary-color);
-      transition: width var(--duration) ease-in-out;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: width var(--duration) ease-in-out;
+      }
 
       @media (max-width: (600px)) {
         bottom: -6px;
@@ -115,10 +118,6 @@
       &:hover {
         color: var(--primary-color);
       }
-
-      // &::after {
-      //   width: 100%;
-      // }
     }
 
     @media (prefers-reduced-motion: no-preference) {

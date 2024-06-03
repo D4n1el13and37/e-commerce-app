@@ -17,6 +17,7 @@ import Breadcrumbs from '../../components/ui/crumbs/BreadCrumbs';
 import useAppSelector from '../../hooks/useAppSelector';
 import FilterSidebar from './components/filters/FilterSidebar';
 import SortingMenu from './components/sorting/SortingMenu';
+import Search from './components/search/Search';
 import { RootState } from '../../store/store';
 
 const CatalogPage: React.FC = () => {
@@ -57,7 +58,7 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-
+      <Search />
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
         <div className={cl.catalor__sorting}>
           <SortingMenu

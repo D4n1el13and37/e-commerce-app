@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
 import Checkbox from '../../../../components/ui/checkbox/Checkbox';
 import Button from '../../../../components/ui/button/Button';
 import { fetchProductsByFilters } from '../../../../store/productsSlice';

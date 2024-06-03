@@ -17,6 +17,7 @@ import {
   FilterValue,
   getCardsBySorting,
   SortingValue,
+  searchProducts,
 } from '../api/products/productsMethods';
 
 export interface CustomProduct {
@@ -210,6 +211,33 @@ export const fetchProductsBySorting = createAsyncThunk(
   }
 );
 
+export const fetchSearchProducts = createAsyncThunk(
+  'products/search',
+  async (query: string, thunkAPI) => {
+    try {
+      const response = await searchProducts(query);
+      const answer: CustomProduct[] = [];
+      response.results.forEach((card) => {
+        const data = {
+          title: card.name,
+          description: card.description!,
+          price: card.masterVariant.prices![0].value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          id: card.id,
+          images: card.masterVariant.images,
+        };
+        answer.push(data);
+      });
+      return answer;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error during product search');
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -278,6 +306,18 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsBySorting.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchSearchProducts.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(fetchSearchProducts.fulfilled, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(fetchSearchProducts.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

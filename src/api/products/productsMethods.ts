@@ -225,3 +225,30 @@ export async function getCardsBySorting(
     }
   }
 }
+
+export async function searchProducts(
+  query: string
+): Promise<ProductProjectionPagedSearchResponse> {
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .productProjections()
+      .search()
+      .get({
+        queryArgs: {
+          'text.en-US': `${query.toLowerCase()}*`,
+          fuzzy: true,
+        },
+      })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during search request');
+    }
+  }
+}

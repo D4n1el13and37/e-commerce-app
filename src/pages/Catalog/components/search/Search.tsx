@@ -49,6 +49,7 @@ const Search: React.FC = () => {
         onChange={handleChange}
         placeholder="Search for a product..."
         isClearable
+        classNamePrefix="react-select"
       />
     </div>
   );

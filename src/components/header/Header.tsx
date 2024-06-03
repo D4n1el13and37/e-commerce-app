@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                 ))}
               </ul>
               {!isAuthorized && <HeaderAuthButtons />}
-              {!isAuthorized && <HeaderUser />}
+              {isAuthorized && <HeaderUser />}
             </div>
           </nav>
           <a href="/card" className={classes.card} aria-label="Shopping card">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 import { SortingValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
@@ -11,12 +11,17 @@ const sortingOptions = [
   { value: 'name asc', label: 'Name: A-Z' },
 ];
 
-const SortingMenu = () => {
+interface SortingProps {
+  currentCategory?: string;
+}
+
+const SortingMenu: React.FC<SortingProps> = ({ currentCategory }) => {
   const dispatch = useAppDispatch();
 
   const [sort, setSort] = useState<SortingValue>({
     sortBy: 'name',
     sortOrder: 'asc',
+    category: currentCategory,
   });
 
   const handleSortingChange = (
@@ -30,6 +35,7 @@ const SortingMenu = () => {
     const newSort = {
       sortBy: sortBy as 'name' | 'price',
       sortOrder: sortOrder as 'asc' | 'desc',
+      category: currentCategory,
     };
 
     setSort(sort);

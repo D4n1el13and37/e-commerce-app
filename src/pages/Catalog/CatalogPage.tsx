@@ -55,7 +55,7 @@ const CatalogPage: React.FC = () => {
 
       <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
         <div className={cl.catalor__sorting}>
-          <SortingMenu />
+          <SortingMenu currentCategory={currentCategory} />
         </div>
         <Breadcrumbs />
         <div className={cl.catalor__sidebar}>

@@ -167,10 +167,17 @@ export interface SortingValue {
 }
 
 export async function getCardsBySorting(
-  sorting: SortingValue
+  sorting: SortingValue & { category?: string }
 ): Promise<ProductProjectionPagedSearchResponse> {
-  const sortField = sorting.sortBy === 'price' ? 'price' : 'name.en-US';
-  const sortQuery = `${sortField} ${sorting.sortOrder}`;
+  const { sortBy, sortOrder, category } = sorting;
+  const sortQuery = [];
+
+  if (category) {
+    sortQuery.push(`categories.id:"${category}"`);
+  }
+
+  const sortField = sortBy === 'price' ? 'price' : 'name.en-US';
+  sortQuery.push(`${sortField} ${sortOrder}`);
 
   try {
     const apiRoot = getApiRoot();
@@ -180,6 +187,7 @@ export async function getCardsBySorting(
       .search()
       .get({
         queryArgs: {
+          filter: category ? [`categories.id:"${category}"`] : [],
           sort: sortQuery,
         },
       })

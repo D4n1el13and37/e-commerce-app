@@ -42,7 +42,11 @@
     gap: 12px;
 
     .title {
+      display: -webkit-box;
+      overflow: hidden;
       font-size: var(--main-font-size);
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
 
       @media (prefers-reduced-motion: no-preference) {
         transition: color var(--duration) ease-in-out;

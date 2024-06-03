@@ -62,6 +62,11 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         category: currentCategory,
       })
     );
+    setLocalFilters({
+      size: [],
+      careLevel: [],
+      lightRequirement: [],
+    });
   }, [dispatch, currentCategory]);
 
   useEffect(() => {

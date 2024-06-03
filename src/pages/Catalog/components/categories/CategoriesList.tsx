@@ -87,19 +87,19 @@ const CategoriesList: React.FC = () => {
         </div>
       ));
 
-  const toggleMenuOpen = () => {
-    setModalOpen(!modalOpen);
-  };
+  // const toggleMenuOpen = () => {
+  //   setModalOpen(!modalOpen);
+  // };
 
   return (
     <>
       <div className={cl.button__wrapper}>
-        <Button isMain={true} onClick={toggleMenuOpen}>
+        <Button isMain={true} /* onClick={toggleMenuOpen} */>
           Show Categories
         </Button>
       </div>
       <div className={cl.wrapper}>{renderCategories()}</div>
-      {modalOpen && (
+      {/* {modalOpen && (
         <div className={cn(cl.modal, cl.burger, { [cl.active]: modalOpen })}>
           <div className={cl.modal_content}>
             <Button isMain={true} onClick={toggleMenuOpen}>
@@ -108,7 +108,7 @@ const CategoriesList: React.FC = () => {
             {renderCategories()}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

@@ -46,10 +46,12 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className={cn(cl.catalog__wrapper, 'container', 'grid')}>
-        <Breadcrumbs />
-        <CategoriesList />
-        <Outlet />
+      <main className={cn(cl.main_catalog)}>
+        <div className="container grid">
+          <Breadcrumbs />
+          <CategoriesList />
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </>

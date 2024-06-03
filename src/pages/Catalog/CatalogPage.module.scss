@@ -92,10 +92,6 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-
-    // @media (prefers-reduced-motion: no-preference) {
-    //   animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-    // }
   }
 }
 
@@ -120,29 +116,5 @@
 
   @media (max-width: (900px)) {
     display: block;
-  }
-}
-
-@keyframes slide-in-above {
-  0% {
-    opacity: 0;
-    transform: translateY(-3.75rem) translateZ(0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
-  }
-}
-
-@keyframes slide-out-above {
-  0% {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-10%) translateZ(0);
   }
 }

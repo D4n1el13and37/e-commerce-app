@@ -109,10 +109,6 @@
 }
 
 @media (max-width: (675px)) {
-  // .button__wrapper {
-  //   display: none;
-  // }
-
   .wrapper {
     display: flex;
   }
@@ -123,8 +119,4 @@
     display: block;
     grid-column: 1 / -1;
   }
-
-  // .wrapper {
-  //   display: none;
-  // }
 }

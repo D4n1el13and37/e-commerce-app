@@ -37,7 +37,7 @@ const ProfileInfo: React.FC = () => {
       <div className={classes.profileNav}>
         <ul className={classes.profileNav__link}>
           {profileNav.map((link, index) => (
-            <li key={index}>
+            <li className={classes.profileNav__item} key={index}>
               <Button
                 type="button"
                 isMain={true}

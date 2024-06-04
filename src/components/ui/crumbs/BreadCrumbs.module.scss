@@ -1,6 +1,6 @@
 .breadcrumbs {
   display: flex;
-  grid-column: 4 / -1;
+  grid-column: 3 / -1;
   gap: 12px;
 
   .crumb a {
@@ -28,5 +28,17 @@
 
   .crumb:last-child::after {
     display: none;
+  }
+
+  @media (max-width: (1200px)) {
+    grid-column: 4 / -1;
+  }
+
+  @media (max-width: (900px)) {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: (520px)) {
+    grid-column: 1 / -1;
   }
 }

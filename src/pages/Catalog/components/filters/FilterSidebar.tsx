@@ -12,9 +12,13 @@ import { setFilters, resetFilters } from '../../../../store/filterSlice';
 
 interface FilterSidebarProps {
   currentCategory?: string;
+  closeSidebar: () => void;
 }
 
-const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
+const FilterSidebar: React.FC<FilterSidebarProps> = ({
+  currentCategory,
+  closeSidebar,
+}) => {
   const dispatch = useAppDispatch();
   const currentFilters = useAppSelector((state) => state.filters.filters);
   const [filters, setLocalFilters] = useState<FilterValue>(currentFilters);
@@ -45,6 +49,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
   const handleApplyFilter = async () => {
     dispatch(setFilters(filters));
     dispatch(fetchProductsByFilters({ ...filters, category: currentCategory }));
+    closeSidebar();
   };
 
   const handleResetFilters = useCallback(async () => {
@@ -57,6 +62,11 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
         category: currentCategory,
       })
     );
+    setLocalFilters({
+      size: [],
+      careLevel: [],
+      lightRequirement: [],
+    });
   }, [dispatch, currentCategory]);
 
   useEffect(() => {
@@ -65,7 +75,6 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ currentCategory }) => {
 
   return (
     <div className={classes.filterSidebar}>
-      {/* <h3>Filter</h3> */}
       <div>
         <form action="">
           <div className={classes.filterSidebar__sortBox}>

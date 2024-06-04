@@ -2,36 +2,41 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import HeaderAuthButtons from './headerAuthBtns/HeaderAuthButtons';
-import Button from '../ui/button/Button';
 import HeaderUser from './headerUser/HeaderUser';
 import useAppSelector from '../../hooks/useAppSelector';
+import BurgerMenu from './burgerMenu/burgerMenu';
 
 import Logo from './Logo.svg';
 import classes from './Header.module.scss';
 
-const Header: React.FC = () => {
-  const navLinks = [
-    { name: 'Home', path: '/', isActive: true },
-    { name: 'Catalog', path: '/catalog', isActive: false },
-    { name: 'About', path: '/about', isActive: false },
-  ];
+const navLinks = [
+  { name: 'Home', path: '/', isActive: true },
+  { name: 'Catalog', path: '/catalog', isActive: false },
+  { name: 'About', path: '/about', isActive: false },
+];
 
+const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = useCallback(() => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  }, []);
+    setMenuOpen(!isMenuOpen);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const body = document.querySelector('body') as HTMLBodyElement;
+    body.classList.toggle('stop-scroll', isMenuOpen);
 
-    if (isMenuOpen) {
-      body.classList.add('stop-scroll');
-    } else {
-      body.classList.remove('stop-scroll');
-    }
+    const handleResize = () => {
+      if (window.innerWidth > 900 && isMenuOpen) {
+        setMenuOpen(false);
+        body.classList.remove('stop-scroll');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       body.classList.remove('stop-scroll');
     };
   }, [isMenuOpen]);
@@ -46,7 +51,9 @@ const Header: React.FC = () => {
         </Link>
         <div className={classes.header__content}>
           <nav
-            className={cn(classes.nav, { [classes.nav_active]: isMenuOpen })}
+            className={cn(classes.nav, {
+              [classes.nav_active]: isMenuOpen,
+            })}
           >
             <div className={classes.nav__content}>
               <ul className={classes.nav__list}>
@@ -66,7 +73,7 @@ const Header: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <HeaderAuthButtons />
+              {!isAuthorized && <HeaderAuthButtons />}
               {isAuthorized && <HeaderUser />}
             </div>
           </nav>
@@ -75,18 +82,7 @@ const Header: React.FC = () => {
           </a>
         </div>
 
-        <Button
-          className={cn(classes.burger, {
-            [classes.burger__active]: isMenuOpen,
-          })}
-          aria-label="Open menu"
-          aria-expanded={isMenuOpen ? 'true' : 'false'}
-          onClick={toggleMenu}
-        >
-          <span className={classes.burger__line}></span>
-          <span className={classes.burger__line}></span>
-          <span className={classes.burger__line}></span>
-        </Button>
+        <BurgerMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ import cn from 'classnames';
 import Button from '../../../components/ui/button/Button';
 import CustomerInfo from './profileNavigation/СustomerInfo';
 import PersonalInfo from './profileNavigation/PasswordlInfo';
-import AddressInfo from './profileNavigation/AddressInfo';
+// import AddressInfo from './profileNavigation/AddressInfo';
 
 import classes from '../userProfile.module.scss';
 
@@ -21,10 +21,10 @@ const ProfileInfo: React.FC = () => {
     switch (activeTab) {
       case 'СustomerInfo':
         return <CustomerInfo />;
-      case 'ShippingInfo':
-        return <AddressInfo addressType="Shipping" />;
-      case 'BillingInfo':
-        return <AddressInfo addressType="Billing" />;
+      // case 'ShippingInfo':
+      //   return <AddressInfo addressType="Shipping" />;
+      // case 'BillingInfo':
+      //   return <AddressInfo addressType="Billing" />;
       case 'PersonalInfo':
         return <PersonalInfo />;
       default:

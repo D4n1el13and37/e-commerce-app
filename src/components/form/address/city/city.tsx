@@ -5,15 +5,14 @@ import Input from '../../../ui/input/Input';
 import classes from '../../styleForm.module.scss';
 import { AddressField } from '../../formInterface';
 
-const City: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
+const City: React.FC<AddressField> = ({ name, onClick, onChange, id }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `city${typeAddress}`;
+  const nameId = `city${id}`;
   const errorMessage = errors[nameId]?.message as string | undefined;
-
   return (
     <div className={classes.input_container}>
       <Input
@@ -22,6 +21,7 @@ const City: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
         type="text"
         placeholder="City"
         onClick={onClick}
+        defaultValue={name}
         error={errors[nameId] ? (errors[nameId]?.message as string) : undefined}
         {...register(nameId, {
           required: 'City must have at least 1 character',

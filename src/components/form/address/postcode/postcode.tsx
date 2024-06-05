@@ -8,7 +8,8 @@ import classes from '../../styleForm.module.scss';
 const Postcode: React.FC<AddressField> = ({
   onClick,
   onChange,
-  typeAddress,
+  name,
+  id,
   selectedCountry,
 }) => {
   const {
@@ -16,7 +17,7 @@ const Postcode: React.FC<AddressField> = ({
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `postalCode${typeAddress}`;
+  const nameId = `postalCode${id}`;
   const errorMessage = errors[nameId]?.message as string | undefined;
 
   return (
@@ -25,6 +26,7 @@ const Postcode: React.FC<AddressField> = ({
         id={nameId}
         label="Postcode"
         type="text"
+        defaultValue={name}
         placeholder="Postcode"
         disabled={!selectedCountry}
         onClick={onClick}
@@ -41,9 +43,7 @@ const Postcode: React.FC<AddressField> = ({
         onChange={onChange}
       />
       <div className={classes.error_container}>
-        {errors[`postalCode${typeAddress}`] && (
-          <span className="error">{errorMessage}</span>
-        )}
+        {errors[nameId] && <span className="error">{errorMessage}</span>}
       </div>
     </div>
   );

@@ -1,23 +1,26 @@
 import React from 'react';
-import { Customer } from '@commercetools/platform-sdk';
 import classes from '../userProfile.module.scss';
+import { RootState } from '../../../store/store';
+import useAppSelector from '../../../hooks/useAppSelector';
 
-export interface UserInfoProps {
-  dataUser: Customer | null;
-}
+const UserInfo: React.FC = () => {
+  const dataUser = useAppSelector(
+    (state: RootState) => state.customer.dataUser
+  );
 
-const UserInfo: React.FC<UserInfoProps> = ({ dataUser }) => (
-  <>
-    <div className={classes.header}>
-      <span className={classes.user__name}>
-        {dataUser?.firstName ?? ''} {dataUser?.lastName ?? ''}
-      </span>
-      <p className={classes.user__email}>{dataUser?.email ?? ''}</p>
-    </div>
-    <div className={classes.user__photo}>
-      <img src="" alt="" />
-    </div>
-  </>
-);
+  return (
+    <>
+      <div className={classes.header}>
+        <span className={classes.user__name}>
+          {dataUser?.firstName ?? ''} {dataUser?.lastName ?? ''}
+        </span>
+        <p className={classes.user__email}>{dataUser?.email ?? ''}</p>
+      </div>
+      <div className={classes.user__photo}>
+        <img src="" alt="" />
+      </div>
+    </>
+  );
+};
 
 export default UserInfo;

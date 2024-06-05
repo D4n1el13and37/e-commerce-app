@@ -5,13 +5,13 @@ import { AddressField } from '../../formInterface';
 
 import classes from '../../styleForm.module.scss';
 
-const Street: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
+const Street: React.FC<AddressField> = ({ onClick, onChange, name, id }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `streetName${typeAddress}`;
+  const nameId = `streetName${id}`;
   const errorMessage = errors[nameId]?.message as string | undefined;
 
   return (
@@ -20,6 +20,7 @@ const Street: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
         id={nameId}
         label="Street"
         type="text"
+        defaultValue={name}
         placeholder="Street"
         onClick={onClick}
         error={errors[nameId] ? (errors[nameId]?.message as string) : undefined}
@@ -41,9 +42,7 @@ const Street: React.FC<AddressField> = ({ onClick, onChange, typeAddress }) => {
         onChange={onChange}
       />
       <div className={classes.error_container}>
-        {errors[`streetName${typeAddress}`] && (
-          <span className="error">{errorMessage}</span>
-        )}
+        {errors[nameId] && <span className="error">{errorMessage}</span>}
       </div>
     </div>
   );

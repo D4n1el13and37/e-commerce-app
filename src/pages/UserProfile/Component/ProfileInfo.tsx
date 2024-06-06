@@ -22,9 +22,9 @@ const ProfileInfo: React.FC = () => {
       case 'СustomerInfo':
         return <CustomerInfo />;
       // case 'ShippingInfo':
-      //   return <AddressInfo addressType="Shipping" />;
+      // return <AddressInfo addressType="Shipping" />;
       // case 'BillingInfo':
-      //   return <AddressInfo addressType="Billing" />;
+      // return <AddressInfo addressType="Billing" />;
       case 'PersonalInfo':
         return <PersonalInfo />;
       default:

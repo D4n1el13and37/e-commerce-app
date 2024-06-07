@@ -8,15 +8,11 @@ import './Modal.scss';
 import srcPlants from '../../../../../public/plantsModal.svg';
 
 interface CustomModalProps {
-  header?: string;
-  subheader?: string;
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-const ModalRegistration: React.FC<CustomModalProps> = ({
-  header = 'Registration successful!',
-  subheader = 'You will be logged in automatically.',
+const ModalChangePassword: React.FC<CustomModalProps> = ({
   isOpen,
   onRequestClose,
 }) => (
@@ -32,8 +28,8 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
     <div className={modal.modal}>
       <img src={srcPlants} alt="Illustartion happy plant" />
       <div className={modal.modal__content}>
-        <h2 className={modal.modal__title}>{header}</h2>
-        <p className={modal.modal__text}>{subheader}</p>
+        <h2 className={modal.modal__title}>Password successfully changed</h2>
+        <p className={modal.modal__text}>You will be moved to the main page.</p>
       </div>
 
       <Button isFilled={true} isMain={true} onClick={onRequestClose}>
@@ -42,4 +38,4 @@ const ModalRegistration: React.FC<CustomModalProps> = ({
     </div>
   </Modal>
 );
-export default ModalRegistration;
+export default ModalChangePassword;

@@ -1,8 +1,10 @@
 .container {
   width: 40px;
   height: 40px;
+}
 
-  @media (max-width: (900px)) {
+@media (max-width: (900px)) {
+  .container {
     order: 2;
   }
 }
@@ -42,10 +44,16 @@
   margin-block-start: 1.05lh;
 
   &_item {
-    place-content: center;
+    place-self: center;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  &_item:first-child {
+    position: relative;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu {
     transition:
       line-height var(--duration) ease-in-out,
       color var(--duration) ease-in-out;
@@ -58,14 +66,21 @@
   padding: 0.5lh 50px;
   font-size: var(--second-font-size);
   line-height: 143%;
-  letter-spacing: 0.02em;
   color: var(--grey-color);
   background: none;
+  visibility: hidden;
   cursor: pointer;
 
   @media (any-hover: hover) {
     &:hover {
-      color: var(--primary-color);
+      color: var(--accent-color);
+
+      .menu_item {
+        &::after {
+          color: var(--accent-color);
+          background-color: var(--accent-color);
+        }
+      }
     }
   }
 
@@ -76,8 +91,53 @@
 
 .button.active ~ .menu {
   min-width: 168px;
-  min-height: 52px;
+  min-height: 148px;
   line-height: 1.2;
   color: currentcolor;
   background-color: #fff;
+  visibility: visible;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) background-color ease-in-out;
+    animation-name: slide-down-menu;
+    animation-duration: var(--duration);
+    animation-fill-mode: forwards;
+  }
+
+  @media (any-hover: hover) {
+    &:hover .menu_item:first-child::after {
+      color: var(--accent-color);
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+.button.active ~ .menu .menu_item:first-child::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  bottom: -45%;
+  border-radius: 12px;
+  width: 80%;
+  height: 1px;
+  background-color: var(--grey-color);
+  transform: translateY(50%);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) background-color ease-in-out;
+  }
+}
+
+.button.active ~ .menu .menu_link {
+  visibility: visible;
+}
+
+@keyframes slide-down-menu {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

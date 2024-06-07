@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 
 import Checkbox from '../../../components/ui/checkbox/Checkbox';
 import Input from '../../../components/ui/input/Input';
-import { CountrySelect, CountryOption } from './AddressForm/CountrySelect';
+import CountrySelect from './AddressForm/CountrySelect';
+import { CountryOptionInterface } from './AddressForm/countryOptions';
 
 import classes from './Rigister.module.scss';
 
@@ -18,7 +19,7 @@ export default function ShippingAddress() {
   } = useFormContext();
 
   const [selectedCountry, setSelectedCountry] =
-    useState<SingleValue<CountryOption> | null>(null);
+    useState<SingleValue<CountryOptionInterface> | null>(null);
 
   const defaultShippingAddress = watch('defaultShippingAddress', false);
 

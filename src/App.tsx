@@ -10,7 +10,11 @@ import Home from './pages/Home/Home';
 import { autorizationByToken } from './store/authSlice';
 import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
+import CatalogPage from './pages/Catalog/CatalogPage';
 import NotFound from './pages/NotFound/NotFound';
+import UserProfile from './pages/UserProfile/UserProfile';
+import ProductPage from './pages/Product/ProductPage';
+import ProductList from './pages/Catalog/components/product_list/ProductList';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,6 +37,29 @@ function App() {
               element: <Home />,
             },
             {
+              path: 'catalog',
+              element: <CatalogPage />,
+              children: [
+                {
+                  path: '',
+                  element: <ProductList />,
+                },
+                {
+                  path: ':categoryName',
+                  element: <ProductList />,
+                },
+
+                {
+                  path: ':categoryName/:subcategoryName',
+                  element: <ProductList />,
+                },
+              ],
+            },
+            {
+              path: 'catalog/product/:productId',
+              element: <ProductPage />,
+            },
+            {
               path: 'login',
               element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
             },
@@ -48,16 +75,21 @@ function App() {
               path: 'main',
               element: isAuthorized ? <Home /> : <Navigate to="/" />,
             },
+            {
+              path: 'account',
+              element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
+            },
           ],
         },
       ]),
     [isAuthorized]
   );
 
+  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
+
   // if (isLoading) {
   //   return <div>Loadiiing...</div>;
   // }
-
   return <RouterProvider router={router} />;
 }
 

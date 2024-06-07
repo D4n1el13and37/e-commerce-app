@@ -13,7 +13,7 @@
   }
 
   &__logo {
-    z-index: 4;
+    z-index: 5;
   }
 
   &__content {
@@ -30,6 +30,10 @@
   display: flex;
   align-items: center;
   margin-right: calc(var(--gap) * 2);
+
+  @media (max-width: (900px)) {
+    animation: slide-out-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
 
   &__content {
     display: flex;
@@ -101,7 +105,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 3;
+    z-index: 4;
     justify-content: center;
     overflow-y: auto;
     width: 100%;
@@ -114,6 +118,34 @@
   &_active {
     visibility: visible;
     transform: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: slide-in-above 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
+  }
+}
+
+@keyframes slide-in-above {
+  0% {
+    opacity: 0;
+    transform: translateY(-3.75rem) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes slide-out-above {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-3.75rem) translateZ(0);
   }
 }
 
@@ -172,67 +204,5 @@
     color: var(--light-color);
     background-color: var(--primary-color);
     transform: translateY(-50%);
-  }
-}
-
-.burger {
-  display: none;
-}
-
-@media (max-width: (900px)) {
-  .burger {
-    position: relative;
-    z-index: 4;
-    display: block;
-    margin-left: 25px;
-    border: 1px solid var(--primary-color);
-    border-radius: 6px;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-
-    &__line {
-      position: absolute;
-      left: 0;
-      width: 14px;
-      height: 1px;
-      background-color: var(--primary-color);
-      transform: translateX(50%);
-
-      &:first-child {
-        top: 30%;
-      }
-
-      &:last-child {
-        bottom: 28%;
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        transition:
-          var(--duration) transform ease-in-out,
-          var(--duration) top ease-in-out,
-          var(--duration) left ease-in-out;
-      }
-    }
-
-    &__active {
-      z-index: 4;
-    }
-
-    &__active .burger__line:nth-child(2) {
-      transform: scale(0);
-    }
-
-    &__active .burger__line:first-child {
-      left: 25%;
-      top: 50%;
-      transform: rotate(45deg);
-    }
-
-    &__active .burger__line:last-child {
-      left: 25%;
-      top: 50%;
-      transform: rotate(-45deg);
-    }
   }
 }

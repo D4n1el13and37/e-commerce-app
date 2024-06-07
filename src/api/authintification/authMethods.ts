@@ -1,7 +1,7 @@
 import { Customer } from '@commercetools/platform-sdk';
-import getApiRoot from './api';
-import { projectKey } from './clientConfig';
-import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
+import getApiRoot from '../api';
+import { projectKey } from '../clientConfig';
+import { RegisterFormFields } from '../../pages/Register/Component/interfaceRegister';
 import { MyCustom } from './authInterface';
 
 export async function loginWithPassword(

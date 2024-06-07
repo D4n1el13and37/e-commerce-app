@@ -1,0 +1,15 @@
+.input_container {
+  position: relative;
+  height: 82px;
+
+  .error_container {
+    position: relative;
+    height: 20px;
+
+    span {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
+    }
+  }
+}

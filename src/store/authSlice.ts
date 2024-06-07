@@ -4,21 +4,20 @@ import {
   RegistartionUser,
   loginByToken,
   loginWithPassword,
-} from '../api/authMethods';
+} from '../api/authintification/authMethods';
 import { LoginForm } from '../pages/Login/LoginPage';
 import { RegisterFormFields } from '../pages/Register/Component/interfaceRegister';
 
 // const key = 'tokendata';
 // const storedData = localStorage.getItem(key);
 // const { token } = storedData ? JSON.parse(storedData) : { token: null };
-
-export interface AutorizationState {
+export interface AuthorizationState {
   currentUser: null | Customer;
   isAutorized: boolean;
   isLoading: boolean;
 }
 
-const initialState: AutorizationState = {
+const initialState: AuthorizationState = {
   currentUser: null,
   isAutorized: false,
   isLoading: false,
@@ -45,7 +44,6 @@ export const login = createAsyncThunk(
     try {
       const { email, password } = userData;
       const response = await loginWithPassword(email, password);
-      // console.warn(response);
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -102,7 +100,7 @@ const authSlice = createSlice({
       .addCase(autorizationByToken.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
-        newState.isAutorized = true; // do we actually need it?
+        newState.isAutorized = true;
         newState.currentUser = action.payload;
       })
       .addCase(autorizationByToken.rejected, (state) => {

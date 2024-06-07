@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classes from './ProductCard.module.scss';
+import Button from '../ui/button/Button';
 
 export interface Card {
   title: string;
@@ -12,6 +14,7 @@ export interface Card {
   price: number;
   onAddToCart?: () => void;
   salePrice?: number | undefined;
+  linkPath: string;
 }
 
 const ProductCard: React.FC<Card> = ({
@@ -20,8 +23,9 @@ const ProductCard: React.FC<Card> = ({
   frontImage,
   price,
   salePrice,
+  linkPath,
 }) => {
-  const [sale, setSale] = useState(false); // to made all price with discount
+  const [sale, setSale] = useState(false);
   const boundingCardRef = useRef<DOMRect | null>(null);
   const currentPrice = (price / 100).toFixed(2);
   const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2);
@@ -35,13 +39,10 @@ const ProductCard: React.FC<Card> = ({
   return (
     <article className={classes.card__wrapper}>
       <div
-        // onClick={toProductPage}
         onMouseEnter={(ev) => {
-          // get reference to current card
           boundingCardRef.current = ev.currentTarget.getBoundingClientRect();
         }}
         onMouseLeave={() => {
-          // for clear Ref
           boundingCardRef.current = null;
         }}
         onMouseMove={(ev) => {
@@ -63,17 +64,36 @@ const ProductCard: React.FC<Card> = ({
           {frontImage && <img src={frontImage.url} alt={frontImage.label} />}
         </div>
         <div className={classes.text__wrapper}>
-          <h3 className={classes.title}>{title}</h3>
+          <h3 className={classes.title}>
+            <Link to={linkPath} className={classes.card__link}>
+              {title}
+            </Link>
+          </h3>
           <p className={classes.description}>{description}</p>
-          <div className={classes.price__actions}>
-            {sale ? (
-              <div>
-                <span className={classes.price__new}>{salePriceOutput} €</span>
-                <span className={classes.price__old}>{currentPrice} €</span>
-              </div>
-            ) : (
-              <span>{currentPrice} €</span>
-            )}
+          <div className={classes.card__info}>
+            <div className={classes.price__actions}>
+              {sale ? (
+                <div>
+                  <span className={classes.price__new}>
+                    {salePriceOutput} €
+                  </span>
+                  <span className={classes.price__old}>{currentPrice} €</span>
+                </div>
+              ) : (
+                <span>{currentPrice} €</span>
+              )}
+            </div>
+            <Button className={classes.cart__btn}>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 7.5H15" strokeWidth="1.5" />
+                <path d="M7.5 0L7.5 15" strokeWidth="1.5" />
+              </svg>
+            </Button>
           </div>
         </div>
       </div>

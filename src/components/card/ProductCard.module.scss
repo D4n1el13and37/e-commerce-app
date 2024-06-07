@@ -53,6 +53,16 @@
       }
     }
 
+    .card__link {
+      color: inherit;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+      }
+    }
+
     .description {
       display: -webkit-box;
       overflow: hidden;
@@ -64,6 +74,12 @@
       @media (prefers-reduced-motion: no-preference) {
         transition: color var(--duration) ease-in-out;
       }
+    }
+
+    .card__info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .price__actions {
@@ -86,6 +102,57 @@
           text-decoration-color: var(--primary-color, #758963);
           color: var(--grey-color);
         }
+      }
+    }
+
+    .cart__btn {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--primary-color);
+      border-radius: 12px;
+      padding: 15px;
+      width: 45px;
+      height: fit-content;
+      background: none;
+      cursor: pointer;
+
+      svg {
+        path {
+          stroke: var(--primary-color);
+
+          @media (prefers-reduced-motion: no-preference) {
+            transition: var(--duration) stroke ease-in-out;
+          }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: var(--duration) stroke ease-in-out;
+        }
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: var(--accent-color);
+
+          svg {
+            color: var(--accent-color);
+            fill: var(--accent-color);
+
+            path {
+              stroke: var(--accent-color);
+            }
+          }
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          var(--duration) stroke ease-in-out,
+          var(--duration) border-color ease-in-out,
+          var(--duration) color ease-in-out,
+          var(--duration) fill ease-in-out;
       }
     }
   }

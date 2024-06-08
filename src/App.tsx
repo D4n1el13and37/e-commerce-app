@@ -15,6 +15,7 @@ import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
+import BasketPage from './pages/Basket/BasketPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -58,6 +59,10 @@ function App() {
             {
               path: 'catalog/product/:productId',
               element: <ProductPage />,
+            },
+            {
+              path: 'basket',
+              element: <BasketPage />,
             },
             {
               path: 'login',

@@ -1,10 +1,10 @@
 name: Main action
 on:
   push:
-    branches: [main, develop, release_sprint-4/basket-about_us]
+    branches: [main, develop, release_sprint-3/catalog-product-profile]
 
   pull_request:
-    branches: [main, develop, release_sprint-4/basket-about_us]
+    branches: [main, develop, release_sprint-3/catalog-product-profile]
 
 jobs:
   init:

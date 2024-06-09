@@ -19,9 +19,12 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.75);
-  animation: fade-in var(--duration) ease-in-out;
   user-select: none;
   gap: 40px;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-in var(--duration) ease-in-out;
+  }
 
   .modal {
     display: flex;

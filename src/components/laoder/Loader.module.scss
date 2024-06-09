@@ -1,3 +1,13 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .modal__wrapper {
   position: fixed;
   left: 0;
@@ -9,6 +19,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.75);
+  animation: fade-in var(--duration) ease-in-out;
   user-select: none;
   gap: 40px;
 

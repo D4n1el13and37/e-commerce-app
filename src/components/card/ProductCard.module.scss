@@ -118,6 +118,30 @@
       background: none;
       cursor: pointer;
 
+      &:disabled,
+      &:disabled:hover {
+        border-color: var(--grey-color);
+        opacity: 0.7;
+
+        svg {
+          path {
+            stroke: var(--grey-color);
+          }
+        }
+      }
+
+      // &_disabled {
+      //   border-color: var(--grey-color);
+
+      //   svg {
+      //     fill: var(--grey-color);
+
+      //     path {
+      //       stroke: var(--grey-color);
+      //     }
+      //   }
+      // }
+
       svg {
         path {
           stroke: var(--primary-color);

@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './ProductCard.module.scss';
 import Button from '../ui/button/Button';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { getAddToCart } from '../../store/cartSlice';
+import useAppSelector from '../../hooks/useAppSelector';
 
 export interface Card {
   title: string;
@@ -15,6 +18,7 @@ export interface Card {
   onAddToCart?: () => void;
   salePrice?: number | undefined;
   linkPath: string;
+  id: string | undefined;
 }
 
 const ProductCard: React.FC<Card> = ({
@@ -24,17 +28,30 @@ const ProductCard: React.FC<Card> = ({
   price,
   salePrice,
   linkPath,
+  id,
 }) => {
   const [sale, setSale] = useState(false);
   const boundingCardRef = useRef<DOMRect | null>(null);
   const currentPrice = (price / 100).toFixed(2);
   const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2);
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (salePrice) {
       setSale(true);
     }
   }, [salePrice]);
+
+  const handleAddToCart = (cardId: string = ''): void => {
+    dispatch(getAddToCart(cardId));
+  };
+
+  const isCart = useAppSelector((state) => state.cart.cart);
+
+  const idCartProduct = Boolean(
+    isCart.lineItems && isCart.lineItems.find((item) => item.productId === id)
+  );
 
   return (
     <article className={classes.card__wrapper}>
@@ -83,7 +100,14 @@ const ProductCard: React.FC<Card> = ({
                 <span>{currentPrice} €</span>
               )}
             </div>
-            <Button className={classes.cart__btn}>
+            <Button
+              className={classes.cart__btn}
+              onClick={() => {
+                handleAddToCart(id);
+              }}
+              aria-label="Add to shopping cart"
+              isDisabled={idCartProduct}
+            >
               <svg
                 width="15"
                 height="15"

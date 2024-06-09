@@ -29,6 +29,7 @@ const ProductList: React.FC = () => {
               price={price}
               salePrice={salePrice}
               linkPath={linkPath}
+              id={id}
             />
           );
         })

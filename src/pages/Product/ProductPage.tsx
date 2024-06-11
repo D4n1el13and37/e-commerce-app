@@ -39,12 +39,14 @@ const ProductPage: React.FC = () => {
   const closeModalAfterDelay = () => {
     setTimeout(() => {
       setIsModalOpen(false);
-    }, 1500);
+    }, 1000);
   };
 
   const handleCartAction = (cardId: string = '') => {
     if (idCartProduct) {
       dispatch(getChangeQuantity({ productId: idCartProduct.id, quanity: 0 }));
+      setIsModalOpen(true);
+      closeModalAfterDelay();
     } else {
       dispatch(getAddToCart(cardId));
       setIsModalOpen(true);
@@ -88,7 +90,8 @@ const ProductPage: React.FC = () => {
               <div className={s.product__info_card}>
                 <Button
                   isFilled={true}
-                  // isDisabled={idCartProduct}
+                  data-in-cart={!!idCartProduct}
+                  isMain={true}
                   onClick={(e) => {
                     e.preventDefault();
                     handleCartAction(productId);

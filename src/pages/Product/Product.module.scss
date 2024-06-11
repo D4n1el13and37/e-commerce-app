@@ -86,5 +86,21 @@
         width: auto;
       }
     }
+
+    button[data-in-cart='true'] {
+      background-color: var(--grey-color);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          var(--duration) color ease-in-out,
+          var(--duration) background-color ease-in-out;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: #7f807f;
+        }
+      }
+    }
   }
 }

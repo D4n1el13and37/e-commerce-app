@@ -11,7 +11,7 @@ import SuccessModal from '../UserProfile/Component/SuccesModal/SuccessModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
 import { fetchProduct } from '../../store/productsSlice';
-import { getAddToCart } from '../../store/cartSlice';
+import { getAddToCart, getChangeQuantity } from '../../store/cartSlice';
 
 const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -30,10 +30,9 @@ const ProductPage: React.FC = () => {
 
   const isCart = useAppSelector((state) => state.cart.cart);
 
-  const idCartProduct = Boolean(
-    isCart.lineItems &&
-      isCart.lineItems.find((item) => item.productId === productId)
-  );
+  const idCartProduct = isCart.lineItems
+    ? isCart.lineItems.find((item) => item.productId === productId)
+    : false;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,10 +42,14 @@ const ProductPage: React.FC = () => {
     }, 1500);
   };
 
-  const handleAddToCart = (cardId: string = ''): void => {
-    dispatch(getAddToCart(cardId));
-    setIsModalOpen(true);
-    closeModalAfterDelay();
+  const handleCartAction = (cardId: string = '') => {
+    if (idCartProduct) {
+      dispatch(getChangeQuantity({ productId: idCartProduct.id, quanity: 0 }));
+    } else {
+      dispatch(getAddToCart(cardId));
+      setIsModalOpen(true);
+      closeModalAfterDelay();
+    }
   };
 
   const images = prod?.masterVariant.images || [];
@@ -85,12 +88,13 @@ const ProductPage: React.FC = () => {
               <div className={s.product__info_card}>
                 <Button
                   isFilled={true}
-                  isDisabled={idCartProduct}
-                  onClick={() => {
-                    handleAddToCart(productId);
+                  // isDisabled={idCartProduct}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCartAction(productId);
                   }}
                 >
-                  Add To Shopping Cart
+                  {idCartProduct ? 'Remove From Cart' : 'Add To Shopping Cart'}
                 </Button>
               </div>
               <SuccessModal isOpen={isModalOpen} />

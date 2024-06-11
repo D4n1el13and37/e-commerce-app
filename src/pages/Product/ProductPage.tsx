@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import s from './Product.module.scss';
 import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';
 import SliderProduct from '../../components/sliderProduct/SliderProduct';
 import Footer from '../../components/footer/Footer';
+
+import SuccessModal from '../UserProfile/Component/SuccesModal/SuccessModal';
+
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
 import { fetchProduct } from '../../store/productsSlice';
+import { getAddToCart } from '../../store/cartSlice';
 
 const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -23,6 +27,27 @@ const ProductPage: React.FC = () => {
       dispatch(fetchProduct(productId));
     }
   }, [dispatch, productId]);
+
+  const isCart = useAppSelector((state) => state.cart.cart);
+
+  const idCartProduct = Boolean(
+    isCart.lineItems &&
+      isCart.lineItems.find((item) => item.productId === productId)
+  );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModalAfterDelay = () => {
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 1500);
+  };
+
+  const handleAddToCart = (cardId: string = ''): void => {
+    dispatch(getAddToCart(cardId));
+    setIsModalOpen(true);
+    closeModalAfterDelay();
+  };
 
   const images = prod?.masterVariant.images || [];
 
@@ -58,8 +83,17 @@ const ProductPage: React.FC = () => {
                 </p>
               </div>
               <div className={s.product__info_card}>
-                <Button isFilled={true}>Add To Shopping Cart</Button>
+                <Button
+                  isFilled={true}
+                  isDisabled={idCartProduct}
+                  onClick={() => {
+                    handleAddToCart(productId);
+                  }}
+                >
+                  Add To Shopping Cart
+                </Button>
               </div>
+              <SuccessModal isOpen={isModalOpen} />
             </div>
           </div>
         </section>

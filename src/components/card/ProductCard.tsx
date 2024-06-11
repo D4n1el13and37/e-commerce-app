@@ -49,9 +49,9 @@ const ProductCard: React.FC<Card> = ({
 
   const isCart = useAppSelector((state) => state.cart.cart);
 
-  const idCartProduct = isCart.lineItems
-    ? isCart.lineItems.find((item) => item.productId === id)
-    : false;
+  const idCartProduct = Boolean(
+    isCart.lineItems && isCart.lineItems.find((item) => item.productId === id)
+  );
 
   return (
     <article className={classes.card__wrapper}>

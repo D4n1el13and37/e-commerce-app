@@ -39,7 +39,7 @@ const ProductPage: React.FC = () => {
   const closeModalAfterDelay = () => {
     setTimeout(() => {
       setIsModalOpen(false);
-    }, 1000);
+    }, 650);
   };
 
   const handleCartAction = (cardId: string = '') => {

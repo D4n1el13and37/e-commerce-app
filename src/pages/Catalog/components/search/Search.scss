@@ -1,6 +1,8 @@
 /* stylelint-disable declaration-no-important */
 .search {
   grid-column: 3 / 6 span;
+  border-radius: 12px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
 
   @media (max-width: (900px)) {
     grid-column: 1 / 7 span;

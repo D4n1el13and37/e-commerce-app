@@ -6,6 +6,7 @@ import {
   CartDraft,
   CartUpdate,
   CartUpdateAction,
+  LineItem,
 } from '@commercetools/platform-sdk';
 import {
   createCart,
@@ -18,17 +19,20 @@ export interface CartState {
   cart: Cart;
   isLoading: boolean;
   totalQuantity: number;
+  cartItems: LineItem[];
 }
 
 const initialState: CartState = {
   cart: {} as Cart,
   isLoading: false,
   totalQuantity: 0,
+  cartItems: [],
 };
 
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
     const response = await getActiveCart();
+
     return response;
   } catch (error) {
     if (error instanceof Error) {
@@ -146,6 +150,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCart.rejected, (state) => {
         const newState = state;
@@ -159,6 +164,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCreateCart.rejected, (state) => {
         const newState = state;

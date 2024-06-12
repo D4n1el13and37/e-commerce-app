@@ -1,0 +1,84 @@
+/* stylelint-disable declaration-no-important */
+.search {
+  grid-column: 3 / 6 span;
+
+  @media (max-width: (900px)) {
+    grid-column: 1 / 7 span;
+  }
+
+  @media (max-width: (600px)) {
+    grid-column: 12 span;
+  }
+
+  .react-select__value-container {
+    margin-right: 8px;
+    background-image: url('./Search.svg');
+    background-position: right;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+  }
+}
+
+.react-select__indicators {
+  display: none !important;
+}
+
+.react-select__control {
+  border: none !important;
+  background-color: #fff !important;
+}
+
+.react-select__placeholder {
+  line-height: 143%;
+  letter-spacing: 0.02em;
+  color: var(--grey-color);
+}
+
+.react-select__input-container {
+  line-height: 143%;
+  letter-spacing: 0.02em;
+  color: var(--text-color);
+}
+
+.react-select__input {
+  &::placeholder {
+    line-height: 143%;
+    letter-spacing: 0.02em;
+    color: #9a9a9a;
+  }
+}
+
+.react-select__menu {
+  border: none !important;
+  animation-name: slide-down;
+  animation-duration: 0.5s;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.react-select__menu-notice {
+  text-align: left !important;
+  color: var(--grey-color);
+}
+
+.react-select__menu-list {
+  border-radius: 12px;
+}
+
+.react-select__option {
+  cursor: pointer !important;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) background-color ease-in-out;
+  }
+}

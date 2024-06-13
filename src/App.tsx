@@ -15,6 +15,7 @@ import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -78,6 +79,10 @@ function App() {
             {
               path: 'account',
               element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
+            },
+            {
+              path: 'about',
+              element: <AboutUs />,
             },
           ],
         },

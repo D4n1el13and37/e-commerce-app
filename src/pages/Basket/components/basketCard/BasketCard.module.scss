@@ -1,7 +1,7 @@
 .card__wrapper {
   display: flex;
   justify-content: center;
-  padding: 24px;
+  width: 100%;
   gap: 20px;
 
   .left_side {
@@ -23,7 +23,6 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-width: 550px;
       gap: 16px;
     }
 

@@ -12,11 +12,9 @@ const BasketPage = () => {
   return (
     <>
       <Header />
-      <main className="container">
-        <div className={cl.main__wrapper}>
-          <h1 className={cl.main__title}>Shopping Bag</h1>
-
-          {/* mock checker if cart is empty */}
+      <main className="container grid">
+        <h1 className={cl.main__title}>Shopping Bag</h1>
+        <div className={cl.content__wrapper}>
           {currentCartItems.length ? (
             currentCartItems.map((card) => (
               <BasketCard

@@ -1,12 +1,14 @@
 .main {
-  &__wrapper {
-    padding: 60px;
-  }
-
   &__title {
+    grid-column: 1/4;
+    padding-top: 40px;
     font-weight: 400;
     font-size: 36px;
     line-height: 44px;
     color: #323334;
   }
+}
+
+.content__wrapper {
+  grid-column: 1 / 13;
 }

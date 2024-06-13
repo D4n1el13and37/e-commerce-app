@@ -22,7 +22,14 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      max-width: 550px;
       gap: 16px;
+    }
+
+    &__headline {
+      display: flex;
+      justify-content: space-between;
     }
 
     &__title {
@@ -33,19 +40,48 @@
       color: #323334;
     }
 
+    &__total_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      span {
+        font-size: 20px;
+        color: var(--primary-color, #758963);
+      }
+
+      .price__old {
+        margin-right: 10px;
+        font-size: var(--second-font-size);
+        text-decoration: line-through;
+        text-decoration-color: var(--primary-color, #758963);
+        color: var(--grey-color);
+      }
+    }
+
+    &__total {
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--primary-color, #758963);
+    }
+
     &__attributes {
       font-size: 14px;
-      line-height: 20px;
       letter-spacing: 0.25px;
       color: var(--grey-color, #989998);
     }
 
     &__goods_controller {
       display: flex;
-      align-items: center;
-      gap: 4px;
+      align-items: flex-end;
+      justify-content: space-between;
 
-      &__total {
+      &__block {
+        display: flex;
+        gap: 4px;
+      }
+
+      &__total_count {
         border: 1px solid var(--primary-color);
         border-radius: 12px;
         padding: 12px 30px;

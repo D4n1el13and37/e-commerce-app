@@ -9,6 +9,7 @@ const BasketPage = () => {
   return (
     <>
       <Header />
+      {/* <main className="container"> */}
       <main>
         {currentCartItems.map((card) => (
           <BasketCard
@@ -19,6 +20,7 @@ const BasketPage = () => {
             price={card.price}
             image={card.variant.images!}
             attributes={card.variant.attributes!}
+            quantity={card.quantity}
             totalPrice={card.totalPrice.centAmount}
           />
         ))}

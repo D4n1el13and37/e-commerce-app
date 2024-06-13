@@ -27,9 +27,12 @@ const CatalogPage: React.FC = () => {
     categoryName: string;
     subcategoryName?: string;
   }>();
-  const { categoriesList, isLoading } = useAppSelector(
-    (state) => state.products
-  );
+  const { categoriesList } = useAppSelector((state) => state.products);
+
+  const isLoading = useSelector((state: RootState) => state.products.isLoading);
+
+  const isLoadingCart = useSelector((state: RootState) => state.cart.isLoading);
+
   const currentFilters = useSelector(
     (state: RootState) => state.filters.filters
   );
@@ -90,7 +93,7 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-      {isLoading && <Loader />}
+      {(isLoading || isLoadingCart) && <Loader />}
       <main className={cn(cl.catalog__main)}>
         <div className={cn(cl.catalog__wrapper, 'container', 'grid')}>
           <Search />

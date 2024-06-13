@@ -3,10 +3,18 @@
     display: flex;
   }
 
+  &__single_product {
+    width: 100%;
+  }
+
   &__action {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
 
     span {
       font-size: var(--price-font-size);

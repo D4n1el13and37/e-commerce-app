@@ -21,7 +21,6 @@ const BasketPage = () => {
             image={card.variant.images!}
             attributes={card.variant.attributes!}
             quantity={card.quantity}
-            totalPrice={card.totalPrice.centAmount}
           />
         ))}
       </main>

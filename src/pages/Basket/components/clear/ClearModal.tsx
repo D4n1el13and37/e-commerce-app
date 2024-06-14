@@ -19,7 +19,12 @@ const ClearModal: React.FC<ClearModalProps> = ({
   };
 
   return (
-    <div className={cl.modal__wrapper}>
+    <div
+      className={cl.modal__wrapper}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) closeModal();
+      }}
+    >
       <div className={cl.modal__content}>
         <div className={cl.image__wrapper}>
           <img src={sureImage} alt="" />

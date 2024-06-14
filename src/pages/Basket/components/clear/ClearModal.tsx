@@ -26,13 +26,14 @@ const ClearModal: React.FC<ClearModalProps> = ({
         </div>
         <div className={cl.text__wrapper}>
           <h4 className={cl.text__title}>
-            Are you sure ? <br /> you want to clear the cart?
+            Are you sure? <br />
+            You want to clear the cart?
           </h4>
           <div className={cl.text__buttons_block}>
             <Button isMain={true} onClick={clearBasket}>
               Yes!
             </Button>
-            <Button isMain={true} onClick={closeModal}>
+            <Button isMain={true} isFilled={true} onClick={closeModal}>
               No
             </Button>
           </div>

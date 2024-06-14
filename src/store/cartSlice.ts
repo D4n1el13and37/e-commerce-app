@@ -5,11 +5,12 @@ import {
   CartChangeLineItemQuantityAction,
   CartDraft,
   CartUpdate,
-  CartUpdateAction,
+  // CartUpdateAction,
   LineItem,
 } from '@commercetools/platform-sdk';
 import {
   createCart,
+  deleteCart,
   getActiveCart,
   updateCart,
 } from '../api/cart/cartMethonds';
@@ -111,16 +112,14 @@ export const getChangeQuantity = createAsyncThunk(
   }
 );
 
-export const getClearCart = createAsyncThunk(
+export const removeCart = createAsyncThunk(
   'cart/clearCart',
-  async (actions: CartUpdateAction[], thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const state: RootState = thunkAPI.getState() as RootState;
-
       const { version, id } = state.cart.cart;
-      const cartDraft: CartUpdate = { version, actions };
+      const response = await deleteCart(id, version);
 
-      const response = await updateCart(id, cartDraft);
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -197,10 +196,18 @@ const cartSlice = createSlice({
           0
         );
       })
-      .addCase(getClearCart.fulfilled, (state, action) => {
+      .addCase(removeCart.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(removeCart.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+      })
+      .addCase(removeCart.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
       });
   },
 });

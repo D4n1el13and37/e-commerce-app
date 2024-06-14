@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// import BasketCard from '../BasketCard';
-// import Button from '../../../../components/ui/button/Button';
 import EmptyCart from '../empty/EmptyCart';
 
 import cl from './BasketContent.module.scss';
@@ -8,18 +6,22 @@ import ClearModal from '../clear/ClearModal';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import madeCorrectOutputPrice from '../../../../utils/madeCorrectOutputPrice';
 import BasketCard from '../basketCard/BasketCard';
+import { getCart, removeCart } from '../../../../store/cartSlice';
+import useAppDispatch from '../../../../hooks/useAppDispatch';
 
 const BasketContent = () => {
   const { cartItems, cart } = useAppSelector((state) => state.cart);
   const FULL_PRICE = madeCorrectOutputPrice(cart.totalPrice?.centAmount || 0);
+  const dispatch = useAppDispatch();
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const clearBasketHandle = () => {
     setModalIsShown(true);
   };
 
-  const cartClearHandle = () => {
-    // setMockArray([]);
+  const cartClearHandle = async () => {
+    await dispatch(removeCart());
+    await dispatch(getCart());
     setModalIsShown(false);
   };
 
@@ -52,8 +54,13 @@ const BasketContent = () => {
               <div className={cl.full_price__wrapper}>
                 <span className={cl.full_price__wrapper_text}>Total</span>
                 <hr className={cl.full_price__wrapper_dash} />
-                <div>
-                  <span onClick={clearBasketHandle}>clear basket</span>
+                <div className={cl.full_price__bottom_wrapper}>
+                  <span
+                    className={cl.full_price__bottom_wrapper_clear}
+                    onClick={clearBasketHandle}
+                  >
+                    clear basket
+                  </span>
                   <span className={cl.full_price__wrapper_text}>
                     {FULL_PRICE}
                   </span>
@@ -66,24 +73,6 @@ const BasketContent = () => {
         )}
       </div>
     </>
-    // <div className={cl.main__wrapper}>
-    //   <h1 className={cl.main__title}>Shopping Bag</h1>
-    //   {modalIsShown && (
-    //     <ClearModal cartClearHandle={cartClearHandle} closeModal={closeModal} />
-    //   )}
-    //   {mockArray.length ? (
-    //     <>
-    //       <BasketCard />
-    //       <BasketCard />
-    //       <BasketCard />
-    //       <Button isMain={true} onClick={clearBasketHandle}>
-    //         Clear cart
-    //       </Button>
-    //     </>
-    //   ) : (
-    //     <EmptyCart />
-    //   )}
-    // </div>
   );
 };
 

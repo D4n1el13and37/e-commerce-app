@@ -1,0 +1,33 @@
+.price {
+  &__wrapper {
+    display: flex;
+  }
+
+  &__single_product {
+    width: 100%;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      font-size: var(--price-font-size);
+      line-height: 32px;
+      color: var(--primary-color, #758963);
+    }
+
+    .price__old {
+      margin-left: 10px;
+      font-size: var(--second-font-size);
+      text-decoration: line-through;
+      text-decoration-color: var(--primary-color, #758963);
+      color: var(--grey-color);
+    }
+  }
+}

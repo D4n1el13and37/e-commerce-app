@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import EmptyCart from '../empty/EmptyCart';
-
 import cl from './BasketContent.module.scss';
 import ClearModal from '../clear/ClearModal';
 import useAppSelector from '../../../../hooks/useAppSelector';
@@ -15,17 +14,20 @@ const BasketContent = () => {
   const dispatch = useAppDispatch();
   const [modalIsShown, setModalIsShown] = useState(false);
 
-  const clearBasketHandle = () => {
+  const openModal = () => {
     setModalIsShown(true);
+    document.body.style.overflow = 'hidden'; // for block scrolling
+  };
+
+  const closeModal = () => {
+    setModalIsShown(false);
+    document.body.style.overflow = 'auto';
   };
 
   const cartClearHandle = async () => {
     await dispatch(removeCart());
+    // we need to get cart after remove otherwise we got error
     await dispatch(getCart());
-    setModalIsShown(false);
-  };
-
-  const closeModal = () => {
     setModalIsShown(false);
   };
 
@@ -57,7 +59,7 @@ const BasketContent = () => {
                 <div className={cl.full_price__bottom_wrapper}>
                   <span
                     className={cl.full_price__bottom_wrapper_clear}
-                    onClick={clearBasketHandle}
+                    onClick={openModal}
                   >
                     clear basket
                   </span>

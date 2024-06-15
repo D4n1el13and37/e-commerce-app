@@ -1,8 +1,10 @@
 import Header from '../../components/header/Header';
 import classes from './AboutUs.module.scss';
 import Footer from '../../components/footer/Footer';
-import Infographic from './Infographic';
-import DeveloperBox from './DeveloperBox';
+import Infographic from './components/Infographic';
+import DeveloperBox from './components/DeveloperBox';
+
+import logoRS from '../../../public/logo-rsschool3.png';
 
 const AboutUs = () => {
   const ourStack = [
@@ -62,11 +64,7 @@ const AboutUs = () => {
           <DeveloperBox />
 
           <a href="https://rs.school/" target="_blank">
-            <img
-              className={classes.logo}
-              src="src/pages/AboutUs/logo-rsschool3.png"
-              alt="Logo RS School"
-            />
+            <img className={classes.logo} src={logoRS} alt="Logo RS School" />
           </a>
         </div>
       </main>

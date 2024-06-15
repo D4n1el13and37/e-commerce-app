@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './AboutUs.module.scss';
+import classes from '../AboutUs.module.scss';
 
 interface InfographicProps {
   subheader: string;

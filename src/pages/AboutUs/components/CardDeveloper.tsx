@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 
-import classes from './AboutUs.module.scss';
+import classes from '../AboutUs.module.scss';
 import TelegramIcon from './TelegramIcon';
 import GitIcon from './GitIcon';
 

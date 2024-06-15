@@ -16,7 +16,7 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
 import BasketPage from './pages/Basket/BasketPage';
-import { getCart /* getCreateCart */ } from './store/cartSlice';
+import { getCart /* getCreateCart */, getDiscounts } from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +29,7 @@ function App() {
 
   useEffect(() => {
     dispatch(autorizationByToken());
+    dispatch(getDiscounts());
 
     const cartCheck = async () => {
       try {

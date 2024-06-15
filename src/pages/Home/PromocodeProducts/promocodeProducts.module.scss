@@ -11,6 +11,10 @@
 .promocodeCard {
   grid-column: 1/4;
 
+  @media (max-width: (1355px)) {
+    grid-column: 1/-1;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     perspective: 1000px;
     transition: transform var(--duration) ease-in-out;
@@ -36,6 +40,20 @@
       &:hover {
         transform: rotateX(var(--x-rotation)) rotateY(var(--y-rotation));
       }
+    }
+
+    @media (max-width: (1355px)) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    @media (max-width: (500px)) {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: 48px;
     }
   }
 
@@ -80,11 +98,20 @@
   &__promocodeWrapper {
     position: relative;
     margin-top: 46px;
+
+    @media (max-width: (1355px)) {
+      margin-top: 0;
+    }
   }
 }
 
 .productList {
   grid-column: 4/ -1;
+
+  @media (max-width: (1355px)) {
+    grid-column: 1/-1;
+    margin: 0 auto;
+  }
 }
 
 .banner {
@@ -95,10 +122,14 @@
   border-radius: 12px;
   padding: 84px;
   width: 100%;
-  height: 510px;
+  min-height: 510px;
   background-image: url(../../../../public/bart-zimny-W5XTTLpk1-I-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (max-width: (500px)) {
+    padding: 24px;
+  }
 
   &__textBlock {
     display: flex;
@@ -106,9 +137,13 @@
     justify-content: center;
     border-radius: 12px;
     padding: 48px;
-    width: 500px;
-    height: 338px;
+    min-height: 338px;
+    max-width: 500px;
     background: rgba(255, 255, 255, 0.9);
+
+    @media (max-width: (500px)) {
+      padding: 24px;
+    }
   }
 
   &__header {
@@ -167,6 +202,10 @@
   display: flex;
   margin-top: 48px;
   gap: 24px;
+
+  @media (max-width: (1024px)) {
+    flex-direction: column;
+  }
 }
 
 .smallBaner {
@@ -176,9 +215,23 @@
   height: 368px;
   background: #fff;
 
+  @media (max-width: (1024px)) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: (500px)) {
+    flex-direction: column;
+  }
+
   &__img {
     border-radius: 12px 0 0 12px;
     width: 50%;
+
+    @media (max-width: (500px)) {
+      border-radius: 12px 12px 0 0;
+      width: 100%;
+    }
   }
 
   &__info {
@@ -187,6 +240,10 @@
     justify-content: center;
     padding: 48px;
     width: 50%;
+
+    @media (max-width: (500px)) {
+      width: 100%;
+    }
   }
 
   &__title {

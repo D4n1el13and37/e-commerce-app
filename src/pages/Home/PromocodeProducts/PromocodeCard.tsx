@@ -57,8 +57,10 @@ const PromocodeCard: React.FC<PromocodeCardProps> = ({
         }}
         className={classes.promocodeCard__card}
       >
-        <p className={classes.promocodeCard__name}>{name}</p>
-        <p className={classes.promocodeCard__text}>{text}</p>
+        <div>
+          <p className={classes.promocodeCard__name}>{name}</p>
+          <p className={classes.promocodeCard__text}>{text}</p>
+        </div>
         <div className={classes.promocodeCard__promocodeWrapper}>
           <span
             onClick={savePromocode}

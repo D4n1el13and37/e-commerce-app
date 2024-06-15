@@ -26,6 +26,7 @@ const ProductPage: React.FC = () => {
   }, [dispatch, productId]);
 
   useEffect(() => {
+    // to scroll into top of the page after transition
     window.scrollTo(0, 0);
   }, [productId]);
 

@@ -113,7 +113,6 @@
   gap: 12px;
 
   @media (max-width: (1200px)) {
-    // flex-flow: wrap;
     flex-direction: row;
   }
 
@@ -163,9 +162,6 @@
     font-size: var(--third-font-size);
   }
 
-  &__role {
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     transition:
       background var(--duration) ease-in-out,
@@ -185,8 +181,8 @@
   background: var(--light-color);
 
   @media (max-width: (1200px)) {
-    height: auto;
     width: 100%;
+    height: auto;
   }
 
   &__wrapper {

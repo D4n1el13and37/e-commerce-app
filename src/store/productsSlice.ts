@@ -309,18 +309,19 @@ const productsSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
       })
-      .addCase(fetchSearchProducts.pending, (state) => {
-        const newState = state;
-        newState.isLoading = true;
-      })
-      .addCase(fetchSearchProducts.fulfilled, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
-      .addCase(fetchSearchProducts.rejected, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
+      // ? Loader when we use search
+      // .addCase(fetchSearchProducts.pending, (state) => {
+      //   const newState = state;
+      //   newState.isLoading = true;
+      // })
+      // .addCase(fetchSearchProducts.fulfilled, (state) => {
+      //   const newState = state;
+      //   newState.isLoading = false;
+      // })
+      // .addCase(fetchSearchProducts.rejected, (state) => {
+      //   const newState = state;
+      //   newState.isLoading = false;
+      // })
       .addCase(fetchProduct.pending, (state) => {
         const newState = state;
         newState.isLoading = true;

@@ -18,16 +18,17 @@
     background-position: right;
     background-size: 24px 24px;
     background-repeat: no-repeat;
+    cursor: text;
   }
-}
 
-.react-select__indicators {
-  display: none !important;
-}
+  .react-select__control {
+    border: none !important;
+    background-color: #fff !important;
+  }
 
-.react-select__control {
-  border: none !important;
-  background-color: #fff !important;
+  .react-select__indicators {
+    display: none !important;
+  }
 }
 
 .react-select__placeholder {

@@ -83,17 +83,11 @@ const Header: React.FC = () => {
             className={classes.basket}
             aria-label="Shopping cart"
           >
-            {/* //? totalLineItemQuantity or lineItems.length? */}
             {isCart.lineItems?.length > 0 && (
               <span className={classes.basket__quantity}>
                 {isCart.lineItems.length}
               </span>
             )}
-            {/* {isCart.totalLineItemQuantity && (
-                <span className={classes.cart__quantity}>
-                  {isCart.lineItems.length}
-                </span>
-              )} */}
           </a>
         </div>
 

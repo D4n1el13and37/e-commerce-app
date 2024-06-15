@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
 import cn from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import cl from './CatalogPage.module.scss';
 import Header from '../../components/header/Header';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -93,7 +94,14 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-      {(isLoading || isLoadingCart) && <Loader />}
+      <CSSTransition
+        in={isLoading || isLoadingCart}
+        classNames="loader"
+        timeout={300}
+        unmountOnExit
+      >
+        <Loader />
+      </CSSTransition>
       <main className={cn(cl.catalog__main)}>
         <div className={cn(cl.catalog__wrapper, 'container', 'grid')}>
           <Breadcrumbs />

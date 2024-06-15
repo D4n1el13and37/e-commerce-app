@@ -5,9 +5,8 @@ import Header from '../../components/header/Header';
 import Button from '../../components/ui/button/Button';
 import SliderProduct from '../../components/sliderProduct/SliderProduct';
 import Footer from '../../components/footer/Footer';
-
 import SuccessModal from '../UserProfile/Component/SuccesModal/SuccessModal';
-
+import UnsuccessModal from './modal/RemoveModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
 import { fetchProduct } from '../../store/productsSlice';
@@ -21,37 +20,39 @@ const ProductPage: React.FC = () => {
   );
 
   useEffect(() => {
-    // to scroll into top of the page after transition
-    window.scrollTo(0, 0);
     if (productId) {
       dispatch(fetchProduct(productId));
     }
   }, [dispatch, productId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
+
   const isCart = useAppSelector((state) => state.cart.cart);
 
   const idCartProduct = isCart.lineItems
     ? isCart.lineItems.find((item) => item.productId === productId)
-    : false;
+    : undefined;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalState, setModalState] = useState({ type: '', isOpen: false });
 
   const closeModalAfterDelay = () => {
     setTimeout(() => {
-      setIsModalOpen(false);
+      setModalState((prevState) => ({ ...prevState, isOpen: false }));
     }, 650);
   };
 
   const handleAddToCart = (cardId: string = '') => {
     dispatch(getAddToCart(cardId));
-    setIsModalOpen(true);
+    setModalState({ type: 'success', isOpen: true });
     closeModalAfterDelay();
   };
 
   const handleRemoveFromCart = () => {
     if (idCartProduct) {
       dispatch(getChangeQuantity({ productId: idCartProduct.id, quantity: 0 }));
-      setIsModalOpen(true);
+      setModalState({ type: 'unsuccess', isOpen: true });
       closeModalAfterDelay();
     }
   };
@@ -78,12 +79,12 @@ const ProductPage: React.FC = () => {
               <div className={s.product__info_top}>
                 <h1 className={s.product__name}>{prod?.name[language]}</h1>
                 <div className={s.product__price}>
-                  <div className={s.product__price_current}>
-                    {salePriceOutput ? `${salePriceOutput} €` : ''}
-                  </div>
-                  <div className={s.product__price_old}>
-                    {currentPrice ? `${currentPrice} €` : ''}
-                  </div>
+                  {salePriceOutput && (
+                    <div className={s.product__price_current}>
+                      {salePriceOutput} €
+                    </div>
+                  )}
+                  <div className={s.product__price_old}>{currentPrice} €</div>
                 </div>
                 <p className={s.product__descr}>
                   {prod?.description?.[language]}
@@ -116,7 +117,12 @@ const ProductPage: React.FC = () => {
                   </Button>
                 )}
               </div>
-              <SuccessModal isOpen={isModalOpen} />
+              <SuccessModal
+                isOpen={modalState.type === 'success' && modalState.isOpen}
+              />
+              <UnsuccessModal
+                isOpen={modalState.type === 'unsuccess' && modalState.isOpen}
+              />
             </div>
           </div>
         </section>
@@ -125,4 +131,5 @@ const ProductPage: React.FC = () => {
     </>
   );
 };
+
 export default ProductPage;

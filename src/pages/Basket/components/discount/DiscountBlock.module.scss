@@ -1,0 +1,27 @@
+.content {
+  &__wrapper {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 24px 46px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    gap: 6px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 32px;
+    color: #323334;
+  }
+
+  &__form {
+    display: flex;
+    gap: var(--gap);
+  }
+}

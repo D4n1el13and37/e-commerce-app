@@ -43,7 +43,7 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className="search">
+    <search className="search">
       <AsyncSelect
         cacheOptions
         loadOptions={loadOptions}
@@ -53,7 +53,7 @@ const Search: React.FC = () => {
         classNamePrefix="react-select"
         noOptionsMessage={() => 'Enter plant name'}
       />
-    </div>
+    </search>
   );
 };
 

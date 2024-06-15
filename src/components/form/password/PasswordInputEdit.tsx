@@ -18,7 +18,7 @@ const PasswordFieldEdit: React.FC<PasswordProps> = ({
   readOnly,
   onClick,
   onChange,
-  registerPassword,
+  registerPassword = 'password',
   label,
 }) => {
   const {
@@ -43,7 +43,7 @@ const PasswordFieldEdit: React.FC<PasswordProps> = ({
         label={label}
         autoComplete="current-password"
         type={showPassword ? 'text' : 'password'}
-        id="password"
+        id={registerPassword}
         placeholder="Enter password"
         readOnly={readOnly}
         onClick={onClick}

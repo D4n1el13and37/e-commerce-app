@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ProductCard from '../../../../components/card/ProductCard';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import { RootState } from '../../../../store/store';
@@ -15,7 +14,8 @@ const ProductList: React.FC<ProductListProps> = ({ limit = 20 }) => {
     (state: RootState) => state.products
   );
 
-  const displayedProducts = productsList.slice(0, limit); // отображение только 3 продуктов
+  // I added to display 3 products on the home page.
+  const displayedProducts = productsList.slice(0, limit);
 
   return (
     <div className={cl.wrapper}>
@@ -28,16 +28,16 @@ const ProductList: React.FC<ProductListProps> = ({ limit = 20 }) => {
           const linkPath = `/catalog/product/${id}`;
 
           return (
-            <Link to={linkPath} key={id}>
-              <ProductCard
-                key={id}
-                title={title}
-                description={description}
-                frontImage={imageData}
-                price={price}
-                salePrice={salePrice}
-              />
-            </Link>
+            <ProductCard
+              key={id}
+              title={title}
+              description={description}
+              frontImage={imageData}
+              price={price}
+              salePrice={salePrice}
+              linkPath={linkPath}
+              id={id}
+            />
           );
         })
       ) : (

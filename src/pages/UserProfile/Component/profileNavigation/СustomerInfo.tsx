@@ -62,6 +62,9 @@ const CustomerInfo: React.FC = () => {
   function removeMessage() {
     setTimeout(() => setIsEditSuccess(false), 3000);
   }
+  function removeError() {
+    setTimeout(() => setIsError(''), 3000);
+  }
 
   const onSubmit: SubmitHandler<CustomerInfoData> = async (data) => {
     try {
@@ -102,8 +105,8 @@ const CustomerInfo: React.FC = () => {
       removeMessage();
     } catch (e) {
       if (e instanceof Error) {
-        setIsError(e.message);
-        throw new Error(e.message);
+        setIsError('e');
+        removeError();
       }
     }
   };
@@ -176,11 +179,7 @@ const CustomerInfo: React.FC = () => {
             </div>
           </div>
           <div className={classes.server__error}>
-            {isError && (
-              <span className="error">
-                There is already an existing customer with the provided email
-              </span>
-            )}
+            {isError && <span className="error">Email already in use</span>}
             <Button
               type="submit"
               isFilled={true}

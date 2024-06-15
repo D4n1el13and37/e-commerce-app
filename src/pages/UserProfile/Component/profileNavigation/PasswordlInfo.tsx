@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { updateCustomerPassword } from '../../../../api/Customer/customer';
@@ -7,10 +6,13 @@ import { RootState } from '../../../../store/store';
 import { setDataUser } from '../../../../store/customerSlice';
 
 import Button from '../../../../components/ui/button/Button';
-import SuccessModal from '../SuccesModal/SuccessModal';
 
 import classes from '../../userProfile.module.scss';
 import PasswordFieldEdit from '../../../../components/form/password/PasswordInputEdit';
+import { login, logout } from '../../../../store/authSlice';
+import ModalRegistration from '../../../Register/Component/Modal/Modal';
+import useAppDispatch from '../../../../hooks/useAppDispatch';
+import useAppSelector from '../../../../hooks/useAppSelector';
 
 interface PersonalInfoData {
   email: string;
@@ -19,8 +21,10 @@ interface PersonalInfoData {
 }
 
 const PersonalInfo: React.FC = () => {
-  const dispatch = useDispatch();
-  const dataUser = useSelector((state: RootState) => state.customer.dataUser);
+  const dispatch = useAppDispatch();
+  const dataUser = useAppSelector(
+    (state: RootState) => state.customer.dataUser
+  );
 
   const methods = useForm<PersonalInfoData>({
     mode: 'onChange',
@@ -39,7 +43,6 @@ const PersonalInfo: React.FC = () => {
     if (dataUser) {
       reset({
         email: dataUser.email || '',
-        // password: dataUser.password || '',
       });
     }
   }, [dataUser, reset]);
@@ -64,16 +67,21 @@ const PersonalInfo: React.FC = () => {
 
           const updatedCustomerPassword =
             await updateCustomerPassword(updateData);
-          dispatch(setDataUser(updatedCustomerPassword));
+          await dispatch(setDataUser(updatedCustomerPassword));
         }
       }
+
       setIsEdit(false);
       setIsEditSuccess(true);
       removeMessage();
+
+      setTimeout(() => {
+        dispatch(logout());
+        dispatch(login({ email: data.email, password: data.newPassword }));
+      }, 2000);
     } catch (e) {
       if (e instanceof Error) {
         setIsError(e.message);
-        throw new Error(e.message);
       }
     }
   };
@@ -143,9 +151,15 @@ const PersonalInfo: React.FC = () => {
               Save Changes
             </Button>
           </div>
-          <SuccessModal isOpen={isEditSuccess} />
+          {/* <SuccessModal isOpen={isEditSuccess} /> */}
         </form>
       </FormProvider>
+      <ModalRegistration
+        header="Password successfully changed"
+        subheader="You will be moved to the main page."
+        isOpen={isEditSuccess}
+        onRequestClose={() => setIsEditSuccess(false)}
+      />
     </div>
   );
 };

@@ -6,15 +6,21 @@ import { RootState } from '../../../../store/store';
 import cl from './ProductList.module.scss';
 import ProductNotFound from '../product_NotFound/ProductNotFound';
 
-const ProductList: React.FC = () => {
+interface ProductListProps {
+  limit?: number;
+}
+
+const ProductList: React.FC<ProductListProps> = ({ limit = 20 }) => {
   const { productsList, language } = useAppSelector(
     (state: RootState) => state.products
   );
 
+  const displayedProducts = productsList.slice(0, limit); // отображение только 3 продуктов
+
   return (
     <div className={cl.wrapper}>
-      {productsList.length > 0 ? (
-        productsList.map((product) => {
+      {displayedProducts.length > 0 ? (
+        displayedProducts.map((product) => {
           const title = product.title[language];
           const description = product.description![language];
           const imageData = product.images![0];

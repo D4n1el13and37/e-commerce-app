@@ -11,7 +11,7 @@ import {
   deleteCart,
   getActiveCart,
   updateCart,
-} from '../api/cart/cartMethonds';
+} from '../api/cart/cartMethods';
 import { RootState } from './store';
 
 export interface CartState {

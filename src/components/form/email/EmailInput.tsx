@@ -1,8 +1,9 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../ui/input/Input';
+import { PersonalInfoProps } from '../formInterface';
 
-const EmailInput: React.FC = () => {
+const EmailInput: React.FC<PersonalInfoProps> = ({ onClick, onChange }) => {
   const {
     register,
     formState: { errors },
@@ -15,6 +16,7 @@ const EmailInput: React.FC = () => {
       autoComplete="email"
       id="email"
       placeholder="user@example.com"
+      onClick={onClick}
       error={errors.email ? (errors.email.message as string) : undefined}
       {...register('email', {
         required: 'Email is required',
@@ -65,6 +67,7 @@ const EmailInput: React.FC = () => {
           return true;
         },
       })}
+      onChange={onChange}
     />
   );
 };

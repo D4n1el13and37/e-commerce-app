@@ -6,14 +6,14 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
-import './Slider.scss';
+import './SliderMain.scss';
 
 import slide1 from './1.png';
 import slide2 from './2.png';
 import slide3 from './3.png';
 import slide4 from './4.png';
 
-const Slider: React.FC = () => {
+const SliderMain: React.FC = () => {
   const slidesData = [
     { src: slide1, descr: 'Flowering' },
     { src: slide2, descr: 'Foliage' },
@@ -51,6 +51,7 @@ const Slider: React.FC = () => {
         prevSlideMessage: 'Previous slide',
         nextSlideMessage: 'Next slide',
       }}
+      rewind={true}
       autoHeight={true}
     >
       {slidesData.map((slide, index) => (
@@ -62,4 +63,4 @@ const Slider: React.FC = () => {
   );
 };
 
-export default Slider;
+export default SliderMain;

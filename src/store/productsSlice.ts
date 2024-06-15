@@ -24,7 +24,7 @@ export interface CustomProduct {
   title: LocalizedString;
   description: LocalizedString;
   price: number;
-  salePrice: number;
+  salePrice?: number;
   images: Image[] | undefined;
   id?: string;
 }
@@ -77,7 +77,7 @@ export const fetchProducts = createAsyncThunk(
           price:
             card.masterData.current.masterVariant.prices![0].value.centAmount,
           salePrice:
-            card.masterData.current.masterVariant.prices![0].discounted!.value
+            card.masterData.current.masterVariant.prices![0].discounted?.value
               .centAmount,
           id: card.id,
           images: card.masterData.current.masterVariant.images,
@@ -135,7 +135,7 @@ export const fetchProductsByCategory = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };

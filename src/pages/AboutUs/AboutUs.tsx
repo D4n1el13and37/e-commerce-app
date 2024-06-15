@@ -1,5 +1,4 @@
 import Header from '../../components/header/Header';
-import CardDeveloper from './CardDeveloper';
 import classes from './AboutUs.module.scss';
 import Footer from '../../components/footer/Footer';
 import Infographic from './Infographic';

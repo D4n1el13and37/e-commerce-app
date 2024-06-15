@@ -42,13 +42,15 @@ const ProductPage: React.FC = () => {
     }, 650);
   };
 
-  const handleCartAction = (cardId: string = '') => {
+  const handleAddToCart = (cardId: string = '') => {
+    dispatch(getAddToCart(cardId));
+    setIsModalOpen(true);
+    closeModalAfterDelay();
+  };
+
+  const handleRemoveFromCart = () => {
     if (idCartProduct) {
-      dispatch(getChangeQuantity({ productId: idCartProduct.id, quanity: 0 }));
-      setIsModalOpen(true);
-      closeModalAfterDelay();
-    } else {
-      dispatch(getAddToCart(cardId));
+      dispatch(getChangeQuantity({ productId: idCartProduct.id, quantity: 0 }));
       setIsModalOpen(true);
       closeModalAfterDelay();
     }
@@ -88,17 +90,31 @@ const ProductPage: React.FC = () => {
                 </p>
               </div>
               <div className={s.product__info_card}>
-                <Button
-                  isFilled={true}
-                  data-in-cart={!!idCartProduct}
-                  isMain={true}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleCartAction(productId);
-                  }}
-                >
-                  {idCartProduct ? 'Remove From Cart' : 'Add To Shopping Cart'}
-                </Button>
+                {idCartProduct ? (
+                  <Button
+                    isFilled={true}
+                    data-in-cart={!!idCartProduct}
+                    isMain={true}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleRemoveFromCart();
+                    }}
+                  >
+                    Remove From Cart
+                  </Button>
+                ) : (
+                  <Button
+                    isFilled={true}
+                    data-in-cart={!!idCartProduct}
+                    isMain={true}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleAddToCart(productId);
+                    }}
+                  >
+                    Add To Shopping Cart
+                  </Button>
+                )}
               </div>
               <SuccessModal isOpen={isModalOpen} />
             </div>

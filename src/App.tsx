@@ -15,7 +15,7 @@ import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
-import { getCart /* getCreateCart */ } from './store/cartSlice';
+import { /* getCart */ getCreateCart } from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -32,11 +32,11 @@ function App() {
     const cartCheck = async () => {
       try {
         //* for get active cart
-        await dispatch(getCart());
+        // await dispatch(getCart());
         // console.log('try', res);
 
         //* for create cart or reset the cart
-        // await dispatch(getCreateCart());
+        await dispatch(getCreateCart());
         // console.log('create', res);
       } catch {
         // const res = await dispatch(getCreateCart());

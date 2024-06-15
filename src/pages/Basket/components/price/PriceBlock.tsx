@@ -7,7 +7,7 @@ interface PriceProps {
   price: Price;
 }
 
-const PriceBlock: React.FC<PriceProps> = ({ price /* quantity */ }) => {
+const PriceBlock: React.FC<PriceProps> = ({ price }) => {
   const DISCOUNT_PRICE = price.discounted?.value.centAmount;
   const PRICE = price.value.centAmount;
 
@@ -28,11 +28,11 @@ const PriceBlock: React.FC<PriceProps> = ({ price /* quantity */ }) => {
             </div>
           </>
         ) : (
-          <>
-            <span className={cl.right_side__price}>
+          <div className={cl.price__action}>
+            <span className={cl.price__new}>
               {madeCorrectOutputPrice(PRICE)}
             </span>
-          </>
+          </div>
         )}
       </div>
     </div>

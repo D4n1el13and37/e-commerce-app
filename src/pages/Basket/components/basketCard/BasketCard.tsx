@@ -96,7 +96,7 @@ const BasketCard: React.FC<BasketItem> = ({
               ) : (
                 <span>
                   {madeCorrectOutputPrice(
-                    quantity * Number(price.discounted?.value.centAmount)
+                    quantity * Number(price.value.centAmount)
                   )}
                 </span>
               )}

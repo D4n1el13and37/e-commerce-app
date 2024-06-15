@@ -1,4 +1,10 @@
-import { Cart, CartDraft, CartUpdate } from '@commercetools/platform-sdk';
+import {
+  Cart,
+  // CartDiscount,
+  CartDraft,
+  CartUpdate,
+  DiscountCodePagedQueryResponse,
+} from '@commercetools/platform-sdk';
 import getApiRoot from '../api';
 import { projectKey } from '../clientConfig';
 
@@ -78,6 +84,28 @@ export async function deleteCart(ID: string, version: number): Promise<Cart> {
       .withId({ ID })
       .delete({ queryArgs: { version } })
       .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login via');
+    }
+  }
+}
+
+// not at cart jst getting codes
+export async function getDiscountCodes(): Promise<DiscountCodePagedQueryResponse> {
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .discountCodes()
+      .get()
+      .execute();
+
+    // console.log('Discount Codes:', res.body.results);
 
     return res.body;
   } catch (error) {

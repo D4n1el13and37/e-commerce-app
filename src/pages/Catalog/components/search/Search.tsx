@@ -43,7 +43,7 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className={s.search}>
+    <search className={s.search}>
       <AsyncSelect
         cacheOptions
         loadOptions={loadOptions}
@@ -52,7 +52,7 @@ const Search: React.FC = () => {
         isClearable
         classNamePrefix="react-select"
       />
-    </div>
+    </search>
   );
 };
 

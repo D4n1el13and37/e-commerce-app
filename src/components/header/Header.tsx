@@ -78,18 +78,16 @@ const Header: React.FC = () => {
               {isAuthorized && <HeaderUser />}
             </div>
           </nav>
-          <a href="/basket" className={classes.cart} aria-label="Shopping cart">
-            {/* //? totalLineItemQuantity or lineItems.length? */}
+          <a
+            href="/basket"
+            className={classes.basket}
+            aria-label="Shopping cart"
+          >
             {isCart.lineItems?.length > 0 && (
-              <span className={classes.cart__quantity}>
+              <span className={classes.basket__quantity}>
                 {isCart.lineItems.length}
               </span>
             )}
-            {/* {isCart.totalLineItemQuantity && (
-                <span className={classes.cart__quantity}>
-                  {isCart.lineItems.length}
-                </span>
-              )} */}
           </a>
         </div>
 

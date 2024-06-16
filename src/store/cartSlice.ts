@@ -13,7 +13,6 @@ import {
 } from '@commercetools/platform-sdk';
 import {
   createCart,
-  deleteCart,
   getActiveCart,
   getDiscountCodes,
   updateCart,
@@ -93,7 +92,7 @@ export const getAddToCart = createAsyncThunk(
 export const getChangeQuantity = createAsyncThunk(
   'cart/changeQuantity',
   async (
-    { productId, quanity }: { productId: string; quanity: number },
+    { productId, quantity }: { productId: string; quantity: number },
     thunkAPI
   ) => {
     try {
@@ -102,7 +101,7 @@ export const getChangeQuantity = createAsyncThunk(
       const addItemAction: CartChangeLineItemQuantityAction = {
         action: 'changeLineItemQuantity',
         lineItemId: productId,
-        quantity: quanity,
+        quantity,
       };
       const { version, id } = state.cart.cart;
       const cartDraft: CartUpdate = { version, actions: [addItemAction] };
@@ -118,20 +117,31 @@ export const getChangeQuantity = createAsyncThunk(
   }
 );
 
-export const removeCart = createAsyncThunk(
+export const clearCart = createAsyncThunk(
   'cart/clearCart',
   async (_, thunkAPI) => {
     try {
       const state: RootState = thunkAPI.getState() as RootState;
-      const { version, id } = state.cart.cart;
-      const response = await deleteCart(id, version);
+      const { version, id, lineItems } = state.cart.cart;
+
+      const actions: CartChangeLineItemQuantityAction[] = lineItems.map(
+        (item) => ({
+          action: 'changeLineItemQuantity',
+          lineItemId: item.id,
+          quantity: 0,
+        })
+      );
+
+      const cartDraft: CartUpdate = { version, actions };
+
+      const response = await updateCart(id, cartDraft);
 
       return response;
     } catch (error) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error cleaning cart');
+      throw new Error('Error clearing cart');
     }
   }
 );
@@ -289,16 +299,17 @@ const cartSlice = createSlice({
           0
         );
       })
-      .addCase(removeCart.pending, (state) => {
+      .addCase(clearCart.pending, (state) => {
         const newState = state;
         newState.isLoading = true;
       })
-      .addCase(removeCart.fulfilled, (state, action) => {
+      .addCase(clearCart.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
-      .addCase(removeCart.rejected, (state) => {
+      .addCase(clearCart.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

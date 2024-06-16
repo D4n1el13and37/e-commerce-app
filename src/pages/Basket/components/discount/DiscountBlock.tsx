@@ -1,13 +1,12 @@
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { DiscountCodeReference } from '@commercetools/platform-sdk';
 import React, { useState } from 'react';
 import Input from '../../../../components/ui/input/Input';
 import Button from '../../../../components/ui/button/Button';
 import cl from './DiscountBlock.module.scss';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
-import {
-  applyDiscount /* , getCart */,
-  //   getDiscounts,
-} from '../../../../store/cartSlice';
+import { applyDiscount, deleteDiscount } from '../../../../store/cartSlice';
+import useAppSelector from '../../../../hooks/useAppSelector';
 
 interface DiscountProps {
   discount: string;
@@ -16,16 +15,24 @@ interface DiscountProps {
 
 const DiscountBlock = () => {
   const dispatch = useAppDispatch();
+  const { discountsList, cart } = useAppSelector((state) => state.cart);
 
-  //   getDiscountCodes(); /* .then((data) => console.log(data)); */
-  //   getDiscountCodeById(
-  //     'BASKETGOAL777'
-  //   ); /* .then((data) => console.log(data)); */
+  const APPLIED_DISCOUNTS = discountsList.filter((item) =>
+    cart.discountCodes.some((discount) => discount.discountCode.id === item.id)
+  );
 
   const [isError, setIsError] = useState('');
   function removeError() {
     setTimeout(() => setIsError(''), 3000);
   }
+
+  const handleRemoveDiscount = (id: string) => {
+    const discount: DiscountCodeReference = {
+      id,
+      typeId: 'discount-code',
+    };
+    dispatch(deleteDiscount(discount));
+  };
 
   const methods = useForm<DiscountProps>({
     mode: 'onSubmit',
@@ -39,9 +46,7 @@ const DiscountBlock = () => {
   const onSubmit: SubmitHandler<DiscountProps> = async (data) => {
     const { discount } = data;
     try {
-      dispatch(applyDiscount(discount));
-      //  /*  const res =  */await dispatch(getCart());
-      //   console.log(res);
+      await dispatch(applyDiscount(discount)).unwrap();
     } catch (e) {
       if (typeof e === 'string') {
         setIsError(e);
@@ -79,8 +84,16 @@ const DiscountBlock = () => {
               <span className={`error`}>{errors.discount.message}</span>
             )}
           </div>
+          <div className={cl.discount_applied__list}>
+            {APPLIED_DISCOUNTS.map((item) => (
+              <div className={cl.discount_applied__item} key={item.id}>
+                <span>{item.code}</span>
+                <span onClick={() => handleRemoveDiscount(item.id)}>X</span>
+              </div>
+            ))}
+          </div>
           <div className={cl.server__error}>
-            {isError && <span className={`error`}>Incorrect promocode</span>}
+            {!!isError && <span className={`error`}>Incorrect promocode</span>}
             <Button isMain={true} isFilled={true}>
               Apply
             </Button>

@@ -25,3 +25,34 @@
     gap: var(--gap);
   }
 }
+
+.server__error {
+  button {
+    width: 100%;
+  }
+}
+
+.error__container {
+  position: absolute;
+  top: 110px;
+  font-size: 14px;
+}
+
+.discount_applied {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--main-font-size);
+    color: var(--primary-color);
+  }
+
+  &__item span:last-child {
+    cursor: pointer;
+  }
+}

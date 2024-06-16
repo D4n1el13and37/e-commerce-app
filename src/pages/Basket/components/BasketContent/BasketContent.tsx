@@ -5,7 +5,7 @@ import ClearModal from '../clear/ClearModal';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import madeCorrectOutputPrice from '../../../../utils/madeCorrectOutputPrice';
 import BasketCard from '../basketCard/BasketCard';
-import { getCart, removeCart } from '../../../../store/cartSlice';
+import { clearCart, deleteDiscounts } from '../../../../store/cartSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 import DiscountBlock from '../discount/DiscountBlock';
 
@@ -26,11 +26,20 @@ const BasketContent = () => {
   };
 
   const cartClearHandle = async () => {
-    await dispatch(removeCart());
-    // we need to get cart after remove otherwise we got error
-    await dispatch(getCart());
+    await dispatch(deleteDiscounts());
+    await dispatch(clearCart());
     setModalIsShown(false);
   };
+
+  function calculateTotalWithoutDiscount(): number {
+    return cartItems.reduce(
+      (prev, curr) => prev + curr.price.value.centAmount * curr.quantity,
+      0
+    );
+  }
+  const TOTAL_WITHOUT_DISCONT = madeCorrectOutputPrice(
+    calculateTotalWithoutDiscount()
+  );
 
   return (
     <>
@@ -49,6 +58,8 @@ const BasketContent = () => {
                   productId={card.productId}
                   name={card.name['en-US']}
                   price={card.price}
+                  discount={card.discountedPricePerQuantity}
+                  totalPrice={card.totalPrice.centAmount}
                   image={card.variant.images!}
                   attributes={card.variant.attributes!}
                   quantity={card.quantity}
@@ -65,9 +76,16 @@ const BasketContent = () => {
                     >
                       clear basket
                     </span>
-                    <span className={cl.full_price__wrapper_text}>
-                      {FULL_PRICE}
-                    </span>
+                    <div className={cl.full_price__wrapper_output}>
+                      {TOTAL_WITHOUT_DISCONT !== FULL_PRICE && (
+                        <span className={cl.full_price__wrapper_old}>
+                          {TOTAL_WITHOUT_DISCONT}
+                        </span>
+                      )}
+                      <span className={cl.full_price__wrapper_text}>
+                        {FULL_PRICE}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </>

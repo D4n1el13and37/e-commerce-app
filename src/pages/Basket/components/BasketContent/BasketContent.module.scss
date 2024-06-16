@@ -24,11 +24,24 @@
     font-size: 20px;
     gap: 12px;
 
+    &_output {
+      display: flex;
+      align-items: center;
+    }
+
     &_text {
       align-self: flex-end;
       font-size: 20px;
       text-transform: capitalize;
       color: var(--text-color);
+    }
+
+    &_old {
+      margin-right: 10px;
+      font-size: var(--second-font-size);
+      text-decoration: line-through;
+      text-decoration-color: var(--primary-color, #758963);
+      color: var(--grey-color);
     }
 
     &_dash {

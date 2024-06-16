@@ -7,9 +7,8 @@ import {
   CartDraft,
   CartRemoveDiscountCodeAction,
   CartUpdate,
-  // CartUpdateAction,
   DiscountCode,
-  // CartUpdateAction,
+  DiscountCodeReference,
   LineItem,
 } from '@commercetools/platform-sdk';
 import {
@@ -137,14 +136,11 @@ export const removeCart = createAsyncThunk(
   }
 );
 
-// export const getDi
 export const getDiscounts = createAsyncThunk(
   'cart/getDiscounts',
   async (_, thunkAPI) => {
     try {
       const response = await getDiscountCodes();
-
-      // console.log(response.results);
       return response.results;
     } catch (error) {
       if (error instanceof Error) {
@@ -170,8 +166,6 @@ export const applyDiscount = createAsyncThunk(
       const cartDraft: CartUpdate = { version, actions: addDiscount };
       const response = await updateCart(id, cartDraft);
 
-      // console.log(response.discountCodes);
-
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -183,7 +177,7 @@ export const applyDiscount = createAsyncThunk(
 );
 
 export const deleteDiscounts = createAsyncThunk(
-  'cart/removeDiscount',
+  'cart/removeDiscounts',
   async (_, thunkAPI) => {
     try {
       const state: RootState = thunkAPI.getState() as RootState;
@@ -208,15 +202,36 @@ export const deleteDiscounts = createAsyncThunk(
   }
 );
 
+export const deleteDiscount = createAsyncThunk(
+  'cart/removeDiscount',
+  async (discountCode: DiscountCodeReference, thunkAPI) => {
+    try {
+      const state: RootState = thunkAPI.getState() as RootState;
+
+      const action: CartRemoveDiscountCodeAction = {
+        action: 'removeDiscountCode',
+        discountCode,
+      };
+
+      const { version, id } = state.cart.cart;
+      const cartDraft: CartUpdate = { version, actions: [action] };
+
+      const response = await updateCart(id, cartDraft);
+
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error updating cart');
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {
-    /*     setCart: (state, action: PayloadAction<{ cart: Cart }>) => {
-      const newState = state;
-      newState.cart = action.payload.cart;
-    }, */
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getCart.pending, (state) => {
@@ -298,6 +313,33 @@ const cartSlice = createSlice({
         newState.cartItems = action.payload.lineItems;
       })
       .addCase(applyDiscount.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(getDiscounts.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(getDiscounts.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.discountsList = action.payload;
+      })
+      .addCase(getDiscounts.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(deleteDiscount.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(deleteDiscount.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(deleteDiscount.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

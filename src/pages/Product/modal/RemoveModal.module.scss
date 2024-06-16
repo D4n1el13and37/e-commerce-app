@@ -39,9 +39,10 @@
 
   img {
     position: absolute;
-    right: -94px;
+    right: -115px;
     bottom: 0;
     z-index: -1;
-    width: 100%;
+    width: 140%;
+    max-width: none;
   }
 }

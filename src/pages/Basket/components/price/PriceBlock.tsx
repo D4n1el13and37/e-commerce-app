@@ -8,15 +8,15 @@ interface PriceProps {
 }
 
 const PriceBlock: React.FC<PriceProps> = ({ price }) => {
-  const DISCOUNT_PRICE = price.discounted?.value.centAmount;
+  const discountPrice = price.discounted?.value.centAmount;
 
   return (
     <div className={cl.price__wrapper}>
       <div className={cl.price__single_product}>
-        {DISCOUNT_PRICE ? (
+        {discountPrice ? (
           <div className={cl.price__action}>
             <span className={cl.price__new}>
-              {madeCorrectOutputPrice(DISCOUNT_PRICE)}
+              {madeCorrectOutputPrice(discountPrice)}
             </span>
             <span className={cl.price__old}>
               {madeCorrectOutputPrice(price.value.centAmount)}

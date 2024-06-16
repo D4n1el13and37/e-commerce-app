@@ -8,20 +8,8 @@ interface AttributeProps {
   id: string;
 }
 
-const splitName = (name: string): string => {
-  let answer = '';
-  for (let i = 0; i < name.length; i += 1) {
-    if (name[i].toUpperCase() === name[i]) {
-      answer += ` ${name[i]}`;
-    } else {
-      answer += name[i];
-    }
-    if (i === 0) {
-      answer = answer[0].toUpperCase();
-    }
-  }
-  return answer;
-};
+const splitName = (name: string): string =>
+  name.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase());
 
 const AttributesBlock: React.FC<AttributeProps> = ({ attributes, id }) => (
   <>

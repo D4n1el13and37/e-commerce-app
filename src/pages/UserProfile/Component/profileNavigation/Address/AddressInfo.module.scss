@@ -1,0 +1,38 @@
+.addressBlock {
+  width: 200px;
+  height: 200px;
+  padding: 48px;
+
+  border-radius: 12px;
+  background: var(--light-color);
+
+  &__default {
+    color: #fff;
+    border-radius: 6px;
+    background: var(--primary-color, #758963);
+  }
+
+  &__info {
+    margin-top: 12px;
+  }
+
+  &__text {
+  }
+
+  &__buttonWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  &__buttton {
+  }
+
+  .edit {
+    color: var(--primary-color, #758963);
+  }
+
+  .del {
+    color: var(--grey-color, #989998);
+  }
+}

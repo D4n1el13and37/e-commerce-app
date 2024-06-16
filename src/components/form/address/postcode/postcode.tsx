@@ -2,10 +2,14 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../../ui/input/Input';
 import { AddressField } from '../../formInterface';
-
 import classes from '../../styleForm.module.scss';
+import { CountryOptionInterface } from '../../../../pages/Register/Component/AddressForm/countryOptions';
 
-const Postcode: React.FC<AddressField> = ({
+interface PostcodeProps extends AddressField {
+  selectedCountry: CountryOptionInterface | null;
+}
+
+const Postcode: React.FC<PostcodeProps> = ({
   onClick,
   onChange,
   name,
@@ -17,7 +21,7 @@ const Postcode: React.FC<AddressField> = ({
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `postalCode${id}`;
+  const nameId = id;
   const errorMessage = errors[nameId]?.message as string | undefined;
 
   return (

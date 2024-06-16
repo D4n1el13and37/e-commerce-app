@@ -3,6 +3,7 @@ import authReducer from './authSlice';
 import productsSlice from './productsSlice';
 import customerSlice from './customerSlice';
 import filterSlice from './filterSlice';
+import addressSlicer from './addressSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     products: productsSlice,
     customer: customerSlice,
     filters: filterSlice,
+    addresses: addressSlicer,
   },
 });
 

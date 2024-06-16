@@ -6,6 +6,7 @@ import PersonalInfo from './profileNavigation/PasswordlInfo';
 // import AddressInfo from './profileNavigation/AddressInfo';
 
 import classes from '../userProfile.module.scss';
+// import Address from './profileNavigation/Address';
 
 const ProfileInfo: React.FC = () => {
   const [activeTab, setActiveTab] = useState('СustomerInfo');
@@ -22,9 +23,11 @@ const ProfileInfo: React.FC = () => {
       case 'СustomerInfo':
         return <CustomerInfo />;
       // case 'ShippingInfo':
-      // return <AddressInfo addressType="Shipping" />;
+      //   return <Address />;
+      // case 'ShippingInfo':
+      //   return <AddressInfo addressType="Shipping" />;
       // case 'BillingInfo':
-      // return <AddressInfo addressType="Billing" />;
+      //   return <AddressInfo addressType="Billing" />;
       case 'PersonalInfo':
         return <PersonalInfo />;
       default:

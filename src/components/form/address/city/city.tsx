@@ -1,9 +1,8 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../../ui/input/Input';
-
-import classes from '../../styleForm.module.scss';
 import { AddressField } from '../../formInterface';
+import classes from '../../styleForm.module.scss';
 
 const City: React.FC<AddressField> = ({ name, onClick, onChange, id }) => {
   const {
@@ -11,7 +10,7 @@ const City: React.FC<AddressField> = ({ name, onClick, onChange, id }) => {
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `city${id}`;
+  const nameId = id;
   const errorMessage = errors[nameId]?.message as string | undefined;
   return (
     <div className={classes.input_container}>

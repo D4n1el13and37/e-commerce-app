@@ -28,7 +28,7 @@ function LoginPage() {
     mode: 'onChange',
     defaultValues: {
       email: 'cainowa123@gmail.com',
-      password: '123Qwerty123',
+      password: 'Qwerty1234',
     },
   });
   const {

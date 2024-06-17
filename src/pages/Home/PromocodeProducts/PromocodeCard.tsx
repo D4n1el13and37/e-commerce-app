@@ -32,7 +32,7 @@ const PromocodeCard: React.FC<PromocodeCardProps> = ({
   }
 
   return (
-    <article className={classes.promocodeCard}>
+    <div className={classes.promocodeCard}>
       <div
         onMouseEnter={(ev) => {
           // get reference to current card
@@ -74,7 +74,7 @@ const PromocodeCard: React.FC<PromocodeCardProps> = ({
           )}
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 

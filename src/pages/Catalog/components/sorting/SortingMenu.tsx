@@ -4,6 +4,9 @@ import { FilterValue } from '../../../../api/products/productsMethods';
 import { fetchProductsBySorting } from '../../../../store/productsSlice';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
 
+import '../search/Search.scss';
+import './SortingMenu.scss';
+
 const sortingOptions = [
   { value: 'price desc', label: 'Highest Price' },
   { value: 'price asc', label: 'Lowest Price' },
@@ -53,6 +56,8 @@ const SortingMenu: React.FC<SortingProps> = ({
 
   return (
     <Select
+      className="sorting__menu"
+      isSearchable={false}
       onChange={handleSortingChange}
       options={sortingOptions}
       classNamePrefix="react-select"

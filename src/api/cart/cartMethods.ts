@@ -41,7 +41,7 @@ export async function createCart(cart: CartDraft): Promise<Cart> {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during creating cart');
     }
   }
 }
@@ -64,7 +64,27 @@ export async function updateCart(
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during update cart');
+    }
+  }
+}
+
+export async function deleteCart(ID: string, version: number): Promise<Cart> {
+  try {
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .carts()
+      .withId({ ID })
+      .delete({ queryArgs: { version } })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during delete cart');
     }
   }
 }

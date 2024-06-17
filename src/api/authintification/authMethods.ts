@@ -1,4 +1,8 @@
-import { Customer, CustomerSignin } from '@commercetools/platform-sdk';
+import {
+  Customer,
+  CustomerSignin,
+  // MyCustomerSignin,
+} from '@commercetools/platform-sdk';
 import getApiRoot from '../api';
 import { projectKey } from '../clientConfig';
 import { RegisterFormFields } from '../../pages/Register/Component/interfaceRegister';
@@ -8,24 +12,19 @@ export async function loginWithPassword(
   email: string,
   password: string
 ): Promise<Customer> {
-  // change  to Customer from CustomerSignInResult
   try {
     const apiRoot = getApiRoot('password', { email, password });
-    const anonymousCartId = localStorage.getItem('cart-id');
+    const anonymousCartId = localStorage.getItem('cart-id') || undefined;
 
-    const customerSigninData: CustomerSignin = {
+    const customerSigninData: /* MyCustomerSignin */ CustomerSignin = {
       email,
       password,
       updateProductData: true,
-      anonymousCart: anonymousCartId
-        ? {
-            id: anonymousCartId,
-            typeId: 'cart',
-          }
-        : undefined,
-      anonymousCartSignInMode: anonymousCartId
-        ? 'MergeWithExistingCustomerCart'
-        : undefined,
+      anonymousCart: {
+        id: anonymousCartId,
+        typeId: 'cart',
+      },
+      anonymousCartSignInMode: 'MergeWithExistingCustomerCart',
     };
 
     const response = await apiRoot
@@ -37,9 +36,48 @@ export async function loginWithPassword(
       })
       .execute();
 
-    // if (response.body.cart) {
-    //   localStorage.setItem('cart-id', response.body.cart.id);
-    // }
+    return response.body.customer; // change to customer response
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during login');
+    }
+  }
+}
+
+export async function loginAfterRegister(
+  email: string,
+  password: string
+): Promise<Customer> {
+  try {
+    const apiRoot = getApiRoot('password', { email, password });
+    const anonymousCartId = localStorage.getItem('cart-id') || undefined;
+
+    // console.log('anonymousCartId', anonymousCartId);
+
+    const customerSigninData: CustomerSignin = {
+      email,
+      password,
+      updateProductData: true,
+      anonymousCart: {
+        id: anonymousCartId,
+        typeId: 'cart',
+      },
+      anonymousCartSignInMode: 'UseAsNewActiveCustomerCart',
+    };
+
+    // console.log('customerSigninData', customerSigninData);
+
+    const response = await apiRoot
+      .withProjectKey({ projectKey })
+      .me()
+      .login()
+      .post({
+        body: customerSigninData,
+      })
+      .execute();
+    // console.log('response', response);
 
     return response.body.customer; // change to customer response
   } catch (error) {

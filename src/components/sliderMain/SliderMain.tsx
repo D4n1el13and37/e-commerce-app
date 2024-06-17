@@ -16,9 +16,9 @@ import slide4 from './4.png';
 const SliderMain: React.FC = () => {
   const slidesData = [
     { src: slide1, descr: 'Flowering' },
-    { src: slide2, descr: 'Green' },
+    { src: slide2, descr: 'Foliage' },
     { src: slide3, descr: 'Succulents' },
-    { src: slide4, descr: 'Miniatures' },
+    { src: slide4, descr: 'Trees' },
   ];
 
   return (

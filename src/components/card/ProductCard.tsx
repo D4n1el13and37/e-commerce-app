@@ -30,7 +30,7 @@ const ProductCard: React.FC<Card> = ({
   linkPath,
   id,
 }) => {
-  const [sale, setSale] = useState(false); // to made all price with discount
+  const [sale, setSale] = useState(false);
   const boundingCardRef = useRef<DOMRect | null>(null);
   const currentPrice = (price / 100).toFixed(2);
   const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2);

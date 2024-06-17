@@ -1,0 +1,13 @@
+.attributes {
+  &__list {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+  }
+}

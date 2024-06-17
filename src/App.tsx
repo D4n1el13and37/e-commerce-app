@@ -16,7 +16,12 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
 import AboutUs from './pages/AboutUs/AboutUs';
-import { /* getCart */ getCreateCart } from './store/cartSlice';
+import BasketPage from './pages/Basket/BasketPage';
+import {
+  // deleteDiscounts,
+  getCart /* getCreateCart */,
+  getDiscounts,
+} from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,15 +34,17 @@ function App() {
 
   useEffect(() => {
     dispatch(autorizationByToken());
+    // dispatch(getDiscounts());
 
     const cartCheck = async () => {
       try {
         //* for get active cart
-        // await dispatch(getCart());
+        await dispatch(getCart());
+        await dispatch(getDiscounts());
         // console.log('try', res);
 
         //* for create cart or reset the cart
-        await dispatch(getCreateCart());
+        // await dispatch(getCreateCart());
         // console.log('create', res);
       } catch {
         // const res = await dispatch(getCreateCart());
@@ -82,6 +89,10 @@ function App() {
             {
               path: 'catalog/product/:productId',
               element: <ProductPage />,
+            },
+            {
+              path: 'basket',
+              element: <BasketPage />,
             },
             {
               path: 'login',

@@ -1,0 +1,48 @@
+.modal {
+  position: absolute;
+  right: 130px;
+  bottom: 70px;
+  z-index: -1;
+  display: flex;
+  border-radius: 20%;
+  max-width: 210px;
+  max-height: 90px;
+  background-color: var(--light-color);
+  opacity: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  &.show {
+    z-index: 5;
+    opacity: 1;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 133px;
+    height: 90px;
+    background-image: url('./CloudSpech_successmodal.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__text {
+    padding-right: 5px;
+    font-size: var(--second-font-size);
+    color: var(--grey-color);
+  }
+
+  img {
+    position: absolute;
+    right: -115px;
+    bottom: 0;
+    z-index: -1;
+    width: 140%;
+    max-width: none;
+  }
+}

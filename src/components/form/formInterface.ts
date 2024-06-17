@@ -6,10 +6,9 @@ interface selectedCountry {
 }
 
 export interface AddressField {
-  name?: string | undefined;
   onClick?: () => void;
   onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-  id: string;
+  typeAddress?: 'Shipping' | 'Billing';
   selectedCountry?: selectedCountry | null;
 }
 

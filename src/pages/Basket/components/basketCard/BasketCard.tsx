@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { Attribute, Image, Price } from '@commercetools/platform-sdk';
+import {
+  Attribute,
+  DiscountedLineItemPriceForQuantity,
+  Image,
+  Price,
+} from '@commercetools/platform-sdk';
 
 import Button from '../../../../components/ui/button/Button';
 import cl from './BasketCard.module.scss';
@@ -17,6 +22,8 @@ export interface BasketItem {
   image: Image[];
   attributes: Attribute[];
   quantity: number;
+  discount?: DiscountedLineItemPriceForQuantity[];
+  totalPrice: number;
 }
 const BasketCard: React.FC<BasketItem> = ({
   id,
@@ -26,6 +33,8 @@ const BasketCard: React.FC<BasketItem> = ({
   image,
   attributes,
   quantity,
+  discount,
+  totalPrice,
 }: BasketItem) => {
   const dispatch = useAppDispatch();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -54,7 +63,10 @@ const BasketCard: React.FC<BasketItem> = ({
     handleChangeQuantity(0);
   };
 
-  const discountPrice = price.discounted?.value.centAmount;
+  const discountPrice = Math.max(
+    price.discounted?.value.centAmount || 0,
+    discount![0]?.discountedPrice?.value.centAmount || 0
+  );
 
   return (
     <div className={cl.card__wrapper}>
@@ -87,16 +99,12 @@ const BasketCard: React.FC<BasketItem> = ({
                   <span className={cl.price__old}>
                     {madeCorrectOutputPrice(quantity * price.value.centAmount)}
                   </span>
-                  <span>
-                    {madeCorrectOutputPrice(
-                      quantity * Number(price.discounted?.value.centAmount)
-                    )}
-                  </span>
+                  <span>{madeCorrectOutputPrice(totalPrice)}</span>
                 </>
               ) : (
                 <span>
                   {madeCorrectOutputPrice(
-                    quantity * Number(price.discounted?.value.centAmount)
+                    quantity * Number(price.value.centAmount)
                   )}
                 </span>
               )}

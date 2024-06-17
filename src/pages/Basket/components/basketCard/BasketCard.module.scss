@@ -1,13 +1,26 @@
 .card__wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   gap: 20px;
 
+  @media (max-width: (550px)) {
+    flex-direction: column;
+  }
+
   .left_side {
     &__wrapper {
       display: flex;
       max-width: 160px;
+
+      @media (max-width: (550px)) {
+        max-width: 100%;
+      }
+
+      @media (max-width: (425px)) {
+        max-height: 250px;
+      }
 
       img {
         border-radius: 12px;
@@ -89,6 +102,11 @@
         font-size: 14px;
         line-height: 20px;
         color: var(--primary-color);
+      }
+
+      &__error {
+        position: absolute;
+        bottom: -20px;
       }
     }
   }

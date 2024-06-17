@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import EmptyCart from '../empty/EmptyCart';
 import cl from './BasketContent.module.scss';
 import ClearModal from '../clear/ClearModal';
@@ -44,9 +45,15 @@ const BasketContent = () => {
   return (
     <>
       <h1 className={cl.main__title}>Shopping Bag</h1>
-      {modalIsShown && (
+      <CSSTransition
+        in={modalIsShown}
+        classNames="clear"
+        timeout={300}
+        unmountOnExit
+      >
         <ClearModal cartClearHandle={cartClearHandle} closeModal={closeModal} />
-      )}
+      </CSSTransition>
+
       <div className={cl.content__wrapper}>
         {cartItems.length ? (
           <>

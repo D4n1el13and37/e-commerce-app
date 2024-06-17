@@ -19,7 +19,7 @@ const PromocodeProductsSucculent = () => {
       <PromocodeCard
         name="10% Off Succulents!"
         text="Enhance your home with our easy-care succulents. Enjoy an extra 10% discount for a limited time!"
-        promocode="SUCCULENTSALE10"
+        promocode="SUCCULENT10"
       />
       <div className={classes.productList}>
         {' '}

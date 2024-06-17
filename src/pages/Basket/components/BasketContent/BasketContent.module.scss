@@ -3,9 +3,10 @@
     grid-column: 1/4;
     padding-top: 40px;
     font-weight: 400;
-    font-size: 36px;
+    font-size: var(--page-title-size);
     line-height: 44px;
     color: #323334;
+    text-wrap: nowrap;
   }
 }
 
@@ -14,6 +15,10 @@
   flex-direction: column;
   grid-column: 1 / 8;
   gap: 32px;
+
+  @media (max-width: (1080px)) {
+    grid-column: 12 span;
+  }
 }
 
 .full_price {
@@ -21,7 +26,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 60px;
-    font-size: 20px;
+    font-size: var(--third-font-size);
     gap: 12px;
 
     &_output {
@@ -31,7 +36,7 @@
 
     &_text {
       align-self: flex-end;
-      font-size: 20px;
+      font-size: var(--third-font-size);
       text-transform: capitalize;
       color: var(--text-color);
     }
@@ -55,7 +60,7 @@
 
     &_clear {
       font-weight: 500;
-      font-size: 16px;
+      font-size: var(--main-font-size);
       line-height: 24px;
       text-transform: capitalize;
       color: var(--grey-color, #989998);
@@ -81,5 +86,14 @@
 }
 
 .discount__wrapper {
-  grid-column: 10 / 13;
+  grid-column: 10 / 12;
+
+  @media (max-width: (1080px)) {
+    grid-column: 1 / 13;
+    padding-top: 48px;
+  }
+
+  @media (max-width: (675px)) {
+    grid-column: 1 / 13;
+  }
 }

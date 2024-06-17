@@ -1,6 +1,7 @@
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DiscountCodeReference } from '@commercetools/platform-sdk';
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Input from '../../../../components/ui/input/Input';
 import Button from '../../../../components/ui/button/Button';
 import cl from './DiscountBlock.module.scss';
@@ -69,7 +70,7 @@ const DiscountBlock = () => {
               required: 'Discount is requred',
               minLength: {
                 value: 5,
-                message: 'Shoud be at least 6 symbols',
+                message: 'Shoud be at least 5 symbols',
               },
               validate: (value) => {
                 if (!/^[a-zA-Z0-9]/.test(value)) {
@@ -80,9 +81,14 @@ const DiscountBlock = () => {
             })}
           />
           <div className={cl.error__container}>
-            {errors.discount && (
-              <span className={`error`}>{errors.discount.message}</span>
-            )}
+            <CSSTransition
+              in={!!errors.discount}
+              classNames="clear"
+              timeout={300}
+              unmountOnExit
+            >
+              <span className={`error`}>{errors.discount?.message}</span>
+            </CSSTransition>
           </div>
           <div className={cl.discount_applied__list}>
             {APPLIED_DISCOUNTS.map((item) => (
@@ -93,7 +99,15 @@ const DiscountBlock = () => {
             ))}
           </div>
           <div className={cl.server__error}>
-            {!!isError && <span className={`error`}>Incorrect promocode</span>}
+            <CSSTransition
+              in={!!isError}
+              classNames="clear"
+              timeout={300}
+              unmountOnExit
+            >
+              <span className={`error`}>Incorrect promocode</span>
+            </CSSTransition>
+
             <Button isMain={true} isFilled={true}>
               Apply
             </Button>

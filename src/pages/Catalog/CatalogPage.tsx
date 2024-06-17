@@ -1,3 +1,4 @@
+import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
@@ -28,9 +29,7 @@ const CatalogPage: React.FC = () => {
     subcategoryName?: string;
   }>();
   const { categoriesList } = useAppSelector((state) => state.products);
-
   const isLoading = useSelector((state: RootState) => state.products.isLoading);
-
   const isLoadingCart = useSelector((state: RootState) => state.cart.isLoading);
 
   const currentFilters = useSelector(
@@ -93,9 +92,17 @@ const CatalogPage: React.FC = () => {
   return (
     <>
       <Header />
-      {(isLoading || isLoadingCart) && <Loader />}
+      <CSSTransition
+        in={isLoading || isLoadingCart}
+        classNames="loader"
+        timeout={300}
+        unmountOnExit
+      >
+        <Loader />
+      </CSSTransition>
       <main className={cn(cl.catalog__main)}>
         <div className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+          <Breadcrumbs />
           <Search />
           <div className={cl.catalog__sorting}>
             <SortingMenu
@@ -115,7 +122,6 @@ const CatalogPage: React.FC = () => {
               </svg>
             </Button>
           </div>
-          <Breadcrumbs />
           <div
             className={cn(cl.catalog__sidebar, {
               [cl.catalog__sidebar_active]: isSidebarActive,

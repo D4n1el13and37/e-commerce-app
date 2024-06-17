@@ -1,15 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   Cart,
+  CartAddDiscountCodeAction,
   CartAddLineItemAction,
   CartChangeLineItemQuantityAction,
   CartDraft,
+  CartRemoveDiscountCodeAction,
   CartUpdate,
+  DiscountCode,
+  DiscountCodeReference,
+  LineItem,
 } from '@commercetools/platform-sdk';
 import {
   createCart,
-  deleteCart,
   getActiveCart,
+  getDiscountCodes,
   updateCart,
 } from '../api/cart/cartMethods';
 import { RootState } from './store';
@@ -17,16 +22,23 @@ import { RootState } from './store';
 export interface CartState {
   cart: Cart;
   isLoading: boolean;
+  totalQuantity: number;
+  cartItems: LineItem[];
+  discountsList: DiscountCode[];
 }
 
 const initialState: CartState = {
   cart: {} as Cart,
   isLoading: false,
+  totalQuantity: 0,
+  cartItems: [],
+  discountsList: [],
 };
 
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
     const response = await getActiveCart();
+
     return response;
   } catch (error) {
     if (error instanceof Error) {
@@ -80,7 +92,7 @@ export const getAddToCart = createAsyncThunk(
 export const getChangeQuantity = createAsyncThunk(
   'cart/changeQuantity',
   async (
-    { productId, quanity }: { productId: string; quanity: number },
+    { productId, quantity }: { productId: string; quantity: number },
     thunkAPI
   ) => {
     try {
@@ -89,7 +101,7 @@ export const getChangeQuantity = createAsyncThunk(
       const addItemAction: CartChangeLineItemQuantityAction = {
         action: 'changeLineItemQuantity',
         lineItemId: productId,
-        quantity: quanity,
+        quantity,
       };
       const { version, id } = state.cart.cart;
       const cartDraft: CartUpdate = { version, actions: [addItemAction] };
@@ -105,20 +117,123 @@ export const getChangeQuantity = createAsyncThunk(
   }
 );
 
-export const removeCart = createAsyncThunk(
+export const clearCart = createAsyncThunk(
   'cart/clearCart',
   async (_, thunkAPI) => {
     try {
       const state: RootState = thunkAPI.getState() as RootState;
-      const { version, id } = state.cart.cart;
-      const response = await deleteCart(id, version);
+      const { version, id, lineItems } = state.cart.cart;
+
+      const actions: CartChangeLineItemQuantityAction[] = lineItems.map(
+        (item) => ({
+          action: 'changeLineItemQuantity',
+          lineItemId: item.id,
+          quantity: 0,
+        })
+      );
+
+      const cartDraft: CartUpdate = { version, actions };
+
+      const response = await updateCart(id, cartDraft);
 
       return response;
     } catch (error) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error cleaning cart');
+      throw new Error('Error clearing cart');
+    }
+  }
+);
+
+export const getDiscounts = createAsyncThunk(
+  'cart/getDiscounts',
+  async (_, thunkAPI) => {
+    try {
+      const response = await getDiscountCodes();
+      return response.results;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error updating cart');
+    }
+  }
+);
+
+export const applyDiscount = createAsyncThunk(
+  'cart/applyDiscount',
+  async (code: string, thunkAPI) => {
+    try {
+      const state: RootState = thunkAPI.getState() as RootState;
+      const addDiscount: CartAddDiscountCodeAction[] = [
+        {
+          action: 'addDiscountCode',
+          code,
+        },
+      ];
+      const { version, id } = state.cart.cart;
+      const cartDraft: CartUpdate = { version, actions: addDiscount };
+      const response = await updateCart(id, cartDraft);
+
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error updating cart');
+    }
+  }
+);
+
+export const deleteDiscounts = createAsyncThunk(
+  'cart/removeDiscounts',
+  async (_, thunkAPI) => {
+    try {
+      const state: RootState = thunkAPI.getState() as RootState;
+      const action: CartRemoveDiscountCodeAction[] =
+        state.cart.cart.discountCodes.map(({ discountCode }) => ({
+          action: 'removeDiscountCode',
+          discountCode,
+        }));
+
+      const { version, id } = state.cart.cart;
+      const cartDraft: CartUpdate = { version, actions: action };
+
+      const response = await updateCart(id, cartDraft);
+
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error updating cart');
+    }
+  }
+);
+
+export const deleteDiscount = createAsyncThunk(
+  'cart/removeDiscount',
+  async (discountCode: DiscountCodeReference, thunkAPI) => {
+    try {
+      const state: RootState = thunkAPI.getState() as RootState;
+
+      const action: CartRemoveDiscountCodeAction = {
+        action: 'removeDiscountCode',
+        discountCode,
+      };
+
+      const { version, id } = state.cart.cart;
+      const cartDraft: CartUpdate = { version, actions: [action] };
+
+      const response = await updateCart(id, cartDraft);
+
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error updating cart');
     }
   }
 );
@@ -137,6 +252,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCart.rejected, (state) => {
         const newState = state;
@@ -150,6 +266,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCreateCart.rejected, (state) => {
         const newState = state;
@@ -163,6 +280,10 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.totalQuantity = action.payload.lineItems.reduce(
+          (acc, item) => acc + item.quantity,
+          0
+        );
       })
       .addCase(getAddToCart.rejected, (state) => {
         const newState = state;
@@ -172,17 +293,77 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+        newState.totalQuantity = action.payload.lineItems.reduce(
+          (acc, item) => acc - item.quantity,
+          0
+        );
       })
-      .addCase(removeCart.pending, (state) => {
+      .addCase(clearCart.pending, (state) => {
         const newState = state;
         newState.isLoading = true;
       })
-      .addCase(removeCart.fulfilled, (state, action) => {
+      .addCase(clearCart.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(clearCart.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(applyDiscount.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(applyDiscount.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(applyDiscount.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(getDiscounts.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(getDiscounts.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.discountsList = action.payload;
+      })
+      .addCase(getDiscounts.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(deleteDiscount.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(deleteDiscount.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(deleteDiscount.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(deleteDiscounts.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(deleteDiscounts.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
       })
-      .addCase(removeCart.rejected, (state) => {
+      .addCase(deleteDiscounts.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       });

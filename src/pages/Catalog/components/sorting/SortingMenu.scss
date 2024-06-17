@@ -1,0 +1,26 @@
+/* stylelint-disable declaration-no-important */
+.sorting__menu {
+  .react-select__indicators {
+    display: none !important;
+  }
+
+  .react-select__control {
+    border: none !important;
+    color: var(--text-color) !important;
+    background-color: transparent !important;
+    cursor: pointer;
+  }
+
+  .react-select__value-container {
+    margin-right: 8px;
+    background-image: url('./sort.svg');
+    background-position: center right;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+  }
+
+  .react-select__placeholder {
+    text-transform: capitalize !important;
+    color: var(--text-color) !important;
+  }
+}

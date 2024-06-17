@@ -1,0 +1,58 @@
+.content {
+  &__wrapper {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 24px 46px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    gap: 6px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 32px;
+    color: #323334;
+  }
+
+  &__form {
+    display: flex;
+    gap: var(--gap);
+  }
+}
+
+.server__error {
+  button {
+    width: 100%;
+  }
+}
+
+.error__container {
+  position: absolute;
+  top: 110px;
+  font-size: 14px;
+}
+
+.discount_applied {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--main-font-size);
+    color: var(--primary-color);
+  }
+
+  &__item span:last-child {
+    cursor: pointer;
+  }
+}

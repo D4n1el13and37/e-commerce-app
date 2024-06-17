@@ -15,7 +15,13 @@ import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
-import { /* getCart */ getCreateCart } from './store/cartSlice';
+import AboutUs from './pages/AboutUs/AboutUs';
+import BasketPage from './pages/Basket/BasketPage';
+import {
+  // deleteDiscounts,
+  getCart /* getCreateCart */,
+  getDiscounts,
+} from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -28,15 +34,17 @@ function App() {
 
   useEffect(() => {
     dispatch(autorizationByToken());
+    // dispatch(getDiscounts());
 
     const cartCheck = async () => {
       try {
         //* for get active cart
-        // await dispatch(getCart());
+        await dispatch(getCart());
+        await dispatch(getDiscounts());
         // console.log('try', res);
 
         //* for create cart or reset the cart
-        await dispatch(getCreateCart());
+        // await dispatch(getCreateCart());
         // console.log('create', res);
       } catch {
         // const res = await dispatch(getCreateCart());
@@ -83,6 +91,10 @@ function App() {
               element: <ProductPage />,
             },
             {
+              path: 'basket',
+              element: <BasketPage />,
+            },
+            {
               path: 'login',
               element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
             },
@@ -101,6 +113,10 @@ function App() {
             {
               path: 'account',
               element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
+            },
+            {
+              path: 'about',
+              element: <AboutUs />,
             },
           ],
         },

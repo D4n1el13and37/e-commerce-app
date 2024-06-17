@@ -24,7 +24,7 @@ const PriceBlock: React.FC<PriceProps> = ({ price }) => {
             </span>
           </div>
         ) : (
-          <span className={cl.right_side__price}>
+          <span className={cl.price__new}>
             {madeCorrectOutputPrice(currentPrice)}
           </span>
         )}

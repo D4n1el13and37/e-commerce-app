@@ -4,7 +4,7 @@ import {
   CartAddDiscountCodeAction,
   CartAddLineItemAction,
   CartChangeLineItemQuantityAction,
-  CartDraft,
+  // CartDraft,
   CartRemoveDiscountCodeAction,
   CartUpdate,
   DiscountCode,
@@ -12,10 +12,12 @@ import {
   LineItem,
 } from '@commercetools/platform-sdk';
 import {
-  createCart,
+  createAnonymCart,
   getActiveCart,
   getDiscountCodes,
+  getAnonymCartInStore,
   updateCart,
+  createCart,
 } from '../api/cart/cartMethods';
 import { RootState } from './store';
 
@@ -37,32 +39,80 @@ const initialState: CartState = {
 
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
-    const response = await getActiveCart();
+    const indicator = sessionStorage.getItem('newCustomerIndicator');
+    let response;
+    if (indicator) {
+      response = await createCart({ currency: 'EUR' });
+      sessionStorage.clear();
+    } else {
+      sessionStorage.clear();
+      response = await getActiveCart();
+    }
 
     return response;
-  } catch (error) {
-    if (error instanceof Error) {
-      return thunkAPI.rejectWithValue(error.message);
+  } catch (err) {
+    if (err instanceof Error) {
+      return thunkAPI.rejectWithValue(err.message);
     }
     throw new Error('Error from REDUX getActiveCart function');
   }
 });
 
-export const getCreateCart = createAsyncThunk(
-  'cart/createCart',
+export const getAnonymCart = createAsyncThunk(
+  'cart/getAnonymCart',
   async (_, thunkAPI) => {
     try {
-      const cartDraft: CartDraft = { currency: 'EUR' };
-      const response = await createCart(cartDraft);
+      const id = localStorage.getItem('cart-id') || '';
+      let response;
+      if (id) {
+        response = await getAnonymCartInStore(id);
+      } else {
+        response = await createAnonymCart({ currency: 'EUR' });
+        localStorage.setItem('cart-id', response.id);
+      }
+
       return response;
     } catch (error) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error creating cart');
+      throw new Error('Error from REDUX getActiveCart function');
     }
   }
 );
+
+// export const getCreateCart = createAsyncThunk(
+//   'cart/createCart',
+//   async (_, thunkAPI) => {
+//     try {
+//       const cartDraft: CartDraft = { currency: 'EUR' };
+//       const response = await createCart(cartDraft);
+//       localStorage.setItem('cart-id', response.id);
+//       return response;
+//     } catch (error) {
+//       if (error instanceof Error) {
+//         return thunkAPI.rejectWithValue(error.message);
+//       }
+//       throw new Error('Error creating cart');
+//     }
+//   }
+// );
+/**
+ *       .addCase(getCreateCart.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(getCreateCart.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(getCreateCart.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+ */
 
 export const getAddToCart = createAsyncThunk(
   'cart/addToCart',
@@ -133,7 +183,6 @@ export const clearCart = createAsyncThunk(
       );
 
       const cartDraft: CartUpdate = { version, actions };
-
       const response = await updateCart(id, cartDraft);
 
       return response;
@@ -258,17 +307,17 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
       })
-      .addCase(getCreateCart.pending, (state) => {
+      .addCase(getAnonymCart.pending, (state) => {
         const newState = state;
         newState.isLoading = true;
       })
-      .addCase(getCreateCart.fulfilled, (state, action) => {
+      .addCase(getAnonymCart.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
         newState.cartItems = action.payload.lineItems;
       })
-      .addCase(getCreateCart.rejected, (state) => {
+      .addCase(getAnonymCart.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })
@@ -280,6 +329,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc + item.quantity,
           0

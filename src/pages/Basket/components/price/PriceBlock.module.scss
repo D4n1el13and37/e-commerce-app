@@ -5,6 +5,12 @@
 
   &__single_product {
     width: 100%;
+
+    span {
+      font-size: var(--price-font-size);
+      line-height: 32px;
+      color: var(--primary-color, #758963);
+    }
   }
 
   &__action {

@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAppDispatch from '../../../hooks/useAppDispatch';
-import { login, register } from '../../../store/authSlice';
+import {
+  // login,
+  loginAfterSuccesRegister,
+  register,
+} from '../../../store/authSlice';
 
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
@@ -14,7 +18,7 @@ import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
 // import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
 import ModalRegistration from './Modal/Modal';
-import { getCart } from '../../../store/cartSlice';
+// import { getCart, getCreateCart } from '../../../store/cartSlice';
 
 export default function RegisterForm() {
   const methods = useForm<RegisterFormFields>({
@@ -69,10 +73,11 @@ export default function RegisterForm() {
       setIsSuccess(true);
 
       await dispatch(
-        login({ email: data.email, password: data.password })
+        loginAfterSuccesRegister({ email: data.email, password: data.password })
       ).unwrap();
+      // await dispatch(getCreateCart());
 
-      await dispatch(getCart());
+      // await dispatch(getCart());
 
       setTimeout(() => {
         navigate('/main', { replace: true });

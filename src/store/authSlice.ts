@@ -64,7 +64,7 @@ export const loginAfterSuccesRegister = createAsyncThunk(
       return response;
     } catch (error) {
       if (error instanceof Error) {
-        return thunkAPI.rejectWithValue(error.message); // ???
+        return thunkAPI.rejectWithValue(error.message);
       }
       throw new Error('Error from REDUX login function');
     }

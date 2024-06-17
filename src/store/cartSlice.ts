@@ -4,10 +4,8 @@ import {
   CartAddDiscountCodeAction,
   CartAddLineItemAction,
   CartChangeLineItemQuantityAction,
-  CartDraft,
   // CartDraft,
   CartRemoveDiscountCodeAction,
-  // CartDraft,
   CartUpdate,
   DiscountCode,
   DiscountCodeReference,
@@ -15,9 +13,6 @@ import {
 } from '@commercetools/platform-sdk';
 import {
   createAnonymCart,
-  // createCart,
-  // createCart2,
-  // getACartInStore,
   getActiveCart,
   getDiscountCodes,
   getAnonymCartInStore,
@@ -44,7 +39,15 @@ const initialState: CartState = {
 
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
-    const response = await getActiveCart();
+    const indicator = sessionStorage.getItem('newCustomerIndicator');
+    let response;
+    if (indicator) {
+      response = await createCart({ currency: 'EUR' });
+      sessionStorage.clear();
+    } else {
+      sessionStorage.clear();
+      response = await getActiveCart();
+    }
 
     return response;
   } catch (err) {
@@ -67,6 +70,7 @@ export const getAnonymCart = createAsyncThunk(
         response = await createAnonymCart({ currency: 'EUR' });
         localStorage.setItem('cart-id', response.id);
       }
+
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -77,22 +81,38 @@ export const getAnonymCart = createAsyncThunk(
   }
 );
 
-export const getCreateCart = createAsyncThunk(
-  'cart/createCart',
-  async (_, thunkAPI) => {
-    try {
-      const cartDraft: CartDraft = { currency: 'EUR' };
-      const response = await createCart(cartDraft);
-      localStorage.setItem('cart-id', response.id);
-      return response;
-    } catch (error) {
-      if (error instanceof Error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-      throw new Error('Error creating cart');
-    }
-  }
-);
+// export const getCreateCart = createAsyncThunk(
+//   'cart/createCart',
+//   async (_, thunkAPI) => {
+//     try {
+//       const cartDraft: CartDraft = { currency: 'EUR' };
+//       const response = await createCart(cartDraft);
+//       localStorage.setItem('cart-id', response.id);
+//       return response;
+//     } catch (error) {
+//       if (error instanceof Error) {
+//         return thunkAPI.rejectWithValue(error.message);
+//       }
+//       throw new Error('Error creating cart');
+//     }
+//   }
+// );
+/**
+ *       .addCase(getCreateCart.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(getCreateCart.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
+      })
+      .addCase(getCreateCart.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+ */
 
 export const getAddToCart = createAsyncThunk(
   'cart/addToCart',

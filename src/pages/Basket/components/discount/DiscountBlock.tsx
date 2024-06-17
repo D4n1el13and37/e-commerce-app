@@ -70,7 +70,7 @@ const DiscountBlock = () => {
               required: 'Discount is requred',
               minLength: {
                 value: 5,
-                message: 'Shoud be at least 6 symbols',
+                message: 'Shoud be at least 5 symbols',
               },
               validate: (value) => {
                 if (!/^[a-zA-Z0-9]/.test(value)) {

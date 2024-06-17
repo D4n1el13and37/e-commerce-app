@@ -34,9 +34,9 @@ const Home: React.FC = () => (
           <PromocodeProductsSucculent />
           <BannerHome
             header="Exclusive Savings Await!"
-            subheader="  Get 10% Off on Orders Over €100"
+            subheader="Get a discount of 10 € off 100 €"
             text="Transform your home with our beautiful plants and save more today!"
-            promocode="SAVE10"
+            promocode="SHOPPINGCART10"
           />
         </div>
       </div>

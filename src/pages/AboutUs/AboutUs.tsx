@@ -52,7 +52,7 @@ const AboutUs = () => {
           </div>
 
           <p className={classes.about__description}>
-            Our team of three frontend developers — Daniil, Vasiliy, and Anna —
+            Our team of three frontend developers — Daniil, Vasilii, and Anna —
             demonstrated excellent collaboration throughout the project.
             Supporting each other, we solved problems together and shared ideas.
             Through regular meetings and clear task distribution, we

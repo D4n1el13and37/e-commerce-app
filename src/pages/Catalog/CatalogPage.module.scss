@@ -36,7 +36,7 @@
 }
 
 .catalog__sorting {
-  grid-column: 10 / 12;
+  grid-column: 11 / -1;
 
   @media (max-width: (1215px)) {
     grid-column: 10 / 12;

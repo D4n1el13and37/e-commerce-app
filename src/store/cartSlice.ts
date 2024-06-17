@@ -6,6 +6,7 @@ import {
   CartDraft,
   CartUpdate,
   // CartUpdateAction,
+  // CartUpdateAction,
   LineItem,
 } from '@commercetools/platform-sdk';
 import {
@@ -13,7 +14,7 @@ import {
   deleteCart,
   getActiveCart,
   updateCart,
-} from '../api/cart/cartMethonds';
+} from '../api/cart/cartMethods';
 import { RootState } from './store';
 
 export interface CartState {
@@ -87,7 +88,7 @@ export const getAddToCart = createAsyncThunk(
 export const getChangeQuantity = createAsyncThunk(
   'cart/changeQuantity',
   async (
-    { productId, quanity }: { productId: string; quanity: number },
+    { productId, quantity }: { productId: string; quantity: number },
     thunkAPI
   ) => {
     try {
@@ -96,7 +97,7 @@ export const getChangeQuantity = createAsyncThunk(
       const addItemAction: CartChangeLineItemQuantityAction = {
         action: 'changeLineItemQuantity',
         lineItemId: productId,
-        quantity: quanity,
+        quantity,
       };
       const { version, id } = state.cart.cart;
       const cartDraft: CartUpdate = { version, actions: [addItemAction] };
@@ -177,6 +178,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc + item.quantity,
           0

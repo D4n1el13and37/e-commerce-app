@@ -4,6 +4,7 @@ import {
   CartAddDiscountCodeAction,
   CartAddLineItemAction,
   CartChangeLineItemQuantityAction,
+  CartDraft,
   // CartDraft,
   CartRemoveDiscountCodeAction,
   // CartDraft,
@@ -21,6 +22,7 @@ import {
   getDiscountCodes,
   getAnonymCartInStore,
   updateCart,
+  createCart,
 } from '../api/cart/cartMethods';
 import { RootState } from './store';
 
@@ -40,39 +42,17 @@ const initialState: CartState = {
   discountsList: [],
 };
 
-// export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
-//   try {
-//     // const id = localStorage.getItem('cartId');
-//     // console.log(id);
-//     // const response = await getACartInStore({ ID: id });
-//     const response = await getActiveCart();
-
-//     return response;
-//   } catch (error) {
-//     if (error instanceof Error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//     throw new Error('Error from REDUX getActiveCart function');
-//   }
-// });
-
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
     const response = await getActiveCart();
 
     return response;
   } catch (err) {
-    // catch (error) {
-    //   try {
-    //     const response = await createCart({ currency: 'EUR' });
-    //     return response;
-    //   }
     if (err instanceof Error) {
       return thunkAPI.rejectWithValue(err.message);
     }
     throw new Error('Error from REDUX getActiveCart function');
   }
-  // }
 });
 
 export const getAnonymCart = createAsyncThunk(
@@ -80,8 +60,6 @@ export const getAnonymCart = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const id = localStorage.getItem('cart-id') || '';
-      // const customer = localStorage.getItem('tokendata') || ''
-      // if(!customer) {
       let response;
       if (id) {
         response = await getAnonymCartInStore(id);
@@ -89,7 +67,6 @@ export const getAnonymCart = createAsyncThunk(
         response = await createAnonymCart({ currency: 'EUR' });
         localStorage.setItem('cart-id', response.id);
       }
-      // }
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -100,38 +77,22 @@ export const getAnonymCart = createAsyncThunk(
   }
 );
 
-// export const getCreateCart = createAsyncThunk(
-//   'cart/createCart',
-//   async (_, thunkAPI) => {
-//     try {
-//       const cartDraft: CartDraft = { currency: 'EUR' };
-//       const response = await createCart2(cartDraft);
-//       localStorage.setItem('cartId', response.id);
-//       return response;
-//     } catch (error) {
-//       if (error instanceof Error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//       }
-//       throw new Error('Error creating cart');
-//     }
-//   }
-// );
-
-// export const getCreateCart = createAsyncThunk(
-//   'cart/createCart',
-//   async (_, thunkAPI) => {
-//     try {
-//       const cartDraft: CartDraft = { currency: 'EUR' };
-//       const response = await createCart(cartDraft);
-//       return response;
-//     } catch (error) {
-//       if (error instanceof Error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//       }
-//       throw new Error('Error creating cart');
-//     }
-//   }
-// );
+export const getCreateCart = createAsyncThunk(
+  'cart/createCart',
+  async (_, thunkAPI) => {
+    try {
+      const cartDraft: CartDraft = { currency: 'EUR' };
+      const response = await createCart(cartDraft);
+      localStorage.setItem('cart-id', response.id);
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error creating cart');
+    }
+  }
+);
 
 export const getAddToCart = createAsyncThunk(
   'cart/addToCart',
@@ -349,7 +310,6 @@ const cartSlice = createSlice({
         newState.isLoading = false;
         newState.cart = action.payload;
         newState.cartItems = action.payload.lineItems;
-        // console.warn('action', action.payload);
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc + item.quantity,
           0

@@ -104,6 +104,7 @@ const CatalogPage: React.FC = () => {
       </CSSTransition>
       <main className={cn(cl.catalog__main)}>
         <div className={cn(cl.catalog__wrapper, 'container', 'grid')}>
+          <Breadcrumbs />
           <Search />
           <div className={cl.catalog__sorting}>
             <SortingMenu
@@ -123,7 +124,6 @@ const CatalogPage: React.FC = () => {
               </svg>
             </Button>
           </div>
-          <Breadcrumbs />
           <div
             className={cn(cl.catalog__sidebar, {
               [cl.catalog__sidebar_active]: isSidebarActive,

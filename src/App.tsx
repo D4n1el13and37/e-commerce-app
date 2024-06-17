@@ -16,58 +16,23 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
 import BasketPage from './pages/Basket/BasketPage';
-// import {
-//   // deleteDiscounts,
-//   getCart /* getCreateCart */,
-
-// } from './store/cartSlice';
-import {
-  getAnonymCart,
-  getCart /* getCreateCart */,
-  getDiscounts,
-  // getDiscounts,
-  // getCreateCart,
-} from './store/cartSlice';
-// import { createCart2 } from './api/cart/cartMethods';
+import { getAnonymCart, getCart, getDiscounts } from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.currentUser);
   const [isAuthChecked, setIsAuthChecked] = useState(false);
 
-  // const [isInitialized, setIsInitialized] = useState(false);
-
-  // useEffect(() => {
-  //   const initialize = async () => {
-  //     try {
-  //       console.log('Initializing authorization by token...');
-  //       const resultAction = await dispatch(autorizationByToken()).unwrap();
-  //       console.log('Authorization by token result:', resultAction);
-  //       await dispatch(getCart()).unwrap();
-  //     } catch (error) {
-  //       console.error('Authorization by token failed:', error);
-  //       await dispatch(getAnonymCart()).unwrap();
-  //     } finally {
-  //       setIsInitialized(true);
-  //     }
-  //   };
-
-  //   initialize();
-  // }, [dispatch]);
-
   useEffect(() => {
     dispatch(getDiscounts());
+
     const initialize = async () => {
       try {
-        // console.log('Initializing authorization by token...');
         const token = localStorage.getItem('tokendata') || '';
         if (token) {
           await dispatch(autorizationByToken()).unwrap();
-          // console.log('Authorization by token result:', resultAction);
         }
       } catch (error) {
-        // console.error('Authorization by token failed:', error);
-        // Если авторизация по токену не удалась, загружаем анонимную корзину
         await dispatch(getAnonymCart()).unwrap();
       } finally {
         setIsAuthChecked(true);
@@ -80,10 +45,8 @@ function App() {
   useEffect(() => {
     if (isAuthChecked) {
       if (isAuthorized) {
-        // console.log('Fetching authorized user cart...');
         dispatch(getCart());
       } else {
-        // console.log('Fetching anonymous cart...');
         dispatch(getAnonymCart());
       }
     }
@@ -153,11 +116,6 @@ function App() {
     [isAuthorized]
   );
 
-  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
-
-  // if (isLoading) {
-  //   return <div>Loadiiing...</div>;
-  // }
   return <RouterProvider router={router} />;
 }
 

@@ -56,7 +56,9 @@ input {
 
 html {
   height: 100%;
+  scrollbar-color: var(--primary-color) #fff;
   scrollbar-gutter: stable;
+  scrollbar-width: thin;
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -152,30 +154,6 @@ li {
 
 .loader-exit-active {
   opacity: 1;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: opacity var(--duration) ease-in-out;
-  }
-}
-
-.clear-enter {
-  opacity: 0;
-}
-
-.clear-enter-active {
-  opacity: 1;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: opacity var(--duration) ease-in-out;
-  }
-}
-
-.clear-exit {
-  opacity: 1;
-}
-
-.clear-exit-active {
-  opacity: 0;
 
   @media (prefers-reduced-motion: no-preference) {
     transition: opacity var(--duration) ease-in-out;

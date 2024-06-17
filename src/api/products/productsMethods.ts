@@ -13,7 +13,11 @@ export async function getProducts(): Promise<ProductPagedQueryResponse> {
     const res = await apiRoot
       .withProjectKey({ projectKey })
       .products()
-      .get()
+      .get({
+        queryArgs: {
+          limit: 100,
+        },
+      })
       .execute();
 
     return res.body;
@@ -74,7 +78,7 @@ export async function getCardsByCategory(
       .withProjectKey({ projectKey })
       .productProjections()
       .search()
-      .get({ queryArgs: { filter: [`categories.id:"${id}"`] } })
+      .get({ queryArgs: { filter: [`categories.id:"${id}"`], limit: 100 } })
       .execute();
 
     return res.body;
@@ -147,6 +151,7 @@ export async function getCardsByFilters(
       .get({
         queryArgs: {
           filter: filterQueries,
+          limit: 100,
         },
       })
       .execute();
@@ -212,6 +217,7 @@ export async function getCardsBySorting(
         queryArgs: {
           filter: filterQueries,
           sort: [sortQuery],
+          limit: 100,
         },
       })
       .execute();

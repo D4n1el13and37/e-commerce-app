@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { updateCustomerPassword } from '../../../../api/Customer/customer';

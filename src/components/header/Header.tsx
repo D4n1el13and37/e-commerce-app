@@ -78,8 +78,8 @@ const Header: React.FC = () => {
               {isAuthorized && <HeaderUser />}
             </div>
           </nav>
-          <a
-            href="/basket"
+          <Link
+            to="/basket"
             className={classes.basket}
             aria-label="Shopping cart"
           >
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                 {isCart.lineItems.length}
               </span>
             )}
-          </a>
+          </Link>
         </div>
 
         <BurgerMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />

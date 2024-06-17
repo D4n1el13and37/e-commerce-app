@@ -3,7 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
@@ -17,44 +17,41 @@ import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
 import AboutUs from './pages/AboutUs/AboutUs';
 import BasketPage from './pages/Basket/BasketPage';
-import {
-  // deleteDiscounts,
-  getCart /* getCreateCart */,
-  getDiscounts,
-} from './store/cartSlice';
+import { getAnonymCart, getCart, getDiscounts } from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
-  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
-
-  //* get our cart
-  // const isCart = useAppSelector((state) => state.cart.cart);
-
-  // const isLoading = useAppSelector((state) => state.auth.isLoading);
+  const isAuthorized = useAppSelector((state) => state.auth.currentUser);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
 
   useEffect(() => {
-    dispatch(autorizationByToken());
-    // dispatch(getDiscounts());
+    dispatch(getDiscounts());
 
-    const cartCheck = async () => {
+    const initialize = async () => {
       try {
-        //* for get active cart
-        await dispatch(getCart());
-        await dispatch(getDiscounts());
-        // console.log('try', res);
-
-        //* for create cart or reset the cart
-        // await dispatch(getCreateCart());
-        // console.log('create', res);
-      } catch {
-        // const res = await dispatch(getCreateCart());
+        const token = localStorage.getItem('tokendata') || '';
+        if (token) {
+          await dispatch(autorizationByToken()).unwrap();
+        }
+      } catch (error) {
+        await dispatch(getAnonymCart()).unwrap();
+      } finally {
+        setIsAuthChecked(true);
       }
     };
 
-    cartCheck();
-
-    // console.log(isCart);
+    initialize();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthChecked) {
+      if (isAuthorized) {
+        dispatch(getCart());
+      } else {
+        dispatch(getAnonymCart());
+      }
+    }
+  }, [dispatch, isAuthChecked, isAuthorized]);
 
   const router = useMemo(
     () =>
@@ -124,11 +121,6 @@ function App() {
     [isAuthorized]
   );
 
-  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
-
-  // if (isLoading) {
-  //   return <div>Loadiiing...</div>;
-  // }
   return <RouterProvider router={router} />;
 }
 

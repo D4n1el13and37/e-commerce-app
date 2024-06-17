@@ -175,6 +175,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc + item.quantity,
           0
@@ -188,6 +189,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc - item.quantity,
           0

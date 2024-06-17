@@ -37,9 +37,9 @@ export async function loginWithPassword(
       })
       .execute();
 
-    if (response.body.cart) {
-      localStorage.setItem('cart-id', response.body.cart.id);
-    }
+    // if (response.body.cart) {
+    //   localStorage.setItem('cart-id', response.body.cart.id);
+    // }
 
     return response.body.customer; // change to customer response
   } catch (error) {

@@ -14,6 +14,7 @@ import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
 // import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
 import ModalRegistration from './Modal/Modal';
+import { getCart } from '../../../store/cartSlice';
 
 export default function RegisterForm() {
   const methods = useForm<RegisterFormFields>({
@@ -70,6 +71,8 @@ export default function RegisterForm() {
       await dispatch(
         login({ email: data.email, password: data.password })
       ).unwrap();
+
+      await dispatch(getCart());
 
       setTimeout(() => {
         navigate('/main', { replace: true });

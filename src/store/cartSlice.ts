@@ -3,12 +3,20 @@ import {
   Cart,
   CartAddLineItemAction,
   CartChangeLineItemQuantityAction,
-  CartDraft,
+  // CartDraft,
   CartUpdate,
   CartUpdateAction,
   LineItem,
 } from '@commercetools/platform-sdk';
-import { createCart, getActiveCart, updateCart } from '../api/cart/cartMethods';
+import {
+  createAnonymCart,
+  // createCart,
+  // createCart2,
+  // getACartInStore,
+  getActiveCart,
+  getAnonymCartInStore,
+  updateCart,
+} from '../api/cart/cartMethods';
 import { RootState } from './store';
 
 export interface CartState {
@@ -25,34 +33,98 @@ const initialState: CartState = {
   cartItems: [],
 };
 
+// export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
+//   try {
+//     // const id = localStorage.getItem('cartId');
+//     // console.log(id);
+//     // const response = await getACartInStore({ ID: id });
+//     const response = await getActiveCart();
+
+//     return response;
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//     throw new Error('Error from REDUX getActiveCart function');
+//   }
+// });
+
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
     const response = await getActiveCart();
 
     return response;
-  } catch (error) {
-    if (error instanceof Error) {
-      return thunkAPI.rejectWithValue(error.message);
+  } catch (err) {
+    // catch (error) {
+    //   try {
+    //     const response = await createCart({ currency: 'EUR' });
+    //     return response;
+    //   }
+    if (err instanceof Error) {
+      return thunkAPI.rejectWithValue(err.message);
     }
     throw new Error('Error from REDUX getActiveCart function');
   }
+  // }
 });
 
-export const getCreateCart = createAsyncThunk(
-  'cart/createCart',
+export const getAnonymCart = createAsyncThunk(
+  'cart/getAnonymCart',
   async (_, thunkAPI) => {
     try {
-      const cartDraft: CartDraft = { currency: 'EUR' };
-      const response = await createCart(cartDraft);
+      const id = localStorage.getItem('cart-Id') || '';
+      // const customer = localStorage.getItem('tokendata') || ''
+      // if(!customer) {
+      let response;
+      if (id) {
+        response = await getAnonymCartInStore(id);
+      } else {
+        response = await createAnonymCart({ currency: 'EUR' });
+        localStorage.setItem('cart-Id', response.id);
+      }
+      // }
       return response;
     } catch (error) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-      throw new Error('Error creating cart');
+      throw new Error('Error from REDUX getActiveCart function');
     }
   }
 );
+
+// export const getCreateCart = createAsyncThunk(
+//   'cart/createCart',
+//   async (_, thunkAPI) => {
+//     try {
+//       const cartDraft: CartDraft = { currency: 'EUR' };
+//       const response = await createCart2(cartDraft);
+//       localStorage.setItem('cartId', response.id);
+//       return response;
+//     } catch (error) {
+//       if (error instanceof Error) {
+//         return thunkAPI.rejectWithValue(error.message);
+//       }
+//       throw new Error('Error creating cart');
+//     }
+//   }
+// );
+
+// export const getCreateCart = createAsyncThunk(
+//   'cart/createCart',
+//   async (_, thunkAPI) => {
+//     try {
+//       const cartDraft: CartDraft = { currency: 'EUR' };
+//       const response = await createCart(cartDraft);
+//       return response;
+//     } catch (error) {
+//       if (error instanceof Error) {
+//         return thunkAPI.rejectWithValue(error.message);
+//       }
+//       throw new Error('Error creating cart');
+//     }
+//   }
+// );
 
 export const getAddToCart = createAsyncThunk(
   'cart/addToCart',
@@ -152,17 +224,17 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
       })
-      .addCase(getCreateCart.pending, (state) => {
+      .addCase(getAnonymCart.pending, (state) => {
         const newState = state;
         newState.isLoading = true;
       })
-      .addCase(getCreateCart.fulfilled, (state, action) => {
+      .addCase(getAnonymCart.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
         newState.cartItems = action.payload.lineItems;
       })
-      .addCase(getCreateCart.rejected, (state) => {
+      .addCase(getAnonymCart.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })
@@ -174,6 +246,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        // console.warn('action', action.payload);
         newState.totalQuantity = action.payload.lineItems.reduce(
           (acc, item) => acc + item.quantity,
           0

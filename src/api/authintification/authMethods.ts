@@ -1,4 +1,4 @@
-import { Customer } from '@commercetools/platform-sdk';
+import { Customer, CustomerSignin } from '@commercetools/platform-sdk';
 import getApiRoot from '../api';
 import { projectKey } from '../clientConfig';
 import { RegisterFormFields } from '../../pages/Register/Component/interfaceRegister';
@@ -11,17 +11,36 @@ export async function loginWithPassword(
   // change  to Customer from CustomerSignInResult
   try {
     const apiRoot = getApiRoot('password', { email, password });
+    const anonymousCartId = localStorage.getItem('cart-id');
+
+    const customerSigninData: CustomerSignin = {
+      email,
+      password,
+      updateProductData: true,
+      anonymousCart: anonymousCartId
+        ? {
+            id: anonymousCartId,
+            typeId: 'cart',
+          }
+        : undefined,
+      anonymousCartSignInMode: anonymousCartId
+        ? 'MergeWithExistingCustomerCart'
+        : undefined,
+    };
+
     const response = await apiRoot
       .withProjectKey({ projectKey })
       .me()
       .login()
       .post({
-        body: {
-          email,
-          password,
-        },
+        body: customerSigninData,
       })
       .execute();
+
+    if (response.body.cart) {
+      localStorage.setItem('cart-id', response.body.cart.id);
+    }
+
     return response.body.customer; // change to customer response
   } catch (error) {
     if (error instanceof Error) {
@@ -35,6 +54,7 @@ export async function loginWithPassword(
 export async function loginByToken(): Promise<Customer> {
   try {
     const token = JSON.parse(localStorage.getItem('tokendata') || '');
+    // console.log(token);
     const apiRoot = getApiRoot('token', token.token);
     const response = await apiRoot
       .withProjectKey({ projectKey })

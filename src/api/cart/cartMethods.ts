@@ -46,6 +46,47 @@ export async function createCart(cart: CartDraft): Promise<Cart> {
   }
 }
 
+export async function getAnonymCartInStore(ID: string): Promise<Cart> {
+  try {
+    const apiRoot = getApiRoot();
+    const response = await apiRoot
+      .withProjectKey({ projectKey })
+      .carts()
+      .withId({ ID })
+      .get()
+      .execute();
+
+    return response.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error from this function getCustomer');
+    }
+  }
+}
+
+export async function createAnonymCart(cart: CartDraft): Promise<Cart> {
+  try {
+    // const tokenData = JSON.parse(localStorage.getItem('tokendata')!).token;
+
+    const apiRoot = getApiRoot();
+    const res = await apiRoot
+      .withProjectKey({ projectKey })
+      .carts()
+      .post({ body: cart })
+      .execute();
+
+    return res.body;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error during creating cart');
+    }
+  }
+}
+
 export async function updateCart(
   ID: string,
   cartUpdate: CartUpdate

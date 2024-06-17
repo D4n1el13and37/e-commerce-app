@@ -3,7 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
@@ -16,38 +16,71 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
 import BasketPage from './pages/Basket/BasketPage';
-import { getCart /* getCreateCart */ } from './store/cartSlice';
+import {
+  getAnonymCart,
+  getCart /* getCreateCart */,
+  // getCreateCart,
+} from './store/cartSlice';
+// import { createCart2 } from './api/cart/cartMethods';
 
 function App() {
   const dispatch = useAppDispatch();
-  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
+  const isAuthorized = useAppSelector((state) => state.auth.currentUser);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+  // const [isInitialized, setIsInitialized] = useState(false);
 
-  //* get our cart
-  // const isCart = useAppSelector((state) => state.cart.cart);
+  // useEffect(() => {
+  //   const initialize = async () => {
+  //     try {
+  //       console.log('Initializing authorization by token...');
+  //       const resultAction = await dispatch(autorizationByToken()).unwrap();
+  //       console.log('Authorization by token result:', resultAction);
+  //       await dispatch(getCart()).unwrap();
+  //     } catch (error) {
+  //       console.error('Authorization by token failed:', error);
+  //       await dispatch(getAnonymCart()).unwrap();
+  //     } finally {
+  //       setIsInitialized(true);
+  //     }
+  //   };
 
-  // const isLoading = useAppSelector((state) => state.auth.isLoading);
+  //   initialize();
+  // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(autorizationByToken());
-
-    const cartCheck = async () => {
+    const initialize = async () => {
       try {
-        //* for get active cart
-        await dispatch(getCart());
-        // console.log('try', res);
-
-        //* for create cart or reset the cart
-        // await dispatch(getCreateCart());
-        // console.log('create', res);
-      } catch {
-        // const res = await dispatch(getCreateCart());
+        // console.log('Initializing authorization by token...');
+        const token = localStorage.getItem('tokendata') || '';
+        if (token) {
+          /* const resultAction =  */ await dispatch(
+            autorizationByToken()
+          ).unwrap();
+          // console.log('Authorization by token result:', resultAction);
+        }
+      } catch (error) {
+        // console.error('Authorization by token failed:', error);
+        // Если авторизация по токену не удалась, загружаем анонимную корзину
+        await dispatch(getAnonymCart()).unwrap();
+      } finally {
+        setIsAuthChecked(true);
       }
     };
 
-    cartCheck();
-
-    // console.log(isCart);
+    initialize();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthChecked) {
+      if (isAuthorized) {
+        // console.log('Fetching authorized user cart...');
+        dispatch(getCart());
+      } else {
+        // console.log('Fetching anonymous cart...');
+        dispatch(getAnonymCart());
+      }
+    }
+  }, [dispatch, isAuthChecked, isAuthorized]);
 
   const router = useMemo(
     () =>

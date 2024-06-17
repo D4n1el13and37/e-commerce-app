@@ -78,6 +78,7 @@
     overflow: auto;
     width: 100%;
     gap: 60px;
+    scrollbar-color: auto;
 
     @media (max-width: (625px)) {
       gap: 48px;

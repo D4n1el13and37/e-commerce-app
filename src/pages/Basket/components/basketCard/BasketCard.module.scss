@@ -27,14 +27,14 @@
 
     &__title {
       font-weight: 400;
-      font-size: 20px;
+      font-size: var(--third-font-size);
       line-height: 24px;
       text-transform: capitalize;
       color: #323334;
     }
 
     &__attributes {
-      font-size: 14px;
+      font-size: var(--second-font-size);
       line-height: 20px;
       letter-spacing: 0.25px;
       color: var(--grey-color, #989998);
@@ -51,7 +51,7 @@
         padding: 12px 30px;
         font-weight: 400;
         font-style: normal;
-        font-size: 14px;
+        font-size: var(--second-font-size);
         line-height: 20px;
         color: var(--primary-color);
       }

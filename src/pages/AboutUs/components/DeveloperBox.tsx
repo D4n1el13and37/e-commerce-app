@@ -1,6 +1,6 @@
 import CardDeveloper from './CardDeveloper';
 import classes from '../AboutUs.module.scss';
-import photoVasilii from '../../../../public/photoDeveloper/Vasilii.jpg';
+import photoVasilii from '../../../../public/photoDeveloper/Vasiliy.jpg';
 import photoDaniil from '../../../../public/photoDeveloper/Daniil.jpg';
 import photoAnna from '../../../../public/photoDeveloper/Anna.jpg';
 

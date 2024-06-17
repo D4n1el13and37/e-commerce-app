@@ -5,28 +5,30 @@ import {
   CartChangeLineItemQuantityAction,
   CartDraft,
   CartUpdate,
+  CartUpdateAction,
+  LineItem,
 } from '@commercetools/platform-sdk';
-import {
-  createCart,
-  deleteCart,
-  getActiveCart,
-  updateCart,
-} from '../api/cart/cartMethods';
+import { createCart, getActiveCart, updateCart } from '../api/cart/cartMethods';
 import { RootState } from './store';
 
 export interface CartState {
   cart: Cart;
   isLoading: boolean;
+  totalQuantity: number;
+  cartItems: LineItem[];
 }
 
 const initialState: CartState = {
   cart: {} as Cart,
   isLoading: false,
+  totalQuantity: 0,
+  cartItems: [],
 };
 
 export const getCart = createAsyncThunk('cart/getCart', async (_, thunkAPI) => {
   try {
     const response = await getActiveCart();
+
     return response;
   } catch (error) {
     if (error instanceof Error) {
@@ -105,14 +107,16 @@ export const getChangeQuantity = createAsyncThunk(
   }
 );
 
-export const removeCart = createAsyncThunk(
+export const getClearCart = createAsyncThunk(
   'cart/clearCart',
-  async (_, thunkAPI) => {
+  async (actions: CartUpdateAction[], thunkAPI) => {
     try {
       const state: RootState = thunkAPI.getState() as RootState;
-      const { version, id } = state.cart.cart;
-      const response = await deleteCart(id, version);
 
+      const { version, id } = state.cart.cart;
+      const cartDraft: CartUpdate = { version, actions };
+
+      const response = await updateCart(id, cartDraft);
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -126,7 +130,12 @@ export const removeCart = createAsyncThunk(
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
+  reducers: {
+    /*     setCart: (state, action: PayloadAction<{ cart: Cart }>) => {
+      const newState = state;
+      newState.cart = action.payload.cart;
+    }, */
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCart.pending, (state) => {
@@ -137,6 +146,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCart.rejected, (state) => {
         const newState = state;
@@ -150,6 +160,7 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.cartItems = action.payload.lineItems;
       })
       .addCase(getCreateCart.rejected, (state) => {
         const newState = state;
@@ -163,6 +174,10 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.totalQuantity = action.payload.lineItems.reduce(
+          (acc, item) => acc + item.quantity,
+          0
+        );
       })
       .addCase(getAddToCart.rejected, (state) => {
         const newState = state;
@@ -172,19 +187,15 @@ const cartSlice = createSlice({
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
+        newState.totalQuantity = action.payload.lineItems.reduce(
+          (acc, item) => acc - item.quantity,
+          0
+        );
       })
-      .addCase(removeCart.pending, (state) => {
-        const newState = state;
-        newState.isLoading = true;
-      })
-      .addCase(removeCart.fulfilled, (state, action) => {
+      .addCase(getClearCart.fulfilled, (state, action) => {
         const newState = state;
         newState.isLoading = false;
         newState.cart = action.payload;
-      })
-      .addCase(removeCart.rejected, (state) => {
-        const newState = state;
-        newState.isLoading = false;
       });
   },
 });

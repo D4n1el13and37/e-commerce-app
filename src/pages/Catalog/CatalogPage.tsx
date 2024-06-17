@@ -1,8 +1,8 @@
+import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
 import cn from 'classnames';
-import { CSSTransition } from 'react-transition-group';
 import cl from './CatalogPage.module.scss';
 import Header from '../../components/header/Header';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -29,9 +29,7 @@ const CatalogPage: React.FC = () => {
     subcategoryName?: string;
   }>();
   const { categoriesList } = useAppSelector((state) => state.products);
-
   const isLoading = useSelector((state: RootState) => state.products.isLoading);
-
   const isLoadingCart = useSelector((state: RootState) => state.cart.isLoading);
 
   const currentFilters = useSelector(

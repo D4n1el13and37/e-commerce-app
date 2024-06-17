@@ -27,8 +27,15 @@
 }
 
 .server__error {
+  position: relative;
+
   button {
     width: 100%;
+  }
+
+  span {
+    position: absolute;
+    top: -45%;
   }
 }
 

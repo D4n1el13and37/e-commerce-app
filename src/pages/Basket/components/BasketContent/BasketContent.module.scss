@@ -13,6 +13,7 @@
 .card_list__wrapper {
   display: flex;
   flex-direction: column;
+  grid-column: 1 / 8;
   gap: 32px;
 }
 
@@ -24,11 +25,24 @@
     font-size: var(--third-font-size);
     gap: 12px;
 
+    &_output {
+      display: flex;
+      align-items: center;
+    }
+
     &_text {
       align-self: flex-end;
       font-size: var(--third-font-size);
       text-transform: capitalize;
       color: var(--text-color);
+    }
+
+    &_old {
+      margin-right: 10px;
+      font-size: var(--second-font-size);
+      text-decoration: line-through;
+      text-decoration-color: var(--primary-color, #758963);
+      color: var(--grey-color);
     }
 
     &_dash {
@@ -62,6 +76,11 @@
 }
 
 .content__wrapper {
+  display: grid;
   grid-column: 1 / -1;
   padding: 20px 0 60px;
+}
+
+.discount__wrapper {
+  grid-column: 10 / 13;
 }

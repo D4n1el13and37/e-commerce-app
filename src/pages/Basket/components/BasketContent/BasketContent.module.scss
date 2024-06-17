@@ -89,11 +89,11 @@
   grid-column: 10 / 12;
 
   @media (max-width: (1080px)) {
-    grid-column: 4 span;
+    grid-column: 1 / 13;
     padding-top: 48px;
   }
 
   @media (max-width: (675px)) {
-    grid-column: 1 / 12;
+    grid-column: 1 / 13;
   }
 }

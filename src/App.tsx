@@ -34,6 +34,7 @@ function App() {
 
   useEffect(() => {
     dispatch(autorizationByToken());
+    dispatch(getDiscounts());
     // dispatch(getDiscounts());
 
     const cartCheck = async () => {

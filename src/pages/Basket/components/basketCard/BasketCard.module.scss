@@ -90,6 +90,13 @@
         line-height: 20px;
         color: var(--primary-color);
       }
+
+      &__error {
+        // position: absolute;
+        // top: 0;
+        // bottom: 0;
+        // transform: translateY(69%);
+      }
     }
   }
 }

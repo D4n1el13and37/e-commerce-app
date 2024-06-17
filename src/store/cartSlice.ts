@@ -10,6 +10,7 @@ import {
 } from '@commercetools/platform-sdk';
 import { createCart, getActiveCart, updateCart } from '../api/cart/cartMethods';
 import { RootState } from './store';
+// console.
 
 export interface CartState {
   cart: Cart;

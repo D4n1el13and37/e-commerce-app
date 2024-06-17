@@ -3,7 +3,6 @@
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -16,7 +15,6 @@
   left: auto;
   right: auto;
   top: auto;
-  bottom: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,18 +24,26 @@
   outline: none;
   border: none;
   border-radius: 12px;
-  padding: 20px;
-  width: 50%;
-  height: 650px;
+  padding: 48px;
+  width: auto;
+  height: auto;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.03);
   background-color: #fff;
+
+  @media (max-width: (700px)) {
+    margin: 24px;
+    width: 100%;
+  }
+
+  @media (max-width: (400px)) {
+    padding: 24px;
+  }
 }
 
 .modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px;
 
   &__content {
     margin: var(--gap) 0;
@@ -61,4 +67,38 @@
 .button_container {
   display: flex;
   gap: 24px;
+
+  @media (max-width: (500px)) {
+    flex-direction: column;
+  }
 }
+
+.changeTypeModal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__changeType {
+  }
+
+  &__header {
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  &__buttonBox {
+    display: flex;
+    gap: 12px;
+
+    @media (max-width: (700px)) {
+      flex-direction: column;
+    }
+  }
+
+  &__changeDefault {
+  }
+}
+
+// .successBox {
+//   margin-bottom: 200px;
+// }

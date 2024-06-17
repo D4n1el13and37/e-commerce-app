@@ -1,19 +1,56 @@
-.addressBlock {
-  width: 200px;
-  height: 200px;
-  padding: 48px;
+.addressBlockWrapper {
+  display: grid;
+  margin-bottom: 48px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 
+  @media (max-width: (900px)) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.addressBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 12px;
+  padding: 48px;
+  width: 100%;
   background: var(--light-color);
 
+  &__box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__address {
+    margin-top: 6px;
+  }
+
+  &__typeBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   &__default {
-    color: #fff;
     border-radius: 6px;
+    padding: 6px;
+    color: #fff;
     background: var(--primary-color, #758963);
+  }
+
+  &__type {
+    border-radius: 6px;
+    padding: 6px;
+    color: #fff;
+    background: var(--grey-color);
   }
 
   &__info {
     margin-top: 12px;
+    line-height: 24px;
   }
 
   &__text {
@@ -35,4 +72,8 @@
   .del {
     color: var(--grey-color, #989998);
   }
+}
+
+.bold {
+  font-weight: 500;
 }

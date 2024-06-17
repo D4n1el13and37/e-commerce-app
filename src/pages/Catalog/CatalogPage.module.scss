@@ -36,18 +36,26 @@
 }
 
 .catalog__sorting {
-  grid-column: 11 / -1;
+  grid-column: 10 / 12;
 
   @media (max-width: (1215px)) {
-    grid-column: 10 / -1;
+    grid-column: 10 / 12;
   }
 
-  @media (max-width: (815px)) {
-    grid-column: 5 span;
+  @media (max-width: (1130px)) {
+    grid-column: 9 / 12;
   }
 
-  @media (max-width: (515px)) {
-    grid-column: 12 span;
+  @media (max-width: (900px)) {
+    grid-column: 4 span;
+  }
+
+  @media (max-width: (600px)) {
+    grid-column: 1 / 6;
+  }
+
+  @media (max-width: (495px)) {
+    grid-column: 1 / 8;
   }
 }
 

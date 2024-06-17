@@ -36,7 +36,7 @@ const BasketCard: React.FC<BasketItem> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChangeQuantity = (productQuantity: number) => {
-    dispatch(getChangeQuantity({ productId: id, quanity: productQuantity }));
+    dispatch(getChangeQuantity({ productId: id, quantity: productQuantity }));
   };
 
   const increment = () => {

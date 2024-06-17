@@ -162,7 +162,7 @@ export const fetchProductsByFilters = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -195,7 +195,7 @@ export const fetchProductsBySorting = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -222,7 +222,7 @@ export const fetchSearchProducts = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -306,18 +306,6 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsBySorting.rejected, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
-      .addCase(fetchSearchProducts.pending, (state) => {
-        const newState = state;
-        newState.isLoading = true;
-      })
-      .addCase(fetchSearchProducts.fulfilled, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
-      .addCase(fetchSearchProducts.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

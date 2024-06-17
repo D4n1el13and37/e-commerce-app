@@ -80,7 +80,7 @@ export const getAddToCart = createAsyncThunk(
 export const getChangeQuantity = createAsyncThunk(
   'cart/changeQuantity',
   async (
-    { productId, quanity }: { productId: string; quanity: number },
+    { productId, quantity }: { productId: string; quantity: number },
     thunkAPI
   ) => {
     try {
@@ -89,7 +89,7 @@ export const getChangeQuantity = createAsyncThunk(
       const addItemAction: CartChangeLineItemQuantityAction = {
         action: 'changeLineItemQuantity',
         lineItemId: productId,
-        quantity: quanity,
+        quantity,
       };
       const { version, id } = state.cart.cart;
       const cartDraft: CartUpdate = { version, actions: [addItemAction] };

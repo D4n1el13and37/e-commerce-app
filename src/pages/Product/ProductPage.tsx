@@ -11,6 +11,7 @@ import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
 import { fetchProduct } from '../../store/productsSlice';
 import { getAddToCart, getChangeQuantity } from '../../store/cartSlice';
+import madeCorrectOutputPrice from '../../utils/madeCorrectOutputPrice';
 
 const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -64,9 +65,6 @@ const ProductPage: React.FC = () => {
   const salePrice = prod?.masterVariant.prices![0].discounted?.value
     .centAmount as number;
 
-  const currentPrice = (price / 100).toFixed(2);
-  const salePriceOutput = ((salePrice || +currentPrice) / 100)?.toFixed(2);
-
   return (
     <>
       <Header />
@@ -80,12 +78,20 @@ const ProductPage: React.FC = () => {
               <div className={s.product__info_top}>
                 <h1 className={s.product__name}>{prod?.name[language]}</h1>
                 <div className={s.product__price}>
-                  {salePriceOutput && (
-                    <div className={s.product__price_current}>
-                      {salePriceOutput} €
+                  {salePrice ? (
+                    <div className={s.price__action}>
+                      <span className={s.product__price_current}>
+                        {madeCorrectOutputPrice(salePrice)}
+                      </span>
+                      <span className={s.product__price_old}>
+                        {madeCorrectOutputPrice(price)}
+                      </span>
                     </div>
+                  ) : (
+                    <span className={s.product__price_current}>
+                      {madeCorrectOutputPrice(price)}
+                    </span>
                   )}
-                  <div className={s.product__price_old}>{currentPrice} €</div>
                 </div>
                 <p className={s.product__descr}>
                   {prod?.description?.[language]}

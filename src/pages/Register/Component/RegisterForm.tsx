@@ -2,11 +2,7 @@ import { useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAppDispatch from '../../../hooks/useAppDispatch';
-import {
-  // login,
-  loginAfterSuccesRegister,
-  register,
-} from '../../../store/authSlice';
+import { loginAfterSuccesRegister, register } from '../../../store/authSlice';
 
 import PersonalInfo from './PersonalInfo';
 import ShippingAddress from './ShippingAddress';
@@ -16,7 +12,6 @@ import Checkbox from '../../../components/ui/checkbox/Checkbox';
 
 import classes from './Rigister.module.scss';
 import { RegisterFormFields } from './interfaceRegister';
-// import { RegistartionUser, loginWithPassword } from '../../../api/authMethods';
 import ModalRegistration from './Modal/Modal';
 // import { getCart, getCreateCart } from '../../../store/cartSlice';
 
@@ -33,8 +28,8 @@ export default function RegisterForm() {
       streetBilling: 'Evkeoi',
       cityShipping: 'Ninzghn',
       cityBilling: 'Ninzghn',
-      postcodeShipping: '123123',
-      postcodeBilling: '123123',
+      postcodeShipping: '12312',
+      postcodeBilling: '12312',
     },
   });
   const {
@@ -44,7 +39,6 @@ export default function RegisterForm() {
 
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState('');
-
   const [isSameAddress, setSameAddress] = useState(true);
 
   const navigate = useNavigate();
@@ -71,13 +65,12 @@ export default function RegisterForm() {
     try {
       await dispatch(register(userData)).unwrap();
       setIsSuccess(true);
+      sessionStorage.setItem('newCustomerIndicator', 'true');
 
+      /** idk why it's not work */
       await dispatch(
         loginAfterSuccesRegister({ email: data.email, password: data.password })
       ).unwrap();
-      // await dispatch(getCreateCart());
-
-      // await dispatch(getCart());
 
       setTimeout(() => {
         navigate('/main', { replace: true });

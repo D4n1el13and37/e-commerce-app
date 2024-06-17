@@ -38,6 +38,7 @@ export interface ProductState {
   productByID: ProductProjection | null;
   language: 'en-US' | 'ru-RU';
   isLoading: boolean;
+  limit: number;
 }
 
 const transformCategories = (categories: Category[]): CustomCategory[] =>
@@ -59,6 +60,7 @@ const initialState: ProductState = {
   productByID: null,
   language: 'en-US',
   isLoading: false,
+  limit: 9,
 };
 
 export const fetchProducts = createAsyncThunk(

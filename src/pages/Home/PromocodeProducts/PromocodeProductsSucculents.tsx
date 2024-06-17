@@ -23,7 +23,7 @@ const PromocodeProductsSucculent = () => {
       />
       <div className={classes.productList}>
         {' '}
-        <ProductList limit={3} />
+        <ProductList initialLimit={3} infiniteScroll={false} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from '../../../../components/card/ProductCard';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import { RootState } from '../../../../store/store';
@@ -6,16 +6,54 @@ import cl from './ProductList.module.scss';
 import ProductNotFound from '../product_NotFound/ProductNotFound';
 
 interface ProductListProps {
-  limit?: number;
+  initialLimit?: number;
+  infiniteScroll?: boolean;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ limit = 20 }) => {
+const ProductList: React.FC<ProductListProps> = ({
+  initialLimit = 9,
+  infiniteScroll = true,
+}) => {
   const { productsList, language } = useAppSelector(
     (state: RootState) => state.products
   );
 
-  // I added to display 3 products on the home page.
-  const displayedProducts = productsList.slice(0, limit);
+  const [displayedProducts, setDisplayedProducts] = useState(
+    productsList.slice(0, initialLimit)
+  );
+  const [limit, setLimit] = useState(initialLimit);
+
+  const handleScroll = (e: Event) => {
+    const target = e.target as Document;
+
+    if (
+      target.documentElement.scrollHeight -
+        (target.documentElement.scrollTop + window.innerHeight) <
+      525
+    ) {
+      setLimit((prevLimit) => prevLimit + 9);
+    }
+  };
+
+  useEffect(() => {
+    setDisplayedProducts(productsList.slice(0, limit));
+  }, [limit, productsList]);
+
+  useEffect(() => {
+    const onScroll = (e: Event) => handleScroll(e);
+
+    if (infiniteScroll) {
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+    }
+
+    return () => {};
+  }, [infiniteScroll]);
+
+  useEffect(() => {
+    setLimit(initialLimit);
+    setDisplayedProducts(productsList.slice(0, initialLimit));
+  }, [initialLimit, productsList]);
 
   return (
     <div className={cl.wrapper}>
@@ -48,4 +86,5 @@ const ProductList: React.FC<ProductListProps> = ({ limit = 20 }) => {
     </div>
   );
 };
+
 export default ProductList;

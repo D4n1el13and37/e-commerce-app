@@ -31,7 +31,7 @@ const BasketCard: React.FC<BasketItem> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChangeQuantity = (productQuantity: number) => {
-    dispatch(getChangeQuantity({ productId: id, quanity: productQuantity }));
+    dispatch(getChangeQuantity({ productId: id, quantity: productQuantity }));
   };
 
   const handleAddProduct = () => {
@@ -54,7 +54,7 @@ const BasketCard: React.FC<BasketItem> = ({
     handleChangeQuantity(0);
   };
 
-  const DISCOUNT = price.discounted?.value.centAmount;
+  const discountPrice = price.discounted?.value.centAmount;
 
   return (
     <div className={cl.card__wrapper}>
@@ -82,7 +82,7 @@ const BasketCard: React.FC<BasketItem> = ({
           <div className={cl.right_side__total_wrapper}>
             <strong className={cl.right_side__total}>Total Price:</strong>
             <div className={cl.price__total_by_product}>
-              {DISCOUNT ? (
+              {discountPrice ? (
                 <>
                   <span className={cl.price__old}>
                     {madeCorrectOutputPrice(quantity * price.value.centAmount)}

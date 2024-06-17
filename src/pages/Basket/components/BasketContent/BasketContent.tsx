@@ -11,7 +11,7 @@ import DiscountBlock from '../discount/DiscountBlock';
 
 const BasketContent = () => {
   const { cartItems, cart } = useAppSelector((state) => state.cart);
-  const FULL_PRICE = madeCorrectOutputPrice(cart.totalPrice?.centAmount || 0);
+  const fullPrice = madeCorrectOutputPrice(cart.totalPrice?.centAmount || 0);
   const dispatch = useAppDispatch();
   const [modalIsShown, setModalIsShown] = useState(false);
 
@@ -37,11 +37,9 @@ const BasketContent = () => {
       0
     );
   }
-  const TOTAL_WITHOUT_DISCONT = madeCorrectOutputPrice(
+  const totalPriceWithoutDiscount = madeCorrectOutputPrice(
     calculateTotalWithoutDiscount()
   );
-
-  // console.warn(cartItems.length);
 
   return (
     <>
@@ -79,13 +77,13 @@ const BasketContent = () => {
                       clear basket
                     </span>
                     <div className={cl.full_price__wrapper_output}>
-                      {TOTAL_WITHOUT_DISCONT !== FULL_PRICE && (
+                      {totalPriceWithoutDiscount !== fullPrice && (
                         <span className={cl.full_price__wrapper_old}>
-                          {TOTAL_WITHOUT_DISCONT}
+                          {totalPriceWithoutDiscount}
                         </span>
                       )}
                       <span className={cl.full_price__wrapper_text}>
-                        {FULL_PRICE}
+                        {fullPrice}
                       </span>
                     </div>
                   </div>

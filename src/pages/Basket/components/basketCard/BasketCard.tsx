@@ -63,7 +63,7 @@ const BasketCard: React.FC<BasketItem> = ({
     handleChangeQuantity(0);
   };
 
-  const DISCOUNT = Math.max(
+  const discountPrice = Math.max(
     price.discounted?.value.centAmount || 0,
     discount![0]?.discountedPrice?.value.centAmount || 0
   );
@@ -94,7 +94,7 @@ const BasketCard: React.FC<BasketItem> = ({
           <div className={cl.right_side__total_wrapper}>
             <strong className={cl.right_side__total}>Total Price:</strong>
             <div className={cl.price__total_by_product}>
-              {DISCOUNT ? (
+              {discountPrice ? (
                 <>
                   <span className={cl.price__old}>
                     {madeCorrectOutputPrice(quantity * price.value.centAmount)}

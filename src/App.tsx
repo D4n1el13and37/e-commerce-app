@@ -24,6 +24,7 @@ import BasketPage from './pages/Basket/BasketPage';
 import {
   getAnonymCart,
   getCart /* getCreateCart */,
+  getDiscounts,
   // getDiscounts,
   // getCreateCart,
 } from './store/cartSlice';
@@ -33,6 +34,7 @@ function App() {
   const dispatch = useAppDispatch();
   const isAuthorized = useAppSelector((state) => state.auth.currentUser);
   const [isAuthChecked, setIsAuthChecked] = useState(false);
+
   // const [isInitialized, setIsInitialized] = useState(false);
 
   // useEffect(() => {
@@ -54,14 +56,13 @@ function App() {
   // }, [dispatch]);
 
   useEffect(() => {
+    dispatch(getDiscounts());
     const initialize = async () => {
       try {
         // console.log('Initializing authorization by token...');
         const token = localStorage.getItem('tokendata') || '';
         if (token) {
-          /* const resultAction =  */ await dispatch(
-            autorizationByToken()
-          ).unwrap();
+          await dispatch(autorizationByToken()).unwrap();
           // console.log('Authorization by token result:', resultAction);
         }
       } catch (error) {

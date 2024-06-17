@@ -135,7 +135,6 @@ export async function deleteCart(ID: string, version: number): Promise<Cart> {
     }
   }
 }
-
 // export async function deleteCart(ID: string, version: number): Promise<Cart> {
 //   try {
 //     const apiRoot = getApiRoot();
@@ -173,7 +172,7 @@ export async function getDiscountCodes(): Promise<DiscountCodePagedQueryResponse
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error('Error during login via');
+      throw new Error('Error during getting discounts list');
     }
   }
 }

@@ -3,14 +3,13 @@ import cn from 'classnames';
 import Button from '../../../components/ui/button/Button';
 import CustomerInfo from './profileNavigation/СustomerInfo';
 import PersonalInfo from './profileNavigation/PasswordlInfo';
-import AddressInfo from './profileNavigation/AddressInfo';
+import Address from './profileNavigation/Address';
 
 import classes from '../userProfile.module.scss';
 
 const profileNav = [
   { name: 'Profile Info', key: 'СustomerInfo' },
-  { name: 'Shipping Address', key: 'ShippingInfo' },
-  { name: 'Billing Address', key: 'BillingInfo' },
+  { name: 'Address Info', key: 'AddressInfo' },
   { name: 'Change Password', key: 'PersonalInfo' },
 ];
 
@@ -22,10 +21,8 @@ const ProfileInfo: React.FC = () => {
     switch (activeTab) {
       case 'СustomerInfo':
         return <CustomerInfo />;
-      case 'ShippingInfo':
-        return <AddressInfo addressType="Shipping" />;
-      case 'BillingInfo':
-        return <AddressInfo addressType="Billing" />;
+      case 'AddressInfo':
+        return <Address />;
       case 'PersonalInfo':
         return <PersonalInfo />;
       default:

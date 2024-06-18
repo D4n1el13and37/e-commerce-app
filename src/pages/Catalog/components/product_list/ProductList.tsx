@@ -86,5 +86,4 @@ const ProductList: React.FC<ProductListProps> = ({
     </div>
   );
 };
-
 export default ProductList;

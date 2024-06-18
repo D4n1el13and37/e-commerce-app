@@ -1,0 +1,109 @@
+.ReactModal__Overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9a5;
+}
+
+.ReactModal__Content {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  margin: 0;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  padding: 48px;
+  width: auto;
+  height: auto;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.03);
+  background-color: #fff;
+
+  @media (max-width: (700px)) {
+    margin: 24px;
+    width: 100%;
+  }
+
+  @media (max-width: (400px)) {
+    padding: 24px;
+  }
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__content {
+    margin: var(--gap) 0;
+  }
+
+  &__text {
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  &__header {
+    font-weight: 400;
+    font-size: var(--title-font-size);
+  }
+}
+
+.input_container {
+  width: 100%;
+}
+
+.button_container {
+  display: flex;
+  gap: 24px;
+
+  @media (max-width: (500px)) {
+    flex-direction: column;
+  }
+}
+
+.changeTypeModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__changeType {
+  }
+
+  &__header {
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  &__buttonBox {
+    display: flex;
+    gap: 12px;
+
+    @media (max-width: (700px)) {
+      flex-direction: column;
+    }
+  }
+
+  &__changeDefault {
+  }
+}
+
+.successMessage {
+  position: absolute;
+  bottom: -24px;
+  font-size: var(--second-font-size);
+  color: var(--primary-color);
+}

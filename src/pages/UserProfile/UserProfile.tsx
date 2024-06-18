@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import useAppDispatch from '../../hooks/useAppDispatch';
 import UserInfo from './Component/UserInfo';
 import ProfileInfo from './Component/ProfileInfo';
 import Header from '../../components/header/Header';
@@ -8,11 +8,9 @@ import Header from '../../components/header/Header';
 import classes from './userProfile.module.scss';
 import { getCustomer } from '../../api/Customer/customer';
 import { setDataUser } from '../../store/customerSlice';
-import { RootState } from '../../store/store';
 
 const UserProfile: React.FC = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.customer.dataUser);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -34,7 +32,7 @@ const UserProfile: React.FC = () => {
       <Header />
       <main className={'container'}>
         <div className={cn('grid', classes.account)}>
-          <UserInfo dataUser={user} />
+          <UserInfo />
           <ProfileInfo />
         </div>
       </main>

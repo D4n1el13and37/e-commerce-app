@@ -2,13 +2,18 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '../../../ui/input/Input';
 import { AddressField } from '../../formInterface';
-
 import classes from '../../styleForm.module.scss';
+import { CountryOptionInterface } from '../../../../pages/Register/Component/AddressForm/countryOptions';
 
-const Postcode: React.FC<AddressField> = ({
+interface PostcodeProps extends AddressField {
+  selectedCountry: CountryOptionInterface | null;
+}
+
+const Postcode: React.FC<PostcodeProps> = ({
   onClick,
   onChange,
-  typeAddress,
+  name,
+  id,
   selectedCountry,
 }) => {
   const {
@@ -16,7 +21,7 @@ const Postcode: React.FC<AddressField> = ({
     formState: { errors },
   } = useFormContext();
 
-  const nameId = `postalCode${typeAddress}`;
+  const nameId = id as string;
   const errorMessage = errors[nameId]?.message as string | undefined;
 
   return (
@@ -25,6 +30,7 @@ const Postcode: React.FC<AddressField> = ({
         id={nameId}
         label="Postcode"
         type="text"
+        defaultValue={name}
         placeholder="Postcode"
         disabled={!selectedCountry}
         onClick={onClick}
@@ -41,9 +47,7 @@ const Postcode: React.FC<AddressField> = ({
         onChange={onChange}
       />
       <div className={classes.error_container}>
-        {errors[`postalCode${typeAddress}`] && (
-          <span className="error">{errorMessage}</span>
-        )}
+        {errors[nameId] && <span className="error">{errorMessage}</span>}
       </div>
     </div>
   );

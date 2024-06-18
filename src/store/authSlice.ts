@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Customer } from '@commercetools/platform-sdk';
 import {
   RegistartionUser,
+  loginAfterRegister,
   loginByToken,
   loginWithPassword,
 } from '../api/authintification/authMethods';
@@ -54,6 +55,22 @@ export const login = createAsyncThunk(
   }
 );
 
+export const loginAfterSuccesRegister = createAsyncThunk(
+  'auth/loginAfterRegister',
+  async (userData: LoginForm, thunkAPI) => {
+    try {
+      const { email, password } = userData;
+      const response = await loginAfterRegister(email, password);
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      throw new Error('Error from REDUX login function');
+    }
+  }
+);
+
 export const autorizationByToken = createAsyncThunk(
   'auth/loginByToken',
   async (_, thunkAPI) => {
@@ -90,6 +107,20 @@ const authSlice = createSlice({
         newState.currentUser = action.payload;
       })
       .addCase(login.rejected, (state) => {
+        const newState = state;
+        newState.isLoading = false;
+      })
+      .addCase(loginAfterSuccesRegister.pending, (state) => {
+        const newState = state;
+        newState.isLoading = true;
+      })
+      .addCase(loginAfterSuccesRegister.fulfilled, (state, action) => {
+        const newState = state;
+        newState.isLoading = false;
+        newState.isAutorized = true;
+        newState.currentUser = action.payload;
+      })
+      .addCase(loginAfterSuccesRegister.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

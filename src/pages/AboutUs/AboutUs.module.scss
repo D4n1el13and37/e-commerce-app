@@ -1,0 +1,233 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 150px;
+
+  @media (max-width: (1024px)) {
+    padding: 48px;
+  }
+
+  @media (max-width: (740px)) {
+    padding: 48px 20px;
+  }
+
+  &__subheader {
+    color: var(--primary-color);
+  }
+
+  &__header {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: var(--main-title-size, 57px);
+    line-height: 112%;
+    text-align: center;
+    color: var(--text-color);
+    text-wrap: balance;
+  }
+
+  &__description {
+    margin-top: 88px;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+.infographicBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  gap: 124px;
+
+  @media (max-width: (740px)) {
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+}
+
+.infographic {
+  text-align: center;
+
+  &__number {
+    font-weight: 500;
+    font-size: var(--page-title-size);
+  }
+
+  &__text {
+    font-size: var(--second-font-size);
+    color: var(--primary-color);
+  }
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 64px;
+  gap: 12px;
+
+  &__item {
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #fff;
+    background: var(--primary-color, #758963);
+
+    @media (any-hover: hover) {
+      &:hover {
+        background: var(--accent-color);
+        transform: scale(1.1);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        color var(--duration) ease-in-out,
+        transform var(--duration) ease-in-out;
+    }
+  }
+}
+
+.developerBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 48px;
+  gap: 24px;
+
+  @media (max-width: (1200px)) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.photoBox {
+  position: relative;
+}
+
+.developer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: (1200px)) {
+    flex-direction: row;
+  }
+
+  @media (max-width: (600px)) {
+    flex-flow: wrap;
+  }
+
+  &__photo {
+    border-radius: 12px;
+    height: 100%;
+
+    @media (max-width: (1200px)) {
+      width: 300px;
+    }
+
+    @media (max-width: (500px)) {
+      width: 100%;
+    }
+  }
+}
+
+.greenBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  background: rgba(63, 80, 40, 0.79);
+  opacity: 0;
+  transition: opacity var(--duration) ease-in-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity var(--duration) ease-in-out;
+  }
+
+  &.visible {
+    opacity: 1;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity var(--duration) ease-in-out;
+    }
+  }
+
+  &__name {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: var(--third-font-size);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background var(--duration) ease-in-out,
+      transform var(--duration) ease-in-out;
+  }
+}
+
+.developerInverse {
+  flex-direction: column-reverse;
+}
+
+.infoBox {
+  border: 1px solid var(--primary-color, #758963);
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  background: var(--light-color);
+
+  @media (max-width: (1200px)) {
+    width: 100%;
+    height: auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: var(--third-font-size);
+    color: var(--accent-color, #3f5028);
+  }
+
+  &__role {
+    margin-top: 6px;
+    color: var(--primary-color, #758963);
+  }
+
+  .linkBox {
+    display: flex;
+    gap: 12px;
+
+    &__link {
+      path {
+        transition: fill 0.3s ease;
+      }
+
+      @media (any-hover: hover) {
+        &:hover path {
+          fill: var(--accent-color);
+        }
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    line-height: 24px;
+  }
+}
+
+.logo {
+  margin-top: 48px;
+  width: 150px;
+}

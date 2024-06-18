@@ -3,7 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import RegisterPage from './pages/Register/RegisterPage';
 import LoginPage from './pages/Login/LoginPage';
 import Home from './pages/Home/Home';
@@ -15,15 +15,43 @@ import NotFound from './pages/NotFound/NotFound';
 import UserProfile from './pages/UserProfile/UserProfile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductList from './pages/Catalog/components/product_list/ProductList';
+import AboutUs from './pages/AboutUs/AboutUs';
+import BasketPage from './pages/Basket/BasketPage';
+import { getAnonymCart, getCart, getDiscounts } from './store/cartSlice';
 
 function App() {
   const dispatch = useAppDispatch();
-  const isAuthorized = useAppSelector((state) => state.auth.isAutorized);
-  // const isLoading = useAppSelector((state) => state.auth.isLoading);
+  const isAuthorized = useAppSelector((state) => state.auth.currentUser);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
 
   useEffect(() => {
-    dispatch(autorizationByToken());
+    dispatch(getDiscounts());
+
+    const initialize = async () => {
+      try {
+        const token = localStorage.getItem('tokendata') || '';
+        if (token) {
+          await dispatch(autorizationByToken()).unwrap();
+        }
+      } catch (error) {
+        await dispatch(getAnonymCart()).unwrap();
+      } finally {
+        setIsAuthChecked(true);
+      }
+    };
+
+    initialize();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthChecked) {
+      if (isAuthorized) {
+        dispatch(getCart());
+      } else {
+        dispatch(getAnonymCart());
+      }
+    }
+  }, [dispatch, isAuthChecked, isAuthorized]);
 
   const router = useMemo(
     () =>
@@ -60,6 +88,10 @@ function App() {
               element: <ProductPage />,
             },
             {
+              path: 'basket',
+              element: <BasketPage />,
+            },
+            {
               path: 'login',
               element: !isAuthorized ? <LoginPage /> : <Navigate to="/main" />,
             },
@@ -79,17 +111,16 @@ function App() {
               path: 'account',
               element: isAuthorized ? <UserProfile /> : <Navigate to="/" />,
             },
+            {
+              path: 'about',
+              element: <AboutUs />,
+            },
           ],
         },
       ]),
     [isAuthorized]
   );
 
-  // I commented out that piece of code because if it's there. Then server errors during registration and authorisation are not shown
-
-  // if (isLoading) {
-  //   return <div>Loadiiing...</div>;
-  // }
   return <RouterProvider router={router} />;
 }
 

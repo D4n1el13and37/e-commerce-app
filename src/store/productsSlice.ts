@@ -1,7 +1,4 @@
-import {
-  /* PayloadAction, */ createAsyncThunk,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   Category,
   Image,
@@ -24,7 +21,7 @@ export interface CustomProduct {
   title: LocalizedString;
   description: LocalizedString;
   price: number;
-  salePrice: number;
+  salePrice?: number;
   images: Image[] | undefined;
   id?: string;
 }
@@ -41,6 +38,7 @@ export interface ProductState {
   productByID: ProductProjection | null;
   language: 'en-US' | 'ru-RU';
   isLoading: boolean;
+  limit: number;
 }
 
 const transformCategories = (categories: Category[]): CustomCategory[] =>
@@ -62,6 +60,7 @@ const initialState: ProductState = {
   productByID: null,
   language: 'en-US',
   isLoading: false,
+  limit: 9,
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -77,7 +76,7 @@ export const fetchProducts = createAsyncThunk(
           price:
             card.masterData.current.masterVariant.prices![0].value.centAmount,
           salePrice:
-            card.masterData.current.masterVariant.prices![0].discounted!.value
+            card.masterData.current.masterVariant.prices![0].discounted?.value
               .centAmount,
           id: card.id,
           images: card.masterData.current.masterVariant.images,
@@ -135,7 +134,7 @@ export const fetchProductsByCategory = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -162,7 +161,7 @@ export const fetchProductsByFilters = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -195,7 +194,7 @@ export const fetchProductsBySorting = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -222,7 +221,7 @@ export const fetchSearchProducts = createAsyncThunk(
           title: card.name,
           description: card.description!,
           price: card.masterVariant.prices![0].value.centAmount,
-          salePrice: card.masterVariant.prices![0].discounted!.value.centAmount,
+          salePrice: card.masterVariant.prices![0].discounted?.value.centAmount,
           id: card.id,
           images: card.masterVariant.images,
         };
@@ -306,18 +305,6 @@ const productsSlice = createSlice({
         newState.productsList = action.payload;
       })
       .addCase(fetchProductsBySorting.rejected, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
-      .addCase(fetchSearchProducts.pending, (state) => {
-        const newState = state;
-        newState.isLoading = true;
-      })
-      .addCase(fetchSearchProducts.fulfilled, (state) => {
-        const newState = state;
-        newState.isLoading = false;
-      })
-      .addCase(fetchSearchProducts.rejected, (state) => {
         const newState = state;
         newState.isLoading = false;
       })

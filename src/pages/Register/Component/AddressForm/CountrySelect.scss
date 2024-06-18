@@ -15,6 +15,10 @@
     }
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--duration) border-color ease-in-out !important;
+  }
+
   &:focus {
     border-color: var(--accent-color) !important;
     box-shadow: 0 0 0 0 var(--accent-color) !important;
@@ -47,4 +51,8 @@
   &:focus {
     background-color: var(--light-color) !important;
   }
+}
+
+.react-select__indicator-separator {
+  display: none !important;
 }

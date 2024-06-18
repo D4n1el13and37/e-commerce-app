@@ -50,7 +50,7 @@ const Address: React.FC = () => {
       <div className={classes.addressBlockWrapper}>
         {addresses.map((address) => (
           <AddressBlock
-            id={address.id}
+            id={address.id as string}
             addressType={checkTypeAddress(address.id as string)}
             defaultShipping={
               address.id === defaultShippingAddress

@@ -14,7 +14,7 @@ import ChangeTypeModal from '../../ChangeAddressModal/ChangeTypeModal';
 import { RootState } from '../../../../../store/store';
 
 interface AddressBlockProps {
-  id: string | undefined;
+  id: string;
   addressType: string;
   defaultShipping?: string;
   defaultBilling?: string;

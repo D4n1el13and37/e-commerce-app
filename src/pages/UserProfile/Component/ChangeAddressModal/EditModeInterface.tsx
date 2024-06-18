@@ -1,8 +1,8 @@
 export interface Address {
-  country: string;
-  city: string;
-  streetName: string;
-  postalCode: string;
+  country?: string;
+  city?: string;
+  streetName?: string;
+  postalCode?: string;
 }
 
 export interface DataAddress extends Address {

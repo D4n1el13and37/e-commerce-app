@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { SingleValue } from 'react-select';
-import { CustomerAddAddressAction } from '@commercetools/platform-sdk';
+import {
+  BaseAddress,
+  CustomerAddAddressAction,
+} from '@commercetools/platform-sdk';
 
 import Button from '../../../../components/ui/button/Button';
 import classes from './EditModeModal.module.scss';
@@ -17,7 +20,7 @@ import { RootState } from '../../../../store/store';
 import { selectVersion, updateAddress } from '../../../../store/addressSlice';
 import SuccessModal from '../SuccesModal/SuccessModal';
 
-import { Address, CustomModalProps } from './EditModeInterface';
+import { CustomModalProps } from './EditModeInterface';
 
 const AddNewModal: React.FC<CustomModalProps> = ({
   isOpen,
@@ -29,7 +32,7 @@ const AddNewModal: React.FC<CustomModalProps> = ({
   );
   const versionEdit = useAppSelector(selectVersion);
 
-  const methods = useForm<Address>();
+  const methods = useForm<BaseAddress>();
 
   const {
     control,
@@ -43,7 +46,7 @@ const AddNewModal: React.FC<CustomModalProps> = ({
   const [selectedCountry, setSelectedCountry] =
     useState<SingleValue<CountryOptionInterface> | null>(null);
 
-  const onSubmit: SubmitHandler<Address> = (data) => {
+  const onSubmit: SubmitHandler<BaseAddress> = (data) => {
     const customerId = dataUser!.id;
 
     const addAddress: CustomerAddAddressAction = {

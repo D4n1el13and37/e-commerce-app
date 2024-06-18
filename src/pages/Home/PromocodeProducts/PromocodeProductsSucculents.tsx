@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useAppDispatch from '../../../hooks/useAppDispatch';
 import { fetchProductsByCategory } from '../../../store/productsSlice';
 import ProductList from '../../Catalog/components/product_list/ProductList';
@@ -9,10 +10,12 @@ const PromocodeProductsSucculent = () => {
 
   const categoryIdSucculent = '17bea79f-f832-4725-bb7a-ac7f801c3a45';
 
-  const preloadProducts = () =>
-    dispatch(fetchProductsByCategory(categoryIdSucculent));
+  useEffect(() => {
+    const preloadProducts = () =>
+      dispatch(fetchProductsByCategory(categoryIdSucculent));
 
-  preloadProducts();
+    preloadProducts();
+  }, [dispatch, categoryIdSucculent]);
 
   return (
     <div className="grid">
@@ -22,7 +25,6 @@ const PromocodeProductsSucculent = () => {
         promocode="SUCCULENT10"
       />
       <div className={classes.productList}>
-        {' '}
         <ProductList initialLimit={3} infiniteScroll={false} />
       </div>
     </div>

@@ -46,8 +46,10 @@ const AboutUs = () => {
           </div>
 
           <div className={classes.stack}>
-            {ourStack.map((item) => (
-              <p className={classes.stack__item}>{item}</p>
+            {ourStack.map((item, index) => (
+              <p key={item + index} className={classes.stack__item}>
+                {item}
+              </p>
             ))}
           </div>
 

@@ -102,7 +102,7 @@ const BasketCard: React.FC<BasketItem> = ({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 1.5H15" stroke="#758963" stroke-width="1.5" />
+                <path d="M0 1.5H15" stroke="#758963" strokeWidth="1.5" />
               </svg>
             </Button>
             <div className={cl.right_side__goods_controller__total_count}>
@@ -116,8 +116,8 @@ const BasketCard: React.FC<BasketItem> = ({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 7.5H15" stroke="#758963" stroke-width="1.5" />
-                <path d="M7.5 0L7.5 15" stroke="#758963" stroke-width="1.5" />
+                <path d="M0 7.5H15" stroke="#758963" strokeWidth="1.5" />
+                <path d="M7.5 0L7.5 15" stroke="#758963" strokeWidth="1.5" />
               </svg>
             </Button>
           </div>

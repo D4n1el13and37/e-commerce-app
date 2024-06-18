@@ -34,9 +34,9 @@ const AboutUs = () => {
 
       <main className="container">
         <div className={classes.about}>
-          <p className={classes.about__subheader}>About Us</p>
+          {/* <p className={classes.about__subheader}>About Us</p> */}
           <h2 className={classes.about__header}>
-            Unity in Development: Our Team's Journey
+            Unity in Development: Yes Team's Journey
           </h2>
 
           <div className={classes.infographicBox}>

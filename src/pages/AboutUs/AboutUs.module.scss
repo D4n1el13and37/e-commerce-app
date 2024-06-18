@@ -49,9 +49,6 @@
 .infographic {
   text-align: center;
 
-  &__sub {
-  }
-
   &__number {
     font-weight: 500;
     font-size: var(--page-title-size);
@@ -126,6 +123,10 @@
 
     @media (max-width: (1200px)) {
       width: 300px;
+    }
+
+    @media (max-width: (500px)) {
+      width: 100%;
     }
   }
 }

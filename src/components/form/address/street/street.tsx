@@ -10,7 +10,7 @@ const Street: React.FC<AddressField> = ({ onClick, onChange, name, id }) => {
     formState: { errors },
   } = useFormContext();
 
-  const nameId = id;
+  const nameId = id as string;
   const errorMessage = errors[nameId]?.message as string | undefined;
 
   return (

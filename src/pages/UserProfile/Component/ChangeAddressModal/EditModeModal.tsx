@@ -112,11 +112,11 @@ const EditModeModal: React.FC<CustomModalProps> = ({
             </div>
           </div>
           <div className={classes.input_container}>
-            <City name={address?.city} id="city" />
-            <Street name={address?.streetName} id="streetName" />
+            <City name={address!.city} id="city" />
+            <Street name={address!.streetName} id="streetName" />
           </div>
           <Postcode
-            name={address?.postalCode}
+            name={address!.postalCode}
             id="postalCode"
             selectedCountry={selectedCountry}
           />

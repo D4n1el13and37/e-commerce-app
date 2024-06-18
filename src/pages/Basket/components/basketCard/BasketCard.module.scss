@@ -27,6 +27,12 @@
         height: auto;
         max-width: 100%;
         object-fit: cover;
+
+        @media (any-hover: hover) {
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -49,7 +55,18 @@
       font-size: 20px;
       line-height: 24px;
       text-transform: capitalize;
-      color: #323334;
+      color: var(--text-color);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: color var(--duration, 0.3s) ease-in-out;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: var(--primary-color);
+          cursor: pointer;
+        }
+      }
     }
 
     &__total_wrapper {

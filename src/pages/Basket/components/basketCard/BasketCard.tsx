@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Attribute,
   DiscountedLineItemPriceForQuantity,
@@ -69,14 +70,21 @@ const BasketCard: React.FC<BasketItem> = ({
     discount![0]?.discountedPrice?.value.centAmount || 0
   );
 
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/catalog/product/${productId}`);
+  };
+
   return (
     <div className={cl.card__wrapper}>
-      <div className={cl.left_side__wrapper}>
+      <div onClick={handleNavigate} className={cl.left_side__wrapper}>
         <img src={image[0].url} alt={image[0].label} />
       </div>
       <div className={cl.right_side__wrapper}>
         <div className={cl.right_side__headline}>
-          <h4 className={cl.right_side__title}>{name}</h4>
+          <h4 onClick={handleNavigate} className={cl.right_side__title}>
+            {name}
+          </h4>
           <Button onClick={handleRemoveProduct}>
             <svg
               fill="#758963"

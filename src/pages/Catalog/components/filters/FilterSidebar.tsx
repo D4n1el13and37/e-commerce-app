@@ -74,7 +74,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   }, [location.pathname, handleResetFilters]);
 
   return (
-    <div className={classes.filterSidebar}>
+    <search className={classes.filterSidebar}>
       <div>
         <form action="">
           <div className={classes.filterSidebar__sortBox}>
@@ -167,7 +167,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
           </div>
         </form>
       </div>
-    </div>
+    </search>
   );
 };
 

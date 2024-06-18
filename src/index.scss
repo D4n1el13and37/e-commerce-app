@@ -56,6 +56,8 @@ input {
 
 html {
   height: 100%;
+  scrollbar-color: var(--primary-color) #fff;
+  scrollbar-width: thin;
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -110,7 +112,6 @@ li {
   overflow: hidden;
 }
 
-/* remove from here? */
 .error {
   border-color: var(--error-color, #ff5449);
   color: var(--error-color, #ff5449);
@@ -131,6 +132,30 @@ li {
 
   &::placeholder {
     color: var(--error-color, #ff5449);
+  }
+}
+
+.loader-enter {
+  opacity: 0;
+}
+
+.loader-enter-active {
+  opacity: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity var(--duration) ease-in-out;
+  }
+}
+
+.loader-exit {
+  opacity: 0;
+}
+
+.loader-exit-active {
+  opacity: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity var(--duration) ease-in-out;
   }
 }
 

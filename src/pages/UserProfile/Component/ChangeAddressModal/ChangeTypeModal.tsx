@@ -14,7 +14,6 @@ import useAppDispatch from '../../../../hooks/useAppDispatch';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import { RootState } from '../../../../store/store';
 import { selectVersion, updateAddress } from '../../../../store/addressSlice';
-import SuccessModal from '../SuccesModal/SuccessModal';
 import { CustomModalProps } from './EditModeInterface';
 
 type CustomerAddressActionType =
@@ -59,7 +58,7 @@ const ChangeTypeModal: React.FC<CustomModalProps> = ({
   };
 
   function removeMessage() {
-    setTimeout(() => setIsEditSuccess(false), 1000);
+    setTimeout(() => setIsEditSuccess(false), 1500);
   }
 
   const handleShippingAddress = () =>
@@ -141,7 +140,11 @@ const ChangeTypeModal: React.FC<CustomModalProps> = ({
         <Button onClick={onRequestClose} isMain isFilled>
           Cansel
         </Button>
-        <SuccessModal isOpen={isEditSuccess} />
+        {isEditSuccess && (
+          <span className={classes.successMessage}>
+            The changes are successful!
+          </span>
+        )}
       </div>
     </Modal>
   );

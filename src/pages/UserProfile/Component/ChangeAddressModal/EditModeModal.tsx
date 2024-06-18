@@ -21,7 +21,6 @@ import useAppDispatch from '../../../../hooks/useAppDispatch';
 import useAppSelector from '../../../../hooks/useAppSelector';
 import { RootState } from '../../../../store/store';
 import { selectVersion, updateAddress } from '../../../../store/addressSlice';
-import SuccessModal from '../SuccesModal/SuccessModal';
 
 import { CustomModalProps } from './EditModeInterface';
 
@@ -133,7 +132,12 @@ const EditModeModal: React.FC<CustomModalProps> = ({
               Cancel
             </Button>
 
-            <SuccessModal isOpen={isEditSuccess} />
+            {isEditSuccess && (
+              <span className={classes.successMessage}>
+                {' '}
+                The changes are successful!
+              </span>
+            )}
           </div>
         </form>
       </FormProvider>

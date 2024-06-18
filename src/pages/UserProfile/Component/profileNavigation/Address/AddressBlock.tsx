@@ -14,7 +14,7 @@ import ChangeTypeModal from '../../ChangeAddressModal/ChangeTypeModal';
 import { RootState } from '../../../../../store/store';
 
 interface AddressBlockProps {
-  id: string;
+  id: string | undefined;
   addressType: string;
   defaultShipping?: string;
   defaultBilling?: string;
@@ -42,7 +42,7 @@ const AddressBlock: React.FC<AddressBlockProps> = ({
   const [isOpenChangeTypeModal, setIsOpenChangeTypeModal] = useState(false);
 
   const handleRemoveAddress = () => {
-    const customerId = dataUser?.id;
+    const customerId = dataUser!.id;
 
     const setAddress: CustomerRemoveAddressAction = {
       action: 'removeAddress',
@@ -62,9 +62,11 @@ const AddressBlock: React.FC<AddressBlockProps> = ({
       <div className={classes.addressBlock__box}>
         <div className={classes.addressBlock__address}>
           <div className={classes.addressBlock__typeBox}>
-            <span className={classes.addressBlock__type}>
-              {props.addressType}
-            </span>
+            {props.addressType && (
+              <span className={classes.addressBlock__type}>
+                {props.addressType}
+              </span>
+            )}
             {props.defaultShipping && (
               <span className={classes.addressBlock__default}>
                 {props.defaultShipping}

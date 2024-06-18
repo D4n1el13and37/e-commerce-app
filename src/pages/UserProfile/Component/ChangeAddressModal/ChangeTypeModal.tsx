@@ -50,7 +50,6 @@ const ChangeTypeModal: React.FC<CustomModalProps> = ({
     dispatch(updateAddress({ customerId, data: updateData }))
       .then(() => {
         if (successCallback) successCallback();
-        onRequestClose();
       })
       .catch((error) => {
         if (error instanceof Error) {
@@ -59,11 +58,21 @@ const ChangeTypeModal: React.FC<CustomModalProps> = ({
       });
   };
 
+  function removeMessage() {
+    setTimeout(() => setIsEditSuccess(false), 1000);
+  }
+
   const handleShippingAddress = () =>
-    handleSubmit([
-      { action: 'addShippingAddressId', addressId: address?.id },
-      { action: 'removeBillingAddressId', addressId: address?.id },
-    ]);
+    handleSubmit(
+      [
+        { action: 'addShippingAddressId', addressId: address?.id },
+        { action: 'removeBillingAddressId', addressId: address?.id },
+      ],
+      () => {
+        setIsEditSuccess(true);
+        removeMessage();
+      }
+    );
 
   const handleBillingAddress = () =>
     handleSubmit(
@@ -71,18 +80,29 @@ const ChangeTypeModal: React.FC<CustomModalProps> = ({
         { action: 'addBillingAddressId', addressId: address?.id },
         { action: 'removeShippingAddressId', addressId: address?.id },
       ],
-      () => setIsEditSuccess(true)
+      () => {
+        setIsEditSuccess(true);
+        removeMessage();
+      }
     );
 
   const handleDefaultBillingAddress = () =>
-    handleSubmit([
-      { action: 'setDefaultBillingAddress', addressId: address?.id },
-    ]);
+    handleSubmit(
+      [{ action: 'setDefaultBillingAddress', addressId: address?.id }],
+      () => {
+        setIsEditSuccess(true);
+        removeMessage();
+      }
+    );
 
   const handleDefaultShippingAddress = () =>
-    handleSubmit([
-      { action: 'setDefaultShippingAddress', addressId: address?.id },
-    ]);
+    handleSubmit(
+      [{ action: 'setDefaultShippingAddress', addressId: address?.id }],
+      () => {
+        setIsEditSuccess(true);
+        removeMessage();
+      }
+    );
 
   return (
     <Modal

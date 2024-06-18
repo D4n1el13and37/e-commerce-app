@@ -6,6 +6,7 @@ import useAppDispatch from '../../../../hooks/useAppDispatch';
 import {
   fetchAddresses,
   selectAddresses,
+  selectBillingAddressId,
   selectDefaultBillingAddressId,
   selectDefaultShippingAddressId,
   selectShippingAddressId,
@@ -14,14 +15,14 @@ import {
 import classes from './Address/AddressInfo.module.scss';
 import Button from '../../../../components/ui/button/Button';
 
-import AddNewModal from '../ChangeAddressModal/AddNewModal copy';
+import AddNewModal from '../ChangeAddressModal/AddNewModal';
 
 const Address: React.FC = () => {
   const dispatch = useAppDispatch();
   const addresses = useAppSelector(selectAddresses);
   const defaultShippingAddress = useAppSelector(selectDefaultShippingAddressId);
   const defaultBillingAddress = useAppSelector(selectDefaultBillingAddressId);
-  // const billingAddressId = useAppSelector(selectBillingAddressId);
+  const billingAddressId = useAppSelector(selectBillingAddressId);
   const shippingAddressId = useAppSelector(selectShippingAddressId);
 
   const [isOpenEdit, setIsOpenEdit] = useState(false);
@@ -31,7 +32,17 @@ const Address: React.FC = () => {
   }, [dispatch]);
 
   function checkTypeAddress(id: string) {
-    return shippingAddressId?.includes(id) ? 'Shipping' : 'Billing';
+    let addressType;
+
+    if (shippingAddressId?.includes(id)) {
+      addressType = 'Shipping';
+    } else if (billingAddressId?.includes(id)) {
+      addressType = 'Billing';
+    } else {
+      addressType = '';
+    }
+
+    return addressType;
   }
 
   return (
@@ -40,7 +51,7 @@ const Address: React.FC = () => {
         {addresses.map((address) => (
           <AddressBlock
             id={address.id}
-            addressType={checkTypeAddress(address.id)}
+            addressType={checkTypeAddress(address.id as string)}
             defaultShipping={
               address.id === defaultShippingAddress
                 ? 'Default Shipping Address'

@@ -12,12 +12,12 @@ import useAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import NotFound from './pages/NotFound/NotFound';
 
-import { CreateProduct } from './api/Products/createProducts';
+// import { CreateProduct } from './api/Products/createProducts';
 
-import productList from './Products.json';
-import productListVasya from './productsVasya.json';
-import productListDanya from './productdanya.json';
-import createCategories from './api/Products/createCategory';
+// import productList from './Products.json';
+// import createCategories from './api/Products/createCategory';
+// import createProductType, { newType } from './api/Products/CreateType';
+// import { AttributeType, ProductTypeDraft } from '@commercetools/platform-sdk';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,19 +27,34 @@ function App() {
     dispatch(autorizationByToken());
   }, [dispatch]);
 
-  createCategories();
+  // Что бы заново добавить продукты и категории. Сначала добавить тип.
+  // Добаваление типа
 
-  productListVasya.forEach((product) => {
-    CreateProduct(product)
-      .then((element) => {
-        // eslint-disable-next-line no-console
-        console.log('Product created successfully:', element);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error('Error creating product:', error);
-      });
-  });
+  // createProductType(newType)
+  //   .then(() => {
+  //     // eslint-disable-next-line no-console
+  //     console.log('Product type created successfully');
+  //   })
+  //   .catch((error) => {
+  //     // eslint-disable-next-line no-console
+  //     console.error('Error creating product type:', error);
+  //   });
+
+  // Создаем категории
+  // createCategories();
+
+  // Добавление продуктов
+  // productList.forEach((product) => {
+  //   CreateProduct(product)
+  //     .then((element) => {
+  //       // eslint-disable-next-line no-console
+  //       console.log('Product created successfully:', element);
+  //     })
+  //     .catch((error) => {
+  //       // eslint-disable-next-line no-console
+  //       console.error('Error creating product:', error);
+  //     });
+  // });
 
   const router = createBrowserRouter([
     {

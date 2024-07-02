@@ -2,6 +2,1450 @@
   {
     "productTypeKey": "plant-product-type",
     "name": {
+      "en-US": "Fiddle Leaf Fig",
+      "ru-RU": "Фикус Лират"
+    },
+    "slug": {
+      "en-US": "fiddle-leaf-fig",
+      "ru-RU": "fikus-lirat"
+    },
+    "description": {
+      "en-US": "The fiddle leaf fig hails from the jungle, so a bright bathroom would be an ideal indoor location. A living room will also work if you protect the tree from drafts and give it enough bright filtered light and humidity. Outdoors will also do wonders for the fiddle leaf fig, so give it a temporary home as a patio plant during June.",
+      "ru-RU": "Фиговое дерево родом из джунглей, поэтому идеальным местом для его размещения в помещении будет светлая ванная комната. Гостиная также подойдет, если вы защитите дерево от сквозняков и обеспечите ему достаточно яркий фильтрованный свет и влажность. Инжир на открытом воздухе также будет полезен, поэтому в июне устройте ему временный дом в качестве растения для патио."
+    },
+    "masterVariant": {
+      "sku": "TRS-1",
+      "key": "variant-key-TRS-1",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 12500
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/j1IREt0UMI1lHkyzbOmLoIRvq_Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-01-b92727e971c043cbb74c79c75a593bc3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Fiddle Leaf Fig Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/wxnKUBFYKRkBiY35tamGaMeqd_k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-fiddle-leaf-fig-indoors-1902756-05-32d2eb47c63a427cabec0f5a52445013.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Fiddle Leaf Fig Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Benjamin fig",
+      "ru-RU": "Фикус Бенджамина"
+    },
+    "slug": {
+      "en-US": "benjamin-leaf-fig",
+      "ru-RU": "benjamin-ficus-tree"
+    },
+    "description": {
+      "en-US": "Weeping fig (Ficus benjamina's common name is known as the ficus tree) grows as a l broadleaf evergreen tree in tropical and subtropical climates, but it is more often grown as a houseplant in homes and offices and featured in interior commercial landscaping. Here it will thrive in filtered bright sunlight and well-draining potting soil. The ficus tree is known for its longevity, living between 20 to 50 years. Weeping figs are toxic to pets.",
+      "ru-RU": "Плакучий инжир ( общее название фикуса Бенджамина, известное как фикусовое дерево ) растет как большое широколиственное вечнозеленое дерево в тропическом и субтропическом климате, но его чаще выращивают как комнатное растение в домах и офисах, а также используют во внутреннем коммерческом ландшафтном дизайне. Здесь он будет хорошо себя чувствовать при фильтрованном ярком солнечном свете и хорошо дренируемой почве. Фикус известен своим долголетием: он живет от 20 до 50 лет . Плакучий инжир токсичен для домашних животных."
+    },
+    "masterVariant": {
+      "sku": "TRS-2",
+      "key": "variant-key-TRS-2",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 10000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/4qao5lrDkR-rbshjRhxXxUtVoxE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-ficus-trees-1902757-1-80b8738caf8f42f28a24af94c3d4f314.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Benjamin Leaf Fig Image"
+        },
+        {
+          "url": "https://cdn.leroymerlin.ru/lmru/image/upload/f_auto/q_auto/dpr_1.0/c_pad/w_1000/h_1000/v1707922019/lmcode/p52hdHR4jEKY4bqNHlDEuA/89352944_tmp.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Benjamin Leaf Fig Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Schefflera (Umbrella Tree)",
+      "ru-RU": "Шеффлера (Зонтичное Дерево)"
+    },
+    "slug": {
+      "en-US": "umbrella-tree",
+      "ru-RU": "umbrella-schefflera-tree"
+    },
+    "description": {
+      "en-US": "Schefflera, commonly called umbrella plants or trees, make excellent tropical houseplants. These plants produce flowers, but plants grown indoors rarely develop flowers. Schefflera grows best in indirect, filtered light, requiring a rich, loamy, well-draining soil and temperatures consistently warmer than 60°F.",
+      "ru-RU": "Шеффлера, обычно называемая зонтичным растением или деревом, является отличным тропическим комнатным растением. Эти растения дают цветы, но растения, выращенные в помещении, редко цветут. Шеффлера лучше всего растет при непрямом, фильтрованном свете, требуя богатой, суглинистой, хорошо дренируемой почвы и температуры, постоянно выше 60°F."
+    },
+    "masterVariant": {
+      "sku": "TRS-3",
+      "key": "variant-key-TRS-3",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 80000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/Zttu71T_kFeMiFV-BA1C7Il9KYA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-RECIRC-cdce731067d449d4b4a17e8505ef9f24.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/hpKgqP4YHFoAJrxg3VP9ns6kE6I=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-detail-a03554c4501f4cdaa3f78bb7e41071c5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/Zxilic3AUW4yqGzDZIGt6_Mwrsc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-6-a24adaf956154b809d95be791d10ba81.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/s77bmkgCT4oh6oZQy3TFeo76qp4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileySchefflera-3-1c002fb86237451789114b85b8cfa792.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Schefflera (Umbrella Tree) Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Jade (Crassula ovata)",
+      "ru-RU": "Дерево нефрит"
+    },
+    "slug": {
+      "en-US": "crassula-ovata-tree",
+      "ru-RU": "jade-tree"
+    },
+    "description": {
+      "en-US": "The jade tree is probably the lowest maintenance indoor tree on this list, making it perfect for beginners and anyone who doesn't have a lot of time to care for houseplants. The succulent leaves and trunk of this plant give it a sculptural look. Jade trees are also ideal as bonsai specimens. Water the plant every few weeks and locate it near a window with bright light.",
+      "ru-RU": "Дерево нефрит, вероятно, самое неприхотливое комнатное дерево в этом списке, что делает его идеальным для начинающих и тех, у кого нет много времени на уход за домашними растениями. Сочные листья и ствол этого растения придают ему скульптурный вид. Деревья нефрита также идеально подходят в качестве экземпляров для бонсай. Поливайте растение каждые несколько недель и размещайте его возле окна с ярким светом."
+    },
+    "masterVariant": {
+      "sku": "TRS-4",
+      "key": "variant-key-TRS-4",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/T7k7dFu3U_UxjLepks8A-iXIPq8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-jade-plants-indoors-1902981-04-257462b8baf44352b881336423291f60.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Jade (Crassula ovata) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/92gqDycGP8BOlBN962q6FeM01hU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-jade-plants-indoors-1902981-06-521a25bd63284fdfb8ba991e6ed49e43.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Jade (Crassula ovata) Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Dragon Tree(Dracaena marginata)",
+      "ru-RU": "Драконовое дерево"
+    },
+    "slug": {
+      "en-US": "dragon-tree",
+      "ru-RU": "dracaena-marginata"
+    },
+    "description": {
+      "en-US": "The dragon tree (Dracaena draco) is an evergreen succulent tree native to subtropical zones and can be grown outdoors or as a houseplant. In the landscape, the dragon tree grows tall and develops a thick cylindrical trunk topped with rosettes that have sword-shaped leaves. The much shorter houseplant produces the same leaves. The plant is toxic to animals, especially cats.",
+      "ru-RU": "Драконовое дерево ( Dracaena draco) — вечнозеленое суккулентное дерево, произрастающее в субтропических зонах, которое можно выращивать на открытом воздухе или как комнатное растение. В ландшафте драконовое дерево вырастает в высоту и имеет толстый цилиндрический ствол, увенчанный розетками с листьями в форме меча. Гораздо более низкое комнатное растение дает такие же листья. Растение токсично для животных, особенно кошек."
+    },
+    "masterVariant": {
+      "sku": "TRS-5",
+      "key": "variant-key-TRS-5",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 10000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/MIjjt_14F1afnpq4ep7ccmA2wl4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-02-ba6496fa99b74838b9595a6c7dbfd21f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/mpT078GtVGms9ls9_Jn0PXIO3Yo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-hero-db8b3d62c7454679a04be31c3b44c1bb-c2235352994b44abbff11be830349d2b.jpeg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/HeB1whC1Snqh-JYkbBDRVwnP_zY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-dracaena-draco-1902753-03-1a4094af24c845a59e3054ce2d0d94dc.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Dragon Tree Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat (Citrus japonica)",
+      "ru-RU": "Кумкват (Цитрус японский)"
+    },
+
+    "slug": {
+      "en-US": "kumquat-centennial-tree",
+      "ru-RU": "kumquat-centennial-variegated"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "GPC-6-centennial-variegated",
+      "key": "variant-key-GPC-6-centennial-variegated",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 40000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://justfruitsandexotics.com/wp-content/uploads/5b95c26161a7d-800x599.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/GlAW0Eo6RSBVkyPmT60fvPQHDro=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-01-81c9f69139684871855bb117f2b8e662.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/PpvP0K-xiSBYLuhn5t1nHQmpJ5w=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-08-a2fd07e1235e476faa050ea4b0a1cee3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Centennial Variegated Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat 'Nagami' (Citrus japonica)",
+      "ru-RU": "Кумкват 'Нагами' (Цитрус японский)"
+    },
+
+    "slug": {
+      "en-US": "kumquat-nagami-tree",
+      "ru-RU": "dracaena-nagami"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "GPC-7-Nagami",
+      "key": "variant-key-GPC-7-Nagami",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 120000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://toptopiary.co.uk/cdn/shop/products/05019-kumquat-5l-55-65cm-high_1d13cc33-a20c-4b57-bba5-a3ed4cdcdb38.jpg?v=1602851082",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami image"
+        },
+        {
+          "url": "https://i.imgur.com/mcjnfxZ.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami Image"
+        },
+        {
+          "url": "https://www.kipogeorgiki.gr/image/cache/data/FYT_KAR_Dentra/Kumquat/02.-Karpoi-Koumkouat-sto-Dentro-800x600.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Nagami Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kumquat (Citrus japonica)",
+      "ru-RU": "Кумкват (Цитрус японский)"
+    },
+    "slug": {
+      "en-US": "kumquat-tree",
+      "ru-RU": "kumquat-citrus-tree"
+    },
+    "description": {
+      "en-US": "Kumquat trees generally perform well in containers and even have the potential to bear fruit indoors. The key to success is giving them as much full sun as possible and using a supplemental grow light if windows don't provide enough light. Kumquat trees don’t tolerate sitting in soggy soil, so don’t overwater them, and plant them in a container with excellent drainage. The trees have dense, glossy, dark green foliage that looks great even if they don’t happen to bear their small orange-colored fruits.",
+      "ru-RU": "Деревья кумквата обычно хорошо растут в контейнерах и даже могут плодоносить в помещении. Ключ к успеху – предоставлять им как можно больше прямого солнечного света и использовать дополнительное освещение для растений, если окна не обеспечивают достаточное количество света. Деревья кумквата не переносят застоя воды в почве, поэтому не переувлажняйте их и сажайте в контейнер с отличным дренажем. У деревьев плотная, глянцевая, тёмно-зелёная листва, которая выглядит привлекательно, даже если они не дают своих маленьких оранжевых плодов."
+    },
+    "masterVariant": {
+      "sku": "TRS-8",
+      "key": "variant-key-TRS-8",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 54000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/GlAW0Eo6RSBVkyPmT60fvPQHDro=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-01-81c9f69139684871855bb117f2b8e662.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/PpvP0K-xiSBYLuhn5t1nHQmpJ5w=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-08-a2fd07e1235e476faa050ea4b0a1cee3.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/66KASFJIjimslzWxicYKJ8tE7LM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-10-7b9737e53cc94b63af548d860d68b933.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/b8GyuGxYrksAh-Um5z8wV-nXKpA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-kumquats-indoors-1902442-12-9de9407e01214ef6a69204bb09f572ab.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kumquat Tree Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Bay Laurel (Laurus nobilis)",
+      "ru-RU": "Лавровое дерево"
+    },
+    "slug": {
+      "en-US": "bay-laurel",
+      "ru-RU": "bay-laurel-tree"
+    },
+    "description": {
+      "en-US": "The bay laurel tree has pointed oval leaves that are a common cooking ingredient. It’s fairly e to keep this plant as an indoor tree to have its leaves right at your fingertips. Bay laurel has a slow growth rate and responds well to pruning, so you will be able to keep the plant at a manageable size. Use a container that just fits the plant’s root ball because bay laurel likes to be a little cramped. Make sure not to overwater it.",
+      "ru-RU": "Лавр — вечнозеленый кустарник или дерево, произрастающее в Средиземноморье, наиболее известный своими листьями, которые широко используются в качестве кухонной приправы. Заостренные овальные листья темно-зеленого цвета с кожистой текстурой и имеют слабый аромат как в свежем, так и в сушеном виде. Но при добавлении в кулинарные жидкости лавровый лист выделяет эфирные масла, которые придают супам, тушеным блюдам и соусам острый, мятный и слегка горьковатый вкус."
+    },
+    "masterVariant": {
+      "sku": "TRS-9",
+      "key": "variant-key-TRS-9",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 20000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/c4ucfm3d7UfajQcJ0cY2kYB9hsU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-hero-385455f6b5cf4f1ebcdfadfb271e5697.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/5l1bydz78BuHVGE2QQ9yYJL5laQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-01-06a0a0843bbe47be9b9593eb882aef1c.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/b64uW-wBVzrYkaWqRq8rjQmMjuo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-your-own-bay-laurel-tree-1402602-03-30045293cbe9406bb9a9780d854e0784.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Bay Laurel (Laurus nobilis) Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Money Tree",
+      "ru-RU": "Денежное дерево"
+    },
+    "slug": {
+      "en-US": "money-tree",
+      "ru-RU": "money-rus-tree"
+    },
+    "description": {
+      "en-US": "A Guiana chestnut is a tree that comes from Central and South America. The Guiana chestnut is a beloved houseplant for those who practice feng shui, as this plant is believed to create more positive energy ('chi') in the home. These are sturdy plants making them e to care for.",
+      "ru-RU": "Гвианский каштан – дерево родом из Центральной и Южной Америки. Гвианский каштан — любимое комнатное растение тех, кто практикует фэн-шуй, поскольку считается, что это растение создает в доме больше положительной энергии («ци»). Это крепкие растения, поэтому за ними легко ухаживать."
+    },
+    "masterVariant": {
+      "sku": "TRS-10",
+      "key": "variant-key-TRS-10",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 22000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/vdJ4ph93q5BmUZCP9pMUUl7pTok=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TheSpruce1-0cdbe5809c914e25b1d24b0122f39c11.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/VKM0MV9o1c3WiDFRIfA6B2dW5uY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/The-Spruce-RECIRC-2fa016ab938c4eb9aa952cba2fdb955f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/HyWN3_e8ZzPXRrTNmqJZ1vR4m94=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TheSpruce4-90f0df3a95ab4e62a0ee84c032627bcd.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Money tree Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "indoor-trees" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Olive Trees",
+      "ru-RU": "Оливковое мини дерево"
+    },
+    "slug": {
+      "en-US": "olive-tree",
+      "ru-RU": "olive-mini-tree"
+    },
+    "description": {
+      "en-US": "Growing an olive tree indoors is pretty straightforward, though some maintenance is required to make these trees thrive indoors. Olive trees are native to the Mediterranean and love full sunlight. While the soil of an olive tree should never fully dry out, do be mindful not to overwater.",
+      "ru-RU": "Вырастить оливковое дерево в помещении довольно просто, хотя для того, чтобы эти деревья хорошо росли в помещении, требуется некоторый уход. Оливковые деревья родом из Средиземноморья и любят солнечный свет. Хотя почва оливкового дерева никогда не должна полностью высыхать, будьте осторожны и не допускайте чрезмерного полива."
+    },
+    "masterVariant": {
+      "sku": "TRS-11",
+      "key": "variant-key-TRS-11",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 50000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/7tu6Qt_84-VGvPOKGiyYGvKGKD8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1324175205-0b25411721104da987f5a933e7a8a937.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/834Vwow3-s0iS50FxMRi_nZ9m_E=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/SPR-grow-olive-trees-indoors-6752705-04-7fa85be1d70042c4844a623cf9caea5f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/q4PaZioe-a6Wl_QiccADnlJzNr8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/SPR-grow-olive-trees-indoors-6752705-07-798c92ea4ae4478588c6c09e6d64c2eb.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Olive mini-tree Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [{ "key": "plants" }, { "key": "indoor-trees" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Silver Dollar Plant",
+      "ru-RU": "Серебряный Доллар"
+    },
+    "slug": {
+      "en-US": "silver-dollar-plant",
+      "ru-RU": "serebryanyy-dollar"
+    },
+    "description": {
+      "en-US": "This is a natural species of tree crassula (Arborescens). It is native to the Western Cape Province (South Africa). In nature, it is a powerful shrub with large succulent fleshy leaves of gray color with a red border, 0.6 to 1.2 m high. It blooms in summer (in its native land) with white or pink flowers.",
+      "ru-RU": "Это природный вид древовидный крассулы (Arborescens). Родом это растение из Западно-Капской провинции (Южная Африка). В природе, это мощный кустарник с крупными сочными мясистыми листьями серого цвета с красной каймой, высотой от 0,6 до 1,2 м. Цветет летом (на родине) - белыми или розовыми цветами."
+    },
+    "masterVariant": {
+      "sku": "SCL-1",
+      "key": "variant-key-SCL-1",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1240
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/hLwdY-QLpCOZi7k21ptcVzK21Ec=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1365870624-e496f049e92e4aa691d7741f9f8dc8e7.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Silver Dollar Plant Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/fK1RVgFE0heK7IBvHt_O6Q_N8bQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/silver-dollar-plant-lunaria-4125718-hero-264cdae0fdd74d9692784d0f716ca415.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Silver Dollar Plant Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Donkey's Tail",
+      "ru-RU": "Очиток Моргана"
+    },
+    "slug": {
+      "en-US": "donkeys-tail",
+      "ru-RU": "ochitok-morgana"
+    },
+    "description": {
+      "en-US": "Donkey's tail (Sedum morganianum) is a popular succulent with rows of fleshy, tear-drop-shaped leaves that are blue-green. Native to Honduras and Mexico, mature specimens of the donkey tail plant grow slowly and steadily but can reach trailing lengths of up to 4 feet long in six years time (though the average length is closer to 24 inches). They are most commonly grown as potted plants, often suspended as hanging specimens. Indoors, the succulent can be planted and very easily propagated year-round by stem cuttings or laying a dropped leaf on top of soil, while outdoors it does best planted in early spring. Red or pink flowers can emerge in late summer, though the plant rarely blooms indoors. The donkey tail plant is safe and considered not toxic to people or pets.",
+      "ru-RU": "Очиток Моргана (Sedum morganianum) - популярный суккулент с рядами мясистых, каплевидных листьев сине-зеленого цвета. Родом из Гондураса и Мексики, взрослые экземпляры растения «Очиток Моргана» растут медленно и неуклонно, но уже через шесть лет могут достигать длины до 4 футов (хотя средняя длина ближе к 24 дюймам). Чаще всего их выращивают в горшках, нередко подвешивая в качестве подвесных экземпляров. В помещении суккулент можно посадить и очень легко размножать круглый год стеблевыми черенками или укладывая сброшенные листья поверх почвы, а на открытом воздухе его лучше всего высаживать ранней весной. Красные или розовые цветы могут появиться в конце лета, хотя в помещении растение цветет редко. Растение Очиток Моргана безопасно и считается нетоксичным для людей и домашних животных."
+    },
+    "masterVariant": {
+      "sku": "SCL-2",
+      "key": "variant-key-SCL-2",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1030
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/F-mRWtC0BOgNUMjJ8hXNRjiH_XU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1347675374-5fd3e062167d43cfab05d0322d861296.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Donkey's Tail Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/OnlpYuP-MR9YRvVPWe_CBFcc7j8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-sedum-morganianum-1902975-01-da48acd20ef24c8783c1b979d75eee9f.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Donkey's Tail Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/s6AsUPx0hPKEZFWapVn9q1o60qo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-sedum-morganianum-1902975-06-344ad64a2b0d498799944001aeee4a35.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Donkey's Tail Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "air-purifying" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Mexican Snowballs",
+      "ru-RU": "Мексиканские снежки"
+    },
+    "slug": {
+      "en-US": "mexican-snowballs",
+      "ru-RU": "meksikanskie-snezhki"
+    },
+    "description": {
+      "en-US": "Mexican snowballs (Echeveria elegans) are one of the most well-known and popular varieties of Echeveria succulents. Also commonly known as White Mexican Rose or Mexican Gem succulents, Mexican snowballs are characterized by thick, fleshy blue-green to silver-green leaves that grow in an attractive rosette shape. As their name suggests, these succulents are native to Mexico and can be commonly found in semi-desert habitats across the country. These gorgeous, low-maintenance succulents are popular as houseplants and garden plants and won the Award of Garden Merit from the Royal Horticultural Society.",
+      "ru-RU": "Мексиканские снежки (Echeveria elegans) - один из самых известных и популярных видов суккулентов Echeveria. Также известные как суккуленты «Белая мексиканская роза» или «Мексиканский самоцвет», мексиканские снегири отличаются толстыми мясистыми листьями от сине-зеленого до серебристо-зеленого цвета, которые растут в привлекательной форме розетки. Как следует из названия, эти суккуленты родом из Мексики и часто встречаются в полупустынных местах по всей стране. Эти великолепные, не требующие особого ухода суккуленты популярны в качестве комнатных и садовых растений и удостоены награды Королевского садоводческого общества за заслуги в области садоводства."
+    },
+    "masterVariant": {
+      "sku": "SCL-3",
+      "key": "variant-key-SCL-3",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1130
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/40qyJDhv1DG3B68ffLb9OsI8kXo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1256016795-0f4ae002f8d24bcbbf873dd3989ac0d5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Mexican Snowballs Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/qEv1QFimd4hig1WrpDofmyLue-c=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-mexican-snowball-echeveria-elegans-01-b35b412ea9ce4bdcbe22b322623edf19.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Mexican Snowballs Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/ZJPF00BTzkxFtuhbHTkS8a0Wu4Y=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-mexican-snowball-echeveria-elegans-02-7df7af146c4d4bafa6ffa7b3741616dc.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Mexican Snowballs Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "l" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Echeveria 'Perle von Nurnberg'",
+      "ru-RU": "Эхеверия 'Перл фон Нюрнберг'"
+    },
+    "slug": {
+      "en-US": "echeveria-perle-von-nurnberg",
+      "ru-RU": "ekheveriya-perl-fon-nyurnberg"
+    },
+    "description": {
+      "en-US": "Echeverias are fast-growing succulents popular for their unique appearance and low maintenance needs. Their stunning rosette shape, plump leaves, and large variety of colors give them a striking resemblance to flowers. When they flower in the summer, they are stunning. Plant them in the spring at the start of their growing season. Most echeveria will remain fairly small, no larger than a foot wide, but some species will grow into small shrub-like, 2-foot tall plants.",
+      "ru-RU": "Эхеверии - быстрорастущие суккуленты, популярные благодаря своему уникальному внешнему виду и неприхотливости в уходе. Их потрясающая форма розетки, пухлые листья и большое разнообразие цветов придают им поразительное сходство с цветами. Когда они цветут летом, это потрясающее зрелище. Высаживайте их весной в начале вегетационного периода. Большинство эхеверий остаются довольно маленькими, не более фута в ширину, но некоторые виды вырастают в небольшие кустарники высотой до 2 футов."
+    },
+    "masterVariant": {
+      "sku": "SCL-4",
+      "key": "variant-key-SCL-4",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1160
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/Bgp9ydiKsHReoxW04VzHQju1ctA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1140228657-7e36b3ce28754035bf2e637f951ef8b9.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Echeveria Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/h8RnjgZTH4R-wowbes3UG0eDmXk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-echeveria-succulents-1902977-02-dfc8d68a8d25452aa77a6d43270c5f96.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Echeveria Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "String of Pearls",
+      "ru-RU": "Нить жемчуга"
+    },
+    "slug": {
+      "en-US": "string-of-pearls",
+      "ru-RU": "nit-zhemchuga"
+    },
+    "description": {
+      "en-US": "Senecio, a large genus with over 1,000 species, includes about 100 succulents popular in warm-climate gardens and as indoor plants elsewhere. They vary from large shrubs to trailing groundcovers and baskets, with upright types too. For a hanging basket, either indoors or outdoors, consider this trailing Senecio variety with dangling stems of round leaves. It reaches a length of 3 to 5 feet if you let it grow.",
+      "ru-RU": "Senecio, большой род, насчитывающий более 1000 видов, включает около 100 суккулентов, популярных в садах с теплым климатом и в качестве комнатных растений в других местах. Они варьируются от крупных кустарников до стелющихся почвопокровных растений и корзин, а также прямостоячих типов. В качестве подвесной корзины, как в помещении, так и на открытом воздухе, рассмотрите этот висячий сорт Senecio со свисающими стеблями круглых листьев. Если дать ему вырасти, он достигает длины от 3 до 5 футов."
+    },
+    "masterVariant": {
+      "sku": "SCL-5",
+      "key": "variant-key-SCL-5",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1199
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/5vJTRnGWFjiToR1KPFuuu2dcJrA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1394821582-45cbdb23791f431cadce7911c5d2dce6.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "String of Pearls Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/fSvLEx_s12l054RV1JM2kWnEb5g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/senecio-plants-1402876-22-ec41ae4c17174dd99e854b36def74505.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "String of Pearls Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Euphorbia Ingens",
+      "ru-RU": "Молочай великий"
+    },
+    "slug": {
+      "en-US": "euphorbia-ingens",
+      "ru-RU": "molochay-velikiy"
+    },
+    "description": {
+      "en-US": "Euphorbia ingens are large, tree-like succulents that are beloved for their stately appearance and low-maintenance nature. They are characterized by dark green, four-lobed stems and a columnar growth structure that branches as they mature — leading to the common nicknames candelabra cactus and African candelabra tree.",
+      "ru-RU": "Молочай великий - крупные древовидные суккуленты, которые любят за их величественный вид и неприхотливость в уходе. Они отличаются темно-зелеными четырехлопастными стеблями и столбчатой структурой роста, которая ветвится по мере созревания, из-за чего их прозвали канделябровым кактусом и африканским канделябровым деревом."
+    },
+    "masterVariant": {
+      "sku": "SCL-6",
+      "key": "variant-key-SCL-6",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 425000
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.plantshopgr.com/cdn/shop/products/EuphorbiaIngens-12_1024x1024@2x.jpg?v=1680555321",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Euphorbia Ingens Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/Xh_Hw5BfoW3EzChMT8X9Ymhl0uk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-grow-euphorbia-ingens-hero-355f296552ca41a2abfcbc8dbbeb43b0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Euphorbia Ingens Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Crown of Thorns",
+      "ru-RU": "Терновый венец"
+    },
+    "slug": {
+      "en-US": "crown-of-thorns",
+      "ru-RU": "ternovyy-venets"
+    },
+    "description": {
+      "en-US": "Crown of thorns, also commonly known by its scientific name Euphorbia milii, is a pretty but thorny succulent tropical shrub. One of its typical characteristics is that it can bloom in many colors with thick, bright green leaves almost year-round, even indoors. This slow-growing plant can reach 3 to 6 feet tall outdoors or 2 feet as a houseplant.",
+      "ru-RU": "Терновый венец, также известный под научным названием Euphorbia milii, - это красивый, но колючий суккулентный тропический кустарник. Одна из его характерных особенностей - цветение разными цветами с толстыми ярко-зелеными листьями почти круглый год, даже в помещении. Это медленно растущее растение может достигать от 3 до 6 футов в высоту на открытом воздухе или 2 футов в качестве комнатного растения."
+    },
+    "masterVariant": {
+      "sku": "SCL-7",
+      "key": "variant-key-SCL-7",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 3599
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/LgJjfsUMjDybPxpMRsOgJh93YNQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1418952590-818a717ec0904e8b986faefec68def0d.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Crown of Thorns Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/IIDsUslwdpauhn_b0_vsd8an0cY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/crown-of-thorns-plant-4175182-hero-f7eeb743b33a4b3ba19afc7e7e82ccc9.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Crown of Thorns Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/kMTgeLbOo-VGJiZoF64TyXjtOJc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/crown-of-thorns-plant-4175182-06-160d1088d8a442b88e2f5b72e8388036.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Crown of Thorns Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Aloe Vera",
+      "ru-RU": "Алоэ вера"
+    },
+    "slug": {
+      "en-US": "aloe-vera",
+      "ru-RU": "aloe-vera"
+    },
+    "description": {
+      "en-US": "Aloe vera, commonly grown as a houseplant, is known for its leaves which contain a soothing gel used on sunburns and other skin irritations. With over 300 species (the most common being Aloe barbadensis miller), this tropical succulent features fleshy lance-shape leaves with jagged edges that grow out from a basal rosette. Given the right growing conditions, spiky flowers will appear on the end of stalks in shades of yellow, red, or orange.",
+      "ru-RU": "Алоэ вера, обычно выращиваемое как комнатное растение, известно своими листьями, содержащими успокаивающий гель, используемый при солнечных ожогах и других раздражениях кожи. Этот тропический суккулент, насчитывающий более 300 видов (наиболее распространенным из которых является Aloe barbadensis miller), имеет мясистые листья ланцетной формы с зазубренными краями, которые растут из прикорневой розетки. При правильных условиях выращивания на концах стеблей появятся остроконечные цветы желтого, красного или оранжевого цвета."
+    },
+    "masterVariant": {
+      "sku": "SCL-8",
+      "key": "variant-key-SCL-8",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2099
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/pTDvaes5iAPaGgofWAlri7HnCVQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/_DSC58741-476b7f7ef66d44ba8ce33cbc0d7b8dd4.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Aloe Vera Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/TS36GP9fzIfeqCTxYrCJkUY0mhM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/_DSC58371-8b5a4db863f841afa1949d6ec65d7e2d.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Aloe Vera Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/kmhxFpUQO0LNKCuzK8QeU1GNjSY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1162314848-2c255d6e51ce44c9a412f365c4954a94.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Aloe Vera Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "air-purifying" },
+      { "key": "easy-to-care" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Christmas Cactus",
+      "ru-RU": "Рождественский кактус"
+    },
+    "slug": {
+      "en-US": "christmas-cactus",
+      "ru-RU": "rozhdestvenskiy-kaktus"
+    },
+    "description": {
+      "en-US": "The Christmas cactus joins Norfolk Island pine trees and poinsettias as plants beloved during the winter season. While it may seem like an unusual holiday plant, the Christmas cactus, also called holiday cactus, is flush with bold blooms, making it a welcome sight in the middle of winter. The fleshy segmented stems of the plant are flattened leaves and slightly serrated on each side. In late fall or early winter, tubular flowers bloom on the ends of each stem.",
+      "ru-RU": "Рождественский кактус присоединяется к соснам острова Норфолк и пуансеттиям как растениям, любимым в зимнее время года. Рождественский кактус, который также называют праздничным, может показаться необычным праздничным растением, однако он пышно цветет, что делает его желанным зрелищем в середине зимы. Мясистые сегментированные стебли растения имеют сплюснутые листья и слегка зазубренные с каждой стороны. В конце осени или начале зимы на концах каждого стебля распускаются трубчатые цветки."
+    },
+    "masterVariant": {
+      "sku": "SCL-9",
+      "key": "variant-key-SCL-9",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 900
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/c_3Wl3xxjvHaczNTvTJeeOClE90=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/christmas-cactus-4176983-8-77aa89da351b407ea40dca98ab1ba196.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Christmas Cactus Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/3ZNR7-JrbhF8mZBK0LJKgltJAwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1124655981-8ba5197f05224c61bbc05e30982462fd.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Christmas Cactus Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Chocolate Soldier Plant",
+      "ru-RU": "Шоколадный солдат"
+    },
+    "slug": {
+      "en-US": "chocolate-soldier-plant",
+      "ru-RU": "shokoladnyy-soldat"
+    },
+    "description": {
+      "en-US": "If you have ever shopped for succulents, you have likely seen a chocolate soldier plant (Kalanchoe tomentosa). Chocolate soldier plants, also commonly called panda plant, are extremely popular houseplants because they are so easy to care for, as well as attractive and rather cute. They are sold at most nurseries, garden centers, and plant shops. It's easy to identify chocolate soldier; just look for the succulent with pale-green leaves covered with grayish-white fuzz and rimmed with chocolate brown spots. Chocolate soldier plants come in many sizes, from small to nearly 2 feet tall.",
+      "ru-RU": "Если вы когда-нибудь покупали суккуленты, то наверняка видели шоколадное растение-солдатик (Kalanchoe tomentosa). Шоколадные солдатики, также часто называемые пандами, являются чрезвычайно популярными комнатными растениями, потому что за ними очень легко ухаживать, а также они привлекательны и довольно милы. Они продаются в большинстве питомников, садовых центров и магазинов растений. Определить шоколадного солдата несложно: просто найдите суккулент с бледно-зелеными листьями, покрытыми серовато-белым пухом и окаймленными шоколадно-коричневыми пятнами. Растения шоколадного солдата бывают разных размеров, от маленьких до почти 2 футов в высоту."
+    },
+    "masterVariant": {
+      "sku": "SCL-10",
+      "key": "variant-key-SCL-10",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 800
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/v4c4F3EQ4E9ZxnhhrQ3CqoAD26w=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chocolate-soldier-plant-profile-5024790-06-4726c148a1b14c8db0aa09f7721f33bd.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chocolate Soldier Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/MDng8kieJkIHhNqPVLObAeGgt9M=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chocolate-soldier-plant-profile-5024790-08-91dd75e32f7347b8b5840e0d683b439c.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chocolate Soldier Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/2NglZ6dFY6A8LIvPSdffZKiCi5E=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-177369617-c3c285cdde73439fad7461f333d3ea11.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Chocolate Soldier Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Flapjack",
+      "ru-RU": "Каланхоэ лусия"
+    },
+    "slug": {
+      "en-US": "flapjack",
+      "ru-RU": "kalanhoe-lusiya"
+    },
+    "description": {
+      "en-US": "Flapjack succulents, also known as paddle plants, have flat, round leaves that form in rosette clusters. This low-maintenance plant thrives in warm, dry climates, requiring full sunlight and fast-draining soil that doesn't retain moisture. They can be grown indoors as long as they are given enough light, and in USDA zones 9-11, flapjack succulents are an ideal choice in xeriscape landscaping.",
+      "ru-RU": "Суккуленты Каланхоэ лусия, также известные как растения-лопасти, имеют плоские, круглые листья, которые формируются в розетку. Эти не требующие особого ухода растения процветают в теплом, сухом климате, требуя полного солнечного света и быстро дренируемой почвы, не задерживающей влагу. Их можно выращивать в помещении при условии достаточного освещения, а в зонах USDA 9-11 суккуленты Каланхоэ лусия являются идеальным выбором для ксерискейп-озеленения."
+    },
+    "masterVariant": {
+      "sku": "SCL-11",
+      "key": "variant-key-SCL-11",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1100
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/n0xogm4IkSrRa7l66A7vdiBpOY4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/flapjack-succulent-plant-profile-5073225-04b-e089566baeae4575a0cc4eaaf44453ab.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Flapjack Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/NXV88S7yw8dZCevviJYA7XmVvKY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/flapjack-succulent-plant-profile-5073225-07-dc9346a8c6fd4d14985e0f9d420f00d9.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Flapjack Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/XXyNuyiTkJ5D5bfyBqnWBl6cSBI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1423877380-a34c0255830343d6b1d51287ba5654db.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Flapjack Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "m" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kalanchoe",
+      "ru-RU": "Каланхое"
+    },
+    "slug": {
+      "en-US": "kalanchoe",
+      "ru-RU": "kalanhoe"
+    },
+    "description": {
+      "en-US": "Каланхоэ - род, включающий более 100 видов растений, произрастающих на Мадагаскаре. Растения каланхоэ известны своими суккулентными зелеными листьями овальной формы, часто с гребешковыми краями. У некоторых сортов при достаточном солнечном освещении листья или края листьев становятся красными. Наиболее распространенный вид комнатного растения - каланхоэ Блоссфельда (Kalanchoe blossfeldiana), который цветет гроздьями крошечных разноцветных цветков красного, розового, желтого, оранжевого, лососевого и белого оттенков.",
+      "ru-RU": "Kalanchoe is a genus that includes more than 100 species of plants native to Madagascar. Kalanchoe plants are known for their succulent, oval-shaped, often scallop-edged green leaves. Some varieties develop red leaves or leaf edges when grown with sufficient sunlight. The most common houseplant species is Kalanchoe blossfeldiana, which blooms with clusters of tiny, colorful flowers in shades of red, pink, yellow, orange, salmon, and white."
+    },
+    "masterVariant": {
+      "sku": "SCL-12",
+      "key": "variant-key-SCL-12",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 699
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/5GnI4p-eR2fNI9yfW_4u4VEyXGo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-hero-da950f5afb5645fdb60151d859d53df0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/wHqqN93Fscg_5nDevftniDVqfbY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-06-eb7fab84baba4c98b46065971e3aa1f0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/vwqH9WQ7wwR-06caFoMGOemNa0c=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-12-8f4468b6372d40089594bee1c6af8caa.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Kalanchoe",
+      "ru-RU": "Каланхое"
+    },
+    "slug": {
+      "en-US": "kalanchoe",
+      "ru-RU": "kalanhoe"
+    },
+    "description": {
+      "en-US": "Каланхоэ - род, включающий более 100 видов растений, произрастающих на Мадагаскаре. Растения каланхоэ известны своими суккулентными зелеными листьями овальной формы, часто с гребешковыми краями. У некоторых сортов при достаточном солнечном освещении листья или края листьев становятся красными. Наиболее распространенный вид комнатного растения - каланхоэ Блоссфельда (Kalanchoe blossfeldiana), который цветет гроздьями крошечных разноцветных цветков красного, розового, желтого, оранжевого, лососевого и белого оттенков.",
+      "ru-RU": "Kalanchoe is a genus that includes more than 100 species of plants native to Madagascar. Kalanchoe plants are known for their succulent, oval-shaped, often scallop-edged green leaves. Some varieties develop red leaves or leaf edges when grown with sufficient sunlight. The most common houseplant species is Kalanchoe blossfeldiana, which blooms with clusters of tiny, colorful flowers in shades of red, pink, yellow, orange, salmon, and white."
+    },
+    "masterVariant": {
+      "sku": "SCL-13",
+      "key": "variant-key-SCL-13",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 700
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/5GnI4p-eR2fNI9yfW_4u4VEyXGo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-hero-da950f5afb5645fdb60151d859d53df0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/wHqqN93Fscg_5nDevftniDVqfbY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-06-eb7fab84baba4c98b46065971e3aa1f0.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/vwqH9WQ7wwR-06caFoMGOemNa0c=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/growing-kalanchoe-plants-1902982-12-8f4468b6372d40089594bee1c6af8caa.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Kalanchoe Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "shade" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "flowering-plants" },
+      { "key": "easy-to-care" },
+      { "key": "pet-friendly" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Haworthia",
+      "ru-RU": "Хавортия"
+    },
+    "slug": {
+      "en-US": "haworthia",
+      "ru-RU": "khavortiya"
+    },
+    "description": {
+      "en-US": "Haworthia, also called zebra cactus, pearl, star window, and cushion aloe, is a large genus of small, slow-growing succulent plants that resemble mini aloe plants with rosettes of fleshy green leaves generously covered with white pearly warts or bands. Commonly kept as indoor plants, they require bright light but not all-day full sun, preferring temperatures between 70 to 95 degrees Fahrenheit. Haworthia thrives in sandy, well-draining, neutral soil that provides adequate summer moisture and relatively drier winter conditions.",
+      "ru-RU": "Хавортии, также называемые зебровым кактусом, жемчужным, звездчатым и подушковидным алоэ, - это большой род небольших, медленно растущих суккулентных растений, напоминающих мини-алоэ с розетками мясистых зеленых листьев, щедро покрытых белыми жемчужными бородавками или полосами. Обычно их содержат как комнатные растения, они требуют яркого света, но не полного солнца в течение всего дня, предпочитая температуру от 70 до 95 градусов по Фаренгейту. Хавортии процветают в песчаной, хорошо дренируемой, нейтральной почве, обеспечивающей достаточную влажность летом и относительно более сухую зимой."
+    },
+    "masterVariant": {
+      "sku": "SCL-14",
+      "key": "variant-key-SCL-14",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1500
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/_bKhRUf_VDvLB_HsNqfdTmPGAcc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-haworthia-succulents-1902980-02-1c659e1107054864a4fcb3d85369cccf.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Haworthia Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/nbwrNS4rLXP7lYXvkyfIp5Jv8pg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grow-haworthia-succulents-1902980-hero-c93b59bcc2f34900ae328d1dfdcb9fa9.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Haworthia Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "e" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "air-purifying" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Ghost Plant",
+      "ru-RU": "Призрачное растение"
+    },
+    "slug": {
+      "en-US": "ghost-plant",
+      "ru-RU": "prizrachnoe-rastenie"
+    },
+    "description": {
+      "en-US": "Ghost plant (Graptopetalum paraguayense) is a small evergreen succulent, a perennial that can be grown as a garden plant in warmer regions but is more often grown as a potted houseplant. With its whiteish-grey pointed leaves and trailing rosette form, ghost plants add a modern touch to container and rock gardens. The rosettes are typically about four inches in diameter and will take a blue-gray hue in partial shade or a pinkish-yellow tone in hot, full sun. Dainty, star-shaped yellow flowers appear in spring for outdoor plants but might bloom at random times when grown indoors.",
+      "ru-RU": "Растение-призрак (Graptopetalum paraguayense) - небольшой вечнозеленый суккулент, многолетник, который можно выращивать как садовое растение в более теплых регионах, но чаще всего его выращивают в качестве комнатного растения в горшках. Благодаря своим беловато-серым заостренным листьям и причудливой форме розетки, растения-призраки придают современный вид контейнерным и скальным садам. Розетки обычно около четырех дюймов в диаметре и приобретают голубовато-серый оттенок в частичной тени или розовато-желтый на жарком, полном солнце. Изящные желтые цветы в форме звезды появляются весной у растений, выращиваемых в открытом грунте, но при выращивании в помещении они могут распускаться в произвольное время."
+    },
+    "masterVariant": {
+      "sku": "SCL-15",
+      "key": "variant-key-SCL-15",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 1899
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/VxdzsH7M95MO6Tk5v3EvxYz0Vw4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ghost-plant-succulent-care-and-growing-guide-4684220-4-0c17481954ca4a7bbb492b4a9d253ba5.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Ghost Plant Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/oIvhGevPr2Ghv8op-AtOpzQCoGo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ghost-plant-succulent-care-and-growing-guide-4684220-closeup-d95cba766e024dbb80be3dbb1e6b70b7.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Ghost Plant Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "m" },
+        { "name": "lightRequirement", "value": "partial" }
+      ]
+    },
+    "categories": [
+      { "key": "plants" },
+      { "key": "succulents" },
+      { "key": "easy-to-care" }
+    ],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
+      "en-US": "Tree Aeonium",
+      "ru-RU": "Древовидный эониум"
+    },
+    "slug": {
+      "en-US": "tree-aeonium",
+      "ru-RU": "drevovidnyy-eonium"
+    },
+    "description": {
+      "en-US": "Aeonium is a genus of about 35 succulent plants characterized by their unusually glossy, waxy leaves arranged in rosettes. Also called tree houseleeks, the species range from the low-growing that grow just a few inches , to larger species that grow several feet.",
+      "ru-RU": "Эониум - род из примерно 35 суккулентных растений, характеризующихся необычно глянцевыми, восковыми листьями, расположенными розетками. Виды, которые также называют древовидными, варьируются от низкорослых, вырастающих всего на несколько дюймов, до более крупных, вырастающих на несколько футов."
+    },
+    "masterVariant": {
+      "sku": "SCL-16",
+      "key": "variant-key-SCL-16",
+      "prices": [
+        {
+          "value": {
+            "currencyCode": "EUR",
+            "centAmount": 2500
+          }
+        }
+      ],
+      "images": [
+        {
+          "url": "https://www.thespruce.com/thmb/-kLhjoYM4V2SOZO2EkROs2tEQtY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileyAeoniums-2-8870ca1aeb5c4559a4720e2b85b1f9c2.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Tree Aeonium Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/0T3S4j2R0FjGi5G6Hu51bSy5U2Y=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileyAeoniums-5-6c75d7e1be334585a28423a04b050823.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Tree Aeonium Image"
+        },
+        {
+          "url": "https://www.thespruce.com/thmb/1lbPK4I1n55oFTZeypg7t0Dbyyk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/KaraRileyAeoniums-12-257914ba5f4b46caa9b381b82896ceb9.jpg",
+          "dimensions": { "w": 600, "h": 600 },
+          "label": "Tree Aeonium Image"
+        }
+      ],
+      "attributes": [
+        { "name": "size", "value": "s" },
+        { "name": "careLevel", "value": "h" },
+        { "name": "lightRequirement", "value": "full" }
+      ]
+    },
+    "categories": [{ "key": "plants" }, { "key": "succulents" }],
+    "publish": true
+  },
+  {
+    "productTypeKey": "plant-product-type",
+    "name": {
       "en-US": "Orchids",
       "ru-RU": "Орхидеи"
     },

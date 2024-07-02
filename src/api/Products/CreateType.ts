@@ -22,7 +22,7 @@ export default async function createProductType(
   }
 }
 
-const newType: ProductTypeDraft = {
+export const newType: ProductTypeDraft = {
   key: 'plant-product-type',
   name: 'Plant Product Type',
   description: 'Product type for various plants',

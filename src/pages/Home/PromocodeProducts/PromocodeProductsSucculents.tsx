@@ -4,18 +4,23 @@ import { fetchProductsByCategory } from '../../../store/productsSlice';
 import ProductList from '../../Catalog/components/product_list/ProductList';
 import PromocodeCard from './PromocodeCard';
 import classes from './promocodeProducts.module.scss';
+import useAppSelector from '../../../hooks/useAppSelector';
 
 const PromocodeProductsSucculent = () => {
   const dispatch = useAppDispatch();
-
-  const categoryIdSucculent = '17bea79f-f832-4725-bb7a-ac7f801c3a45';
+  const { categoriesList } = useAppSelector((state) => state.products);
 
   useEffect(() => {
-    const preloadProducts = () =>
-      dispatch(fetchProductsByCategory(categoryIdSucculent));
-
-    preloadProducts();
-  }, [dispatch, categoryIdSucculent]);
+    if (categoriesList.length > 0) {
+      const succulentCategory = categoriesList.find(
+        (cat) => cat.name === 'Succulents'
+      );
+      if (succulentCategory) {
+        const succulentId = succulentCategory.id;
+        dispatch(fetchProductsByCategory(succulentId));
+      }
+    }
+  }, [dispatch, categoriesList]);
 
   return (
     <div className="grid">

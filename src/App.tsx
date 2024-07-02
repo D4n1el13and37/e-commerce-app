@@ -18,6 +18,7 @@ import ProductList from './pages/Catalog/components/product_list/ProductList';
 import AboutUs from './pages/AboutUs/AboutUs';
 import BasketPage from './pages/Basket/BasketPage';
 import { getAnonymCart, getCart, getDiscounts } from './store/cartSlice';
+import { fetchCategories } from './store/productsSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getDiscounts());
+    dispatch(fetchCategories());
 
     const initialize = async () => {
       try {

@@ -24,9 +24,9 @@ const Home: React.FC = () => (
 
           <SmallBanner
             imgPath="https://www.thespruce.com/thmb/NlUPRFLF444OXKmfxFPRDHyqeI0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basic-indoor-orchid-care-1902822-04-7d58691d8e7a40b78e74f69f5b40948f.jpg"
-            title="Orchids"
+            title="Flowering Plants"
             text="Elevate your space with elegant blooms and timeless beauty!"
-            link="/catalog/product/2ddb86c8-ad86-4ae1-9a70-73aa7dc08236"
+            link="/catalog/Plants/Flowering%20Plants"
           />
         </div>
 
